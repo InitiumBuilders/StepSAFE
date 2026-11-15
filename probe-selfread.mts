@@ -165,7 +165,7 @@ for (const f of ['security', 'privacy']) ok(readFileSync('public/' + f + '.html'
 /* ---------- a whole reading, as a reviewer keeps it ---------- */
 const reading: S.SelfReading = { at: NOW, origin: 'https://unitium-safe.vercel.app', findings: [fShown, S.scriptsFinding(CSP), stray], parts: list };
 const md = S.readingText(reading, flawF);
-ok(md.includes('https://unitium-safe.vercel.app/trust') && md.includes('Does not hold') && md.includes(S.SELF_TITLES.flaws), 'the saved reading carries every finding, its state and the address to read it again');
+ok(md.split('\n').some((l) => l === 'Read it again at https://unitium-safe.vercel.app/trust') && md.includes('Does not hold') && md.includes(S.SELF_TITLES.flaws), 'the saved reading carries every finding, its state and the address to read it again');
 const t = S.tally([fShown, stray, S.flawsFinding(null, 1, NOW)]);
 ok(t.shown === 1 && t.gap === 1 && t.unread === 1, 'the tally counts each state');
 

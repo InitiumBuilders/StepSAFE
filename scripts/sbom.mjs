@@ -33,7 +33,8 @@ const repoUrl = (repo) => {
 };
 const authorName = (a) => {
   const s = typeof a === 'string' ? a : a && a.name;
-  return s ? s.replace(/<[^>]*>/g, '').replace(/\([^)]*\)/g, '').trim() || null : null;
+  /* npm writes a person as 'Name <email> (url)': the name is what comes before the first < or ( */
+  return s ? s.split(/[<(]/)[0].trim() || null : null;
 };
 
 const missing = [];

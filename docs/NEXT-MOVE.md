@@ -599,6 +599,23 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     closes the static analysis gap SSDF.md listed under PW.7; RV.1 is now Met there.
   - Still his: a GitHub ruleset in place of the classic branch rule, so Scorecard can read it without a token (its
     docs say rulesets are readable without admin access); a license; 2FA and disk encryption (PO.5.2).
+  - Shipped at 14:05 CST: commit 49926fa, deployment unitium-safe-g40a13nax, gate 52 of 52 (the glossary walk timed
+    out under load and passed alone, 100 checks), production 101 of 101 the same, live walks clean (own record 78,
+    keys 10, a real token read in 3.4 s). On production a real read held 9 of 9, OSV.dev found no flaw in the 6
+    packages, and Scorecard backed 3 answers and settled none of the other 4. The public copy (3a52753) scored 5.8:
+    Vulnerabilities, SAST and Security-Policy at 10; all 11 Dependabot alerts fixed.
+  - CodeQL's first run found a real flaw in scripts/serve-dist.mjs, the local server the gate walks: since it was
+    written on 2026-10-19 it listened on every network interface and joined the decoded request path onto dist/
+    unchecked, so `/..%2F<path>` read any file the account could (proved with ../package.json only). Windows Firewall
+    allows inbound to C:\Program Files\nodejs\node.exe on Public and Private networks, and the Wi-Fi is Public, so
+    while stepsafe-serve ran, a device on the same Wi-Fi or tailnet could have read files in the home folder, the
+    wallet scripts and ~/.config keys among them. Nothing logs requests, so whether anyone did is unknown. Fixed:
+    it answers 127.0.0.1 only and serves only files inside dist/; the preview was restarted and the traversal forms
+    tried return index.html. The other servers running that day (ocean97-site, lincolnparkgems, SoundMindTeam) refuse
+    traversal and serve only their public site files. Told August; rotating keys and moving funds are his.
+  - CodeQL's other findings: sbom.mjs's author-name regex (output is JSON, no injection; now a split), and three
+    false positives on names or test assertions (withoutSecrets() in state.tsx, MIN_PASSPHRASE in probe-keyring, a
+    URL in a probe-selfread assertion, rewritten).
 - Next: August's choices (the first Dash project, the names, whether Recover grows further, and whether a
   certificate read is worth an SSLMate account and a small server); then the glossary's remaining debt, in this order: entries for the
   words named twice (`npx tsx probe-terms.mts --list` prints them), a decision on the 417 words the corpus names
