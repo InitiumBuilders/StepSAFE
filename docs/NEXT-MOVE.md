@@ -571,6 +571,16 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
       statements no record shows are his to answer on #/check.
   - The accessibility release shipped at 21:27 CST on his "okay deploy it fammmm": commit 648f3e1, deployment
     unitium-safe-oftlf5xzh, gate 52 of 52 (21:00 to 21:26), production 101 of 101 files the same as the build.
+  - The public copy, on his "Everything public" (asked plainly that it cannot be undone): github.com/InitiumBuilders/
+    StepSAFE, from this repository's HEAD by scripts/mirror.sh. research/outlier stays out: its brief says the full
+    entries are private security assessments of real systems, his own live sites among them, and never ship. The
+    script also runs the secret scan and a privacy scan on the copy. On the public repository: Dependabot alerts,
+    secret scanning with push protection, main protected against force pushes and deletion (admins included), and
+    the Scorecard workflow pinned by commit. No license file yet: visible, all rights reserved, until he picks one.
+  - Its first Scorecard result, 4.2: 10 for token permissions, pinned dependencies, dangerous workflows and binary
+    artifacts; 9 for the security policy; branch protection unreadable by the workflow's default token; and 11 known
+    vulnerabilities, all in the build tools (vite and esbuild, fixed only by vite 8; nanoid and source-map-js, fixed
+    by `npm audit fix`). None ships to a browser. Each fix downloads packages, so each waits on his yes.
 - Next: August's choices (the first Dash project, the names, whether Recover grows further, and whether a
   certificate read is worth an SSLMate account and a small server); then the glossary's remaining debt, in this order: entries for the
   words named twice (`npx tsx probe-terms.mts --list` prints them), a decision on the 417 words the corpus names
