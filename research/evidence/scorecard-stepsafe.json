@@ -1,0 +1,27 @@
+{
+  "_note": "OpenSSF Scorecard's published result for StepSAFE's public copy, as api.scorecard.dev answered it on 2026-11-15, trimmed to the fields StepSAFE reads: each check's name, score and reason, and the details of the checks the page sets beside its answers. Documentation links and the other checks' details are left out.",
+  "date": "2026-11-15T04:03:55Z",
+  "repo": { "name": "github.com/InitiumBuilders/StepSAFE", "commit": "6f23ffa72c8c5fbad7697647029839573592cc94" },
+  "scorecard": { "version": "v5.6.0", "commit": "61e84743356275f6ffca23b1b2f2cb945e19eb96" },
+  "score": 4.2,
+  "checks": [
+    { "name": "Security-Policy", "score": 9, "reason": "security policy file detected", "details": ["Info: security policy file detected: SECURITY.md:1", "Info: Found linked content: SECURITY.md:1", "Warn: One or no descriptive hints of disclosure, vulnerability, and/or timelines in security policy", "Info: Found text in security policy: SECURITY.md:1"] },
+    { "name": "Maintained", "score": 0, "reason": "project was created within the last 90 days. Please review its contents carefully", "details": null },
+    { "name": "Dangerous-Workflow", "score": 10, "reason": "no dangerous workflow patterns detected", "details": null },
+    { "name": "Packaging", "score": -1, "reason": "packaging workflow not detected", "details": null },
+    { "name": "CI-Tests", "score": -1, "reason": "no pull request found", "details": null },
+    { "name": "Binary-Artifacts", "score": 10, "reason": "no binaries found in the repo", "details": null },
+    { "name": "SAST", "score": 0, "reason": "no SAST tool detected", "details": null },
+    { "name": "Code-Review", "score": 0, "reason": "Found 0/2 approved changesets -- score normalized to 0", "details": null },
+    { "name": "Token-Permissions", "score": 10, "reason": "GitHub workflow tokens follow principle of least privilege", "details": ["Info: topLevel permissions set to 'read-all': .github/workflows/scorecard.yml:15", "Info: no jobLevel write permissions found"] },
+    { "name": "Pinned-Dependencies", "score": 10, "reason": "all dependencies are pinned", "details": null },
+    { "name": "CII-Best-Practices", "score": 0, "reason": "no effort to earn an OpenSSF best practices badge detected", "details": null },
+    { "name": "Signed-Releases", "score": -1, "reason": "no releases found", "details": null },
+    { "name": "Vulnerabilities", "score": 0, "reason": "11 existing vulnerabilities detected", "details": null },
+    { "name": "Dependency-Update-Tool", "score": 0, "reason": "no update tool detected", "details": ["Warn: no dependency update tool configurations found"] },
+    { "name": "Branch-Protection", "score": -1, "reason": "internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authentication/fine-grained-auth-token.md", "details": null },
+    { "name": "Fuzzing", "score": 0, "reason": "project is not fuzzed", "details": null },
+    { "name": "License", "score": 0, "reason": "license file not detected", "details": null },
+    { "name": "Contributors", "score": 0, "reason": "project has 0 contributing companies or organizations -- score normalized to 0", "details": null }
+  ]
+}

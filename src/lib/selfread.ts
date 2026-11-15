@@ -305,11 +305,14 @@ export function tally(list: SelfFinding[]) {
 
 const MARK_WORDS: Record<SelfMark, string> = { shown: 'Holds', gap: 'Does not hold', unread: 'Not read' };
 /** the reading as Markdown, for a reviewer to keep */
-export function readingText(r: SelfReading, flaws: SelfFinding | null): string {
+/** the reading as Markdown; `more` is a section of its own (the page adds OpenSSF Scorecard's readings), set after
+   the findings */
+export function readingText(r: SelfReading, flaws: SelfFinding | null, more: string[] = []): string {
   const list = flaws ? [...r.findings, flaws] : r.findings;
   return ['# StepSAFE’s own record', '',
     'Read in a browser from ' + r.origin + ' on ' + timeOf(r.at) + '. A reading shows that moment, not the practice behind it.', '',
     ...list.map((f) => '- **' + f.title + '.** ' + MARK_WORDS[f.mark] + '. ' + f.line + ' Read from ' + f.from + '.'),
+    ...(more.length ? ['', ...more] : []),
     '', 'Read it again at ' + r.origin + '/trust', ''].join('\n');
 }
 

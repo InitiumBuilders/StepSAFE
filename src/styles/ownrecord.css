@@ -51,6 +51,13 @@ html[data-theme='mov'] .ownr { --ownr-hold: #8fe3ea; --ownr-half: #ffd76a; --own
 .ownr-f-body .ownr-read-line { font-size: 0.95rem; }
 .ownr-f-body .ownr-disagree { font-weight: 600; }
 .ownr-move .label { display: block; margin-bottom: 4px; }
+/* OpenSSF Scorecard's reading of the public copy, under the answer it bears on: a lighter tile inside the answer */
+.ownr-card { margin-bottom: 0; }
+.ownr-card-sum { color: var(--ink); line-height: 1.6; max-width: 62em; }
+.ownr-card-sum a { color: inherit; text-underline-offset: 3px; white-space: nowrap; }
+.ownr-card-line { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; padding: 12px 14px; border-radius: 14px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--ink) 5%, transparent); }
+.ownr-card-line .label { display: block; }
+.ownr-f-body .ownr-card-verdict { font-size: 0.95rem; color: var(--ink); }
 /* on a phone a finding sits inside a panel: less padding and a smaller mark give its words the width */
 @media (max-width: 560px) {
   .ownr-read { padding: 18px 14px; }

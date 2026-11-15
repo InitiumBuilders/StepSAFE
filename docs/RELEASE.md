@@ -17,6 +17,9 @@ Written 2026-11-14. StepSAFE's own record (#/trust) says these steps are written
    file for secrets, and pushes to the private repository.
 4. After it: `bash scripts/gate/same-as-dist.sh` (the live site against `dist`, file by file) and
    `bash scripts/gate/live-walks.sh` (the walks and one real read against production).
+5. Then `bash scripts/mirror.sh`: the public copy at github.com/InitiumBuilders/StepSAFE takes the new commit, without
+   research/outlier, after a secret scan and a privacy scan of the copy. Its push runs OpenSSF Scorecard and CodeQL;
+   StepSAFE's own record reads the new Scorecard result once it is published.
 
 ## Taking a release back
 

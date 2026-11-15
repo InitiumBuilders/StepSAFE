@@ -1,5 +1,7 @@
 /* StepSAFE's own record (#/trust), walked in a real browser against the built site under its real headers. OSV.dev
-   is stood in for, so the walk asks it nothing: a clean answer, a known flaw, then OSV.dev down.
+   is stood in for, so the walk asks it nothing: a clean answer, a known flaw, then OSV.dev down. OpenSSF Scorecard
+   is stood in for too, with its real published result for the public copy (research/evidence/scorecard-stepsafe.json):
+   the readings under the answers, a branch rule the record says is missing, no published result, and Scorecard down.
    Walked: the page before a read, when nothing has been asked; the read, every finding's state and the tally; focus
    on the result; the answers, gaps first, and the federal rows with their sources; the OSV question, what it
    carries, and its three answers; copy and save; leaving and coming back, when the reading is kept and nothing is
@@ -20,6 +22,20 @@ const ok = (c, m) => { console.log((c ? 'ok   ' : 'FAIL ') + m); if (!c) problem
 const errors = [], csp = [], strays = [];
 /* the npm packages: what the parts line counts as packages and what OSV.dev is asked about */
 const PACKAGES = JSON.parse(readFileSync('public/sbom.cdx.json', 'utf8')).components.filter((c) => String(c.purl || '').startsWith('pkg:npm/')).length;
+
+/* ---------- OpenSSF Scorecard, stood in for ---------- */
+const CARD = JSON.parse(readFileSync('research/evidence/scorecard-stepsafe.json', 'utf8'));
+let cardMode = 'ok', cardUrls = [];
+async function scorecard(route) {
+  const req = route.request();
+  const cors = { 'access-control-allow-origin': '*' };
+  cardUrls.push(req.url());
+  if (cardMode === 'down') return route.abort('failed');
+  if (cardMode === 'none') return route.fulfill({ status: 404, headers: { ...cors, 'content-type': 'application/json' }, body: '{"code":5,"message":"not found"}' });
+  /* a record that says the main branch is unprotected: Branch-Protection at 0, so StepSAFE's Partly is more than it allows */
+  const body = cardMode === 'bare' ? { ...CARD, checks: CARD.checks.map((c) => (c.name === 'Branch-Protection' ? { ...c, score: 0, reason: 'branch protection not enabled on development/release branches', details: [] } : c)) } : CARD;
+  return route.fulfill({ status: 200, headers: { ...cors, 'content-type': 'application/json' }, body: JSON.stringify(body) });
+}
 
 /* ---------- OSV.dev, stood in for ---------- */
 let osvMode = 'clean', osvBodies = [];
@@ -46,6 +62,7 @@ async function context(opts = {}, seed = {}, plant = null) {
     if (plant) localStorage.setItem(plant[0], plant[1]);
   }, [seed, plant]);
   await c.route(/api\.osv\.dev/, osv);
+  await c.route(/api\.scorecard\.dev/, scorecard);
   return c;
 }
 let selfReads = 0;
@@ -56,7 +73,7 @@ async function newPage(c, tag, at = '/#/trust') {
   p.on('request', (r) => {
     const u = r.url();
     if (/\/\.well-known\/security\.txt$/.test(u)) selfReads++;
-    if (!u.startsWith(BASE) && !/^data:|^blob:|api\.osv\.dev/.test(u)) strays.push(tag + ': ' + u.slice(0, 120));
+    if (!u.startsWith(BASE) && !/^data:|^blob:|api\.osv\.dev|api\.scorecard\.dev/.test(u)) strays.push(tag + ': ' + u.slice(0, 120));
   });
   await p.goto(BASE + at, { waitUntil: 'networkidle' });
   await p.waitForSelector('.ownr h1, .view-head h1', { timeout: 20000 });
@@ -78,6 +95,18 @@ async function ask(p, mode) {
   await p.locator('#ownr-flaws-h ~ .ownr-actions .btn-key').click();
   await p.waitForFunction((b) => { const t = document.querySelector('[data-ownr="flaws"] .ownr-f-body p')?.textContent || ''; return t && t !== b; }, before, { timeout: 15000 });
 }
+
+async function askCard(p, mode) {
+  cardMode = mode;
+  const before = cardUrls.length;
+  await p.locator('.ownr-card .btn-key').click();
+  await p.waitForFunction(() => { const b = document.querySelector('.ownr-card .btn-key'); return b && !b.disabled; }, null, { timeout: 15000 });
+  await p.waitForTimeout(400);
+  if (cardUrls.length === before) problems.push('askCard: the button asked nothing');
+}
+const cardLines = (p) => p.evaluate(() => Object.fromEntries([...document.querySelectorAll('[data-ownr-answer]')].filter((li) => li.querySelector('.ownr-card-line')).map((li) => [li.getAttribute('data-ownr-answer'), li.querySelector('.ownr-card-line').textContent + ' | ' + li.querySelector('.ownr-f-state').textContent])));
+const cardSum = (p) => p.evaluate(() => document.querySelector('[data-ownr-card]')?.textContent || '');
+const cardAlert = (p) => p.evaluate(() => document.querySelector('.ownr-card [role=alert]')?.textContent || '');
 
 async function contrastOf(p, sels, prop = 'color') {
   return p.evaluate(([sels, prop]) => {
@@ -138,11 +167,37 @@ async function contrastOf(p, sels, prop = 'color') {
   ok(await p.evaluate(() => document.querySelector('[data-ownr="flaws"]').classList.contains('ownr-k-unread')) && /could not be reached/.test(await lineOf(p, 'flaws')), 'OSV.dev down: not read, and the page says so');
   osvMode = 'clean';
   await ask(p, 'clean');
+  /* the Scorecard question */
+  ok(cardUrls.length === 0, 'nothing is asked of OpenSSF Scorecard before its button');
+  ok(/github\.com\/InitiumBuilders\/StepSAFE/.test(await p.evaluate(() => document.querySelector('.ownr-card .ownr-says')?.textContent || '')), 'the page names the repository Scorecard is asked about before the button is pressed');
+  await askCard(p, 'ok');
+  const sum = await cardSum(p);
+  ok(sum.startsWith('OpenSSF Scorecard’s scan of 2026-11-15 backs 3 of these answers and does not settle 4.'), 'Scorecard: one line counts what the scan backs and leaves open: ' + sum.slice(0, 120));
+  ok(cardUrls.length === 1 && cardUrls[0] === 'https://api.scorecard.dev/projects/github.com/InitiumBuilders/StepSAFE', 'the question to OpenSSF Scorecard is the public repository’s name and nothing else: ' + cardUrls.join(' '));
+  let lines = await cardLines(p);
+  ok(Object.keys(lines).sort().join() === 'branch-rules,dep-alerts,disclosure,provenance,review,signed,token-perms', 'seven answers carry a Scorecard reading: ' + Object.keys(lines).join(' '));
+  ok(/Token-Permissions scored 10 of 10/.test(lines['token-perms']) && /backs StepSAFE’s answer/.test(lines['token-perms']) && /backed by OpenSSF Scorecard/.test(lines['token-perms']), 'token permissions: 10 of 10, and the answer says Scorecard backs it');
+  ok(/Code-Review scored 0 of 10/.test(lines.review) && /backs StepSAFE’s answer/.test(lines.review), 'review: 0 of 10 backs StepSAFE’s No');
+  ok(/Branch-Protection did not run/.test(lines['branch-rules']) && !/internal error/.test(lines['branch-rules']) && /does not settle/.test(lines['branch-rules']), 'branch rules: the scan could not read them, said plainly, and settles nothing');
+  ok(/Security-Policy scored 9 of 10/.test(lines.disclosure) && /Shown on this page, backed by OpenSSF Scorecard/.test(lines.disclosure), 'the policy: shown on this page and backed by Scorecard');
+  ok(!(await cardAlert(p)), 'a good answer shows no error');
+  await shot(p, 'desk-scorecard');
+  await askCard(p, 'bare');
+  lines = await cardLines(p);
+  ok(/StepSAFE answered Partly\. The record allows No at most\./.test(lines['branch-rules']) && await p.evaluate(() => document.querySelector('[data-ownr-answer="branch-rules"] .ownr-card-line').classList.contains('ownr-disagree')), 'a record that says the branch is unprotected: the page says it disagrees with StepSAFE’s Partly');
+  ok(/disagrees with 1/.test(await cardSum(p)), 'and the summary counts the disagreement: ' + (await cardSum(p)).slice(0, 120));
+  await askCard(p, 'none');
+  ok(/has no published results for StepSAFE’s public copy yet/.test(await cardAlert(p)), 'no published result: the page says so in its own words');
+  await askCard(p, 'down');
+  ok(/could not be reached/.test(await cardAlert(p)), 'Scorecard down: the page says it could not be reached');
+  await askCard(p, 'ok');
+  ok(!(await cardAlert(p)) && /backs 3/.test(await cardSum(p)), 'asking again clears the error and reads afresh');
   /* copy and save */
   await p.locator('.ownr-actions .btn', { hasText: 'Copy' }).click();
   await p.waitForTimeout(300);
   const clip = await p.evaluate(() => navigator.clipboard.readText());
   ok(clip.startsWith('# StepSAFE’s own record') && clip.includes(BASE + '/trust') && clip.includes('No known flaw in what ships'), 'the copied reading carries the findings and the address to read it again');
+  ok(clip.includes('## Read by OpenSSF Scorecard') && / StepSAFE answers Yes\. Token-Permissions scored 10 of 10/.test(clip) && clip.indexOf('## Read by OpenSSF Scorecard') < clip.indexOf(BASE + '/trust'), 'the copied reading carries the Scorecard readings under their own heading');
   const [dl] = await Promise.all([p.waitForEvent('download'), p.locator('.ownr-actions .btn', { hasText: 'Save' }).click()]);
   ok(/^stepsafe-own-record-\d{4}-\d\d-\d\d\.md$/.test(dl.suggestedFilename()), 'save gives a dated Markdown file: ' + dl.suggestedFilename());
   await shot(p, 'desk-read', true);
@@ -155,6 +210,7 @@ async function contrastOf(p, sels, prop = 'color') {
   await p.waitForSelector('.ownr-sum', { timeout: 15000 }); await p.waitForTimeout(500);
   ok(await p.evaluate(() => location.hash === '#/trust'), 'the button opens #/trust');
   ok(selfReads === readsBefore && (await states(p)).scripts === 'shown', 'coming back shows the kept reading and reads nothing twice');
+  ok(cardUrls.length === 6 && Object.keys(await cardLines(p)).length === 7, 'coming back shows the kept Scorecard readings and asks nothing twice: ' + cardUrls.length + ' asks');
   await collect(p, 'desk');
   await c.close();
 }
@@ -165,9 +221,10 @@ async function contrastOf(p, sels, prop = 'color') {
   const c = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' });
   await c.addInitScript(() => { window.__csp = []; document.addEventListener('securitypolicyviolation', (e) => window.__csp.push(e.violatedDirective + ' ' + e.blockedURI)); });
   await c.route(/api\.osv\.dev/, osv);
+  await c.route(/api\.scorecard\.dev/, scorecard);
   const p = await c.newPage();
   p.on('pageerror', (e) => errors.push('fresh: ' + String(e).slice(0, 200)));
-  p.on('request', (r) => { const u = r.url(); if (!u.startsWith(BASE) && !/^data:|^blob:|api\.osv\.dev/.test(u)) strays.push('fresh: ' + u.slice(0, 120)); });
+  p.on('request', (r) => { const u = r.url(); if (!u.startsWith(BASE) && !/^data:|^blob:|api\.osv\.dev|api\.scorecard\.dev/.test(u)) strays.push('fresh: ' + u.slice(0, 120)); });
   await p.goto(BASE + '/trust', { waitUntil: 'networkidle' });
   await p.waitForSelector('.ownr h1', { timeout: 20000 }); await p.waitForTimeout(900);
   ok(await p.evaluate(() => !document.querySelector('.lx, #nav-all') && !!document.querySelector('main.ownr-alone') && document.querySelectorAll('.ownr h1').length === 1), 'a first visit to /trust opens the record itself: no welcome page, no handle to choose');
@@ -188,7 +245,19 @@ async function contrastOf(p, sels, prop = 'color') {
     ok(!seen.equals(gone), 'the words of ' + sel + ' are drawn on the page, not hidden under the background');
   }
   await ask(p, 'clean');
-  ok(await p.evaluate(() => localStorage.length === 0), 'reading the record writes nothing to this browser’s storage');
+  await askCard(p, 'ok');
+  ok(await p.evaluate(() => localStorage.length === 0), 'reading the record and asking both services writes nothing to this browser’s storage');
+  {
+    const sel = '[data-ownr-answer="token-perms"] .ownr-card-line';
+    await p.locator(sel).scrollIntoViewIfNeeded(); await p.waitForTimeout(300);
+    const box = await p.locator(sel).boundingBox();
+    const clip = { x: Math.max(0, box.x), y: Math.max(0, box.y), width: Math.min(box.width, 900), height: Math.min(box.height, 120) };
+    const seen = await p.screenshot({ clip });
+    await p.evaluate((s) => { document.querySelector(s).style.visibility = 'hidden'; }, sel);
+    const gone = await p.screenshot({ clip });
+    await p.evaluate((s) => { document.querySelector(s).style.visibility = ''; }, sel);
+    ok(!seen.equals(gone), 'a Scorecard reading is drawn on the page, not hidden under the background');
+  }
   await shot(p, 'fresh-trust');
   await collect(p, 'fresh');
   await c.close();
@@ -213,6 +282,7 @@ for (const theme of ['nocturne', 'meridian', 'mov']) {
   const p = await newPage(c, 'phone-' + theme);
   await readIt(p);
   await ask(p, 'clean');
+  await askCard(p, 'ok');
   const m = await p.evaluate(() => ({
     wide: [document.documentElement.scrollWidth, document.documentElement.clientWidth],
     small: [...document.querySelectorAll('.ownr .btn')].filter((b) => b.offsetParent && b.getBoundingClientRect().height < 44).map((b) => b.textContent + ' ' + Math.round(b.getBoundingClientRect().height)),
@@ -222,7 +292,7 @@ for (const theme of ['nocturne', 'meridian', 'mov']) {
   ok(m.wide[0] <= m.wide[1] && !m.out.length, theme + ' at 390: no sideways scroll, nothing past the edge: ' + m.wide.join('/') + ' ' + m.out.join(','));
   ok(!m.small.length, theme + ': every button 44px or taller' + (m.small.length ? ': ' + m.small.join(', ') : ''));
   ok(!m.tiny.length, theme + ': no type under 12px' + (m.tiny.length ? ': ' + m.tiny.join(', ') : ''));
-  const cr = await contrastOf(p, ['.ownr-k-shown .ownr-f-title', '.ownr-k-shown .ownr-f-state', '.ownr-k-shown .ownr-f-body p', '.ownr-f-from', '.ownr-ask', '.ownr-tests li', '.ownr-foot']);
+  const cr = await contrastOf(p, ['.ownr-k-shown .ownr-f-title', '.ownr-k-shown .ownr-f-state', '.ownr-k-shown .ownr-f-body p', '.ownr-f-from', '.ownr-ask', '.ownr-tests li', '.ownr-foot', '.ownr-card-sum', '.ownr-card-line .label', '.ownr-card-line p', '.ownr-card-line .ownr-card-verdict']);
   ok(cr.every(([, r]) => r >= 4.5), theme + ': text contrast 4.5:1 or more: ' + cr.map(([s, r]) => s.split(' ').pop() + ' ' + r).join(', '));
   const marks = await contrastOf(p, ['.ownr-k-shown .ownr-mark', '.ownr-ans-no .ownr-mark', '.ownr-ans-partly .ownr-mark'], 'stroke');
   ok(marks.every(([, r]) => r >= 3), theme + ': each mark 3:1 or more against its ground: ' + marks.map(([s, r]) => s.split(' ')[0] + ' ' + r).join(', '));
@@ -231,7 +301,7 @@ for (const theme of ['nocturne', 'meridian', 'mov']) {
   await c.close();
 }
 
-ok(!strays.length, 'the page asked no host but its own and OSV.dev' + (strays.length ? ': ' + strays.slice(0, 4).join(' | ') : ''));
+ok(!strays.length, 'the page asked no host but its own, OSV.dev and OpenSSF Scorecard' + (strays.length ? ': ' + strays.slice(0, 4).join(' | ') : ''));
 ok(!csp.length, 'no CSP violations' + (csp.length ? ': ' + csp.join(' | ') : ''));
 ok(!errors.length, 'no page errors' + (errors.length ? ': ' + errors.join(' | ') : ''));
 await browser.close();

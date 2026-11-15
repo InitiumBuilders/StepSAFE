@@ -385,8 +385,9 @@ export async function readMultisig(raw: string, kind: 'multisig-agree' | 'multis
   return parseMultisig(last, address, kind, page);
 }
 
-/** a repository's published Scorecard results, read once for every statement that asks */
-export async function readScorecard(raw: string, kinds: ScorecardKind[]): Promise<{ subject: string; readings: Partial<Record<ScorecardKind, Reading>> }> {
+/** a repository's published Scorecard results, read once for every statement that asks; `scanned` is the day of the
+   scan read, or '' when the results carry no date */
+export async function readScorecard(raw: string, kinds: ScorecardKind[]): Promise<{ subject: string; scanned: string; readings: Partial<Record<ScorecardKind, Reading>> }> {
   const typed = cleanRepo(raw);
   if (!typed) throw new Error('That is not a GitHub repository. Type it as github.com/owner/repo.');
   /* Scorecard keeps GitHub's letter case; when the typed case finds nothing, the lower case is tried once */
@@ -399,7 +400,8 @@ export async function readScorecard(raw: string, kinds: ScorecardKind[]): Promis
   const url = SCORECARD_VIEW + subject;
   const readings: Partial<Record<ScorecardKind, Reading>> = {};
   for (const k of kinds) readings[k] = parseScorecard(json, k, subject, url);
-  return { subject, readings };
+  const scanned = typeof json?.date === 'string' && /^\d{4}-\d{2}-\d{2}/.test(json.date) ? json.date.slice(0, 10) : '';
+  return { subject, scanned, readings };
 }
 
 export const RANK: Record<CheckAnswer, number> = { yes: 3, partly: 2, no: 1, unsure: 1, na: 0 };

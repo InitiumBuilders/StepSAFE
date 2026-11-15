@@ -199,6 +199,27 @@ if (!/17\/30 approved changesets/.test(rd['scorecard-review'].found) || /--/.tes
 if (!/1 workflow sets no top-level permissions/.test(rd['scorecard-token'].found)) bad('Scorecard: the token reading does not say why it is open: ' + rd['scorecard-token'].found);
 if (!/did not run in Scorecard’s scan of 2026-11-02: “no releases found”\./.test(rd['scorecard-signed'].found)) bad('Scorecard: a check that did not run is not said plainly: ' + rd['scorecard-signed'].found);
 if (!/did not run Dependency-Update-Tool/.test(rd['scorecard-updates'].found)) bad('Scorecard: a check the weekly scan leaves out is not said plainly: ' + rd['scorecard-updates'].found);
+/* StepSAFE's own public copy, read the way its record page reads it (views/TrustView.tsx), against its own answers
+   (content/own.ts): the scan backs No for review, Yes for token permissions and Yes for the policy, and settles the
+   other four. Branch-Protection could not run with the scan's token, and the page says so without quoting the error. */
+const scOwn = fx('scorecard-stepsafe.json');
+const rs = readAll(scOwn, 'github.com/InitiumBuilders/StepSAFE');
+const wantOwn = { 'scorecard-review': 'no', 'scorecard-branch': 'open', 'scorecard-token': 'yes', 'scorecard-signed': 'open', 'scorecard-provenance': 'open', 'scorecard-updates': 'open', 'scorecard-policy': 'yes' };
+for (const k of SK) if (rs[k].allows !== (wantOwn as any)[k]) bad('Scorecard, StepSAFE: ' + k + ' should allow ' + (wantOwn as any)[k] + ', allows ' + rs[k].allows + ': ' + rs[k].found);
+if (rs['scorecard-branch'].found !== 'Branch-Protection did not run in Scorecard’s scan of 2026-11-15.') bad('Scorecard, StepSAFE: a check stopped by the scan’s token should say it did not run, and quote no error: ' + rs['scorecard-branch'].found);
+if (!/^Token-Permissions scored 10 of 10 in Scorecard’s scan of 2026-11-15: “GitHub workflow tokens follow principle of least privilege”\.$/.test(rs['scorecard-token'].found)) bad('Scorecard, StepSAFE: the token reading is off: ' + rs['scorecard-token'].found);
+{
+  const { CODE_ANSWERS } = await import('./src/content/own');
+  const { ITEMS } = await import('./src/content/check/code');
+  const tally = { backs: 0, against: 0, open: 0 };
+  for (const item of ITEMS) {
+    if (!item.evidence || !E.isScorecardKind(item.evidence)) continue;
+    const a = CODE_ANSWERS[item.id]?.answer, r = rs[item.evidence as typeof SK[number]];
+    if (!a) { bad('Scorecard, StepSAFE: ' + item.id + ' has no answer of StepSAFE’s own to set beside its reading'); continue; }
+    if (E.contradicts(a, r)) tally.against++; else if (E.shownBy(a, r)) tally.backs++; else tally.open++;
+  }
+  if (tally.backs !== 3 || tally.against !== 0 || tally.open !== 4) bad('Scorecard, StepSAFE: its scan should back 3 of StepSAFE’s answers, disagree with none and settle none of the other 4: ' + JSON.stringify(tally));
+}
 /* mutants: each must move the answer the record allows */
 const withCheck = (j: any, name: string, patch: any) => ({ ...j, checks: j.checks.map((c: any) => (c.name === name ? { ...c, ...patch } : c)) });
 const mBranch = E.parseScorecard(withCheck(scDash, 'Branch-Protection', { details: scDash.checks.find((c: any) => c.name === 'Branch-Protection').details.map((d: string) => d.replace("Info: 'force pushes' disabled", "Warn: 'force pushes' enabled")) }), 'scorecard-branch', 'x', 'https://x');

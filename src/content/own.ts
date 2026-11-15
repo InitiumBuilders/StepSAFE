@@ -9,7 +9,10 @@
 
 import type { CheckAnswer, CheckSource } from './check/types';
 
-export const OWN_ON = '2026-11-14';
+export const OWN_ON = '2026-11-15';
+
+/** StepSAFE's public copy (scripts/mirror.sh), the repository OpenSSF Scorecard reads for the page */
+export const OWN_REPO = 'github.com/InitiumBuilders/StepSAFE';
 
 /** every site StepSAFE's security policy lets a page reach, named as the privacy page names it */
 export const HOST_NAMES: Record<string, string> = {
@@ -77,17 +80,17 @@ export interface OwnAnswer {
 
 /** StepSAFE's answers to its own Code and releases check (content/check/code.ts), as true on OWN_ON */
 export const CODE_ANSWERS: Record<string, OwnAnswer> = {
-  'review': { answer: 'no', how: 'said', note: 'One person maintains StepSAFE. A change reaches the main branch without a second person’s review.' },
-  'branch-rules': { answer: 'no', how: 'said', note: 'The repository is private on GitHub’s free plan, which offers no branch protection for private repositories.' },
-  'push-protection': { answer: 'partly', how: 'said', note: 'GitHub’s push protection is off. Every push runs StepSAFE’s own scan of every tracked file for keys and tokens, and a hit stops the push.' },
-  'token-perms': { answer: 'na', how: 'said', note: 'No automated workflow runs on the repository, so none holds a token.' },
+  'review': { answer: 'no', how: 'said', note: 'One person maintains StepSAFE. A change reaches the main branch without a second person’s review, in the private repository and in the public copy.' },
+  'branch-rules': { answer: 'partly', how: 'said', note: 'The public copy’s main branch refuses force pushes and deletion, admins included. The private working repository is on GitHub’s free plan, which offers no branch protection for private repositories.' },
+  'push-protection': { answer: 'partly', how: 'said', note: 'GitHub’s secret scanning and push protection are on for the public copy. A push to the private repository runs StepSAFE’s own scan of every tracked file for keys and tokens, and a hit stops it.' },
+  'token-perms': { answer: 'yes', how: 'said', note: 'The two workflows on the public copy, OpenSSF Scorecard and CodeQL, run with read-only permissions and take write access only to publish their own results.' },
   'signed': { answer: 'no', how: 'said', note: 'Releases and commits are not signed.' },
   'provenance': { answer: 'partly', how: 'said', note: 'Each release is a commit in the private repository, and the live site is compared file by file with the build that passed the tests. Signed provenance is not published yet.' },
   'release-two': { answer: 'partly', how: 'said', note: 'A production release waits for the maintainer’s own go-ahead for that build. The maintainer can still publish alone.' },
   'rollback': { answer: 'partly', how: 'said', note: 'Vercel keeps every release, so the last good one can be restored in one step, and the steps are written in the repository. A rollback has not been practiced.' },
   'new-deps': { answer: 'yes', how: 'said', read: 'parts', note: 'StepSAFE has three direct dependencies, React, React DOM and three.js, and ships six packages in all. The lockfile is committed.' },
-  'dep-alerts': { answer: 'partly', how: 'said', read: 'flaws', note: 'Dependabot alerts are off. Every release asks OSV.dev about each package that ships, and so does this page when you press the button. A time to fix is not set yet.' },
-  'disclosure': { answer: 'yes', how: 'shown', read: 'disclosure', note: 'security.txt and the policy page say where to send a report and when to expect a reply.' },
+  'dep-alerts': { answer: 'partly', how: 'said', read: 'flaws', note: 'Dependabot alerts are on for the public copy. Every release asks OSV.dev about each package that ships, and so does this page when you press the button. A time to fix is not set yet.' },
+  'disclosure': { answer: 'yes', how: 'shown', read: 'disclosure', note: 'security.txt, the policy page and the public copy’s SECURITY.md say where to send a report and when to expect a reply.' },
   'sbom': { answer: 'yes', how: 'shown', read: 'parts', note: 'The bill of materials is published with every release, at /sbom.cdx.json.' },
 };
 

@@ -1,0 +1,35 @@
+# CodeQL on the public copy of StepSAFE. GitHub's code analysis reads the JavaScript and TypeScript for known kinds of
+# flaws (injection, unsafe HTML, weak use of cryptography and more) on every push and once a week, and lists what it
+# finds in the repository's security tab. Copied in by scripts/mirror.sh; the private repository does not run it.
+# Every action is pinned to a commit, with its version beside it.
+name: CodeQL
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '41 4 * * 1'
+  workflow_dispatch:
+
+permissions: read-all
+
+jobs:
+  analyze:
+    name: Analyze the code
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Start CodeQL
+        uses: github/codeql-action/init@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
+        with:
+          languages: javascript-typescript
+          build-mode: none
+      - name: Analyze
+        uses: github/codeql-action/analyze@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
+        with:
+          category: /language:javascript-typescript

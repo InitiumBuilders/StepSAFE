@@ -1,6 +1,6 @@
 # StepSAFE against NIST's Secure Software Development Framework
 
-A draft, written 2026-11-14, for the attestation a federal buyer asks for. Software producers attest on CISA's
+A draft, written 2026-11-14 and updated 2026-11-15, for the attestation a federal buyer asks for. Software producers attest on CISA's
 Secure Software Development Attestation Form that they follow practices drawn from NIST SP 800-218 (SSDF 1.1). The
 producer signs the form. That is August's decision; nothing here is signed.
 
@@ -25,7 +25,7 @@ The public side of this is StepSAFE's own record at #/trust (views/TrustView.tsx
 
 | Practice | Status | StepSAFE today | Missing |
 | --- | --- | --- | --- |
-| PS.1 Protect All Forms of Code from Unauthorized Access and Tampering | Partly | A private repository under one account. Every push runs the secret scan, and a hit stops it. | Branch protection (GitHub's free plan offers none for private repositories) and signed commits. |
+| PS.1 Protect All Forms of Code from Unauthorized Access and Tampering | Partly | A private repository under one account. Every push runs the secret scan, and a hit stops it. The public copy's main branch refuses force pushes and deletion, admins included, and GitHub's push protection guards it. | Branch protection on the private repository (GitHub's free plan offers none for private repositories) and signed commits. |
 | PS.2 Provide a Mechanism for Verifying Software Release Integrity | Partly | The bill of materials carries a SHA-512 hash for each shipped package. The live site is compared file by file with the gated build after each release. | Published, signed hashes of each release's own files (PS.2.1). |
 | PS.3 Archive and Protect Each Software Release | Partly | Vercel keeps every deployment; each release is a commit. The bill of materials is the provenance for third-party components (PS.3.2). | The integrity data and the gate log archived with each release (PS.3.1). |
 
@@ -38,15 +38,15 @@ The public side of this is StepSAFE's own record at #/trust (views/TrustView.tsx
 | PW.4 Reuse Existing, Well-Secured Software When Feasible | Met | Three direct dependencies (React, React DOM, three.js), six shipped packages, the lockfile committed, each package asked of OSV.dev before every release (PW.4.4). | |
 | PW.5 Create Source Code by Adhering to Secure Coding Practices | Partly | TypeScript strict mode; React's escaping for every outside text; no `dangerouslySetInnerHTML`; `innerHTML` only for two fixed templates in the 3D world; the policy refuses inline scripts. | A short written secure coding standard (PW.5.1). |
 | PW.6 Configure the Compilation, Interpreter, and Build Processes | Partly | `npm run build` type-checks before Vite builds; production ships no source maps. | The approved build configuration written down (PW.6.2). |
-| PW.7 Review and/or Analyze Human-Readable Code | Partly | The type check, the secret scan and the content probes run on every build. | A second person's review, and static security analysis (CodeQL is free on public repositories). |
-| PW.8 Test Executable Code to Identify Vulnerabilities | Partly | Fifteen walks test the built site in a real browser under its real headers; probe-seva-door attacks the server door; probe-keyring attacks the keyring. | An outside penetration test (PW.8.2). |
+| PW.7 Review and/or Analyze Human-Readable Code | Partly | The type check, the secret scan and the content probes run on every build. CodeQL analyzes the public copy on every sync and once a week (scripts/mirror/codeql.yml). | A second person's review. |
+| PW.8 Test Executable Code to Identify Vulnerabilities | Partly | Sixteen walks test the built site in a real browser under its real headers; probe-seva-door attacks the server door; probe-keyring attacks the keyring. | An outside penetration test (PW.8.2). |
 | PW.9 Configure Software to Have Secure Settings by Default | Met | No key is stored by default; sealing needs a passphrase; the headers and policy are strict by default; nothing to sign in to. | |
 
 ## Respond to Vulnerabilities (RV)
 
 | Practice | Status | StepSAFE today | Missing |
 | --- | --- | --- | --- |
-| RV.1 Identify and Confirm Vulnerabilities on an Ongoing Basis | Partly | A published disclosure policy and security.txt (RV.1.3, live once the contact is set); OSV.dev asked before every release and from #/trust (RV.1.1). | Alerts between releases: Dependabot is off on the repository. |
+| RV.1 Identify and Confirm Vulnerabilities on an Ongoing Basis | Met | A published disclosure policy and security.txt with a contact (RV.1.3); OSV.dev asked before every release and from #/trust, and Dependabot alerts on the public copy between releases (RV.1.1); CodeQL on the public copy (RV.1.2). | |
 | RV.2 Assess, Prioritize, and Remediate Vulnerabilities | Not yet | | Written triage steps and fix times by severity. |
 | RV.3 Analyze Vulnerabilities to Identify Their Root Causes | Partly | Misses are written down with the rule each became (docs/NEXT-MOVE.md and the review log). | The same for each reported vulnerability, once there is one (RV.3.1 to RV.3.4). |
 
@@ -60,6 +60,8 @@ In order of what a reviewer weighs most:
    whose times are August's to set. The security requirements with their tests (PO.1) are written.
 3. **Keep each release's evidence**: the gate log and the list of the release's file hashes in the repository, with
    the commit (PO.3.3, PO.4.2, PS.3.1).
-4. **A public code mirror, if August chooses it**: branch protection, push protection, Dependabot, CodeQL and OpenSSF
-   Scorecard are free on a public repository, which moves PS.1, PW.7 and RV.1 forward together.
+4. **The public copy is live** (github.com/InitiumBuilders/StepSAFE, since 2026-11-14): branch rules, push
+   protection, Dependabot alerts, CodeQL and OpenSSF Scorecard run on it, which moved PS.1, PW.7 and RV.1 forward.
+   Scorecard cannot read classic branch protection with its default token. A GitHub ruleset with the same rules
+   would let it, and that switch is August's call.
 5. **Sign releases** (PS.2.1), then an outside design review and penetration test (PW.2, PW.8).

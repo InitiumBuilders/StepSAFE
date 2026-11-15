@@ -581,6 +581,24 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     artifacts; 9 for the security policy; branch protection unreadable by the workflow's default token; and 11 known
     vulnerabilities, all in the build tools (vite and esbuild, fixed only by vite 8; nanoid and source-map-js, fixed
     by `npm audit fix`). None ships to a browser. Each fix downloads packages, so each waits on his yes.
+- 2026-11-15, on his "keep moving fam. get this shipped sand leveled up fam. go beyondd!!":
+  - The build tools: vite 6.4.6 and @vitejs/plugin-react 4.7.0, then `npm audit fix` (nanoid, source-map-js). npm
+    audit and OSV.dev now find no known flaw in any of the 129 packages in the lockfile. None of them ships to a
+    browser; the six shipped packages were already clean.
+  - #/trust asks OpenSSF Scorecard about the public copy, on its own button that first says what it sends (the
+    repository's name). The seven Code and releases answers Scorecard can bear on carry its reading underneath: what
+    it found, what it cannot see, and whether it backs StepSAFE's answer, in the words the check itself uses. One
+    line counts the whole read, and the copied and saved reading carry it. Its scan of 2026-11-15 backs 3 (no second
+    reviewer, read-only workflow tokens, the security policy) and settles none of the other 4: its default token
+    cannot read classic branch protection, there are no releases to sign, and Dependabot alerts are not an update
+    tool. research/evidence/scorecard-stepsafe.json holds that answer, trimmed; probe-check reads it against
+    StepSAFE's own answers, and the walk stands Scorecard in with it (a disagreement, no result and Scorecard down
+    included). readScorecard now also returns the scan's date.
+  - SECURITY.md names vulnerabilities and disclosure, which Scorecard's policy check looks for (9 of 10 before).
+  - CodeQL on the public copy (scripts/mirror/codeql.yml, pinned by commit, read-only but for its own results). It
+    closes the static analysis gap SSDF.md listed under PW.7; RV.1 is now Met there.
+  - Still his: a GitHub ruleset in place of the classic branch rule, so Scorecard can read it without a token (its
+    docs say rulesets are readable without admin access); a license; 2FA and disk encryption (PO.5.2).
 - Next: August's choices (the first Dash project, the names, whether Recover grows further, and whether a
   certificate read is worth an SSLMate account and a small server); then the glossary's remaining debt, in this order: entries for the
   words named twice (`npx tsx probe-terms.mts --list` prints them), a decision on the 417 words the corpus names

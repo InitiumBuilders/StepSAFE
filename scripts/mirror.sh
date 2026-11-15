@@ -4,7 +4,7 @@
 # sites among them, which its own brief says never ship. The app already ships their public cut.
 #
 # It takes the files this repository holds at HEAD (commit first: run it after scripts/keep.sh), leaves out
-# research/outlier, adds the Scorecard workflow (scripts/mirror/scorecard.yml), scans the copy for secrets and for
+# research/outlier, adds the Scorecard and CodeQL workflows (scripts/mirror/), scans the copy for secrets and for
 # private details, and pushes one commit. A hit in a scan stops it before anything leaves this machine.
 #   bash scripts/mirror.sh
 # The copy is kept in C:\Users\Initi\outputs\stepsafe-public between runs. The push runs in WSL, where gh holds the
@@ -29,11 +29,11 @@ git -C "$OUT" config core.autocrlf false
 # the last published state, so the new commit follows it (nothing to fetch on the very first run)
 wsl.exe -e bash -lc "cd $WSL_OUT && git -c credential.helper= -c credential.helper='!gh auth git-credential' fetch -q origin main 2>/dev/null && git reset -q --soft origin/main || true"
 
-# the copy: everything at HEAD but research/outlier, plus the workflow
+# the copy: everything at HEAD but research/outlier, plus the two workflows
 find "$OUT" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 git archive --format=tar HEAD | tar -x -C "$OUT"
 rm -rf "$OUT/research/outlier"
-mkdir -p "$OUT/.github/workflows" && cp scripts/mirror/scorecard.yml "$OUT/.github/workflows/scorecard.yml"
+mkdir -p "$OUT/.github/workflows" && cp scripts/mirror/scorecard.yml scripts/mirror/codeql.yml "$OUT/.github/workflows/"
 
 cd "$OUT"
 git add -A
