@@ -48,5 +48,7 @@ fi
 if git diff --cached --quiet; then echo "mirror: the public copy already matches $HEAD_SHA"; exit 0; fi
 git commit -q -m "Sync from $HEAD_SHA: $SUBJECT" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 git log --oneline -1
-wsl.exe -e bash -lc "cd $WSL_OUT && git -c credential.helper= -c credential.helper='!gh auth git-credential' -c core.fileMode=false push -q origin main 2>&1 | tail -2"
+# pipefail inside, so a refused push (main's ruleset refuses force pushes) fails here instead of reading as pushed
+wsl.exe -e bash -lc "set -o pipefail; cd $WSL_OUT && git -c credential.helper= -c credential.helper='!gh auth git-credential' -c core.fileMode=false push -q origin main 2>&1 | tail -2" \
+  || { echo "REFUSED: the push to $REPO failed (see above). The commit stays in $OUT." >&2; exit 1; }
 echo "mirror: pushed $(git rev-parse --short HEAD) to $REPO"
