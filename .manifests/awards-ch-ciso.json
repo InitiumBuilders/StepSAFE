@@ -1,0 +1,335 @@
+{
+ "chId": "ch-ciso",
+ "chTitle": "The Chair",
+ "missingAwards": [
+  {
+   "id": "award-chair-taken",
+   "step": "The Job As It Actually Is",
+   "kind": "construct",
+   "statement": "The CISO is a translator, a portfolio manager, and an organisational designer who occasionally does security.",
+   "respect": 70
+  },
+  {
+   "id": "award-ninety-day-entry",
+   "step": "The First Ninety Days That Actually Work",
+   "kind": "lesson",
+   "statement": "Spend the first ninety days buying information and one credible artifact, not shipping wins.",
+   "respect": 120
+  },
+  {
+   "id": "award-listening-tour",
+   "step": "The Listening Tour That Surfaces Real Risk",
+   "kind": "field",
+   "statement": "Ask questions that only a specific person can answer, and the risk register writes itself.",
+   "respect": 150
+  },
+  {
+   "id": "award-coalition-cartographer",
+   "step": "The Listening Tour That Surfaces Real Risk",
+   "kind": "field",
+   "statement": "Ask questions that only a specific person can answer, and the risk register writes itself.",
+   "respect": 150
+  },
+  {
+   "id": "award-denominator-discipline",
+   "step": "Ground Truth: Finding Out What Is Actually There",
+   "kind": "lab",
+   "statement": "Every inherited program has a stated posture and an actual posture, and the gap lives in the denominator.",
+   "respect": 190
+  },
+  {
+   "id": "award-ground-truth",
+   "step": "Ground Truth: Finding Out What Is Actually There",
+   "kind": "lab",
+   "statement": "Every inherited program has a stated posture and an actual posture, and the gap lives in the denominator.",
+   "respect": 190
+  },
+  {
+   "id": "award-first-fire",
+   "step": "Day Thirty-One: The Incident You Did Not Build The Program For",
+   "kind": "drill",
+   "statement": "In your first month you have no credibility to spend, so spend process instead.",
+   "respect": 175
+  },
+  {
+   "id": "award-holding-note",
+   "step": "Day Thirty-One: The Incident You Did Not Build The Program For",
+   "kind": "drill",
+   "statement": "In your first month you have no credibility to spend, so spend process instead.",
+   "respect": 175
+  },
+  {
+   "id": "award-mandate-written",
+   "step": "The Mandate Memo: Converting A Title Into Authority",
+   "kind": "council",
+   "statement": "Authority that is not written down does not exist on the day you need it.",
+   "respect": 145
+  },
+  {
+   "id": "award-board-levers",
+   "step": "What A Board Can Actually Do",
+   "kind": "construct",
+   "statement": "A board has four levers and none of them is technical, so every ask must be shaped to fit one.",
+   "respect": 85
+  },
+  {
+   "id": "award-three-slide",
+   "step": "The Three-Slide Standard",
+   "kind": "lesson",
+   "statement": "Risk narrative beats control inventory, because a narrative contains a decision and an inventory does not.",
+   "respect": 115
+  },
+  {
+   "id": "award-board-cycle",
+   "step": "The Annual Cycle And The Audit Committee",
+   "kind": "lesson",
+   "statement": "The board year has a rhythm, and a CISO who does not know it is always presenting at the wrong moment.",
+   "respect": 130
+  },
+  {
+   "id": "award-director-fluency",
+   "step": "The Questions Directors Are Trained To Ask",
+   "kind": "council",
+   "statement": "Every director question is testing something other than what it appears to ask.",
+   "respect": 155
+  },
+  {
+   "id": "award-answer-the-real-question",
+   "step": "The Questions Directors Are Trained To Ask",
+   "kind": "council",
+   "statement": "Every director question is testing something other than what it appears to ask.",
+   "respect": 155
+  },
+  {
+   "id": "award-bad-news-standing",
+   "step": "Delivering Bad News And Keeping Authority",
+   "kind": "drill",
+   "statement": "How you deliver the failure determines whether you keep the mandate to fix it.",
+   "respect": 185
+  },
+  {
+   "id": "award-mechanism-not-instance",
+   "step": "Delivering Bad News And Keeping Authority",
+   "kind": "drill",
+   "statement": "How you deliver the failure determines whether you keep the mandate to fix it.",
+   "respect": 185
+  },
+  {
+   "id": "award-board-packet",
+   "step": "Build And Survive A Board Packet",
+   "kind": "field",
+   "statement": "A board packet is not a document, it is an instrument that has to survive a hostile reader two years later.",
+   "respect": 165
+  },
+  {
+   "id": "award-hostile-reader",
+   "step": "Build And Survive A Board Packet",
+   "kind": "field",
+   "statement": "A board packet is not a document, it is an instrument that has to survive a hostile reader two years later.",
+   "respect": 165
+  },
+  {
+   "id": "award-scenario-budget",
+   "step": "Building A Budget That Survives The Cut",
+   "kind": "lesson",
+   "statement": "Never present a number; present three scenarios and let the business choose which risk it is buying down.",
+   "respect": 110
+  },
+  {
+   "id": "award-bring-your-own-cut",
+   "step": "Building A Budget That Survives The Cut",
+   "kind": "lesson",
+   "statement": "Never present a number; present three scenarios and let the business choose which risk it is buying down.",
+   "respect": 110
+  },
+  {
+   "id": "award-headcount-case",
+   "step": "Headcount: The Hardest Ask In The Portfolio",
+   "kind": "lesson",
+   "statement": "Nobody funds a headcount because you are busy; they fund it because you showed what it absorbs and what happens without it.",
+   "respect": 160
+  },
+  {
+   "id": "award-toil-ceiling",
+   "step": "Headcount: The Hardest Ask In The Portfolio",
+   "kind": "lesson",
+   "statement": "Nobody funds a headcount because you are busy; they fund it because you showed what it absorbs and what happens without it.",
+   "respect": 160
+  },
+  {
+   "id": "award-coverage-delta",
+   "step": "How To Kill A Tool",
+   "kind": "drill",
+   "statement": "Consolidation is a coverage argument, not a cost argument, and the difference is whether you can name what you lose.",
+   "respect": 180
+  },
+  {
+   "id": "award-portfolio-pruning",
+   "step": "How To Kill A Tool",
+   "kind": "drill",
+   "statement": "Consolidation is a coverage argument, not a cost argument, and the difference is whether you can name what you lose.",
+   "respect": 180
+  },
+  {
+   "id": "award-metrics-tree",
+   "step": "Building A Metrics Tree From The Business Down",
+   "kind": "lab",
+   "statement": "A metric that cannot be traced upward to a business objective and downward to an owner is decoration.",
+   "respect": 175
+  },
+  {
+   "id": "award-silent-failure-hunter",
+   "step": "Building A Metrics Tree From The Business Down",
+   "kind": "lab",
+   "statement": "A metric that cannot be traced upward to a business objective and downward to an owner is decoration.",
+   "respect": 175
+  },
+  {
+   "id": "award-goodhart-guard",
+   "step": "When A Measure Becomes A Target",
+   "kind": "construct",
+   "statement": "The moment you put a security metric in a compensation plan, you have stopped measuring security and started measuring compliance with your metric.",
+   "respect": 135
+  },
+  {
+   "id": "award-paired-metric",
+   "step": "When A Measure Becomes A Target",
+   "kind": "construct",
+   "statement": "The moment you put a security metric in a compensation plan, you have stopped measuring security and started measuring compliance with your metric.",
+   "respect": 135
+  },
+  {
+   "id": "award-shape-chosen",
+   "step": "The Three Shapes And What Each One Costs",
+   "kind": "construct",
+   "statement": "There is no correct security org shape, only a shape whose failure mode you have chosen on purpose.",
+   "respect": 90
+  },
+  {
+   "id": "award-security-as-product",
+   "step": "Security As A Product Organisation",
+   "kind": "lesson",
+   "statement": "Turn every control you would have mandated into a product someone chooses, then measure adoption instead of compliance.",
+   "respect": 145
+  },
+  {
+   "id": "award-adoption-metric",
+   "step": "Security As A Product Organisation",
+   "kind": "lesson",
+   "statement": "Turn every control you would have mandated into a product someone chooses, then measure adoption instead of compliance.",
+   "respect": 145
+  },
+  {
+   "id": "award-paved-road-shipped",
+   "step": "Shipping A Paved Road Without Burning Credibility",
+   "kind": "lab",
+   "statement": "Ship the guardrail in warn mode first; you get exactly one chance to break everyone's build.",
+   "respect": 200
+  },
+  {
+   "id": "award-warn-before-block",
+   "step": "Shipping A Paved Road Without Burning Credibility",
+   "kind": "lab",
+   "statement": "Ship the guardrail in warn mode first; you get exactly one chance to break everyone's build.",
+   "respect": 200
+  },
+  {
+   "id": "award-hire-for-slope",
+   "step": "Hiring For Slope, Interviewing For Signal",
+   "kind": "lesson",
+   "statement": "Hire the rate of change, not the current position, because the current position expires in eighteen months.",
+   "respect": 140
+  },
+  {
+   "id": "award-bench-built",
+   "step": "Hiring For Slope, Interviewing For Signal",
+   "kind": "lesson",
+   "statement": "Hire the rate of change, not the current position, because the current position expires in eighteen months.",
+   "respect": 140
+  },
+  {
+   "id": "award-shape-that-scales",
+   "step": "The Reorganisation You Have To Get Right",
+   "kind": "drill",
+   "statement": "Org design is the one act of leadership you cannot delegate and cannot cheaply undo.",
+   "respect": 195
+  },
+  {
+   "id": "award-queue-to-product",
+   "step": "The Reorganisation You Have To Get Right",
+   "kind": "drill",
+   "statement": "Org design is the one act of leadership you cannot delegate and cannot cheaply undo.",
+   "respect": 195
+  },
+  {
+   "id": "award-line-and-leverage",
+   "step": "Reporting Line Politics",
+   "kind": "lesson",
+   "statement": "The reporting line matters far less than who owns the risk register and who signs the acceptance.",
+   "respect": 105
+  },
+  {
+   "id": "award-record-discipline",
+   "step": "Personal Exposure And The Written Record",
+   "kind": "lesson",
+   "statement": "The lesson of the last five years is not to write less down; it is to write the truth down in the right instrument.",
+   "respect": 185
+  },
+  {
+   "id": "award-liability-literate",
+   "step": "Personal Exposure And The Written Record",
+   "kind": "lesson",
+   "statement": "The lesson of the last five years is not to write less down; it is to write the truth down in the right instrument.",
+   "respect": 185
+  },
+  {
+   "id": "award-risk-instrument",
+   "step": "The Risk-Acceptance Instrument",
+   "kind": "lab",
+   "statement": "You do not accept risk; you price it, record it, and make the person who owns the upside sign for the downside.",
+   "respect": 170
+  },
+  {
+   "id": "award-aggregation-report",
+   "step": "The Risk-Acceptance Instrument",
+   "kind": "lab",
+   "statement": "You do not accept risk; you price it, record it, and make the person who owns the upside sign for the downside.",
+   "respect": 170
+  },
+  {
+   "id": "award-priced-not-refused",
+   "step": "The No That Keeps The Door Open",
+   "kind": "drill",
+   "statement": "A refusal that ends the conversation guarantees that the next conversation happens without you.",
+   "respect": 165
+  },
+  {
+   "id": "award-coalition-builder",
+   "step": "The No That Keeps The Door Open",
+   "kind": "drill",
+   "statement": "A refusal that ends the conversation guarantees that the next conversation happens without you.",
+   "respect": 165
+  },
+  {
+   "id": "award-leverage-map",
+   "step": "Where The Leverage Actually Is",
+   "kind": "field",
+   "statement": "Most security effort is spent at the weakest intervention points, because those are the ones you can act on alone.",
+   "respect": 215
+  },
+  {
+   "id": "award-level-six-intervention",
+   "step": "Where The Leverage Actually Is",
+   "kind": "field",
+   "statement": "Most security effort is spent at the weakest intervention points, because those are the ones you can act on alone.",
+   "respect": 215
+  },
+  {
+   "id": "award-the-chair-complete",
+   "step": "Where The Leverage Actually Is",
+   "kind": "field",
+   "statement": "Most security effort is spent at the weakest intervention points, because those are the ones you can act on alone.",
+   "respect": 215
+  }
+ ]
+}

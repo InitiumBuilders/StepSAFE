@@ -1,0 +1,118 @@
+[
+ {
+  "id": "sim-evonode-quorum-siege",
+  "title": "THE QUORUM WILL NOT FORM",
+  "org": "Bellwether Node Services, Inc.",
+  "roles": [
+   "u-ledger",
+   "u-vault",
+   "u-lantern",
+   "u-anchor",
+   "u-signal",
+   "u-compass"
+  ],
+  "decisions": [
+   {
+    "id": "sim-a-d1",
+    "prompt": "Correlated failure across three providers, in one specific protocol behaviour, with every layer reporting healthy. What posture do you set in the next four minutes?",
+    "scene": "Eleven evonodes are failing to contribute to DKG, across three hosting providers, with no fault in any layer you can see. Your Head of Node Operations wants to restart them. Nobody has yet used the word compromise."
+   },
+   {
+    "id": "sim-a-d2",
+    "prompt": "Design the containment. You have one shot at getting the sequencing right.",
+    "scene": "Your CTO wants a full-fleet operator key rotation inside twenty minutes. Three constraints sit under that instruction. Rotating an operator key requires a ProUpRegTx signed by the owner key — and for 71 of your 118 nodes, the customer holds that key, not you. A node whose operator key changes loses "
+   },
+   {
+    "id": "sim-a-d3",
+    "prompt": "What goes out, when, and with what number attached to it?",
+    "scene": "Two numbers are in the room. Forty-one, from network flow telemetry your Head of Node Operations produced under pressure at 04:20. Six, from confirmed on-chain service updates at 04:44. Your CTO wants to publish the larger one because it is the more cautious one."
+   },
+   {
+    "id": "sim-a-d4",
+    "prompt": "The batch runs, or it does not. Decide, and decide how it is communicated.",
+    "scene": "The weekly credit-to-Dash withdrawal batch runs in twenty-six minutes. You know the attacker altered operator payout addresses. You do not know whether your reconciliation between on-chain payouts and the delegator ledger is still sound, and you cannot know before 06:00."
+   },
+   {
+    "id": "sim-a-d5",
+    "prompt": "How do you sequence restoration against preservation?",
+    "scene": "Six compromised hosts. Your operations lead wants them rebuilt now. Your third-party review — the one you have not promised publicly yet, but will — will live or die on what is on those disks."
+   },
+   {
+    "id": "sim-a-d6",
+    "prompt": "What do you disclose, to whom, and how fast?",
+    "scene": "You know the exact misconfiguration. Three peer operators almost certainly share it. Your counsel wants six hours to review anything you publish, on sound legal reasoning."
+   },
+   {
+    "id": "sim-a-d7",
+    "prompt": "What does Bellwether do about its own treasury proposal?",
+    "scene": "The Dash treasury takes twenty percent of the block reward and pays out at a superblock roughly every 16,616 blocks — about thirty days. A proposal passes when yes minus no exceeds ten percent of the masternode count. Evonode votes carry weight four; regular masternodes carry one. Bellwether's index"
+   }
+  ]
+ },
+ {
+  "id": "sim-final-examination-five-fronts",
+  "title": "THE FINAL EXAMINATION: FIVE FRONTS, THREE PEOPLE",
+  "org": "Veridian Commons, PBC",
+  "roles": [
+   "u-seva",
+   "u-keeper",
+   "u-lantern",
+   "u-forge",
+   "u-anchor",
+   "u-ledger",
+   "u-vault",
+   "u-cartographer",
+   "u-oracle",
+   "u-compass",
+   "u-signal",
+   "u-unitium"
+  ],
+  "decisions": [
+   {
+    "id": "sim-b-d1",
+    "prompt": "Allocate. And decide what you write down about the fronts you are not staffing.",
+    "scene": "Five fronts are now visible inside twenty-four minutes: a supply-chain compromise reaching into 1,140 customer environments, a bonded reputation attack already gating your customers, an unattributed 140 GB egress from your model weights, a governance proposal nineteen hours from passing that reassig"
+   },
+   {
+    "id": "sim-b-d2",
+    "prompt": "What actually gets disabled, and what do customers hear?",
+    "scene": "The global disable flag reaches all 1,140 tenants in four minutes. It is Q4 close: more than three hundred customers have SOX evidence collection running tonight, and two federal tenants are inside FedRAMP continuous monitoring obligations that assume the collector is running. You do not yet know wh"
+   },
+   {
+    "id": "sim-b-d3",
+    "prompt": "What do you say to Charlotte in the next four minutes?",
+    "scene": "The 140 GB is unattributed. Jonah estimates twenty-five minutes to resolve the destination against your account inventory and Friday's Terraform state. Your audit-committee chair has explicitly refused a third option and is thirty minutes from telling two federal customers you lost your model."
+   },
+   {
+    "id": "sim-b-d4",
+    "prompt": "Three hundred and ten million dollars, seventeen hours, and a governance system whose whole claim is that you will not do this. Decide.",
+    "scene": "Proposal 141 passes in seventeen hours, then enters a 48-hour timelock whose admin the proposal itself reassigns. The proposer borrowed 4.1 million VRDN of voting power. Four of seven guardian keys can cancel — and, structurally, can do anything. You hold three of them personally. The DAO-elected di"
+   },
+   {
+    "id": "sim-b-d5",
+    "prompt": "The model, or the output? Choose, and be specific about scope.",
+    "scene": "Your AI system has been emitting control narratives citing evidence that does not exist. Six thousand one hundred are already with customers; forty-one are inside filings. You do not yet know the cause — the poisoning finding is twenty-four minutes away. Your CTO wants the model off and rolled back."
+   },
+   {
+    "id": "sim-b-d6",
+    "prompt": "Permanent means permanent. What do you actually do in the next two hours?",
+    "scene": "Personal data is now permanently published on a chain designed never to forget, by your own pipeline, because a redaction service failed open six weeks ago. Twenty-five bundles are encrypted with customer-held keys. Six are plaintext. Two transaction identifiers are already public."
+   },
+   {
+    "id": "sim-b-d7",
+    "prompt": "The graph says you are compromised and your customers' automation believes it. What do you do?",
+    "scene": "Your reputation in the Commons Graph is economically bonded, which means it can be attacked with capital and defended with capital. Forty customers are gated right now. A counter-stake would work."
+   },
+   {
+    "id": "sim-b-d8",
+    "prompt": "Ninety minutes. What do you give him?",
+    "scene": "Four claims. One is false outright. One is false in magnitude by an order of magnitude. One is true in substance but wrong in state. One is entirely true and is the most damaging thing in the story."
+   },
+   {
+    "id": "sim-b-d9",
+    "prompt": "Ines is your most valuable asset and your most degraded one. What happens next?",
+    "scene": "Nineteen hours awake. The only person who genuinely understands the Collector's artefact signing path. Three open questions that gate the FedRAMP assessment. Assessors on the ground in three and a half hours. She says she is fine."
+   }
+  ]
+ }
+]

@@ -1,0 +1,61 @@
+{
+ "date": "2026-11-02",
+ "repo": {
+  "name": "github.com/dashevo/dashcore-lib",
+  "commit": "62d551ba1dcb43dc12eff8c54a5522af1115df0c"
+ },
+ "scorecard": {
+  "version": "v5.6.0"
+ },
+ "checks": [
+  {
+   "name": "Code-Review",
+   "score": 5,
+   "reason": "Found 17/30 approved changesets -- score normalized to 5",
+   "details": []
+  },
+  {
+   "name": "Token-Permissions",
+   "score": 0,
+   "reason": "detected GitHub workflow tokens with excessive permissions",
+   "details": [
+    "Info: jobLevel 'contents' permission set to 'read': .github/workflows/test_and_release.yml:50",
+    "Warn: no topLevel permission defined: .github/workflows/test_and_release.yml:1",
+    "Info: no jobLevel write permissions found"
+   ]
+  },
+  {
+   "name": "Signed-Releases",
+   "score": -1,
+   "reason": "no releases found",
+   "details": []
+  },
+  {
+   "name": "Branch-Protection",
+   "score": 5,
+   "reason": "branch protection is not maximal on development and all release branches",
+   "details": [
+    "Info: 'allow deletion' disabled on branch 'master'",
+    "Info: 'force pushes' disabled on branch 'master'",
+    "Info: 'branch protection settings apply to administrators' is required to merge on branch 'master'",
+    "Warn: 'stale review dismissal' is disabled on branch 'master'",
+    "Warn: required approving review count is 1 on branch 'master'",
+    "Warn: codeowners review is not required on branch 'master'",
+    "Warn: 'last push approval' is disabled on branch 'master'",
+    "Info: status check found to merge onto on branch 'master'",
+    "Info: PRs are required in order to make changes on branch 'master'"
+   ]
+  },
+  {
+   "name": "Security-Policy",
+   "score": 0,
+   "reason": "security policy file not detected",
+   "details": [
+    "Warn: no security policy file detected",
+    "Warn: no security file to analyze",
+    "Warn: no security file to analyze",
+    "Warn: no security file to analyze"
+   ]
+  }
+ ]
+}

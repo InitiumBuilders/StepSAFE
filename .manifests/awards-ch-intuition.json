@@ -1,0 +1,209 @@
+{
+ "chId": "ch-intuition",
+ "chTitle": "THE HONEST GRAPH",
+ "missingAwards": [
+  {
+   "id": "first-node",
+   "step": "Atoms — Identity Without a Registrar",
+   "kind": "construct",
+   "statement": "An atom is not a record you own; it is a name the network derives from your data, and derivation means nobody can gatekeep it and nobody can take it away.",
+   "respect": 70
+  },
+  {
+   "id": "first-claim",
+   "step": "Triples — A Sentence That Owns Two Bank Accounts",
+   "kind": "construct",
+   "statement": "A triple is a claim that can be funded and a claim that can be funded against; disagreement is a first-class object here, and that is the single most important design decision in the protocol.",
+   "respect": 80
+  },
+  {
+   "id": "signal-reader",
+   "step": "Signals — Conviction With a Price Attached",
+   "kind": "lesson",
+   "statement": "A signal is not a vote; it is a position, and the difference is that a position can lose money, be sold, be borrowed, and be rented to someone whose interests are not yours.",
+   "respect": 95
+  },
+  {
+   "id": "vault-reader",
+   "step": "Reading the MultiVault — Fees, Curves, and What a Share Actually Costs",
+   "kind": "lab",
+   "statement": "If you cannot compute what an attack costs, you are not doing security on this system; you are doing commentary.",
+   "respect": 150
+  },
+  {
+   "id": "substrate-mapper",
+   "step": "Where The Truth Physically Lives",
+   "kind": "lesson",
+   "statement": "The chain is the source of truth, the indexer is what you actually query, and the gap between those two sentences is where your incident will happen.",
+   "respect": 110
+  },
+  {
+   "id": "first-subgraph",
+   "step": "Build Your First Honest Subgraph",
+   "kind": "lab",
+   "statement": "Write the smallest useful region of the graph correctly, and you will have internalized more than any amount of reading about it.",
+   "respect": 160
+  },
+  {
+   "id": "cluster-analyst",
+   "step": "Sybil Resistance When Identity Costs Nothing",
+   "kind": "lesson",
+   "statement": "In a system where anyone can mint an identity for a tenth of a token, the question is never how do we stop fake identities; it is what does a fake identity fail to buy.",
+   "respect": 135
+  },
+  {
+   "id": "wash-hunter",
+   "step": "Wash Attestation and Self-Signal Collusion",
+   "kind": "drill",
+   "statement": "A claim can be simultaneously well-funded and entirely self-referential, and the difference is invisible in every headline metric your dashboard shows by default.",
+   "respect": 165
+  },
+  {
+   "id": "bribe-resistant",
+   "step": "P Plus Epsilon — Why Bribing a Curation Market Can Be Free",
+   "kind": "lesson",
+   "statement": "A briber who pays only when the attack fails does not have to be rich; they have to be credible, and credibility is cheap to manufacture on a public ledger.",
+   "respect": 175
+  },
+  {
+   "id": "canonical-keeper",
+   "step": "Atom Squatting, Homoglyphs, and the Ambiguous Referent",
+   "kind": "lesson",
+   "statement": "You cannot squat a content-addressed name, so a competent attacker will not try; they will squat the meaning instead, and that attack has no protocol-layer fix at all.",
+   "respect": 140
+  },
+  {
+   "id": "cool-head",
+   "step": "Front-Running the Creation of a Canonical Identifier",
+   "kind": "drill",
+   "statement": "Your intent is public before your transaction is final, and on a content-addressed system the only thing an observer can steal is authorship — so the question is how much you are willing to pay to avoid losing something that does not matter.",
+   "respect": 155
+  },
+  {
+   "id": "predicate-architect",
+   "step": "Malicious Predicate Design",
+   "kind": "lesson",
+   "statement": "The most durable attack on a knowledge graph is not a false claim; it is a predicate whose grammar makes certain truths unsayable.",
+   "respect": 170
+  },
+  {
+   "id": "ledger-mind",
+   "step": "Cost of Corruption Versus Profit From Corruption",
+   "kind": "construct",
+   "statement": "A claim is only as true as it is expensive to falsify relative to what falsifying it is worth — and on a system with recoverable deposits, the expensive part is smaller than it looks.",
+   "respect": 130
+  },
+  {
+   "id": "grief-proof",
+   "step": "Griefing an Honest Claim",
+   "kind": "lesson",
+   "statement": "Some attackers are not trying to make you believe something false; they are trying to make believing anything expensive, and against that goal your careful process is the weapon.",
+   "respect": 145
+  },
+  {
+   "id": "launder-detector",
+   "step": "Reputation Laundering",
+   "kind": "lesson",
+   "statement": "Reputation earned in a domain where you cannot be checked converts, without friction, into authority in a domain where it matters — and on a public graph that conversion leaves a trail you can actually follow.",
+   "respect": 175
+  },
+  {
+   "id": "model-builder",
+   "step": "Build the Attack-Budget Model",
+   "kind": "lab",
+   "statement": "Until the number is in a file that anyone on your team can rerun, your threat model is a story you tell yourselves.",
+   "respect": 200
+  },
+  {
+   "id": "clean-hands",
+   "step": "The Whale Takes the Wrong Side",
+   "kind": "drill",
+   "statement": "When capital contradicts evidence, changing your scoring function is a defensible engineering decision and matching the capital is a bet you have no mandate to place.",
+   "respect": 170
+  },
+  {
+   "id": "metric-smith",
+   "step": "Curation-Quality Metrics That Do Not Reward the Attacker",
+   "kind": "lesson",
+   "statement": "Every metric you publish becomes a target, so choose metrics whose cheapest satisfaction is the behaviour you actually wanted.",
+   "respect": 160
+  },
+  {
+   "id": "the-validator",
+   "step": "THE VALIDATOR SESSION",
+   "kind": "field",
+   "statement": "A region of a public knowledge graph is an asset with no owner, which means it is audited by whoever decides to audit it — and the ritual below is how a professional decides.",
+   "respect": 220
+  },
+  {
+   "id": "seal-of-the-commons",
+   "step": "THE VALIDATOR SESSION",
+   "kind": "field",
+   "statement": "A region of a public knowledge graph is an asset with no owner, which means it is audited by whoever decides to audit it — and the ritual below is how a professional decides.",
+   "respect": 220
+  },
+  {
+   "id": "query-smith",
+   "step": "The Audit Query Pack",
+   "kind": "lab",
+   "statement": "The session is only repeatable if the queries are written down, so write them down once and never improvise them under pressure again.",
+   "respect": 185
+  },
+  {
+   "id": "published-attestor",
+   "step": "Publishing Findings as Attestations",
+   "kind": "field",
+   "statement": "A finding that lives only in your document store cannot be built on, disputed, or compounded, and a finding on the graph can be all three — including by people who think you are wrong.",
+   "respect": 190
+  },
+  {
+   "id": "cold-ledger",
+   "step": "Key Management for a High-Reputation Attestor",
+   "kind": "lab",
+   "statement": "Your attestor key is not protecting a balance; it is protecting a reputation that took years to build and can be spent in one transaction, so secure it against its value, not against its holdings.",
+   "respect": 195
+  },
+  {
+   "id": "key-keeper",
+   "step": "Key Management for a High-Reputation Attestor",
+   "kind": "lab",
+   "statement": "Your attestor key is not protecting a balance; it is protecting a reputation that took years to build and can be spent in one transaction, so secure it against its value, not against its holdings.",
+   "respect": 195
+  },
+  {
+   "id": "process-architect",
+   "step": "Designing the Challenge Window",
+   "kind": "drill",
+   "statement": "A dispute process is a promise you make in advance to a stranger who will be angry, and if you can change it while they are angry it was never a process.",
+   "respect": 180
+  },
+  {
+   "id": "false-claim-responder",
+   "step": "When a False Claim Acquires Economic Weight",
+   "kind": "lesson",
+   "statement": "A lie with money behind it is not a communications problem with a market attached; it is a market event with a communications problem attached, and the order matters for who leads.",
+   "respect": 185
+  },
+  {
+   "id": "two-courts",
+   "step": "Protocol Court, Social Court",
+   "kind": "council",
+   "statement": "Every problem in a commons can be argued in two places, and choosing the wrong one wastes months — the protocol court decides what is possible and the social court decides what is acceptable.",
+   "respect": 175
+  },
+  {
+   "id": "board-voice",
+   "step": "Protocol Court, Social Court",
+   "kind": "council",
+   "statement": "Every problem in a commons can be argued in two places, and choosing the wrong one wastes months — the protocol court decides what is possible and the social court decides what is acceptable.",
+   "respect": 175
+  },
+  {
+   "id": "commons-steward",
+   "step": "Progressive Decentralization of Moderation",
+   "kind": "field",
+   "statement": "Every credible commons starts centralized and admits it; the ones that survive publish the exit criteria on day one and are then held to them.",
+   "respect": 210
+  }
+ ]
+}

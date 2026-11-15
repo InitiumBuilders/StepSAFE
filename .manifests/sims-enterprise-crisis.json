@@ -1,0 +1,189 @@
+[
+ {
+  "id": "sim-idp-root-burn",
+  "title": "The Root Is Theirs",
+  "org": "Halverd Retail Group (NYSE: HLVD)",
+  "roles": [
+   "u-keeper",
+   "u-lantern",
+   "u-anchor",
+   "u-compass",
+   "u-signal",
+   "u-seva"
+  ],
+  "decisions": [
+   {
+    "id": "sim-idp-root-burn-d1",
+    "prompt": "What is your first order?",
+    "scene": "Twenty-one minutes in. You have three admin MFA resets, one anomalous ASN, one org-scope API token, and an outsourced service desk telling you everything is fine. You have no proof of anything beyond three accounts, and it is Thanksgiving week."
+   },
+   {
+    "id": "sim-idp-root-burn-d2",
+    "prompt": "How do you handle the rogue federation object?",
+    "scene": "A rogue inbound federation IdP, nine days old, created by an account that no longer exists. Deleting it takes half a minute. It is also the single richest evidentiary object in the environment and the adversary will notice its absence within one authentication attempt."
+   },
+   {
+    "id": "sim-idp-root-burn-d3",
+    "prompt": "What do you ask the COO to carry to the CEO?",
+    "scene": "The outsourced service desk is your most likely initial access vector. It is also the operational artery of 1,140 stores forty-eight hours before the highest-revenue week of the year. The COO is not obstructing you; she is asking you to own the cost of your own recommendation."
+   },
+   {
+    "id": "sim-idp-root-burn-d4",
+    "prompt": "Do you authorise the mass rotation now?",
+    "scene": "Three hours twenty in. You have three abused admin accounts, one rogue federation object, an unexplained org-scope API token and a clean EDR sweep. A capable infrastructure team is offering you a ninety-minute mass rotation and everyone in the room wants to say yes."
+   },
+   {
+    "id": "sim-idp-root-burn-d5",
+    "prompt": "What do you do with the AD FS farm?",
+    "scene": "The AD FS token-signing certificate is probably in adversary hands. AutoCertificateRollover is off. Three legacy applications and a fiscal close depend on the farm. It is 09:22 on the Tuesday of Thanksgiving week."
+   },
+   {
+    "id": "sim-idp-root-burn-d6",
+    "prompt": "Burn and rebuild, or evict in place?",
+    "scene": "The central question of the entire scenario. The adversary held administrative control of the identity provider for at least nine days, created at least one persistent trust object, and may hold the federated signing key. You now decide what trust means."
+   },
+   {
+    "id": "sim-idp-root-burn-d7",
+    "prompt": "What do you tell the workforce?",
+    "scene": "68,000 people are about to be forced through an authenticator re-enrolment they did not ask for, during the busiest week of their working year, by a company that has not publicly acknowledged anything."
+   }
+  ]
+ },
+ {
+  "id": "sim-ransom-clearinghouse",
+  "title": "Ninety Percent of the Nation's Prescriptions",
+  "org": "Verrant Health Solutions",
+  "roles": [
+   "u-anchor",
+   "u-lantern",
+   "u-ledger",
+   "u-vault",
+   "u-compass",
+   "u-signal",
+   "u-seva"
+  ],
+  "decisions": [
+   {
+    "id": "sim-ransom-clearinghouse-d1",
+    "prompt": "What is your containment decision?",
+    "scene": "Twenty-six minutes in. Encryption confirmed at the hypervisor layer, adjudication down, claims routing still passing. You do not know whether the routing path is clean. Sunday morning pharmacy opens in five hours."
+   },
+   {
+    "id": "sim-ransom-clearinghouse-d2",
+    "prompt": "What do you tell the board chair, and what do you do about backups?",
+    "scene": "Your storage lead says the immutable backup tier is intact. Your board chair wants a recovery time to give the debt syndicate. Nobody has restored anything."
+   },
+   {
+    "id": "sim-ransom-clearinghouse-d3",
+    "prompt": "How do you handle the payment question?",
+    "scene": "Forty-one days of backup gap. A 12 million demand. A blockchain analytics finding that is suggestive but not conclusive of sanctions exposure. A board chair with a spreadsheet and a roadshow in three weeks."
+   },
+   {
+    "id": "sim-ransom-clearinghouse-d4",
+    "prompt": "How do you handle the 72-hour notification?",
+    "scene": "The GDPR Article 33 clock expires in 61 hours. Your facts have changed materially twice in thirteen hours — exfiltration went from no evidence to 1.9TB, and backups went from intact to forty-one days gone."
+   },
+   {
+    "id": "sim-ransom-clearinghouse-d5",
+    "prompt": "What do you do about the team?",
+    "scene": "Hour twenty-three. Your best people are degrading, one of them nearly destroyed the clean room, and your storage lead is carrying a failure that was an alerting configuration rather than a person."
+   },
+   {
+    "id": "sim-ransom-clearinghouse-d6",
+    "prompt": "What is your next move?",
+    "scene": "A sample of 14,000 real member records with diagnosis codes is now public. The adversary has read your S-1. Your covered entities are about to learn about this from a leak site rather than from you."
+   }
+  ]
+ },
+ {
+  "id": "sim-signed-build-poisoned",
+  "title": "The Signature Was Valid",
+  "org": "Aureon Runtime, Inc.",
+  "roles": [
+   "u-forge",
+   "u-keeper",
+   "u-cartographer",
+   "u-lantern",
+   "u-oracle",
+   "u-signal",
+   "u-seva"
+  ],
+  "decisions": [
+   {
+    "id": "sim-signed-build-poisoned-d1",
+    "prompt": "What is your first action?",
+    "scene": "Fifty-five minutes in. A compromised third-party action ran inside your release pipeline on a long-lived self-hosted runner that held every publishing and signing credential you have. Release 4.11.2 shipped from that pipeline."
+   },
+   {
+    "id": "sim-signed-build-poisoned-d2",
+    "prompt": "What do you tell the CEO?",
+    "scene": "Your VP of Engineering, your automated diff service and your CEO all point the same direction: the artefact verifies, the SBOM matches, say so. You have not compared the published binary against an independent rebuild."
+   },
+   {
+    "id": "sim-signed-build-poisoned-d6",
+    "prompt": "What do you send the ISSO?",
+    "scene": "A federal information system security officer has asked you three precise questions with a one-hour clock. You can answer two of them confidently. The third — whether 4.11.2 is malicious — is six hours from an answer, and he has the authority to suspend your agent inside his boundary today."
+   },
+   {
+    "id": "sim-signed-build-poisoned-d3",
+    "prompt": "What do you do with the signing identity?",
+    "scene": "An artefact you did not build was signed with your identity and published somewhere you cannot see. Your signature is the product's entire trust anchor and it has been used against you."
+   },
+   {
+    "id": "sim-signed-build-poisoned-d4",
+    "prompt": "What three changes do you name?",
+    "scene": "Thirteen hours in, the technical picture is understood and the remediation is running. The CEO is asking the only question that determines whether this incident produces change or produces a document."
+   },
+   {
+    "id": "sim-signed-build-poisoned-d5",
+    "prompt": "How do you handle the correction?",
+    "scene": "A journalist has found a gap in your public timeline before you did, and she found it because your team scoped out the nightly channel in hour one on the grounds that it was not production. Eleven of the affected hosts are in a federal environment you have already briefed."
+   }
+  ]
+ },
+ {
+  "id": "sim-materiality-eight-k",
+  "title": "Four Business Days From a Decision Nobody Wants to Make",
+  "org": "Ridgeline Instruments Corporation (NASDAQ: RDGL)",
+  "roles": [
+   "u-compass",
+   "u-ledger",
+   "u-anchor",
+   "u-signal",
+   "u-cartographer",
+   "u-seva"
+  ],
+  "decisions": [
+   {
+    "id": "sim-materiality-eight-k-d1",
+    "prompt": "How do you respond to the General Counsel?",
+    "scene": "The General Counsel has asked your threat hunting lead to change a factual finding in a written incident summary from confirmed access to potential exposure. She has a coherent legal rationale and fourteen years of institutional credibility."
+   },
+   {
+    "id": "sim-materiality-eight-k-d2",
+    "prompt": "Do you agree to defer the disclosure committee?",
+    "scene": "The GC wants to defer convening the disclosure committee because the preliminary forensic read is favourable and a committee produces minutes."
+   },
+   {
+    "id": "sim-materiality-eight-k-d3",
+    "prompt": "What do you tell Corporate Development?",
+    "scene": "Corporate Development wants you to confirm that an undetermined incident does not belong on an acquisition disclosure schedule. The intruder had read access to the data room for that acquisition."
+   },
+   {
+    "id": "sim-materiality-eight-k-d4",
+    "prompt": "How do you frame the materiality input?",
+    "scene": "The facts have reversed. There is no quantifiable loss, no operational impact, no revenue effect — and the company's entire competitive moat is in the hands of a probably state-aligned actor. The CFO is asking you to help him make an argument he has never had to make."
+   },
+   {
+    "id": "sim-materiality-eight-k-d5",
+    "prompt": "What do you tell her about the draft?",
+    "scene": "The draft 8-K describes a four-month, probably state-aligned exfiltration of the firmware and calibration algorithm behind forty percent of revenue as unauthorized activity on certain systems, and asserts no reasonably likely material financial impact in the same breath as a filing that exists becau"
+   },
+   {
+    "id": "sim-materiality-eight-k-d6",
+    "prompt": "How do you answer?",
+    "scene": "The determination meeting. Nine days of documents, three reversals, one softening request you refused, and an audit committee chair asking whether the record in front of her is true."
+   }
+  ]
+ }
+]

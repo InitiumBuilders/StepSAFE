@@ -1,0 +1,244 @@
+{
+ "chId": "ch-grc",
+ "chTitle": "The Ledger of Consequence",
+ "missingAwards": [
+  {
+   "id": "award-first-decomposition",
+   "step": "Risk Is a Frequency Times a Magnitude",
+   "kind": "construct",
+   "statement": "A risk statement that does not contain a rate and an amount is not a risk statement; it is a worry.",
+   "respect": 70
+  },
+  {
+   "id": "award-matrix-breaker",
+   "step": "Why the Heat Map Destroys the Information You Need",
+   "kind": "lesson",
+   "statement": "The 5x5 matrix is not a simplification of quantitative risk analysis; it is a lossy compression that can invert your priorities.",
+   "respect": 95
+  },
+  {
+   "id": "award-calibrated-estimator",
+   "step": "Calibrate Yourself, Then Prove It",
+   "kind": "lab",
+   "statement": "Estimation under uncertainty is a trainable motor skill, and untrained experts are reliably, measurably overconfident.",
+   "respect": 130
+  },
+  {
+   "id": "award-curve-builder",
+   "step": "Build the Loss Exceedance Curve",
+   "kind": "lab",
+   "statement": "A Monte Carlo loss model is a fifty-line program, and it will outperform every risk register your organization has ever maintained.",
+   "respect": 175
+  },
+  {
+   "id": "award-monte-carlo",
+   "step": "Build the Loss Exceedance Curve",
+   "kind": "lab",
+   "statement": "A Monte Carlo loss model is a fifty-line program, and it will outperform every risk register your organization has ever maintained.",
+   "respect": 175
+  },
+  {
+   "id": "award-board-fluent",
+   "step": "The Number the Board Wants",
+   "kind": "drill",
+   "statement": "When an executive demands a single number, the correct move is neither to give one nor to refuse — it is to give the number that carries its own uncertainty.",
+   "respect": 150
+  },
+  {
+   "id": "award-council-voice",
+   "step": "Presenting a Distribution Without Losing the Room",
+   "kind": "council",
+   "statement": "Executives do not reject uncertainty; they reject uncertainty that has no decision attached to it.",
+   "respect": 160
+  },
+  {
+   "id": "award-govern-function",
+   "step": "GOVERN Was the Function That Was Always Missing",
+   "kind": "construct",
+   "statement": "CSF 2.0 added GOVERN because the previous decade proved that organizations do not fail at controls; they fail at deciding who owns them.",
+   "respect": 80
+  },
+  {
+   "id": "award-framework-judgment",
+   "step": "Choosing the Instrument: A Comparison With Judgment",
+   "kind": "lesson",
+   "statement": "Adopting the wrong framework does not merely waste money; it shapes your programme toward the wrong failure mode for years.",
+   "respect": 125
+  },
+  {
+   "id": "award-scope-reducer",
+   "step": "PCI DSS 4.x and the Targeted Risk Analysis Trap",
+   "kind": "lesson",
+   "statement": "PCI DSS 4 stopped telling you how often to do things and started demanding you can justify the frequency — which is a much harder standard than most teams realize they just accepted.",
+   "respect": 145
+  },
+  {
+   "id": "award-audit-nerve",
+   "step": "The Auditor Wants a Compensating Control",
+   "kind": "drill",
+   "statement": "The moment you write a compensating control you are making a risk decision on behalf of the organization — so decide whether it is actually yours to make.",
+   "respect": 140
+  },
+  {
+   "id": "award-crosswalk-engineer",
+   "step": "Control Mapping as Code",
+   "kind": "lab",
+   "statement": "If your framework crosswalk lives in a spreadsheet, it is wrong within a quarter and nobody will notice until an audit.",
+   "respect": 165
+  },
+  {
+   "id": "award-profile-author",
+   "step": "Write the Target Profile Your Organization Will Actually Fund",
+   "kind": "field",
+   "statement": "A Target Profile is not an aspiration document; it is a budget request with a taxonomy attached.",
+   "respect": 180
+  },
+  {
+   "id": "award-named-acceptance",
+   "step": "Write the Target Profile Your Organization Will Actually Fund",
+   "kind": "field",
+   "statement": "A Target Profile is not an aspiration document; it is a budget request with a taxonomy attached.",
+   "respect": 180
+  },
+  {
+   "id": "award-lawful-basis",
+   "step": "Lawful Basis Is an Architecture Decision",
+   "kind": "construct",
+   "statement": "Choosing a lawful basis is not paperwork; it silently determines which features you are permitted to build for the next five years.",
+   "respect": 85
+  },
+  {
+   "id": "award-minimizer",
+   "step": "Data Minimization Is the Cheapest Security Control You Own",
+   "kind": "lesson",
+   "statement": "The only data that cannot be stolen, subpoenaed, mis-joined, or leaked by a model is data you never collected or already deleted.",
+   "respect": 120
+  },
+  {
+   "id": "award-linddun-pass",
+   "step": "A LINDDUN Pass on a Real Data Flow",
+   "kind": "lab",
+   "statement": "Security threat modeling asks who can break in; privacy threat modeling asks what the system reveals when it works exactly as designed.",
+   "respect": 155
+  },
+  {
+   "id": "award-privacy-engineer",
+   "step": "A LINDDUN Pass on a Real Data Flow",
+   "kind": "lab",
+   "statement": "Security threat modeling asks who can break in; privacy threat modeling asks what the system reveals when it works exactly as designed.",
+   "respect": 155
+  },
+  {
+   "id": "award-epsilon-owner",
+   "step": "Differential Privacy Without the Hand-Waving",
+   "kind": "lab",
+   "statement": "An epsilon value on a slide is not a privacy guarantee; the guarantee lives in the unit of protection, the composition budget, and the implementation.",
+   "respect": 190
+  },
+  {
+   "id": "award-design-intervention",
+   "step": "The DPIA That Would Kill the Feature",
+   "kind": "drill",
+   "statement": "A DPIA that never stopped anything is not an assessment; it is a signature collection exercise with legal exposure attached.",
+   "respect": 165
+  },
+  {
+   "id": "award-deletion-proof",
+   "step": "Build the Retention Schedule That Actually Deletes",
+   "kind": "field",
+   "statement": "Almost every organization has a retention policy; almost none can prove that a record deleted from the primary store is gone from the backups, the warehouse, the model, and the vendor.",
+   "respect": 185
+  },
+  {
+   "id": "award-disclosure-clock",
+   "step": "Four Business Days and the Word Material",
+   "kind": "lesson",
+   "statement": "The SEC clock does not start when you detect an incident; it starts when you determine it is material, and the duty is to make that determination without unreasonable delay.",
+   "respect": 110
+  },
+  {
+   "id": "award-record-discipline",
+   "step": "SolarWinds, Brown, and the Chilling of the Written Word",
+   "kind": "lesson",
+   "statement": "The case was dismissed and the behaviour it changed was not — every honest internal risk assessment written since 2023 has been written with a plaintiff in mind.",
+   "respect": 155
+  },
+  {
+   "id": "award-materiality-call",
+   "step": "Is It Material? The Clock Starts Now",
+   "kind": "drill",
+   "statement": "The hardest disclosure decisions are made on incomplete facts, and the discipline is to document the reasoning rather than to manufacture certainty.",
+   "respect": 175
+  },
+  {
+   "id": "award-regulatory-map",
+   "step": "NIS2, DORA and the AI Act: Three Theories of Accountability",
+   "kind": "lesson",
+   "statement": "Europe did not copy the SEC approach; it built three different machines, and each one puts a different person in the chair.",
+   "respect": 160
+  },
+  {
+   "id": "award-crisis-record",
+   "step": "The Board Briefing After the Filing",
+   "kind": "council",
+   "statement": "The board meeting immediately after a disclosure is not a status update; it is the creation of the record that will be read back to everyone in the room.",
+   "respect": 185
+  },
+  {
+   "id": "award-underwriter-honest",
+   "step": "The Underwriter Is a Regulator Nobody Elected",
+   "kind": "drill",
+   "statement": "Cyber insurers now set de facto control standards, because they decide what is insurable — and the exclusions matter more than the limit.",
+   "respect": 145
+  },
+  {
+   "id": "award-questionnaire-skeptic",
+   "step": "The Questionnaire Is a Ritual, Not a Control",
+   "kind": "construct",
+   "statement": "A vendor security questionnaire measures a vendor willingness to answer questions, which correlates with almost nothing you care about.",
+   "respect": 75
+  },
+  {
+   "id": "award-concentration-map",
+   "step": "Concentration and the Fourth Party",
+   "kind": "lesson",
+   "statement": "Diversifying your vendors does not diversify your risk if all of them run on the same substrate.",
+   "respect": 115
+  },
+  {
+   "id": "award-blast-radius-scoring",
+   "step": "Score Vendors by Blast Radius, Not by Answers",
+   "kind": "lab",
+   "statement": "Build the vendor risk score from your own telemetry, because that is the only data in the process that has not been curated for you.",
+   "respect": 175
+  },
+  {
+   "id": "award-contract-leverage",
+   "step": "The Contract Clauses That Actually Matter",
+   "kind": "lesson",
+   "statement": "In an incident involving a vendor, you will have exactly the rights you negotiated before you needed them, and not one more.",
+   "respect": 135
+  },
+  {
+   "id": "award-marginal-dollar",
+   "step": "The Marginal Dollar",
+   "kind": "drill",
+   "statement": "Benchmarks tell you what other people spend; only a model tells you what your next dollar buys.",
+   "respect": 190
+  },
+  {
+   "id": "award-governance-closer",
+   "step": "The Risk Acceptance Memo as a Governance Instrument",
+   "kind": "field",
+   "statement": "Your job is not to eliminate risk or to own it; it is to make sure every material risk is knowingly owned by someone with the authority to accept it.",
+   "respect": 200
+  },
+  {
+   "id": "seal-marginal-dollar",
+   "step": "The Risk Acceptance Memo as a Governance Instrument",
+   "kind": "field",
+   "statement": "Your job is not to eliminate risk or to own it; it is to make sure every material risk is knowingly owned by someone with the authority to accept it.",
+   "respect": 200
+  }
+ ]
+}

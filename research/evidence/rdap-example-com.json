@@ -1,0 +1,18 @@
+{
+ "ldhName": "EXAMPLE.COM",
+ "status": [
+  "client delete prohibited",
+  "client transfer prohibited",
+  "client update prohibited"
+ ],
+ "events": [
+  {
+   "eventAction": "registration",
+   "eventDate": "1995-08-14T04:00:00Z"
+  },
+  {
+   "eventAction": "expiration",
+   "eventDate": "2027-08-13T04:00:00Z"
+  }
+ ]
+}

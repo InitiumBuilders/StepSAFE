@@ -1,0 +1,265 @@
+{
+ "net": "mainnet",
+ "read": "2026-11-14",
+ "dc": {
+  "identifier": "HhGNngzL6C3hnXDFqZLkuad1dtTHEuqzyqcTFjkJgw82",
+  "name": null,
+  "owner": {
+   "identifier": "EWSqsaghuwHRjtutbXK3nR11KbRkg9a12PNAAkJWRTpY",
+   "aliases": [
+    {
+     "alias": "latte.dash",
+     "status": "ok",
+     "timestamp": "2024-10-09T08:44:53.976Z",
+     "documentId": "DK4t4TbpxPfTYHmaZioxEP5beL2YNvt2rNwkmxJu1V51",
+     "contested": true
+    }
+   ]
+  },
+  "schema": "{}",
+  "version": 1,
+  "txHash": "04033180A503B6558E5D470CE756FFBEA6139BD04856D6CB6F2E110AC4167D9E",
+  "timestamp": "2025-09-10T08:26:11.264Z",
+  "isSystem": false,
+  "documentsCount": 0,
+  "tokensCount": 1,
+  "identitiesInteracted": 0,
+  "totalGasUsed": 40158399180,
+  "averageGasUsed": 40158399180,
+  "groups": [],
+  "tokens": [
+   {
+    "identifier": "DKf6EaeSy94RgPcQM65dKUCDP3qSF6nQg9dNoGPrUuYh",
+    "position": 0,
+    "timestamp": null,
+    "description": "Buy latte a coffee",
+    "localizations": {
+     "en": {
+      "pluralForm": "lattes",
+      "singularForm": "latte",
+      "shouldCapitalize": true
+     }
+    },
+    "baseSupply": "10000000000",
+    "totalSupply": "10000000000",
+    "maxSupply": "100000000000",
+    "owner": {
+     "identifier": "EWSqsaghuwHRjtutbXK3nR11KbRkg9a12PNAAkJWRTpY",
+     "aliases": [
+      {
+       "alias": "latte.dash",
+       "status": "ok",
+       "timestamp": "2024-10-09T08:44:53.976Z",
+       "documentId": "DK4t4TbpxPfTYHmaZioxEP5beL2YNvt2rNwkmxJu1V51",
+       "contested": true
+      }
+     ]
+    },
+    "mintable": true,
+    "burnable": true,
+    "freezable": true,
+    "unfreezable": true,
+    "destroyable": true,
+    "allowedEmergencyActions": true,
+    "dataContractIdentifier": "HhGNngzL6C3hnXDFqZLkuad1dtTHEuqzyqcTFjkJgw82",
+    "changeMaxSupply": true,
+    "totalGasUsed": null,
+    "mainGroup": null,
+    "totalTransitionsCount": null,
+    "totalFreezeTransitionsCount": null,
+    "totalBurnTransitionsCount": null,
+    "decimals": 0,
+    "perpetualDistribution": null,
+    "preProgrammedDistribution": null,
+    "price": null,
+    "prices": null
+   }
+  ],
+  "description": "Buy latte a coffee",
+  "keywords": [
+   "coffee",
+   "latte"
+  ]
+ },
+ "dec": {
+  "type": 0,
+  "typeString": "DATA_CONTRACT_CREATE",
+  "internalConfig": {
+   "canBeDeleted": false,
+   "readonly": false,
+   "keepsHistory": false,
+   "documentsKeepHistoryContractDefault": false,
+   "documentsMutableContractDefault": true,
+   "documentsCanBeDeletedContractDefault": true,
+   "requiresIdentityDecryptionBoundedKey": null,
+   "requiresIdentityEncryptionBoundedKey": null
+  },
+  "version": 1,
+  "userFeeIncrease": 0,
+  "identityNonce": "2",
+  "dataContractId": "HhGNngzL6C3hnXDFqZLkuad1dtTHEuqzyqcTFjkJgw82",
+  "ownerId": "EWSqsaghuwHRjtutbXK3nR11KbRkg9a12PNAAkJWRTpY",
+  "schema": {},
+  "tokens": [
+   {
+    "position": 0,
+    "tokenId": "DKf6EaeSy94RgPcQM65dKUCDP3qSF6nQg9dNoGPrUuYh",
+    "conventions": {
+     "decimals": 0,
+     "localizations": {
+      "en": {
+       "pluralForm": "lattes",
+       "singularForm": "latte",
+       "shouldCapitalize": true
+      }
+     }
+    },
+    "conventionsChangeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "baseSupply": "10000000000",
+    "keepsHistory": {
+     "keepsTransferHistory": true,
+     "keepsFreezingHistory": true,
+     "keepsMintingHistory": true,
+     "keepsBurningHistory": true,
+     "keepsDirectPricingHistory": true,
+     "keepsDirectPurchaseHistory": true
+    },
+    "startAsPaused": false,
+    "isAllowedTransferToFrozenBalance": true,
+    "maxSupply": "100000000000",
+    "maxSupplyChangeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "distributionRules": {
+     "perpetualDistribution": null,
+     "preProgrammedDistribution": null,
+     "newTokenDestinationIdentity": "EWSqsaghuwHRjtutbXK3nR11KbRkg9a12PNAAkJWRTpY",
+     "mintingAllowChoosingDestination": false
+    },
+    "marketplaceRules": {
+     "tradeMode": "NotTradeable",
+     "tradeModeChangeRules": {
+      "authorizedToMakeChange": {
+       "takerType": "ContractOwner",
+       "taker": null
+      },
+      "adminActionTakers": {
+       "takerType": "ContractOwner",
+       "taker": null
+      },
+      "changingAuthorizedActionTakersToNoOneAllowed": true,
+      "changingAdminActionTakersToNoOneAllowed": true,
+      "selfChangingAdminActionTakersAllowed": true
+     }
+    },
+    "manualMintingRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "manualBurningRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "freezeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "unfreezeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "destroyFrozenFundsRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "emergencyActionRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "mainControlGroupCanBeModified": {
+     "takerType": "ContractOwner",
+     "taker": null
+    },
+    "mainControlGroup": null,
+    "description": "Buy latte a coffee"
+   }
+  ],
+  "groups": []
+ }
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unitium-safe.vercel.app/schema/stepsafe-gauge.v1.json",
+  "title": "StepSAFE gauge, version 1",
+  "description": "An organisation as parts and dependencies, the threats that push on it, the budget for structures, and the reference stack found by search. Structure ids refer to the Modux Models catalog. Readers should cap sizes and drop unknown kinds, counters and dangling edges, as StepSAFE does.",
+  "type": "object",
+  "required": ["format", "version", "gauge"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "format": { "const": "stepsafe-gauge" },
+    "version": { "const": 1 },
+    "gauge": { "$ref": "#/$defs/gauge" }
+  },
+  "$defs": {
+    "kind": { "enum": ["people", "identity", "network", "data", "build", "money", "control", "model", "public", "time", "vendor"] },
+    "modelId": { "type": "string", "pattern": "^mm-[a-z]+-[a-z0-9-]+$", "description": "A Modux Models catalog id, such as mm-resilience-fail-safe-defaults." },
+    "gauge": {
+      "type": "object",
+      "required": ["id", "title", "org", "budget", "threats", "system"],
+      "properties": {
+        "id": { "type": "string", "maxLength": 32, "pattern": "^[a-zA-Z0-9-]+$" },
+        "title": { "type": "string", "maxLength": 80 },
+        "org": { "type": "string", "maxLength": 60 },
+        "sector": { "type": "string", "maxLength": 120, "description": "Who it serves. The largest number in it, with its noun, is the count of people the record uses." },
+        "brief": { "type": "string", "maxLength": 600 },
+        "adversary": { "type": "string", "maxLength": 120 },
+        "budget": { "type": "integer", "minimum": 1, "maximum": 99 },
+        "expert": { "type": "array", "items": { "$ref": "#/$defs/modelId" }, "maxItems": 24 },
+        "debrief": { "type": "string", "maxLength": 600 },
+        "essence": { "enum": ["cyan", "azure", "violet", "ember", "gold"] },
+        "tags": { "type": "array", "items": { "type": "string" }, "maxItems": 8 },
+        "origin": { "enum": ["authored", "forged", "opus"] },
+        "seed": { "type": "string" },
+        "system": {
+          "type": "object",
+          "required": ["nodes", "edges"],
+          "properties": {
+            "nodes": {
+              "type": "array", "minItems": 2, "maxItems": 16,
+              "items": { "type": "object", "required": ["id", "name", "kind"], "properties": { "id": { "type": "string", "maxLength": 24 }, "name": { "type": "string", "maxLength": 48 }, "kind": { "$ref": "#/$defs/kind" } } }
+            },
+            "edges": {
+              "type": "array", "maxItems": 40,
+              "description": "A dependency: when 'from' falls, 'to' is exposed. 'how' sets the delay: supply words (supplies, powers, ships, treats, delivers) are three hours, a link into people or the public is one hour, any other is fifteen minutes.",
+              "items": { "type": "object", "required": ["from", "to", "how"], "properties": { "from": { "type": "string" }, "to": { "type": "string" }, "how": { "type": "string", "maxLength": 40 } } }
+            }
+          }
+        },
+        "threats": {
+          "type": "array", "minItems": 1, "maxItems": 12,
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "move", "counters", "weight", "target"],
+            "properties": {
+              "id": { "type": "string", "maxLength": 8 },
+              "name": { "type": "string", "maxLength": 80 },
+              "move": { "type": "string", "maxLength": 300 },
+              "counters": { "type": "array", "items": { "$ref": "#/$defs/modelId" }, "maxItems": 12 },
+              "weight": { "type": "integer", "minimum": 1, "maximum": 3 },
+              "target": { "type": "string", "description": "The id of the part it hits." },
+              "open": { "type": "boolean", "description": "An open problem: no catalog structure answers it." },
+              "pressure": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

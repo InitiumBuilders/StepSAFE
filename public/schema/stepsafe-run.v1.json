@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unitium-safe.vercel.app/schema/stepsafe-run.v1.json",
+  "title": "StepSAFE run, version 1",
+  "description": "One run on a gauge: who ran it, the notch, the score, the hours of service kept on the stress day, whether it held, and the stack. A run is reported by whoever sends it; a reader checks its shape, not its truth.",
+  "type": "object",
+  "required": ["format", "version", "gauge", "run"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "format": { "const": "stepsafe-run" },
+    "version": { "const": 1 },
+    "gauge": { "$ref": "stepsafe-gauge.v1.json#/$defs/gauge" },
+    "run": {
+      "type": "object",
+      "required": ["by", "notch", "score", "hoursKept", "held", "stack", "at"],
+      "properties": {
+        "by": { "type": "string", "maxLength": 40 },
+        "notch": { "type": "integer", "minimum": 0, "maximum": 40 },
+        "score": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "hoursKept": { "type": "number", "minimum": 0, "maximum": 24, "description": "Hours of service kept on the stress day: every threat lands in the first hour." },
+        "held": { "type": "boolean" },
+        "stack": { "type": "array", "items": { "type": "string", "pattern": "^mm-[a-z]+-[a-z0-9-]+$" }, "maxItems": 24 },
+        "at": { "type": "integer", "description": "Milliseconds since 1970, UTC." }
+      }
+    }
+  }
+}

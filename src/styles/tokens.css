@@ -1,0 +1,103 @@
+/* DAVARA DISTINCT V3 — tokens.
+   Two castes, never confused:
+     TEXTUAL — verified ink, every pair computed against WCAG, ~7:1 target.
+     AURORA / ELECTRIC — artwork, glow, spark, fill. Never body text.
+   Nocturne is the default; Meridian is the daylight mode. */
+
+:root {
+  /* ---------- substrate: NOCTURNE ---------- */
+  --ground: #050b20;
+  --panel: #0d1535;
+  --panel-2: #131c45;
+  --panel-3: #1b2452;
+  --relief-light: rgba(210, 225, 235, 0.05);
+  --relief-shadow: rgba(2, 4, 18, 0.72);
+  --frame: rgba(196, 206, 255, 0.12);
+  --frame-strong: rgba(216, 226, 255, 0.24);
+
+  /* ---------- TEXTUAL caste (verified) ---------- */
+  --ink: #f4f6f9;         /* 16.9:1 on --panel */
+  --ink-2: #dce3ec;       /* near-bone secondary — NEVER grey */
+  --ink-label: #9fd6dd;   /* tinted telemetry label */
+  --ink-accent: #7be3ea;
+  --ink-signal: #cbbcff;
+  --ink-gold: #f0d48c;
+  --ink-warn: #ffc9a8;
+  --ink-alarm: #ffb3b3;
+
+  /* ---------- AURORA / ELECTRIC caste (art only) ---------- */
+  --cyan: #22d3ee;
+  --azure: #60a5fa;
+  --violet: #a78bff;
+  --ember: #e879c9;
+  --gold: #e8c46b;
+  --on-gold: #3a2b06;
+
+  /* ---------- structure ---------- */
+  --wrap: 900px;
+  --wrap-wide: 1180px;
+  --r-sm: 12px;
+  --r: 18px;
+  --r-lg: 22px;
+  --r-xl: 28px;
+
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 20px;
+  --s5: 32px;
+  --s6: 52px;
+  --s7: 84px;
+  --s8: 136px;
+
+  --raise: 0 1px 0 var(--relief-light) inset, 0 14px 34px -18px var(--relief-shadow),
+    0 2px 8px -4px var(--relief-shadow);
+  --raise-lg: 0 1px 0 var(--relief-light) inset, 0 34px 70px -28px var(--relief-shadow),
+    0 6px 18px -8px var(--relief-shadow);
+  --inset: inset 0 2px 6px rgba(0, 2, 4, 0.55), inset 0 -1px 0 var(--relief-light);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in: cubic-bezier(0.55, 0, 0.65, 0.2);
+
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  color-scheme: dark;
+}
+
+/* ---------- substrate: MERIDIAN ---------- */
+:root[data-theme='meridian'] {
+  --ground: #bfccc3;
+  --panel: #f4f8f5;
+  --panel-2: #e6ede8;
+  --panel-3: #d8e2db;
+  --relief-light: rgba(255, 255, 255, 0.9);
+  --relief-shadow: rgba(16, 25, 21, 0.22);
+  --frame: rgba(16, 25, 21, 0.16);
+  --frame-strong: rgba(16, 25, 21, 0.34);
+
+  --ink: #101915;         /* 15.8:1 on --panel */
+  --ink-2: #22302a;       /* near-ink secondary */
+  --ink-label: #0a3a32;
+  --ink-accent: #073e34;
+  --ink-signal: #392683;
+  --ink-gold: #4a3708;    /* gold is never text by day — this is its ink echo */
+  --ink-warn: #6b2f10;
+  --ink-alarm: #6e1414;
+
+  --raise: 0 1px 0 var(--relief-light) inset, 0 16px 30px -20px var(--relief-shadow),
+    0 2px 6px -3px var(--relief-shadow);
+  --raise-lg: 0 1px 0 var(--relief-light) inset, 0 36px 64px -30px var(--relief-shadow),
+    0 6px 16px -8px var(--relief-shadow);
+  --inset: inset 0 2px 6px rgba(16, 25, 21, 0.16), inset 0 -1px 0 var(--relief-light);
+
+  color-scheme: light;
+}
+
+/* essence hue helpers — art caste only */
+.e-cyan { --essence: var(--cyan); --essence-ink: var(--ink-accent); }
+.e-azure { --essence: var(--azure); --essence-ink: var(--ink-accent); }
+.e-violet { --essence: var(--violet); --essence-ink: var(--ink-signal); }
+.e-ember { --essence: var(--ember); --essence-ink: var(--ink-warn); }
+.e-gold { --essence: var(--gold); --essence-ink: var(--ink-gold); }

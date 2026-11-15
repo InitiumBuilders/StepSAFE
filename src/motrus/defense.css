@@ -1,0 +1,109 @@
+/* The newer sections (Defense.tsx): the move that holds, the ladder of leverage, the threshold rings, the card that
+   stays true. Transform and opacity only; every loop runs only while its scene is on screen. */
+
+/* ---------- a ring of rules: attacks arrive, stop at their gate, and the centre holds ---------- */
+/* the shield in the middle, its rules on either side, each facing its own gate */
+.df-wing { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 480px) minmax(0, 1fr); gap: clamp(24px, 3vw, 40px); align-items: center; margin-top: 44px; }
+.df-fig { margin: 0; }
+.df-svg { display: block; width: 100%; max-width: 480px; height: auto; margin: 0 auto; overflow: visible; }
+.df-field { fill: none; stroke: rgba(216, 239, 252, 0.09); stroke-width: 1; stroke-dasharray: 2 7; }
+.df-ring { fill: rgba(13, 21, 53, 0.55); stroke: rgba(167, 139, 255, 0.2); stroke-width: 1.2; }
+.df-gate { fill: none; stroke: rgba(167, 139, 255, 0.6); stroke-width: 4; stroke-linecap: round; }
+.df-gate-lit { fill: none; stroke: var(--mt-amber); stroke-width: 4; stroke-linecap: round; opacity: 0; }
+.df-num { font: 600 17px var(--font-display); fill: var(--mt-ink-3); }
+.df-tail { stroke: rgba(232, 120, 106, 0.45); stroke-width: 2.5; stroke-linecap: round; }
+.df-dot { fill: var(--mt-coral); }
+.df-atk { opacity: 0; transform: translateX(80px); }
+.df-shield.on .df-atk { animation: df-hit 1100ms cubic-bezier(0.3, 0, 0.2, 1) var(--d) both; }
+.df-shield.on.live .df-atk { animation: df-hit 1100ms cubic-bezier(0.3, 0, 0.2, 1) var(--d) both, df-again var(--p) linear var(--d2) infinite; }
+@keyframes df-hit { 0% { opacity: 0; transform: translateX(80px); } 18% { opacity: 1; } 70% { opacity: 1; transform: translateX(0); } 100% { opacity: 0; transform: translateX(14px); } }
+@keyframes df-again { 0% { opacity: 0; transform: translateX(80px); } 1.2% { opacity: 1; } 5% { opacity: 1; transform: translateX(0); } 7% { opacity: 0; transform: translateX(14px); } 100% { opacity: 0; transform: translateX(80px); } }
+.df-shield.on .df-gate-lit { animation: df-flash 1100ms ease var(--d) both; }
+.df-shield.on.live .df-gate-lit { animation: df-flash 1100ms ease var(--d) both, df-flash-again var(--p) linear var(--d2) infinite; }
+@keyframes df-flash { 0%, 64% { opacity: 0; } 72% { opacity: 1; } 100% { opacity: 0.55; } }
+@keyframes df-flash-again { 0%, 4.6% { opacity: 0.55; } 5.4% { opacity: 1; } 10%, 100% { opacity: 0.55; } }
+.df-core { opacity: 0.55; transform-box: fill-box; transform-origin: center; }
+.df-shield.on .df-core { animation: df-hold 1200ms var(--mt-out) var(--d) both; }
+@keyframes df-hold { from { opacity: 0.55; transform: scale(0.96); } to { opacity: 1; transform: none; } }
+.df-core-ring { fill: none; stroke: rgba(216, 239, 252, 0.18); stroke-width: 1.2; }
+.df-member { fill: var(--mt-panel-2); stroke: var(--mt-violet); stroke-width: 1.8; }
+.df-heart { fill: var(--mt-amber); transform-box: fill-box; transform-origin: center; }
+.df-shield.on.live .df-heart { animation: df-breathe 8s ease-in-out 4s infinite; }
+@keyframes df-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+.df-card { fill: rgba(19, 29, 70, 0.92); stroke: rgba(192, 132, 252, 0.6); stroke-width: 1.6; }
+.df-card-line { stroke: rgba(216, 239, 252, 0.34); stroke-width: 3; stroke-linecap: round; }
+
+.df-rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 30px; }
+.df-rows li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 14px; align-items: start; }
+.df-left li { grid-template-columns: minmax(0, 1fr) 34px; text-align: right; }
+.df-left .df-n { order: 2; }
+.df-n { position: relative; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 11px; corner-shape: superellipse(2.15); font: 600 0.95rem/1 var(--font-display); color: var(--mt-ink); background: rgba(167, 139, 255, 0.12); box-shadow: inset 0 0 0 1px rgba(167, 139, 255, 0.3); }
+.df-n::after { content: ''; position: absolute; inset: 0; border-radius: inherit; corner-shape: superellipse(2.15); box-shadow: inset 0 0 0 1.5px var(--mt-amber), 0 0 18px -5px rgba(253, 194, 111, 0.8); opacity: 0; }
+.df-shield.on .df-n::after { animation: mt-fade-in 600ms ease var(--d) both; }
+:root .mt .df-t { margin: 4px 0 6px; font-size: 1.08rem; }
+.df-d { margin: 0; font-size: 1rem; line-height: 1.62; color: var(--mt-ink-2); }
+
+/* ---------- the ladder: a light climbs twelve places to intervene and stays on six ---------- */
+.lv-split { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+.lv-split .mt-src { white-space: normal; }
+.lv { position: relative; list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.lv::before, .lv::after { content: ''; position: absolute; top: 12px; bottom: 12px; width: 2px; border-radius: 2px; background: linear-gradient(180deg, rgba(167, 139, 255, 0.12), rgba(167, 139, 255, 0.42) 45%, rgba(167, 139, 255, 0.12)); }
+.lv::before { left: 0; }
+.lv::after { left: 62px; }
+.lv-rung { position: relative; display: grid; grid-template-columns: 64px 30px minmax(0, 1fr); align-items: center; gap: 0 14px; min-height: 46px; }
+.lv-rung.lit::before { content: ''; position: absolute; left: 76px; right: 0; top: 3px; bottom: 3px; border-radius: 16px; corner-shape: superellipse(2.15); background: linear-gradient(90deg, rgba(167, 139, 255, 0.1), rgba(167, 139, 255, 0)); pointer-events: none; }
+.lv-bar { position: relative; display: block; height: 3px; margin: 0 2px; border-radius: 3px; background: rgba(167, 139, 255, 0.22); }
+.lv-rung.lit .lv-bar { background: linear-gradient(90deg, var(--mt-violet), var(--mt-orchid)); }
+.lv-rung.top .lv-bar { background: linear-gradient(90deg, var(--mt-orchid), var(--mt-amber)); }
+.lv-bar i { position: absolute; inset: -6px -2px; border-radius: 8px; background: radial-gradient(closest-side, rgba(253, 194, 111, 0.95), rgba(253, 194, 111, 0)); opacity: 0; }
+.lv.on .lv-bar i { animation: lv-pass 900ms ease calc(300ms + var(--k) * 130ms) both; }
+.lv.on .lv-rung.lit .lv-bar i { animation-name: lv-stay; }
+.lv.on.live .lv-bar i { animation: lv-pass 900ms ease calc(300ms + var(--k) * 130ms) both, lv-again 10s ease calc(4200ms + var(--k) * 130ms) infinite; }
+.lv.on.live .lv-rung.lit .lv-bar i { animation: lv-stay 900ms ease calc(300ms + var(--k) * 130ms) both, lv-again-lit 10s ease calc(4200ms + var(--k) * 130ms) infinite; }
+@keyframes lv-pass { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes lv-stay { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: 0.45; } }
+@keyframes lv-again { 0%, 10%, 100% { opacity: 0; } 4% { opacity: 0.75; } }
+@keyframes lv-again-lit { 0%, 10%, 100% { opacity: 0.45; } 4% { opacity: 1; } }
+.lv-num { font: 600 0.95rem/1 var(--font-display); color: var(--mt-ink-3); font-variant-numeric: tabular-nums; text-align: right; }
+.lv-rung.lit .lv-num { color: var(--mt-orchid); }
+.lv-rung.top .lv-num { color: var(--mt-amber); }
+.lv-text { position: relative; display: grid; gap: 3px; padding: 9px 12px 9px 0; }
+.lv-name { font: 500 1rem/1.3 var(--font-display); color: var(--mt-ink-3); }
+.lv-rung.lit .lv-name { font-weight: 600; color: var(--mt-ink); }
+.lv-line { font-size: 0.98rem; line-height: 1.5; color: var(--mt-ink-2); }
+
+/* ---------- thresholds: rings fill one party at a time and close at the line ---------- */
+.pc { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 40px; }
+.pc-item { margin: 0; text-align: center; }
+.pc-svg { display: block; width: 100%; max-width: 250px; height: auto; margin: 0 auto 16px; overflow: visible; }
+.pc-track { fill: none; stroke: rgba(167, 139, 255, 0.14); stroke-width: 1; }
+.pc-dot { fill: var(--mt-violet); opacity: 0.16; transform-box: fill-box; transform-origin: center; }
+.pc-ours .pc-dot { fill: var(--mt-orchid); }
+.pc.on .pc-dot { animation: pc-join 520ms var(--mt-out) var(--d) both; }
+@keyframes pc-join { from { opacity: 0.16; transform: scale(0.6); } to { opacity: 1; transform: none; } }
+.pc-close { fill: none; stroke: var(--mt-amber); stroke-width: 1.6; opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(0.94); }
+.pc.on .pc-close { animation: pc-close 900ms var(--mt-spring) var(--d) both; }
+@keyframes pc-close { to { opacity: 0.9; transform: none; } }
+.pc-n { font: 600 52px var(--font-display); fill: var(--mt-ink); letter-spacing: -0.02em; }
+.pc-ours .pc-n { fill: var(--mt-amber); }
+.pc-label { font: 600 15px var(--font-display); fill: var(--mt-azure); letter-spacing: 0.06em; }
+.pc-when { margin: 0 0 6px; font: 600 0.94rem/1.4 var(--font-display); color: var(--mt-amber); letter-spacing: 0.02em; }
+.pc-rule { margin: 0 auto; max-width: 28ch; font-size: 1rem; line-height: 1.6; color: var(--mt-ink-2); }
+.pc-src { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 26px; margin: 30px 0 0; font-size: 0.92rem; }
+.pc-src .mt-src { white-space: normal; text-align: center; }
+
+@media (max-width: 960px) {
+  .df-wing { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .df-wing .df-fig { order: -1; }
+  .df-left li { grid-template-columns: 34px minmax(0, 1fr); text-align: left; }
+  .df-left .df-n { order: 0; }
+}
+@media (max-width: 860px) {
+  .lv-split { grid-template-columns: minmax(0, 1fr); }
+  .df-svg { max-width: 360px; }
+  .lv::after { left: 42px; }
+  .lv-rung { grid-template-columns: 44px 24px minmax(0, 1fr); gap: 0 10px; }
+  .lv-rung.lit::before { left: 52px; }
+  .pc { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+  .pc-src { flex-direction: column; align-items: center; }
+}

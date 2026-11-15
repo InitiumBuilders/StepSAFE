@@ -1,0 +1,110 @@
+/* On a phone the places a learner goes most sit under the thumb, and the full menu opens from More as a sheet that
+   holds the learner's standing too. The page keeps its whole height: nothing is pinned to the top. Wider screens
+   keep the row on top (tablets) or the rail at the side. Loaded after every page's styles and before touch.css. */
+
+:root { --tab-h: 0px; }
+.tabbar, .nav-scrim { display: none; }
+
+@media (max-width: 720px) {
+  :root { --tab-h: calc(62px + env(safe-area-inset-bottom, 0px)); }
+
+  .tabbar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 46;
+    display: flex; align-items: stretch; justify-content: space-between;
+    height: var(--tab-h); padding: 0 4px env(safe-area-inset-bottom, 0px);
+    background: #0b1230;
+    box-shadow: inset 0 1px 0 rgba(216, 226, 255, 0.12), 0 -16px 30px -22px rgba(0, 0, 0, 0.85);
+  }
+  :root[data-theme='meridian'] .tabbar { background: #f4f8f5; box-shadow: inset 0 1px 0 #fff, 0 -16px 30px -22px rgba(80, 60, 160, 0.45); }
+  :root[data-theme='mov'] .tabbar { background: #0b0d16; }
+  .tab {
+    position: relative; flex: 1 1 auto; min-width: 44px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    padding: 7px 4px 6px; border: 0; background: transparent; color: var(--ink-2);
+    font: 600 12px/1.15 var(--font-body); white-space: nowrap; cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 200ms var(--ease), transform 200ms var(--ease);
+  }
+  .tab svg { width: 22px; height: 22px; flex: none; }
+  .tab:active { transform: scale(0.95); }
+  .tab[aria-current='page'], .tab.on { color: var(--ink); }
+  .tab[aria-current='page'] svg, .tab.on svg { color: var(--cyan); }
+  /* one light for the bar: it rests over the open tab and slides to the next (App sets --tab-x on the bar).
+     Until it has been placed it waits off the left edge, and its first placing is not a move. */
+  .tab-light {
+    position: absolute; top: 0; left: 0; width: 26px; height: 3px; border-radius: 3px; pointer-events: none;
+    background: var(--cyan); box-shadow: 0 0 14px 1px color-mix(in srgb, var(--cyan) 55%, transparent);
+    transform: translateX(calc(var(--tab-x, -60px) - 13px));
+  }
+  .tabbar[data-lit] .tab-light { transition: transform 340ms cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .tab:focus-visible { outline: 2px solid var(--cyan); outline-offset: -4px; border-radius: 14px; }
+
+  /* the full menu: a sheet that rises from the tab bar. Each theme restyles the menu from html[data-theme]:root,
+     so these rules are written from html:root body to hold in all three. */
+  html:root body .shell > .nav {
+    position: fixed; top: auto; left: 0; right: 0; bottom: var(--tab-h); z-index: 45;
+    display: none; flex-direction: column; align-items: stretch; gap: var(--s3);
+    height: auto; max-height: min(74vh, 640px); overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain;
+    padding: var(--s4) var(--s4) var(--s3);
+    border: 0; border-radius: 26px 26px 0 0; corner-shape: superellipse(2.15);
+    background: #0d1535; -webkit-backdrop-filter: none; backdrop-filter: none;
+    /* the row this replaces faded its right edge to say it scrolled; a sheet has no such edge */
+    -webkit-mask-image: none; mask-image: none;
+    box-shadow: inset 0 1px 0 rgba(216, 226, 255, 0.16), 0 -26px 50px -26px rgba(0, 0, 0, 0.9);
+  }
+  html[data-theme='meridian']:root body .shell > .nav { background: #f4f8f5; box-shadow: inset 0 1px 0 #fff, 0 -26px 50px -26px rgba(80, 60, 160, 0.5); }
+  html[data-theme='mov']:root body .shell > .nav { background: #0b0d16; }
+  html:root body .shell > .nav.nav-open { display: flex; animation: sheet-up 300ms cubic-bezier(0.16, 1, 0.3, 1); }
+  @keyframes sheet-up { from { transform: translateY(26px); opacity: 0; } to { transform: none; opacity: 1; } }
+  html:root body .shell > .nav .spacer { display: none; }
+
+  /* the learner's standing leads the sheet: a phone has no rail to show it on */
+  html:root body .shell > .nav .hud {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)); gap: 10px 14px;
+    padding: 14px 16px; border-radius: 20px; corner-shape: superellipse(2.15);
+  }
+  html:root body .shell > .nav .hud-row { flex-direction: column; align-items: flex-start; gap: 2px; }
+  html:root body .shell > .nav .hud .vessel { grid-column: 1 / -1; height: 8px; }
+
+  html:root body .shell > .nav .nb-kbd { display: none; }
+  html:root body .shell > .nav .navlist {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;
+    overflow: visible; padding-inline: 0; margin-inline: 0; scroll-snap-type: none;
+    -webkit-mask-image: none; mask-image: none;
+  }
+  html:root body .shell > .nav .navlist > li { min-width: 0; }
+  html:root body .shell > .nav .navbtn {
+    width: 100%; white-space: normal; min-height: 50px; padding: 10px 14px; font-size: 1rem;
+    border-radius: 16px; corner-shape: superellipse(2.15); transform: none;
+  }
+  html:root body .shell > .nav .navbtn[aria-current='page']::before { display: none; }
+  /* the four places on the tab bar are already under the thumb */
+  html:root body .shell > .nav .navlist .nav-tabbed { display: none; }
+  /* a theme may give the buttons its own ground; without one they sit on the panel */
+  .nav .navbtn { background: var(--panel-2); }
+  .nav .navbtn[aria-current='page'] { border-color: var(--cyan); }
+
+  .nav-scrim { display: block; position: fixed; inset: 0; z-index: 44; background: rgba(3, 6, 20, 0.62); animation: scrim-in 220ms var(--ease); }
+  :root[data-theme='meridian'] .nav-scrim { background: rgba(40, 30, 90, 0.34); }
+  @keyframes scrim-in { from { opacity: 0; } to { opacity: 1; } }
+
+  /* the page: its top is free, its end clears the tab bar */
+  .stage { padding: calc(var(--s4) + env(safe-area-inset-top, 0px)) var(--s4) calc(var(--tab-h) + var(--s6)); }
+  .skip:focus { top: calc(var(--s4) + env(safe-area-inset-top, 0px)); }
+
+  /* whatever is pinned to the bottom of a page sits above the tab bar */
+  .tr-dock, .sim-dock, .ra.on, .sg-nav { bottom: calc(var(--tab-h) + 10px); }
+  .gl-actions { bottom: var(--tab-h); }
+  .toasts { bottom: calc(var(--tab-h) + var(--s3)); }
+  /* and whatever is pinned to the top clears a phone's status bar when the app is installed */
+  .sim-strip { top: calc(var(--sim-bar, 0px) + 8px + env(safe-area-inset-top, 0px)); }
+  .gl-letters { top: calc(var(--gl-nav, 0px) + env(safe-area-inset-top, 0px)); }
+}
+
+/* On a phone a toast is one compact line at the top (future.css). It was set 66px down to sit under the row; with
+   the row gone it sits at the top edge, clear of the status bar, and no longer floats over a page's first lines. */
+@media (max-width: 600px) {
+  .toasts { top: calc(8px + env(safe-area-inset-top, 0px)); bottom: auto; }
+}
+
+@media print { .tabbar, .nav-scrim { display: none; } }

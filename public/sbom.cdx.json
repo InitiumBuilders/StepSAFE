@@ -1,0 +1,550 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:37218d72-897d-5c0d-8fa0-00ac203b7e4f",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-15T01:57:32Z",
+    "authors": [
+      {
+        "name": "StepSAFE"
+      }
+    ],
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "stepsafe scripts/sbom.mjs"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "bom-ref": "pkg:npm/stepsafe-praxis@1.0.0",
+      "name": "stepsafe-praxis",
+      "version": "1.0.0",
+      "supplier": {
+        "name": "StepSAFE",
+        "url": [
+          "https://unitium-safe.vercel.app"
+        ]
+      }
+    }
+  },
+  "components": [
+    {
+      "type": "file",
+      "bom-ref": "pkg:generic/hanken-grotesk@v12?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fhankengrotesk%2Fv12%2FieVn2YZDLWuGJpnzaiwFXS9tYtpd59A.woff2",
+      "name": "Hanken Grotesk",
+      "version": "v12",
+      "purl": "pkg:generic/hanken-grotesk@v12?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fhankengrotesk%2Fv12%2FieVn2YZDLWuGJpnzaiwFXS9tYtpd59A.woff2",
+      "supplier": {
+        "name": "Google Fonts",
+        "url": [
+          "https://fonts.google.com"
+        ]
+      },
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5679059906db74ffd7a5a3411e9dc2f23ac99bf7e4a770aeeaaa2e333edf5884d0b73a77ba23934e5d2c70cae0360ef72d09bf751325ad6f65d27a4e58d48201"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "OFL-1.1"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://fonts.gstatic.com/s/hankengrotesk/v12/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59A.woff2"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "pkg:generic/ibm-plex-mono-400@v23?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fibmplexmono%2Fv23%2F-F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2",
+      "name": "IBM Plex Mono 400",
+      "version": "v23",
+      "purl": "pkg:generic/ibm-plex-mono-400@v23?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fibmplexmono%2Fv23%2F-F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2",
+      "supplier": {
+        "name": "Google Fonts",
+        "url": [
+          "https://fonts.google.com"
+        ]
+      },
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d4576eb31f6c0910748d1bf9410d272f4da542aa71d9373bf50b6cbed9b2082cdfa3fc13c60f4c362109c15363eaceb1f46a10b7d908e930553164d14f81cd11"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "OFL-1.1"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://fonts.gstatic.com/s/ibmplexmono/v23/-F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "pkg:generic/ibm-plex-mono-500@v23?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fibmplexmono%2Fv23%2F-F6qfjptAgt5VM-kVkqdyU8n3twJwlBFgg.woff2",
+      "name": "IBM Plex Mono 500",
+      "version": "v23",
+      "purl": "pkg:generic/ibm-plex-mono-500@v23?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fibmplexmono%2Fv23%2F-F6qfjptAgt5VM-kVkqdyU8n3twJwlBFgg.woff2",
+      "supplier": {
+        "name": "Google Fonts",
+        "url": [
+          "https://fonts.google.com"
+        ]
+      },
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4fcc682bc4f2d1416376e9fef7b7661f7a3ace5904d455983b355c162336bc55ce5fe1aaa45dc3771e176d15a51ab4ac42ddf7853da401a0108dc4dd3989900f"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "OFL-1.1"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://fonts.gstatic.com/s/ibmplexmono/v23/-F6qfjptAgt5VM-kVkqdyU8n3twJwlBFgg.woff2"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "pkg:generic/ibm-plex-mono-600@v23?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fibmplexmono%2Fv23%2F-F6qfjptAgt5VM-kVkqdyU8n3vAOwlBFgg.woff2",
+      "name": "IBM Plex Mono 600",
+      "version": "v23",
+      "purl": "pkg:generic/ibm-plex-mono-600@v23?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fibmplexmono%2Fv23%2F-F6qfjptAgt5VM-kVkqdyU8n3vAOwlBFgg.woff2",
+      "supplier": {
+        "name": "Google Fonts",
+        "url": [
+          "https://fonts.google.com"
+        ]
+      },
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "f0214d57f57d28d476d4d685e6deb58a8e10ab4b7fb4583b3a1131c6987a837e72ef075b79284c8bd3cc136afdc42a4abb3de94b91692110f1a26971dbd2bd9f"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "OFL-1.1"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://fonts.gstatic.com/s/ibmplexmono/v23/-F6qfjptAgt5VM-kVkqdyU8n3vAOwlBFgg.woff2"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "pkg:generic/inter@v20?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Finter%2Fv20%2FUcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+      "name": "Inter",
+      "version": "v20",
+      "purl": "pkg:generic/inter@v20?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Finter%2Fv20%2FUcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+      "supplier": {
+        "name": "Google Fonts",
+        "url": [
+          "https://fonts.google.com"
+        ]
+      },
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9acec3e7a411a1eb6d072c3773bb14e5aa74d85d334674ec0fb018b7937174d5b612b756b2ce7aa3993d31dfe172516e7aaec79c7dd209eac5fd15d9aea077e9"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "OFL-1.1"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "pkg:generic/outfit@v15?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Foutfit%2Fv15%2FQGYvz_MVcBeNP4NJtEtq.woff2",
+      "name": "Outfit",
+      "version": "v15",
+      "purl": "pkg:generic/outfit@v15?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Foutfit%2Fv15%2FQGYvz_MVcBeNP4NJtEtq.woff2",
+      "supplier": {
+        "name": "Google Fonts",
+        "url": [
+          "https://fonts.google.com"
+        ]
+      },
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "1da75065bac5582eb357a34e82887838f2e7acfa53df36a7a6a32049aad18d26cbe15b12de3987803a3747677e0e222a964444f0bbca3163c686469729ec667b"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "OFL-1.1"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "pkg:generic/sora@v17?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fsora%2Fv17%2FxMQ9uFFYT72X5wkB_18qmnndmSdSnh2BAfO5mnuyOo1lfiQwV6-x.woff2",
+      "name": "Sora",
+      "version": "v17",
+      "purl": "pkg:generic/sora@v17?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fsora%2Fv17%2FxMQ9uFFYT72X5wkB_18qmnndmSdSnh2BAfO5mnuyOo1lfiQwV6-x.woff2",
+      "supplier": {
+        "name": "Google Fonts",
+        "url": [
+          "https://fonts.google.com"
+        ]
+      },
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "bf1f6890960e5fe79619d0a7757b95b9e422e3aa5634b1fcfe7b59f018234ec9aff01ae70d9b3593e1e5ddde78e716139c443e5ab0741a61c5d6b1637397412c"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "OFL-1.1"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://fonts.gstatic.com/s/sora/v17/xMQ9uFFYT72X5wkB_18qmnndmSdSnh2BAfO5mnuyOo1lfiQwV6-x.woff2"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/js-tokens@4.0.0",
+      "name": "js-tokens",
+      "version": "4.0.0",
+      "purl": "pkg:npm/js-tokens@4.0.0",
+      "supplier": {
+        "name": "Simon Lydell",
+        "url": [
+          "https://github.com/lydell/js-tokens"
+        ]
+      },
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "45d2547e5704ddc5332a232a420b02bb4e853eef5474824ed1b7986cf84737893a6a9809b627dca02b53f5b7313a9601b690f690233a49bce0e026aeb16fcf29"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/lydell/js-tokens"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/loose-envify@1.4.0",
+      "name": "loose-envify",
+      "version": "1.4.0",
+      "purl": "pkg:npm/loose-envify@1.4.0",
+      "supplier": {
+        "name": "Andres Suarez",
+        "url": [
+          "https://github.com/zertosh/loose-envify"
+        ]
+      },
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "972bb13c6aff59f86b95e9b608bfd472751cd7372a280226043cee918ed8e45ff242235d928ebe7d12debe5c351e03324b0edfeb5d54218e34f04b71452a0add"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/zertosh/loose-envify"
+        },
+        {
+          "type": "website",
+          "url": "https://github.com/zertosh/loose-envify"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/react-dom@18.3.1",
+      "name": "react-dom",
+      "version": "18.3.1",
+      "purl": "pkg:npm/react-dom@18.3.1",
+      "supplier": {
+        "name": "facebook",
+        "url": [
+          "https://github.com/facebook/react"
+        ]
+      },
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "e66e2740aa7ead945bd3d2cd1f9f463380714e1f76e75ff295b2886e97bb4e91b17c9fbd92fe812e42c15c88e3b296e06e720136a948db7b519d3593d2c9d423"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/facebook/react"
+        },
+        {
+          "type": "website",
+          "url": "https://reactjs.org/"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/react@18.3.1",
+      "name": "react",
+      "version": "18.3.1",
+      "purl": "pkg:npm/react@18.3.1",
+      "supplier": {
+        "name": "facebook",
+        "url": [
+          "https://github.com/facebook/react"
+        ]
+      },
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "c12fa1020252851d0a844bcf240adfb8f54dd7e1f3d6dd18ea7e632eb1906e46f8bab80f13fd11bdefb590c075bffa16807826e1621c57e8bb176a53563fb689"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/facebook/react"
+        },
+        {
+          "type": "website",
+          "url": "https://reactjs.org/"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/scheduler@0.23.2",
+      "name": "scheduler",
+      "version": "0.23.2",
+      "purl": "pkg:npm/scheduler@0.23.2",
+      "supplier": {
+        "name": "facebook",
+        "url": [
+          "https://github.com/facebook/react"
+        ]
+      },
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "50e4a1b0fc33ecdacc52a851eadd215a315dbaf3b36edbfbb680c7d7f848adf44d2030679c159dd02c094c6bd3a67815966c0609d3fdfd997fb55ac3a9cb98cd"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/facebook/react"
+        },
+        {
+          "type": "website",
+          "url": "https://reactjs.org/"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/three@0.169.0",
+      "name": "three",
+      "version": "0.169.0",
+      "purl": "pkg:npm/three@0.169.0",
+      "supplier": {
+        "name": "mrdoob",
+        "url": [
+          "https://github.com/mrdoob/three.js"
+        ]
+      },
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "11df74e8c037751e134b9ae212b778401b1118f731f870435f63b9c981391aa25e1504cf53e339e956bf7ff3a987d5fbb99a375b7a38976661059e9feaa52fd3"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/mrdoob/three.js"
+        },
+        {
+          "type": "website",
+          "url": "https://threejs.org/"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:generic/hanken-grotesk@v12?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fhankengrotesk%2Fv12%2FieVn2YZDLWuGJpnzaiwFXS9tYtpd59A.woff2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/ibm-plex-mono-400@v23?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fibmplexmono%2Fv23%2F-F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/ibm-plex-mono-500@v23?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fibmplexmono%2Fv23%2F-F6qfjptAgt5VM-kVkqdyU8n3twJwlBFgg.woff2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/ibm-plex-mono-600@v23?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fibmplexmono%2Fv23%2F-F6qfjptAgt5VM-kVkqdyU8n3vAOwlBFgg.woff2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/inter@v20?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Finter%2Fv20%2FUcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/outfit@v15?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Foutfit%2Fv15%2FQGYvz_MVcBeNP4NJtEtq.woff2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/sora@v17?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fsora%2Fv17%2FxMQ9uFFYT72X5wkB_18qmnndmSdSnh2BAfO5mnuyOo1lfiQwV6-x.woff2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/js-tokens@4.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/loose-envify@1.4.0",
+      "dependsOn": [
+        "pkg:npm/js-tokens@4.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/react-dom@18.3.1",
+      "dependsOn": [
+        "pkg:npm/loose-envify@1.4.0",
+        "pkg:npm/scheduler@0.23.2"
+      ]
+    },
+    {
+      "ref": "pkg:npm/react@18.3.1",
+      "dependsOn": [
+        "pkg:npm/loose-envify@1.4.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/scheduler@0.23.2",
+      "dependsOn": [
+        "pkg:npm/loose-envify@1.4.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/stepsafe-praxis@1.0.0",
+      "dependsOn": [
+        "pkg:generic/hanken-grotesk@v12?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fhankengrotesk%2Fv12%2FieVn2YZDLWuGJpnzaiwFXS9tYtpd59A.woff2",
+        "pkg:generic/ibm-plex-mono-400@v23?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fibmplexmono%2Fv23%2F-F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2",
+        "pkg:generic/ibm-plex-mono-500@v23?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fibmplexmono%2Fv23%2F-F6qfjptAgt5VM-kVkqdyU8n3twJwlBFgg.woff2",
+        "pkg:generic/ibm-plex-mono-600@v23?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fibmplexmono%2Fv23%2F-F6qfjptAgt5VM-kVkqdyU8n3vAOwlBFgg.woff2",
+        "pkg:generic/inter@v20?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Finter%2Fv20%2FUcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+        "pkg:generic/outfit@v15?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Foutfit%2Fv15%2FQGYvz_MVcBeNP4NJtEtq.woff2",
+        "pkg:generic/sora@v17?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fsora%2Fv17%2FxMQ9uFFYT72X5wkB_18qmnndmSdSnh2BAfO5mnuyOo1lfiQwV6-x.woff2",
+        "pkg:npm/react-dom@18.3.1",
+        "pkg:npm/react@18.3.1",
+        "pkg:npm/three@0.169.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/three@0.169.0",
+      "dependsOn": []
+    }
+  ]
+}

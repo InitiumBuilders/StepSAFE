@@ -1,0 +1,264 @@
+{
+ "net": "mainnet",
+ "read": "2026-11-14",
+ "dc": {
+  "identifier": "41jfTtvL4jV5WW7CxLv2Ftn7zjkESL1mxmokQSKwG7bw",
+  "name": null,
+  "owner": {
+   "identifier": "JAuf23Tx1XAwA4VRQMibnDA4Wf6rr5npbnaJYXbxiS7F",
+   "aliases": [
+    {
+     "alias": "quarteronquartergrowth2.dash",
+     "status": "ok",
+     "timestamp": "2026-02-22T01:01:56.424Z",
+     "documentId": "8m6Z4J9LjogLX4p4Vne1s2XUvArUbvYZhiyXZ8BmuvL4",
+     "contested": false
+    }
+   ]
+  },
+  "schema": "{}",
+  "version": 1,
+  "txHash": "A927231D41DCB0C9479B5C06C65E688DF9DF7628D3B538D07D3A88D8ECEA4087",
+  "timestamp": "2026-02-26T02:33:47.457Z",
+  "isSystem": false,
+  "documentsCount": 0,
+  "tokensCount": 1,
+  "identitiesInteracted": 0,
+  "totalGasUsed": 30140098060,
+  "averageGasUsed": 30140098060,
+  "groups": [],
+  "tokens": [
+   {
+    "identifier": "C8Yt59Mg7BGNUKRVWz5mxFxgkdNDuqVZ6y4f3sUwi3vz",
+    "position": 0,
+    "timestamp": null,
+    "description": "Lynx bucks are for the Lynx to do with as he pleases.",
+    "localizations": {
+     "en": {
+      "pluralForm": "lynxbucks",
+      "singularForm": "LynxBucks",
+      "shouldCapitalize": true
+     }
+    },
+    "baseSupply": "100000",
+    "totalSupply": "100000",
+    "maxSupply": null,
+    "owner": {
+     "identifier": "JAuf23Tx1XAwA4VRQMibnDA4Wf6rr5npbnaJYXbxiS7F",
+     "aliases": [
+      {
+       "alias": "quarteronquartergrowth2.dash",
+       "status": "ok",
+       "timestamp": "2026-02-22T01:01:56.424Z",
+       "documentId": "8m6Z4J9LjogLX4p4Vne1s2XUvArUbvYZhiyXZ8BmuvL4",
+       "contested": false
+      }
+     ]
+    },
+    "mintable": true,
+    "burnable": true,
+    "freezable": false,
+    "unfreezable": false,
+    "destroyable": false,
+    "allowedEmergencyActions": false,
+    "dataContractIdentifier": "41jfTtvL4jV5WW7CxLv2Ftn7zjkESL1mxmokQSKwG7bw",
+    "changeMaxSupply": false,
+    "totalGasUsed": null,
+    "mainGroup": null,
+    "totalTransitionsCount": null,
+    "totalFreezeTransitionsCount": null,
+    "totalBurnTransitionsCount": null,
+    "decimals": 2,
+    "perpetualDistribution": null,
+    "preProgrammedDistribution": null,
+    "price": null,
+    "prices": null
+   }
+  ],
+  "description": "Lynx bucks are for the Lynx to do with as he pleases.",
+  "keywords": [
+   "lynxbucks"
+  ]
+ },
+ "dec": {
+  "type": 0,
+  "typeString": "DATA_CONTRACT_CREATE",
+  "internalConfig": {
+   "canBeDeleted": false,
+   "readonly": false,
+   "keepsHistory": false,
+   "documentsKeepHistoryContractDefault": false,
+   "documentsMutableContractDefault": true,
+   "documentsCanBeDeletedContractDefault": false,
+   "requiresIdentityDecryptionBoundedKey": null,
+   "requiresIdentityEncryptionBoundedKey": null
+  },
+  "version": 1,
+  "userFeeIncrease": 0,
+  "identityNonce": "12",
+  "dataContractId": "41jfTtvL4jV5WW7CxLv2Ftn7zjkESL1mxmokQSKwG7bw",
+  "ownerId": "JAuf23Tx1XAwA4VRQMibnDA4Wf6rr5npbnaJYXbxiS7F",
+  "schema": {},
+  "tokens": [
+   {
+    "position": 0,
+    "tokenId": "C8Yt59Mg7BGNUKRVWz5mxFxgkdNDuqVZ6y4f3sUwi3vz",
+    "conventions": {
+     "decimals": 2,
+     "localizations": {
+      "en": {
+       "pluralForm": "lynxbucks",
+       "singularForm": "LynxBucks",
+       "shouldCapitalize": true
+      }
+     }
+    },
+    "conventionsChangeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "baseSupply": "100000",
+    "keepsHistory": {
+     "keepsTransferHistory": false,
+     "keepsFreezingHistory": false,
+     "keepsMintingHistory": false,
+     "keepsBurningHistory": false,
+     "keepsDirectPricingHistory": false,
+     "keepsDirectPurchaseHistory": false
+    },
+    "startAsPaused": false,
+    "isAllowedTransferToFrozenBalance": false,
+    "maxSupply": null,
+    "maxSupplyChangeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "distributionRules": {
+     "perpetualDistribution": null,
+     "preProgrammedDistribution": null,
+     "newTokenDestinationIdentity": null,
+     "mintingAllowChoosingDestination": true
+    },
+    "marketplaceRules": {
+     "tradeMode": "NotTradeable",
+     "tradeModeChangeRules": {
+      "authorizedToMakeChange": {
+       "takerType": "ContractOwner",
+       "taker": null
+      },
+      "adminActionTakers": {
+       "takerType": "ContractOwner",
+       "taker": null
+      },
+      "changingAuthorizedActionTakersToNoOneAllowed": false,
+      "changingAdminActionTakersToNoOneAllowed": false,
+      "selfChangingAdminActionTakersAllowed": false
+     }
+    },
+    "manualMintingRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "manualBurningRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "freezeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "unfreezeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "destroyFrozenFundsRules": {
+     "authorizedToMakeChange": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "emergencyActionRules": {
+     "authorizedToMakeChange": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "mainControlGroupCanBeModified": {
+     "takerType": "ContractOwner",
+     "taker": null
+    },
+    "mainControlGroup": null,
+    "description": "Lynx bucks are for the Lynx to do with as he pleases."
+   }
+  ],
+  "groups": []
+ }
+}

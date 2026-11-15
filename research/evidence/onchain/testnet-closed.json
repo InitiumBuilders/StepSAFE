@@ -1,0 +1,248 @@
+{
+ "net": "testnet",
+ "read": "2026-11-14",
+ "dc": {
+  "identifier": "3WdJVQfwnoaupZuFrWw5iFtEpUqYCYLYCB3dY9sz2Psy",
+  "name": null,
+  "owner": {
+   "identifier": "7jHH8N7xz3YEHeNpaS9H7CVzFFEB3CuRTbeNvjW4EXni",
+   "aliases": []
+  },
+  "schema": "{}",
+  "version": 1,
+  "txHash": "6C637C5EFBCA1A366DF6F35184C2BD108547BF1C7D99A16CB9B497898BC8DD54",
+  "timestamp": "2026-11-13T07:20:31.711Z",
+  "isSystem": false,
+  "documentsCount": 0,
+  "tokensCount": 1,
+  "identitiesInteracted": 0,
+  "totalGasUsed": 30109010740,
+  "averageGasUsed": 30109010740,
+  "groups": [],
+  "tokens": [
+   {
+    "identifier": "BgHDtyRD57o77u9S9A7SYbx2q8n5UHV96iAKm9zvAZ54",
+    "position": 0,
+    "timestamp": null,
+    "description": null,
+    "localizations": {
+     "en": {
+      "pluralForm": "StudioCredits",
+      "singularForm": "StudioCredit",
+      "shouldCapitalize": false
+     }
+    },
+    "baseSupply": "100000",
+    "totalSupply": "100000",
+    "maxSupply": "100000",
+    "owner": {
+     "identifier": "7jHH8N7xz3YEHeNpaS9H7CVzFFEB3CuRTbeNvjW4EXni",
+     "aliases": []
+    },
+    "mintable": false,
+    "burnable": false,
+    "freezable": false,
+    "unfreezable": false,
+    "destroyable": false,
+    "allowedEmergencyActions": false,
+    "dataContractIdentifier": "3WdJVQfwnoaupZuFrWw5iFtEpUqYCYLYCB3dY9sz2Psy",
+    "changeMaxSupply": false,
+    "totalGasUsed": null,
+    "mainGroup": null,
+    "totalTransitionsCount": null,
+    "totalFreezeTransitionsCount": null,
+    "totalBurnTransitionsCount": null,
+    "decimals": 2,
+    "perpetualDistribution": null,
+    "preProgrammedDistribution": null,
+    "price": null,
+    "prices": null
+   }
+  ],
+  "description": null,
+  "keywords": [
+   "studiocredit"
+  ]
+ },
+ "dec": {
+  "type": 0,
+  "typeString": "DATA_CONTRACT_CREATE",
+  "internalConfig": {
+   "canBeDeleted": false,
+   "readonly": false,
+   "keepsHistory": false,
+   "documentsKeepHistoryContractDefault": false,
+   "documentsMutableContractDefault": true,
+   "documentsCanBeDeletedContractDefault": true,
+   "requiresIdentityDecryptionBoundedKey": null,
+   "requiresIdentityEncryptionBoundedKey": null
+  },
+  "version": 1,
+  "userFeeIncrease": 0,
+  "identityNonce": "3",
+  "dataContractId": "3WdJVQfwnoaupZuFrWw5iFtEpUqYCYLYCB3dY9sz2Psy",
+  "ownerId": "7jHH8N7xz3YEHeNpaS9H7CVzFFEB3CuRTbeNvjW4EXni",
+  "schema": {},
+  "tokens": [
+   {
+    "position": 0,
+    "tokenId": "BgHDtyRD57o77u9S9A7SYbx2q8n5UHV96iAKm9zvAZ54",
+    "conventions": {
+     "decimals": 2,
+     "localizations": {
+      "en": {
+       "pluralForm": "StudioCredits",
+       "singularForm": "StudioCredit",
+       "shouldCapitalize": false
+      }
+     }
+    },
+    "conventionsChangeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "baseSupply": "100000",
+    "keepsHistory": {
+     "keepsTransferHistory": true,
+     "keepsFreezingHistory": true,
+     "keepsMintingHistory": true,
+     "keepsBurningHistory": true,
+     "keepsDirectPricingHistory": true,
+     "keepsDirectPurchaseHistory": true
+    },
+    "startAsPaused": false,
+    "isAllowedTransferToFrozenBalance": false,
+    "maxSupply": "100000",
+    "maxSupplyChangeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "distributionRules": {
+     "perpetualDistribution": null,
+     "preProgrammedDistribution": null,
+     "newTokenDestinationIdentity": "7jHH8N7xz3YEHeNpaS9H7CVzFFEB3CuRTbeNvjW4EXni",
+     "mintingAllowChoosingDestination": false
+    },
+    "marketplaceRules": {
+     "tradeMode": "NotTradeable",
+     "tradeModeChangeRules": {
+      "authorizedToMakeChange": {
+       "takerType": "NoOne",
+       "taker": null
+      },
+      "adminActionTakers": {
+       "takerType": "NoOne",
+       "taker": null
+      },
+      "changingAuthorizedActionTakersToNoOneAllowed": false,
+      "changingAdminActionTakersToNoOneAllowed": false,
+      "selfChangingAdminActionTakersAllowed": false
+     }
+    },
+    "manualMintingRules": {
+     "authorizedToMakeChange": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "manualBurningRules": {
+     "authorizedToMakeChange": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "freezeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "unfreezeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "destroyFrozenFundsRules": {
+     "authorizedToMakeChange": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "emergencyActionRules": {
+     "authorizedToMakeChange": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "NoOne",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "mainControlGroupCanBeModified": {
+     "takerType": "NoOne",
+     "taker": null
+    },
+    "mainControlGroup": null,
+    "description": null
+   }
+  ],
+  "groups": []
+ }
+}

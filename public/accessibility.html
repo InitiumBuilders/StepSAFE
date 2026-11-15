@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Accessibility · StepSAFE</title>
+<meta name="description" content="The accessibility standard StepSAFE aims for, what is checked before every release, and what is not done yet." />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0b1030; color: #f4f2ff; font: 18px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 44rem; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+  h1 { font-size: 2.1rem; line-height: 1.2; margin: 0 0 1rem; }
+  h2 { font-size: 1.25rem; margin: 2.25rem 0 0.5rem; color: #d9d2ff; }
+  p, li { color: #e4e0f7; }
+  ul { padding-left: 1.25rem; }
+  li { margin: 0.45rem 0; }
+  a { color: #b9a6ff; text-underline-offset: 3px; }
+  a:focus-visible { outline: 3px solid #b9a6ff; outline-offset: 3px; border-radius: 4px; }
+  .foot { margin-top: 3rem; font-size: 0.95rem; color: #c9c3e6; }
+  .foot a { display: inline-block; padding: 0.6rem 0; margin-right: 1rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>Accessibility</h1>
+<p>StepSAFE aims to meet WCAG 2.2 at level AA. Section 508, the US federal accessibility standard, adopts WCAG 2.0 at level AA, and 2.2 builds on it.</p>
+
+<h2>What Is Checked Before Every Release</h2>
+<ul>
+  <li>All 767 places in the app fit a phone screen's width, in each of the three themes.</li>
+  <li>On every page at phone width, text is 12 pixels or larger and every line shows in full.</li>
+  <li>Controls you tap are at least 44 pixels across. Sixteen are smaller today, the day columns of one chart and one node on the chapters map, and the check refuses any new one.</li>
+  <li>Text contrast is at least 4.5 to 1 on the glossary and the search, in all three themes.</li>
+  <li>The Back button and the tab bar work along the main paths.</li>
+  <li>The glossary and the token page work in WebKit, Safari's engine, at iPhone size.</li>
+</ul>
+<p>The app follows your device's setting for reduced motion, and Settings has a Calm mode that stills its animations. Settings can also turn off the shortcuts made of one key, for people who use speech input.</p>
+
+<h2>What Is Not Done Yet</h2>
+<ul>
+  <li>A full review with screen readers.</li>
+  <li>A contrast check on every page beyond the glossary and the search.</li>
+  <li>An outside audit.</li>
+</ul>
+
+<h2>Report A Barrier</h2>
+<p>If something in StepSAFE stops you, write to <a href="mailto:August@Outlier.Systems">August@Outlier.Systems</a>. Tell us the page and what happened, and we will reply within three business days.</p>
+
+<p class="foot"><a href="/security.html">Report a security problem</a> <a href="/privacy.html">Privacy</a> <a href="/">Back to StepSAFE</a></p>
+</main>
+</body>
+</html>

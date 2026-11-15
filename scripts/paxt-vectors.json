@@ -1,0 +1,28 @@
+{
+  "note": "Made by test.mjs. Any implementation of PAXT 1 must give these answers.",
+  "doc": "paxt1\nid: dash-keys-apart\ntitle: Keys Apart\nkind: paxt\nvoice: voting\nopens: 2026-12-01\ncloses: 2027-01-15\nthreshold: 111\n---\nDASH PAXT: KEYS APART\n\nWho this is for\nOwners of Dash masternodes and evonodes.\n\nWhat partners agree to\n1. Each masternode has a voting key that is not its owner key.\n2. The owner key stays offline. It is used only to change the registration.\n3. Rewards are paid to an address that is not the collateral address.\n4. Partners share what they learn. A failure or a fix seen on one's own nodes is written up for the others, with no one named.\n\nHow it is shown\nArticles 1 and 3 are public. Anyone can read them from the masternode list (Dash Core: masternodelist json).\nArticle 2 cannot be read from the chain. A partner's word stands for it.\n\nHow partners decide\nA change to this text is a new document with a new hash, and partners join it with a new signed line.\nA poll among partners uses an id of the form dash-keys-apart/<name>.\n\nWhen it holds\nIt comes into force when keys carrying 111 votes have joined by the closing date.\nBelow that it lapses and asks nothing of anyone.\n\nLeaving\nA partner can leave at any time by signing the leave line.\n\nWhat this text is\nIt describes a practice. It is not advice for any one setup and it promises no outcome.\n",
+  "digest": "4a1a92da01d880fdae75d623c17f3f5a4cde4d92cf1306a78a3dc67bf90b61b6",
+  "short": "4a1a92da01d880fdae75d623c17f3f5a",
+  "join": "paxt1 dash-keys-apart join 4a1a92da01d880fdae75d623c17f3f5a",
+  "leave": "paxt1 dash-keys-apart leave 4a1a92da01d880fdae75d623c17f3f5a",
+  "poll": "paxt1\nid: dash-keys-apart/rotate-yearly\ntitle: Rotate Voting Keys Each Year\nkind: poll\nvoice: voting\nopens: 2027-02-01\ncloses: 2027-02-15T18:00Z\noptions: yes, no, abstain\nrule: net 10\nelectorate: partners\n---\nPartners rotate their voting key once a year.\n",
+  "pollDigest": "ef6b7d142e078d908420457431c96acca31be52337677472fbc93e3245dd6c9c",
+  "election": "paxt1\nid: dash-trust-protectors-2027\ntitle: Dash Trust Protectors 2027\nkind: election\nvoice: collateral\nopens: 2027-03-01\ncloses: 2027-03-31\noptions: ana, ben, chi, dev, eli, fay, gus, hal\nseats: 6\npick: 6\n---\nSix protectors for the Dash DAO Irrevocable Trust, by approval vote. A ballot names up to six.\n",
+  "electionDigest": "cbc4f932a4eb48ca96e939af61f3f31ad60a545517f3b62aebff3447e6b98770",
+  "lines": {
+    "good": [
+      "paxt1 dash-keys-apart join 4a1a92da01d880fdae75d623c17f3f5a",
+      "paxt1 dash-keys-apart join 4a1a92da01d880fdae75d623c17f3f5a #2",
+      "paxt1 dash-keys-apart/rotate-yearly yes ef6b7d142e078d908420457431c96acc",
+      "paxt1 dash-trust-protectors-2027 ana+chi+hal cbc4f932a4eb48ca96e939af61f3f31a"
+    ],
+    "bad": [
+      "paxt1 x/y b+a 4a1a92da01d880fdae75d623c17f3f5a",
+      "paxt1 dash-keys-apart join 4a1a92da01d880fdae75d623c17f3f5a ",
+      "PAXT1 DASH-KEYS-APART JOIN 4A1A92DA01D880FDAE75D623C17F3F5A",
+      "paxt1 dash-keys-apart join",
+      "paxt1 dash-keys-apart join 4a1a92da01d880fdae75d623c17f3f5a #0",
+      "paxt1 dash-keys-apart join 4a1a92da01d880fdae75d623c17f3f5a #1000"
+    ]
+  }
+}

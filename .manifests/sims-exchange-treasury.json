@@ -1,0 +1,157 @@
+[
+ {
+  "id": "sim-halcyon-cold-vault-deception",
+  "title": "The Signature Was Valid",
+  "org": "Halcyon Digital Markets Ltd.",
+  "roles": [
+   "u-vault",
+   "u-ledger",
+   "u-lantern",
+   "u-anchor",
+   "u-signal",
+   "u-compass"
+  ],
+  "decisions": [
+   {
+    "id": "hal-d01",
+    "prompt": "Your first instruction to the incident bridge. Choose the action that reduces the blast radius of the NEXT event, not the one that feels like a response to this one.",
+    "scene": "Six minutes in. The money is already gone and cannot come back. Everything you do from here is about the next transaction, not the last one. Four humans are asking you what to type."
+   },
+   {
+    "id": "hal-d02",
+    "prompt": "Devi has one team. Choose how you spend the forensic window.",
+    "scene": "Eighteen minutes in. The team wants to get back to operational. Your forensic window is open and closing — volatile memory, browser state, and any staged payload on disk are all decaying in real time."
+   },
+   {
+    "id": "hal-d03",
+    "prompt": "Withdrawals. What is your recommendation, and how do you frame it?",
+    "scene": "Thirty-four minutes. Hot wallets are on a completely separate key hierarchy from HAL-COLD-01 and there is no current evidence they are affected. There is also no evidence they are not — you have not finished looking, and you just isolated the machines that would tell you."
+   },
+   {
+    "id": "hal-d04",
+    "prompt": "How do you handle the accusation against Marcus Oyelaran?",
+    "scene": "An hour in. A COO under enormous pressure has assembled a coherent-sounding case against a named employee out of three unremarkable facts. You have one piece of contradicting evidence — Devi's preliminary memory triage on Marcus's machine came back clean forty minutes ago — and it is preliminary."
+   },
+   {
+    "id": "hal-d05",
+    "prompt": "What do you and the CEO put on the record about solvency?",
+    "scene": "One hour forty. The loss is 1.44 billion against roughly 9.8 billion of customer assets and a corporate reserve of 610 million plus an undrawn 900 million facility from two market makers that has not been drawn and is not contractually certain. You are solvent. Proving it in forty minutes is another"
+   },
+   {
+    "id": "hal-d06",
+    "prompt": "Rafael wants to migrate the remaining treasury tonight. What do you say?",
+    "scene": "Two hours twenty. The CTO's plan is competent, energetic, and would move every remaining asset using an unknown-integrity toolchain, on machines you have not cleared, through an interface you have not exonerated, under time pressure created by a market open that does not actually matter."
+   },
+   {
+    "id": "hal-d07",
+    "prompt": "You have evidence the vendor's delivered code was tampered with. What do you do with it?",
+    "scene": "Three and a half hours. You now hold cached evidence that contradicts a vendor's public position. Two hundred other institutions use that vendor's interface today, right now, with the same conditional possibly still live for other addresses."
+   },
+   {
+    "id": "hal-d08",
+    "prompt": "What do you tell the Risk Committee is the control that would have prevented this?",
+    "scene": "Eight hours in, and the most useful person in the company has just asked the only question that matters. Your answer will set the security budget and the security mandate for the next three years."
+   }
+  ]
+ },
+ {
+  "id": "sim-verity-governance-capture",
+  "title": "Forty-Eight Hours of Timelock",
+  "org": "Verity Reserve DAO / Verity Protocol",
+  "roles": [
+   "u-ledger",
+   "u-cartographer",
+   "u-signal",
+   "u-compass",
+   "u-oracle",
+   "u-anchor"
+  ],
+  "decisions": [
+   {
+    "id": "ver-d01",
+    "prompt": "Your first move on VIP-47.",
+    "scene": "Forty minutes in. You have a suspicious ninth call, no analysis, and a public forum where a proposal is gathering genuine enthusiasm from people you respect. Everything you say is visible to the proposer."
+   },
+   {
+    "id": "ver-d02",
+    "prompt": "How do you handle the Ninth Circle post?",
+    "scene": "A respected external auditor has publicly cleared a payload you can prove is malicious. They are not lying — they decoded the calldata and it is well-formed. They did not fetch and analyse the bytecode at the delegatecall target, which is the only place the attack lives."
+   },
+   {
+    "id": "ver-d03",
+    "prompt": "The attacker holds a supermajority and a no-delay execution path. What do you do?",
+    "scene": "Four hours. The timelock you were planning around does not apply. The Security Council can cancel a queued proposal but executeEmergency does not queue. The pause guardian can freeze the protocol, which stops the collateral module but also stops liquidations. And the DAO owns everything, including t"
+   },
+   {
+    "id": "ver-d04",
+    "prompt": "How does the DAO characterise what just happened?",
+    "scene": "Five hours in, the attack path is closed and the second-order problem has arrived. You have proven the protocol is controllable, which is exactly what its regulatory and cultural position depends on denying."
+   },
+   {
+    "id": "ver-d05",
+    "prompt": "How do you ship the governance fix?",
+    "scene": "Seven hours. The protocol is paused and safe but frozen, users are unable to manage positions, and every hour of pause has a cost. There is enormous pressure to fix the governance defect fast — and the fix is itself a governance change that has to go through governance."
+   },
+   {
+    "id": "ver-d06",
+    "prompt": "How do you address the false claim that the team knew about the votingDelay defect for eleven months?",
+    "scene": "Eleven hours. The technical situation is stable. The narrative situation is not, and a false claim about an eleven-month-old commit is doing more damage than the attack did."
+   },
+   {
+    "id": "ver-d07",
+    "prompt": "The DAO is deciding the future of the guardian role and the Security Council. What do you propose?",
+    "scene": "Nine days later, the same attacker runs the same play against the patched system and it does nothing at all. The DAO is now voting on the permanent shape of its emergency powers, and you have one post to write."
+   }
+  ]
+ },
+ {
+  "id": "sim-bellwether-insider-extortion",
+  "title": "Bought, Not Breached",
+  "org": "Bellwether Digital, Inc. (Nasdaq: BWDX)",
+  "roles": [
+   "u-keeper",
+   "u-lantern",
+   "u-compass",
+   "u-signal",
+   "u-anchor",
+   "u-oracle"
+  ],
+  "decisions": [
+   {
+    "id": "bwd-d01",
+    "prompt": "Your first instruction. Choose for evidentiary value and for not tipping the source.",
+    "scene": "Eighteen minutes. You have a sample that may be a bluff, a scrape of a third-party breach, or exactly what it claims to be. Every action you take from here is either evidence or noise, and if the source is a live insider, they can see some of what you do."
+   },
+   {
+    "id": "bwd-d02",
+    "prompt": "Access. What do you cut, and when?",
+    "scene": "Two hours fifteen. You have 34 anomalous agents out of 1,840, five months of history, and no way yet to distinguish a criminal from a diligent agent who works complex cases. Every hour of delay is more records taken. Every hour of over-revocation is real customers unable to stop real fraud."
+   },
+   {
+    "id": "bwd-d03",
+    "prompt": "How do you handle the scope number internally and externally right now?",
+    "scene": "Eight hours. The extortion clock says 96 hours. The GC needs a materiality position. Communications wants a number for the holding statement. You have a floor, a warning attached to it, and an executive team that badly wants the number to be small."
+   },
+   {
+    "id": "bwd-d04",
+    "prompt": "Rule on the two sentences: no customer funds were taken, and naming the BPO vendor.",
+    "scene": "Just under a day. The reporter's Thursday deadline has collapsed your disclosure timeline. Two specific sentences are being drafted and both are tempting and both are traps."
+   },
+   {
+    "id": "bwd-d05",
+    "prompt": "Your recommendation on the extortion demand, on the record to the Audit Committee.",
+    "scene": "Two days. Nineteen customers have lost 2.1 million dollars. The extortion deadline is 48 hours away. A board member has asked you three questions in front of the committee and the third one is the one everyone is waiting on."
+   },
+   {
+    "id": "bwd-d06",
+    "prompt": "What is the structural remediation you take to the board?",
+    "scene": "Eleven days. You know the count, the mechanism, the price, and the people. The board wants the structural fix and the audit committee chair's first question — why could one agent see an unmasked government ID — is still unanswered."
+   },
+   {
+    "id": "bwd-d07",
+    "prompt": "How do you draft the response to the NYDFS question?",
+    "scene": "Twenty-three days. A regulator has asked, in writing, the one question with no defensible answer. What you write becomes a permanent part of the supervisory record."
+   }
+  ]
+ }
+]

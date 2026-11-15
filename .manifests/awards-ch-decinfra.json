@@ -1,0 +1,391 @@
+{
+ "chId": "ch-decinfra",
+ "chTitle": "THE PERMANENT RECORD",
+ "missingAwards": [
+  {
+   "id": "four-properties-named",
+   "step": "Four Properties Wearing One Word",
+   "kind": "construct",
+   "statement": "Durable, available, intact and permanent are four different promises, and vendors sell you the cheapest one using the vocabulary of the most expensive.",
+   "respect": 70
+  },
+  {
+   "id": "read-the-substrate",
+   "step": "How Arweave Actually Pays For Forever",
+   "kind": "lesson",
+   "statement": "Permanence on Arweave is not a promise from an operator, it is a standing bribe to strangers to keep holding data they cannot read, and you should understand the bribe before you trust it.",
+   "respect": 150
+  },
+  {
+   "id": "one-way-door-guardian",
+   "step": "Drill: The Migration That Cannot Be Rolled Back",
+   "kind": "drill",
+   "statement": "The moment to exercise judgement about a permanent write is the moment before it, because afterwards judgement has nothing to act on.",
+   "respect": 165
+  },
+  {
+   "id": "pre-write-discipline",
+   "step": "Drill: The Migration That Cannot Be Rolled Back",
+   "kind": "drill",
+   "statement": "The moment to exercise judgement about a permanent write is the moment before it, because afterwards judgement has nothing to act on.",
+   "respect": 165
+  },
+  {
+   "id": "prevention-only-mindset",
+   "step": "The Irreversibility Threat Model",
+   "kind": "lesson",
+   "statement": "When remediation is impossible, prevention is not the best control, it is the only control, and your entire risk budget must move upstream of the write.",
+   "respect": 155
+  },
+  {
+   "id": "gate-builder",
+   "step": "Lab: Build the Pre-Write Gate",
+   "kind": "lab",
+   "statement": "A policy that lives in a document is advice, a policy that fails the build is a control.",
+   "respect": 175
+  },
+  {
+   "id": "fails-closed",
+   "step": "Lab: Build the Pre-Write Gate",
+   "kind": "lab",
+   "statement": "A policy that lives in a document is advice, a policy that fails the build is a control.",
+   "respect": 175
+  },
+  {
+   "id": "room-reframer",
+   "step": "Council: The Board Heard Immutable And Understood Secure",
+   "kind": "council",
+   "statement": "Your job in that room is not to explain the technology, it is to relocate one word in the directors mental model from the asset column to the liability column without sounding like you are against the strategy.",
+   "respect": 140
+  },
+  {
+   "id": "control-not-objection",
+   "step": "Council: The Board Heard Immutable And Understood Secure",
+   "kind": "council",
+   "statement": "Your job in that room is not to explain the technology, it is to relocate one word in the directors mental model from the asset column to the liability column without sounding like you are against the strategy.",
+   "respect": 140
+  },
+  {
+   "id": "cid-literacy",
+   "step": "A CID Is A Name, Not A Promise",
+   "kind": "construct",
+   "statement": "Content addressing gives you integrity for free and gives you availability not at all, and almost every architecture mistake in this domain comes from conflating the two.",
+   "respect": 85
+  },
+  {
+   "id": "dht-realist",
+   "step": "The Distributed Hash Table Knows What You Want",
+   "kind": "lesson",
+   "statement": "Every lookup you make in a public DHT is a signed confession of interest broadcast to strangers, and the strangers are cheap to become.",
+   "respect": 160
+  },
+  {
+   "id": "leak-mapper",
+   "step": "The Distributed Hash Table Knows What You Want",
+   "kind": "lesson",
+   "statement": "Every lookup you make in a public DHT is a signed confession of interest broadcast to strangers, and the strangers are cheap to become.",
+   "respect": 160
+  },
+  {
+   "id": "node-operator",
+   "step": "Lab: Run Kubo Like An Operator, Not Like A Demo",
+   "kind": "lab",
+   "statement": "A default IPFS node advertises what you hold, dials whoever asks, and lets the DHT decide whether your data is reachable, and none of those three defaults belong in production.",
+   "respect": 150
+  },
+  {
+   "id": "outside-in-verifier",
+   "step": "Lab: Run Kubo Like An Operator, Not Like A Demo",
+   "kind": "lab",
+   "statement": "A default IPFS node advertises what you hold, dials whoever asks, and lets the DHT decide whether your data is reachable, and none of those three defaults belong in production.",
+   "respect": 150
+  },
+  {
+   "id": "gateway-incident-lead",
+   "step": "Drill: The Link In The Customer Email",
+   "kind": "drill",
+   "statement": "A public gateway lends its domain reputation and its valid certificate to whatever content is asked for, which makes it the cleanest phishing infrastructure an adversary can get for free.",
+   "respect": 170
+  },
+  {
+   "id": "narrow-control",
+   "step": "Drill: The Link In The Customer Email",
+   "kind": "drill",
+   "statement": "A public gateway lends its domain reputation and its valid certificate to whatever content is asked for, which makes it the cleanest phishing infrastructure an adversary can get for free.",
+   "respect": 170
+  },
+  {
+   "id": "proof-literate",
+   "step": "What PoRep And PoSt Actually Prove",
+   "kind": "lesson",
+   "statement": "Filecoin proofs attest that a provider held a unique encoding of specific bytes at specific moments, and they attest nothing at all about whether you can get those bytes back.",
+   "respect": 165
+  },
+  {
+   "id": "restore-test-discipline",
+   "step": "What PoRep And PoSt Actually Prove",
+   "kind": "lesson",
+   "statement": "Filecoin proofs attest that a provider held a unique encoding of specific bytes at specific moments, and they attest nothing at all about whether you can get those bytes back.",
+   "respect": 165
+  },
+  {
+   "id": "provenance-keeper",
+   "step": "Field: Build A CID Provenance Register",
+   "kind": "field",
+   "statement": "A hash without a signed, dated, human-owned assertion about what it is and why it was published is an orphan, and orphans are how supply-chain substitution succeeds.",
+   "respect": 195
+  },
+  {
+   "id": "orphan-hunter",
+   "step": "Field: Build A CID Provenance Register",
+   "kind": "field",
+   "statement": "A hash without a signed, dated, human-owned assertion about what it is and why it was published is an orphan, and orphans are how supply-chain substitution succeeds.",
+   "respect": 195
+  },
+  {
+   "id": "two-sided-thinker",
+   "step": "The Two-Sided Trust Problem",
+   "kind": "construct",
+   "statement": "In decentralized compute neither party can verify the other, and every real design is a choice about which party absorbs the residual risk.",
+   "respect": 80
+  },
+  {
+   "id": "isolation-economist",
+   "step": "Isolation Tiers, Honestly Priced",
+   "kind": "lesson",
+   "statement": "Every isolation technology is a bet about which layer the attacker will find a bug in, and you should be able to say out loud which bet you are making.",
+   "respect": 170
+  },
+  {
+   "id": "egress-first",
+   "step": "Isolation Tiers, Honestly Priced",
+   "kind": "lesson",
+   "statement": "Every isolation technology is a bet about which layer the attacker will find a bug in, and you should be able to say out loud which bet you are making.",
+   "respect": 170
+  },
+  {
+   "id": "provider-hardener",
+   "step": "Lab: Harden A Compute Provider Node",
+   "kind": "lab",
+   "statement": "The provider host must be built as if the workload is already root inside it, because sooner or later the workload will be.",
+   "respect": 200
+  },
+  {
+   "id": "metadata-blocker",
+   "step": "Lab: Harden A Compute Provider Node",
+   "kind": "lab",
+   "statement": "The provider host must be built as if the workload is already root inside it, because sooner or later the workload will be.",
+   "respect": 200
+  },
+  {
+   "id": "price-signal-reader",
+   "step": "Drill: The Job That Pays Too Well",
+   "kind": "drill",
+   "statement": "In an open compute market, an unusually generous offer is not luck, it is a bid for something you did not intend to sell.",
+   "respect": 175
+  },
+  {
+   "id": "policy-holder",
+   "step": "Drill: The Job That Pays Too Well",
+   "kind": "drill",
+   "statement": "In an open compute market, an unusually generous offer is not luck, it is a bid for something you did not intend to sell.",
+   "respect": 175
+  },
+  {
+   "id": "verification-realist",
+   "step": "Verifiable Computation And Its Three Honest Limits",
+   "kind": "lesson",
+   "statement": "You can verify that a computation was performed correctly in three ways — by repetition, by hardware attestation, or by proof — and each one moves the trust somewhere else rather than removing it.",
+   "respect": 180
+  },
+  {
+   "id": "asymmetry-exploiter",
+   "step": "Verifiable Computation And Its Three Honest Limits",
+   "kind": "lesson",
+   "statement": "You can verify that a computation was performed correctly in three ways — by repetition, by hardware attestation, or by proof — and each one moves the trust somewhere else rather than removing it.",
+   "respect": 180
+  },
+  {
+   "id": "broke-my-own-box",
+   "step": "Field: Stand Up A Sandbox And Then Break It",
+   "kind": "field",
+   "statement": "A sandbox you have not personally attacked is a claim, and claims do not survive contact with a paying adversary.",
+   "respect": 205
+  },
+  {
+   "id": "drift-checker",
+   "step": "Field: Stand Up A Sandbox And Then Break It",
+   "kind": "field",
+   "statement": "A sandbox you have not personally attacked is a claim, and claims do not survive contact with a paying adversary.",
+   "respect": 205
+  },
+  {
+   "id": "shredding-precondition",
+   "step": "Deletion Is A Key Management Problem",
+   "kind": "construct",
+   "statement": "Once data leaves a medium you physically control, the only deletion primitive you still own is the destruction of the key that makes it readable.",
+   "respect": 90
+  },
+  {
+   "id": "regulation-literate",
+   "step": "The Regulator Has Already Written It Down",
+   "kind": "lesson",
+   "statement": "The collision between erasure rights and immutable ledgers has an official answer, and the answer is that technical impossibility is not a defence.",
+   "respect": 165
+  },
+  {
+   "id": "hash-trap-avoider",
+   "step": "The Regulator Has Already Written It Down",
+   "kind": "lesson",
+   "statement": "The collision between erasure rights and immutable ledgers has an official answer, and the answer is that technical impossibility is not a defence.",
+   "respect": 165
+  },
+  {
+   "id": "shred-engineer",
+   "step": "Lab: An Envelope Scheme You Can Actually Shred",
+   "kind": "lab",
+   "statement": "A key hierarchy that cannot destroy one subject without destroying every subject will never be used, and an unused control is not a control.",
+   "respect": 195
+  },
+  {
+   "id": "enumerated-every-copy",
+   "step": "Lab: An Envelope Scheme You Can Actually Shred",
+   "kind": "lab",
+   "statement": "A key hierarchy that cannot destroy one subject without destroying every subject will never be used, and an unused control is not a control.",
+   "respect": 195
+  },
+  {
+   "id": "honest-under-pressure",
+   "step": "Drill: The Erasure Request That Lands On Permanent Storage",
+   "kind": "drill",
+   "statement": "The answer to a data subject is not a technical explanation, it is a commitment about what you will do and by when, and it must be true.",
+   "respect": 180
+  },
+  {
+   "id": "leverage-the-forcing-event",
+   "step": "Drill: The Erasure Request That Lands On Permanent Storage",
+   "kind": "drill",
+   "statement": "The answer to a data subject is not a technical explanation, it is a commitment about what you will do and by when, and it must be true.",
+   "respect": 180
+  },
+  {
+   "id": "honest-broker",
+   "step": "Council: The DPIA Conversation With Legal",
+   "kind": "council",
+   "statement": "A data protection impact assessment written by legal alone is a description, and one written by engineering alone is a defence, and only the two written together are a decision.",
+   "respect": 155
+  },
+  {
+   "id": "risk-owner-named",
+   "step": "Council: The DPIA Conversation With Legal",
+   "kind": "council",
+   "statement": "A data protection impact assessment written by legal alone is a description, and one written by engineering alone is a defence, and only the two written together are a decision.",
+   "respect": 155
+  },
+  {
+   "id": "availability-cartographer",
+   "step": "Tombstones, Denylists And Who Actually Controls Availability",
+   "kind": "lesson",
+   "statement": "Every removal mechanism in a decentralized system is really a request to an intermediary, which means availability is controlled by whoever operates the layer people actually use.",
+   "respect": 150
+  },
+  {
+   "id": "pointer-key-custodian",
+   "step": "Tombstones, Denylists And Who Actually Controls Availability",
+   "kind": "lesson",
+   "statement": "Every removal mechanism in a decentralized system is really a request to an intermediary, which means availability is controlled by whoever operates the layer people actually use.",
+   "respect": 150
+  },
+  {
+   "id": "eclipse-aware",
+   "step": "Eclipse And Sybil, With The Real Numbers",
+   "kind": "lesson",
+   "statement": "You do not need to defeat a network to defeat a participant, and the published cost of isolating one node is well within the reach of an ordinary criminal budget.",
+   "respect": 190
+  },
+  {
+   "id": "diversity-enforcer",
+   "step": "Eclipse And Sybil, With The Real Numbers",
+   "kind": "lesson",
+   "statement": "You do not need to defeat a network to defeat a participant, and the published cost of isolating one node is well within the reach of an ordinary criminal budget.",
+   "respect": 190
+  },
+  {
+   "id": "incentive-modeler",
+   "step": "Incentive Attacks: When The Adversary Is Rational Rather Than Technical",
+   "kind": "lesson",
+   "statement": "In a system held together by incentives, the most dangerous attacker does not break anything — they follow the rules to an outcome the designers did not want.",
+   "respect": 185
+  },
+  {
+   "id": "priced-the-attack",
+   "step": "Incentive Attacks: When The Adversary Is Rational Rather Than Technical",
+   "kind": "lesson",
+   "statement": "In a system held together by incentives, the most dangerous attacker does not break anything — they follow the rules to an outcome the designers did not want.",
+   "respect": 185
+  },
+  {
+   "id": "reanchor-reflex",
+   "step": "Drill: The Fleet That Looks Healthy And Is Not",
+   "kind": "drill",
+   "statement": "Every dashboard is green during a successful eclipse, because the attacker controls the data your dashboard is made of.",
+   "respect": 195
+  },
+  {
+   "id": "soft-signal-respecter",
+   "step": "Drill: The Fleet That Looks Healthy And Is Not",
+   "kind": "drill",
+   "statement": "Every dashboard is green during a successful eclipse, because the attacker controls the data your dashboard is made of.",
+   "respect": 195
+  },
+  {
+   "id": "comparative-monitor",
+   "step": "Lab: Instrument A Fleet For Isolation And Divergence",
+   "kind": "lab",
+   "statement": "Build the three metrics that a healthy node cannot fake, then alert on the comparison rather than on the node.",
+   "respect": 190
+  },
+  {
+   "id": "induced-the-alert",
+   "step": "Lab: Instrument A Fleet For Isolation And Divergence",
+   "kind": "lab",
+   "statement": "Build the three metrics that a healthy node cannot fake, then alert on the comparison rather than on the node.",
+   "respect": 190
+  },
+  {
+   "id": "doctrine-author",
+   "step": "Field: Write The Hybrid Architecture Doctrine",
+   "kind": "field",
+   "statement": "The seam between a regulated organisation and an unowned substrate is where every control must be re-derived, and the document that names the seam is the most valuable thing you will write in this domain.",
+   "respect": 220
+  },
+  {
+   "id": "seam-cartographer",
+   "step": "Field: Write The Hybrid Architecture Doctrine",
+   "kind": "field",
+   "statement": "The seam between a regulated organisation and an unowned substrate is where every control must be re-derived, and the document that names the seam is the most valuable thing you will write in this domain.",
+   "respect": 220
+  },
+  {
+   "id": "wrote-the-prohibitions",
+   "step": "Field: Write The Hybrid Architecture Doctrine",
+   "kind": "field",
+   "statement": "The seam between a regulated organisation and an unowned substrate is where every control must be re-derived, and the document that names the seam is the most valuable thing you will write in this domain.",
+   "respect": 220
+  },
+  {
+   "id": "named-the-trade",
+   "step": "The Availability And Censorship Frame",
+   "kind": "construct",
+   "statement": "Censorship resistance and takedown capability are the same mechanism viewed from two sides, and any position that wants one without the other is incoherent.",
+   "respect": 110
+  },
+  {
+   "id": "chapter-decinfra-complete",
+   "step": "The Availability And Censorship Frame",
+   "kind": "construct",
+   "statement": "Censorship resistance and takedown capability are the same mechanism viewed from two sides, and any position that wants one without the other is incoherent.",
+   "respect": 110
+  }
+ ]
+}

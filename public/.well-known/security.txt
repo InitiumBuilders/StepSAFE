@@ -1,0 +1,6 @@
+# StepSAFE's security contact, in the format of RFC 9116.
+Contact: mailto:August@Outlier.Systems
+Expires: 2027-11-13T23:59:59.000Z
+Policy: https://unitium-safe.vercel.app/security.html
+Preferred-Languages: en
+Canonical: https://unitium-safe.vercel.app/.well-known/security.txt

@@ -1,0 +1,144 @@
+/* DISPLAY. The learner's own settings for the read: the size of everything,
+   and how much moves. The text size scales the whole surface together, so
+   nothing clips and every ratio holds. Calm motion stills every animation
+   the way the system's own reduced motion setting does. Scrollbars take
+   each skin's light. */
+
+html[data-text='large'] { zoom: 1.12; }
+html[data-text='largest'] { zoom: 1.26; }
+
+html[data-motion='calm'] *, html[data-motion='calm'] *::before, html[data-motion='calm'] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+html[data-motion='calm'] #swarm { display: none; }
+html[data-motion='calm'] .view-in { animation: none; }
+html[data-motion='calm'] .stage section.band { opacity: 1; transform: none; transition: none; }
+html[data-motion='calm'] .charged-static { box-shadow: var(--raise), 0 0 0 3px color-mix(in srgb, var(--cyan) 40%, transparent) !important; }
+
+/* scrollbars in the skin's light */
+html { scrollbar-color: rgba(196, 181, 253, 0.3) transparent; scrollbar-width: thin; }
+html[data-theme='mov'] { scrollbar-color: rgba(150, 190, 255, 0.35) transparent; }
+html[data-theme='meridian'] { scrollbar-color: rgba(139, 61, 255, 0.35) transparent; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(196, 181, 253, 0.28); border-radius: 999px; border: 2px solid transparent; background-clip: padding-box; }
+html[data-theme='mov'] ::-webkit-scrollbar-thumb { background: rgba(150, 190, 255, 0.34); background-clip: padding-box; }
+html[data-theme='meridian'] ::-webkit-scrollbar-thumb { background: rgba(139, 61, 255, 0.32); background-clip: padding-box; }
+
+/* the display controls */
+.disp-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.disp-row { display: flex; flex-direction: column; gap: 8px; }
+.disp-row .label { display: block; }
+.disp-row .row { gap: 8px; }
+.disp-sample { margin: 10px 0 0; padding: 12px 14px; border-radius: 16px; corner-shape: superellipse(2.2); background: var(--panel-2); border: 1px solid var(--frame); color: var(--ink-2); font-size: 1rem; line-height: 1.55; }
+.disp-principles { margin-top: 10px; }
+.disp-principles ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.disp-principles li { padding: 10px 14px; border-radius: 14px; background: var(--panel-2); border: 1px solid var(--frame); }
+.disp-principles strong { display: block; font: 600 0.98rem/1.3 var(--font-display); color: var(--ink); }
+.disp-principles span { font-size: 0.9rem; color: var(--ink-2); line-height: 1.45; }
+@media (min-width: 720px) { .disp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* the reader: a Step, a guide or a chapter read aloud */
+.ra { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding: 10px 12px 10px 10px; border: 1px solid var(--frame); border-radius: 999px; background: var(--panel-2); box-shadow: var(--inset); }
+.ra.on { position: sticky; bottom: 12px; z-index: 6; border-color: var(--frame-strong); box-shadow: var(--raise-lg); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+.ra-play { flex: none; gap: 8px; }
+.ra-play svg { flex: none; }
+.ra-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; flex: 1 1 160px; }
+.ra-text strong { font: 600 0.96rem/1.3 var(--font-display); color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ra-text em { font-style: normal; font-size: 0.82rem; color: var(--ink-2); }
+.ra-text small { font-size: 0.78rem; color: var(--ink-warn); }
+.ra-nav { display: flex; gap: 4px; flex: none; }
+.ra.on .ra-play svg { animation: ra-pulse 1.4s ease-in-out infinite; }
+@keyframes ra-pulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+html[data-motion='calm'] .ra.on .ra-play svg { animation: none; }
+@media (max-width: 560px) { .ra { border-radius: 22px; corner-shape: superellipse(2.2); } .ra-text strong { white-space: normal; } }
+
+/* the palette: find anything */
+.pal-scrim { align-items: flex-start; padding-top: min(12vh, 96px); }
+.pal { width: min(680px, 100%); max-height: min(76vh, 640px); display: flex; flex-direction: column; overflow: hidden; border-radius: var(--r-xl); corner-shape: superellipse(2.2); border: 1px solid var(--frame-strong); background: var(--panel); -webkit-backdrop-filter: blur(22px) saturate(1.3); backdrop-filter: blur(22px) saturate(1.3); box-shadow: var(--raise-lg); animation: unfurl 420ms var(--ease) both; }
+.pal-head { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--frame); color: var(--ink-label); }
+.pal-head input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: 500 1.08rem var(--font-display); outline: none; }
+.pal-head input::placeholder { color: var(--ink-2); opacity: 0.7; }
+.pal-head strong { flex: 1; font: 600 1.08rem var(--font-display); color: var(--ink); }
+.pal kbd { font: 600 12px var(--font-display); color: var(--ink-2); padding: 3px 7px; border-radius: 8px; border: 1px solid var(--frame-strong); background: var(--panel-2); white-space: nowrap; }
+.pal-close { flex: none; display: inline-flex; align-items: center; justify-content: center; padding: 0; border: 0; background: transparent; color: var(--ink); font: 600 0.88rem var(--font-display); cursor: pointer; border-radius: 12px; corner-shape: superellipse(2.15); }
+.pal-close span { display: none; }
+.pal-close:hover kbd { color: var(--ink); }
+.pal-list { list-style: none; margin: 0; padding: 8px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; }
+.pal-row { display: flex; align-items: stretch; gap: 6px; border-radius: 16px; corner-shape: superellipse(2.2); }
+.pal-row.on { background: color-mix(in srgb, var(--hue) 14%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hue) 40%, transparent); }
+.pal-main { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; text-align: left; padding: 10px 12px; border: 0; background: transparent; color: var(--ink); font: inherit; cursor: pointer; border-radius: 16px; }
+.pal-kind { flex: none; min-width: 84px; font: 600 12px var(--font-display); letter-spacing: 0.06em; text-transform: uppercase; color: var(--hue); }
+/* the kind hues are pale tones made for a dark ground. Meridian mixes them into its ink and Mov lifts them a little toward white, so every label reads at 4.5:1 or better (measured by probe-glossary-walk.mjs) */
+html[data-theme='meridian'] .pal-kind { color: color-mix(in srgb, var(--hue) 30%, #15122b); }
+html[data-theme='mov'] .pal-kind { color: color-mix(in srgb, var(--hue) 80%, #fff); }
+.pal-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.pal-text strong { font: 600 0.98rem/1.3 var(--font-display); color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pal-text em { font-style: normal; font-size: 0.82rem; color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pal-card { flex: none; align-self: center; margin-right: 6px; padding: 6px 12px; border-radius: 12px; corner-shape: superellipse(2.15); border: 1px solid var(--frame-strong); background: transparent; color: var(--ink-2); font: 600 0.8rem var(--font-display); cursor: pointer; }
+.pal-card:hover { color: var(--ink); border-color: var(--hue); }
+.pal-empty { padding: 14px 12px; color: var(--ink-2); }
+.pal-foot { display: flex; flex-wrap: wrap; gap: 8px 16px; padding: 10px 16px 12px; border-top: 1px solid var(--frame); font-size: 0.8rem; color: var(--ink-2); }
+.pal-foot span { display: inline-flex; align-items: center; gap: 4px; }
+.pal-foot span:last-child { margin-left: auto; }
+.pal-keys .pal-row.static { padding: 8px 12px; align-items: center; gap: 14px; }
+.pal-keycap { flex: none; min-width: 150px; font: 600 0.84rem var(--font-display); color: var(--ink-accent); }
+.nav-find { gap: 10px; }
+.nav-find .nb-kbd { margin-left: auto; font: 600 12px var(--font-display); color: var(--ink-label); padding: 2px 7px; border-radius: 8px; border: 1px solid var(--frame); }
+@media (max-width: 1080px) { .nav-find .nb-kbd { display: none; } }
+@media (max-width: 560px) { .pal-scrim { padding: 12px; padding-top: 12px; align-items: stretch; } .pal { max-height: calc(100vh - 24px); } .pal-head { padding: 10px 12px 10px 16px; } .pal-kind { min-width: 54px; } .pal-text strong, .pal-text em { white-space: normal; } }
+/* on a phone, or any screen worked by touch: the way out is a button a finger can hit, the key hints step aside, and Card is a full finger tall */
+@media (max-width: 560px), (hover: none) and (pointer: coarse) {
+  .pal-close { min-width: 44px; min-height: 44px; padding: 0 14px; border: 1px solid var(--frame-strong); background: var(--panel-2); }
+  .pal-close kbd, .pal-foot .pal-hint { display: none; }
+  .pal-close span { display: inline; }
+  .pal-card { min-height: 44px; padding: 6px 14px; }
+}
+
+/* ---------- on paper: a Step or a guide printed for a tabletop or a binder ---------- */
+.print-btn { flex: none; }
+.ra-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.ra-row .ra { flex: 1 1 320px; }
+@media print {
+  @page { margin: 16mm 14mm; }
+  html, body { background: #fff !important; color: #111 !important; zoom: 1 !important; }
+  body::before, body::after, #root::before, #root::after, #field, #swarm, .nav, .ra, .print-btn, .sg-nav, .toasts, .skip, .pal-scrim, .link-offer, .btn, .gx-take, .sg-keys { display: none !important; }
+  .shell { display: block !important; }
+  .stage { padding: 0 !important; }
+  .view-in, .stage section.band { animation: none !important; opacity: 1 !important; transform: none !important; }
+  section.band { padding: 0 0 10mm !important; }
+  h1, h2, h3, h4, .view-head h1, .mx-hero h1, .sg-hero h1, .sg-face h2 { color: #111 !important; background: none !important; -webkit-text-fill-color: #111 !important; text-shadow: none !important; }
+  h1 { font-size: 24pt !important; } h2 { font-size: 17pt !important; } h3 { font-size: 13pt !important; }
+  p, li, td, th, .sec, .big-sec, .lede, .statement, .blk p, .blk li, .label { color: #222 !important; }
+  .label { letter-spacing: 0.06em; }
+  .panel, .card, .blk-callout, .blk-principle, .compare > div, .metric, .mx-glass, .drill, .opt { background: none !important; box-shadow: none !important; border: 1px solid #bbb !important; break-inside: avoid; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+  .panel::before, .card::before, .card::after, .chapter::after, .mx-glass::before { display: none !important; }
+  .statement, .blk-principle, .blk-quote { border-left: 3px solid #555 !important; }
+  .blk { break-inside: avoid-page; }
+  pre.code { background: #f4f4f4 !important; color: #111 !important; border: 1px solid #ccc !important; white-space: pre-wrap; }
+  table.dt th { background: #eee !important; color: #111 !important; }
+  a { color: #111 !important; text-decoration: underline; }
+}
+
+/* the door to the MOTRUS proposal, after the places. It leaves the Praxis for a page of its own, so it is a link
+   with its own colour and not one of the places. */
+.nav-motrus {
+  display: flex; align-items: center; gap: 10px; flex: none;
+  min-height: 50px; padding: 10px 13px;
+  border-radius: 16px; corner-shape: superellipse(2.15);
+  font: 600 1rem/1.2 var(--font-display); letter-spacing: 0.08em; color: var(--ink); text-decoration: none;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(253, 194, 111, 0.07));
+  box-shadow: inset 0 0 0 1px rgba(167, 139, 255, 0.32);
+  transition: transform 220ms var(--ease);
+}
+.nav-motrus:hover { transform: translateX(3px); }
+.nav-motrus:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+.nav-motrus-mark { flex: none; color: #a78bff; }
+:root[data-theme='meridian'] .nav-motrus-mark { color: #6d4fd8; }
+/* on a wide screen it sits under the name, in the first screen of the rail; narrower, it follows the places */
+.nav-motrus-row { display: none; }
+@media (max-width: 1080px) { .nav-motrus-rail { display: none; } .nav-motrus-row { display: flex; min-height: 44px; white-space: nowrap; } .nav-motrus:hover { transform: none; } }
+@media (max-width: 720px) { html:root body .shell > .nav .nav-motrus { min-height: 50px; justify-content: center; } }

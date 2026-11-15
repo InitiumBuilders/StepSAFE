@@ -1,0 +1,497 @@
+/* THE WELCOME PAGE. A navy night (or Meridian's stone) with the field's lattice behind it. One system
+   stays on screen through the opening (lxs-*), and the rest of the page is one symbol, one line and one
+   door at a time, with generous air between them. Motion means something: a structure draws itself, a
+   failure travels, a layer holds, a light climbs. Figures run only while on screen; reduced motion shows
+   the still frame. */
+
+.lx {
+  --lx-ice: #d8effc; --lx-azure: #9cc3ef; --lx-violet: #a78bff; --lx-orchid: #c084fc; --lx-pink: #f18ac6; --lx-coral: #e8786a; --lx-amber: #fdc26f; --lx-pearl: #f8f1fb;
+  --lx-line: rgba(216, 226, 255, 0.2); --lx-faint: rgba(216, 226, 255, 0.08); --lx-glass: rgba(255, 255, 255, 0.045); --lx-rim: rgba(216, 239, 252, 0.12);
+  --lx-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --lx-head: 66px;
+  position: relative; z-index: 1; color: var(--ink); font-family: var(--font-body); overflow-x: clip;
+}
+html[data-theme='meridian'] .lx {
+  --lx-ice: #2f6fae; --lx-azure: #3a5fa8; --lx-violet: #5b34d6; --lx-orchid: #7a3fc8; --lx-pink: #b4387e; --lx-coral: #b3503f; --lx-amber: #a86c05; --lx-pearl: #15122b;
+  --lx-line: rgba(58, 40, 130, 0.28); --lx-faint: rgba(58, 40, 130, 0.08); --lx-glass: rgba(255, 255, 255, 0.42); --lx-rim: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- reveals: things arrive in order ---------- */
+.lx [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity 1000ms var(--lx-ease), transform 1000ms var(--lx-ease); }
+.lx [data-reveal].in { opacity: 1; transform: none; }
+.lx.still [data-reveal] { opacity: 1; transform: none; transition: none; }
+.lx.still *, .lx.still *::before, .lx.still *::after { animation-duration: 0.001s !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; }
+.lx-sec:not(.live) svg *, .lx-sec:not(.live) svg { animation-play-state: paused !important; }
+
+/* ---------- the reading line and the top ---------- */
+.lx-progress { position: fixed; z-index: 70; top: 0; left: 0; right: 0; height: 2px; pointer-events: none; }
+.lx-progress i { display: block; height: 100%; transform-origin: left; transform: scaleX(0); background: linear-gradient(90deg, var(--lx-violet), var(--lx-ice) 55%, var(--lx-amber)); }
+.lx-top {
+  position: fixed; z-index: 60; top: 0; left: 0; right: 0; height: var(--lx-head); display: flex; align-items: center; gap: 18px; padding: 0 28px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ground) 96%, transparent), color-mix(in srgb, var(--ground) 82%, transparent));
+}
+.lx-brand { display: inline-flex; align-items: center; gap: 10px; border: 0; background: none; color: var(--ink); font: 600 1.08rem var(--font-display); cursor: pointer; padding: 6px 4px; }
+.lx-brand svg { width: 30px; height: 30px; fill: none; stroke: var(--lx-violet); stroke-width: 1.1; }
+.lx-brand svg .dot { fill: var(--lx-amber); stroke: none; }
+.lx-links { display: flex; gap: 2px; margin-left: auto; }
+.lx-links button { min-height: 44px; padding: 0 14px; border: 0; border-radius: 13px; corner-shape: superellipse(2.15); background: none; color: var(--ink-2); font: 500 0.94rem var(--font-display); cursor: pointer; }
+.lx-links button:hover { color: var(--ink); background: var(--lx-glass); }
+
+/* ---------- the frame of the page ---------- */
+.lx-main { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+.lx-sec { position: relative; padding: 140px 0; }
+.lx-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: center; }
+.lx-row.flip > .lx-fig { order: 2; }
+.lx-fig { display: grid; place-items: center; min-width: 0; }
+.lx-fig > svg { width: 100%; max-width: 420px; height: auto; overflow: visible; }
+
+.lx-eyebrow { display: inline-block; font: 600 0.95rem var(--font-display); color: var(--ink-label); letter-spacing: 0.02em; margin-bottom: 18px; }
+/* the theme sheets size and weigh every h1 and h2 from html:not(...):not(...); the welcome page sets its own on purpose */
+.lx.lx .lx-main h1 {
+  margin: 0 0 22px; font: 560 clamp(3rem, 6.4vw, 6rem)/0.98 var(--font-display); letter-spacing: -0.03em; text-wrap: balance;
+  background: linear-gradient(100deg, #f8f1fb 0%, #e2c8ff 42%, #c084fc 66%, #9cc3ef 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+html[data-theme='meridian'] .lx.lx .lx-main h1 { background: linear-gradient(100deg, #15122b 0%, #15122b 38%, #3f2a9e 70%, #8a2f86 100%); -webkit-background-clip: text; background-clip: text; }
+.lx.lx .lx-main h2 { margin: 0 0 18px; font: 560 clamp(2rem, 4vw, 3.4rem)/1.04 var(--font-display); letter-spacing: -0.028em; color: var(--ink); text-wrap: balance; }
+.lx-copy p { font-size: 1.12rem; line-height: 1.66; color: var(--ink-2); margin: 0 0 16px; max-width: 32em; }
+.lx-copy.center { text-align: center; }
+.lx-copy.center h2, .lx-copy.center p { margin-left: auto; margin-right: auto; }
+.lx-lede { font-size: clamp(1.14rem, 1.6vw, 1.36rem) !important; color: var(--ink-2); max-width: 26em; margin: 0; line-height: 1.55; }
+.lx-mini { display: block; font: 600 0.84rem var(--font-display); color: var(--ink-label); margin-bottom: 10px; }
+
+/* ---------- buttons: squircles; the key one holds the light ---------- */
+.lx-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 0 22px; border: 0; border-radius: 17px; corner-shape: superellipse(2.2); cursor: pointer; text-decoration: none;
+  font: 600 1rem var(--font-display); color: var(--ink); background: var(--lx-glass); box-shadow: inset 0 1px 0 var(--lx-rim), inset 0 0 0 1px var(--lx-faint);
+  transition: transform 200ms var(--lx-ease), box-shadow 200ms var(--lx-ease), background 200ms;
+}
+.lx-btn:hover { transform: translateY(-1px); box-shadow: inset 0 1px 0 var(--lx-rim), inset 0 0 0 1px color-mix(in srgb, var(--lx-violet) 45%, transparent), 0 10px 30px -14px var(--lx-violet); }
+.lx-btn:focus-visible, .lx-links button:focus-visible, .lx-brand:focus-visible { outline: 2px solid var(--lx-violet); outline-offset: 3px; }
+.lx-btn.key { color: #fff; background: linear-gradient(135deg, #7c4dff 0%, #a855f7 52%, #d65bb5 100%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 14px 34px -14px rgba(168, 85, 247, 0.8), 0 0 34px -10px rgba(214, 91, 181, 0.6); }
+.lx-btn.key:hover { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 18px 40px -14px rgba(168, 85, 247, 0.9), 0 0 44px -8px rgba(253, 194, 111, 0.5); }
+.lx-btn.ghost { background: none; box-shadow: none; color: var(--ink-2); }
+.lx-btn.ghost:hover { color: var(--ink); background: var(--lx-glass); }
+.lx-btn.sm { min-height: 44px; padding: 0 16px; font-size: 0.92rem; border-radius: 14px; }
+.lx-btn:disabled { opacity: 0.45; cursor: default; transform: none; }
+.lx-ctas { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0 0; }
+.lx-down { width: 8px; height: 8px; border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor; transform: rotate(45deg) translate(-2px, -2px); animation: lx-down 2.4s var(--lx-ease) infinite; }
+@keyframes lx-down { 0%, 100% { transform: rotate(45deg) translate(-3px, -3px); opacity: 0.5; } 50% { transform: rotate(45deg) translate(1px, 1px); opacity: 1; } }
+
+/* ---------- THE SENSE: the stage holds while the chapters pass ---------- */
+.lxs { display: grid; grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr); column-gap: 48px; padding: 0; }
+.lxs-steps { grid-column: 1; grid-row: 1; }
+.lxs-stage { grid-column: 2; grid-row: 1; position: sticky; top: var(--lx-head); height: calc(100svh - var(--lx-head)); align-self: start; }
+.lxs-stage canvas { display: block; width: 100%; height: 100%; }
+.lxs-step { min-height: 88svh; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; opacity: 0.2; transition: opacity 700ms var(--lx-ease), transform 700ms var(--lx-ease); transform: translateY(10px); }
+.lxs-step.on { opacity: 1; transform: none; }
+.lx.still .lxs-step { opacity: 1; transform: none; }
+.lxs-hero { min-height: calc(100svh - var(--lx-head)); padding-top: calc(var(--lx-head) + 20px); }
+.lxs-n { font: 600 0.84rem var(--font-display); color: var(--lx-amber); font-variant-numeric: tabular-nums; letter-spacing: 0.06em; margin-bottom: 14px; }
+.lxs-step p { font-size: 1.18rem; line-height: 1.62; color: var(--ink-2); margin: 0; max-width: 24em; }
+.lxs-step:last-child { min-height: 100svh; }
+
+/* ---------- shared figure parts ---------- */
+.lx-tl { font: 600 12.5px var(--font-display); fill: var(--ink-2); }
+.lx-tl.strong { fill: var(--ink); }
+.lx-spoke { stroke: var(--lx-line); stroke-width: 1; }
+.lx-webring { fill: none; stroke: var(--lx-faint); stroke-width: 1; }
+.lx-core-glow { animation: lx-glow 4.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+html[data-theme='meridian'] .lx-core-glow { opacity: 0.35; }
+.lx-dcore { fill: var(--lx-pearl); stroke: var(--lx-amber); stroke-width: 1.4; animation: lx-breathe 5s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes lx-breathe { 0%, 100% { transform: scale(0.9); } 50% { transform: scale(1.12); } }
+@keyframes lx-glow { 0%, 100% { opacity: 0.55; transform: scale(0.92); } 50% { opacity: 0.95; transform: scale(1.06); } }
+
+/* the practice: rooms inside rooms; messages arrive, each choice sends out a ring */
+.lm-room { fill: none; stroke-width: 1.2; }
+.lm-room.r0 { stroke: color-mix(in srgb, var(--lx-azure) 32%, transparent); stroke-dasharray: 2 6; }
+.lm-room.r1 { stroke: color-mix(in srgb, var(--lx-violet) 50%, transparent); }
+.lm-room.r2 { stroke: color-mix(in srgb, var(--lx-orchid) 70%, transparent); fill: color-mix(in srgb, var(--lx-violet) 6%, transparent); }
+.lm-you { fill: var(--lx-pearl); stroke: var(--lx-amber); stroke-width: 2; }
+.lm-msg { opacity: 0; animation: lm-arrive 6.4s cubic-bezier(0.55, 0, 0.75, 0.4) infinite; animation-delay: var(--d); }
+.lm-msg.pink { --mc: var(--lx-pink); } .lm-msg.amber { --mc: var(--lx-amber); } .lm-msg.azure { --mc: var(--lx-azure); } .lm-msg.violet { --mc: var(--lx-violet); }
+.lm-dot { fill: var(--mc); }
+.lm-tail { stroke: var(--mc); stroke-width: 2; stroke-linecap: round; opacity: 0.55; }
+@keyframes lm-arrive { 0% { opacity: 0; transform: translate(var(--sx), var(--sy)); } 6% { opacity: 1; } 22% { opacity: 1; transform: translate(0, 0); } 25%, 100% { opacity: 0; transform: translate(0, 0); } }
+.lm-choice { fill: none; stroke-width: 1.6; opacity: 0; transform-box: fill-box; transform-origin: center; animation: lm-choice 6.4s var(--lx-ease) infinite; animation-delay: var(--d); }
+.lm-choice.pink { stroke: var(--lx-pink); } .lm-choice.amber { stroke: var(--lx-amber); } .lm-choice.azure { stroke: var(--lx-azure); } .lm-choice.violet { stroke: var(--lx-violet); }
+@keyframes lm-choice { 0%, 21% { opacity: 0; transform: scale(0.5); } 23% { opacity: 0.95; transform: scale(1); } 50%, 100% { opacity: 0; transform: scale(7.4); } }
+
+/* yours: two halves close around one light, hold, and open again */
+.lm-seal-out { fill: none; stroke: var(--lx-faint); stroke-width: 1; stroke-dasharray: 2 7; }
+.lm-half { fill: none; stroke-width: 2.6; stroke-linecap: round; animation: lm-close 7s var(--lx-ease) infinite; }
+.lm-half.left { stroke: var(--lx-violet); --dx: -26px; }
+.lm-half.right { stroke: var(--lx-azure); --dx: 26px; }
+@keyframes lm-close { 0%, 8% { transform: translateX(var(--dx)); opacity: 0.55; } 30%, 78% { transform: none; opacity: 1; } 96%, 100% { transform: translateX(var(--dx)); opacity: 0.55; } }
+.lm-sealed { fill: none; stroke: var(--lx-amber); stroke-width: 1.4; opacity: 0; animation: lm-sealed 7s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes lm-sealed { 0%, 28% { opacity: 0; transform: scale(1); } 31% { opacity: 0.9; transform: scale(1); } 56% { opacity: 0; transform: scale(1.28); } 100% { opacity: 0; } }
+.lm-seal-glow { animation: lm-glowing 7s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes lm-glowing { 0%, 10% { opacity: 0.25; } 32%, 76% { opacity: 1; } 100% { opacity: 0.25; } }
+.lm-seal-core { fill: var(--lx-pearl); stroke: var(--lx-amber); stroke-width: 1.6; }
+
+/* the path: twelve chapters lighting in order, and a light that climbs them */
+.lx-arc { fill: none; stroke: var(--lx-line); stroke-width: 1.6; stroke-dasharray: 520; stroke-dashoffset: 520; transition: stroke-dashoffset 2.2s var(--lx-ease); }
+.lx-fig.in .lx-arc { stroke-dashoffset: 0; }
+.lx-arc-sig { fill: none; stroke: var(--lx-amber); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 4 96; stroke-dashoffset: 0; opacity: 0; }
+.lx-fig.in .lx-arc-sig { opacity: 1; animation: lx-climb 5.5s cubic-bezier(0.45, 0, 0.25, 1) 2.4s infinite; }
+@keyframes lx-climb { from { stroke-dashoffset: 4; } to { stroke-dashoffset: -96; } }
+.lx-step { fill: var(--lx-faint); stroke: var(--lx-line); stroke-width: 1; transition: fill 500ms, stroke 500ms; transition-delay: calc(var(--i) * 140ms + 300ms); }
+.lx-fig.in .lx-step { fill: var(--lx-violet); stroke: var(--lx-ice); }
+.lx-fig.in .lx-step:last-of-type { fill: var(--lx-amber); }
+
+/* the web of families: each thread is real, each family breathes in turn */
+.lx-chord { fill: none; stroke: var(--lx-violet); opacity: 0; stroke-dasharray: 420; stroke-dashoffset: 420; transition: stroke-dashoffset 1.6s var(--lx-ease), opacity 600ms; transition-delay: calc(var(--i) * 22ms); }
+.lx-fig.in .lx-chord { opacity: var(--o); stroke-dashoffset: 0; }
+.lx-fam { stroke: rgba(255, 255, 255, 0.5); stroke-width: 1; transform-box: fill-box; transform-origin: center; animation: lx-fam 7.2s ease-in-out infinite; animation-delay: calc(var(--i) * 0.6s); }
+@keyframes lx-fam { 0%, 16%, 100% { transform: scale(1); } 8% { transform: scale(1.55); } }
+.lx-fam.h0 { fill: var(--lx-ice); } .lx-fam.h1 { fill: var(--lx-violet); } .lx-fam.h2 { fill: var(--lx-pink); } .lx-fam.h3 { fill: var(--lx-amber); } .lx-fam.h4 { fill: var(--lx-azure); } .lx-fam.h5 { fill: var(--lx-coral); }
+
+/* the lens */
+.lx-lring { fill: none; stroke-width: 2.2; }
+.lx-lring.inner { stroke-width: 1.3; opacity: 0.6; }
+.lx-ray { stroke: var(--lx-ice); stroke-width: 1.4; stroke-linecap: round; opacity: 0.3; animation: lx-ray 4.8s ease-in-out infinite; animation-delay: calc(var(--i) * 0.4s); }
+@keyframes lx-ray { 0%, 70%, 100% { opacity: 0.25; } 18% { opacity: 1; } }
+.lx-focus { fill: var(--lx-pearl); stroke: var(--lx-amber); stroke-width: 1.5; animation: lx-breathe 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+html[data-theme='meridian'] .lx-lring { stroke: #2f6fae; } html[data-theme='meridian'] .lx-lring.inner { stroke: #6d4fd8; } html[data-theme='meridian'] .lx-ray { stroke: #3a5fa8; }
+
+/* one system */
+.lx-frame { opacity: 0; transition: opacity 700ms var(--lx-ease); transition-delay: calc(var(--i) * 160ms); }
+.lx-fig.in .lx-frame { opacity: 1; }
+.lx-framenode { fill: var(--lx-violet); stroke: rgba(255, 255, 255, 0.5); stroke-width: 1; }
+.lx-body { fill: var(--lx-azure); }
+.lx-body.here { fill: var(--lx-amber); animation: lx-breathe 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+
+/* ---------- doors from a section into the Praxis ---------- */
+.lx-doors { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+.lx-doors.center { justify-content: center; }
+.lx-door {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 18px; border: 0; cursor: pointer; color: var(--ink);
+  border-radius: 15px; corner-shape: superellipse(2.15); background: none; box-shadow: inset 0 0 0 1px var(--lx-line); font: 600 0.95rem var(--font-display);
+  transition: box-shadow 200ms, background 200ms;
+}
+.lx-door i { font-style: normal; color: var(--lx-amber); transition: transform 240ms var(--lx-ease); }
+.lx-door:hover { background: var(--lx-glass); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--lx-violet) 55%, transparent); }
+.lx-door:hover i { transform: translateX(4px); }
+.lx-door:focus-visible { outline: 2px solid var(--lx-violet); outline-offset: 2px; }
+
+/* ---------- the live panel: the one lit panel on the page ---------- */
+.lx-live { position: relative; margin-top: 44px; padding: 22px; border-radius: 30px; corner-shape: superellipse(2.2); background: var(--panel); isolation: isolate;
+  box-shadow: inset 0 1px 0 var(--lx-rim), 0 40px 90px -50px var(--lx-violet), 0 0 0 1px color-mix(in srgb, var(--lx-violet) 26%, transparent); }
+.lx-live-wait { padding: 60px 20px; text-align: center; color: var(--ink-2); font: 500 0.98rem var(--font-display); }
+.lx-bench { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.lx-bench-day .cday { margin: 0; }
+.lx-bench-side { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.lx-bench-key { font: 600 1.1rem var(--font-display); color: var(--lx-amber); margin-bottom: 14px; }
+.lx-bench-moves { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+.lx-move {
+  display: grid; grid-template-columns: 12px minmax(0, 1fr); column-gap: 10px; row-gap: 2px; align-items: start; padding: 10px 12px; border: 0; text-align: left; cursor: pointer; color: var(--ink);
+  border-radius: 14px; corner-shape: superellipse(2.15); background: var(--lx-glass); box-shadow: inset 0 0 0 1px var(--lx-faint); transition: background 200ms, box-shadow 200ms, opacity 200ms;
+}
+.lx-move i { grid-row: span 2; width: 10px; height: 10px; margin-top: 5px; border-radius: 3px; background: var(--vc); opacity: 0.45; transition: opacity 200ms, box-shadow 200ms; }
+.lx-move.on { background: color-mix(in srgb, var(--vc) 14%, transparent); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--vc) 60%, transparent); }
+.lx-move.on i { opacity: 1; box-shadow: 0 0 10px var(--vc); }
+.lx-move:disabled { opacity: 0.42; cursor: not-allowed; }
+.lx-move:focus-visible { outline: 2px solid var(--lx-violet); outline-offset: 2px; }
+.lx-move-name { font: 600 0.94rem/1.3 var(--font-display); }
+.lx-move-meta { font-size: 0.82rem; line-height: 1.4; color: var(--ink-2); }
+.lx-bench-score { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 16px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--ground) 50%, transparent); font-size: 0.9rem; color: var(--ink-2); }
+.lx-bench-score strong { font: 600 1.6rem var(--font-display); color: var(--lx-amber); font-variant-numeric: tabular-nums; margin-right: 4px; }
+.lx-bench-acts { display: flex; gap: 6px; margin-top: 10px; }
+
+/* ---------- Claros.SI ---------- */
+.lx.lx .lx-claros-title { background: linear-gradient(100deg, var(--lx-pearl) 0%, var(--lx-ice) 40%, var(--lx-violet) 100%); -webkit-background-clip: text; background-clip: text; color: transparent !important; }
+html[data-theme='meridian'] .lx.lx .lx-claros-title { background: linear-gradient(100deg, #15122b 0%, #2f6fae 55%, #5b34d6 100%); -webkit-background-clip: text; background-clip: text; }
+.lx-powered { display: inline-flex; align-items: center; gap: 10px; margin: -4px 0 20px !important; font: 600 1rem var(--font-display) !important; color: var(--lx-amber) !important; }
+.lx-powered::before { content: ''; width: 22px; height: 1px; background: linear-gradient(90deg, transparent, var(--lx-amber)); }
+.lx-claros-fig { gap: 18px; }
+.lx-claros-fig > svg { max-width: 220px; }
+.lx-talk { width: 100%; display: flex; flex-direction: column; gap: 10px; padding: 16px; border-radius: 24px; corner-shape: superellipse(2.2); background: var(--lx-glass); box-shadow: inset 0 1px 0 var(--lx-rim); }
+.lx-talk .minds-bubble { max-width: 100%; }
+
+/* ---------- StudyMode, tried ---------- */
+.lx-study { padding: 18px; border-radius: 28px; corner-shape: superellipse(2.2); background: var(--lx-glass); box-shadow: inset 0 1px 0 var(--lx-rim), 0 30px 80px -50px var(--lx-amber); }
+.lx-sc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.lx-sc-top .lx-mini { margin: 0; }
+.lx-sc-pips { display: inline-flex; gap: 6px; }
+.lx-sc-pips i { width: 22px; height: 6px; border-radius: 3px; background: var(--lx-faint); transition: background 300ms; }
+.lx-sc-pips i.now { background: color-mix(in srgb, var(--lx-violet) 55%, transparent); }
+.lx-sc-pips i.done { background: var(--lx-azure); } .lx-sc-pips i.g0 { background: var(--lx-pink); } .lx-sc-pips i.g1 { background: var(--lx-amber); } .lx-sc-pips i.g3 { background: var(--lx-violet); }
+.lx-sc-face { display: block; width: 100%; height: 300px; padding: 0; border: 0; background: none; cursor: pointer; perspective: 1400px; text-align: left; color: inherit; font: inherit; }
+.lx-sc-face:focus-visible { outline: 2px solid var(--lx-violet); outline-offset: 4px; border-radius: 24px; }
+.lx-sc-inner { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 700ms var(--lx-ease); }
+.lx-sc-face.turned .lx-sc-inner { transform: rotateY(180deg); }
+.lx-sc-side { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: 24px; corner-shape: superellipse(2.2); backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow-y: auto;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--kc) 20%, var(--panel)), var(--panel) 60%); box-shadow: inset 0 1px 0 var(--lx-rim), 0 0 0 1px color-mix(in srgb, var(--kc) 30%, transparent), 0 20px 50px -30px var(--kc); }
+.lx-sc-side.back { transform: rotateY(180deg); }
+.lx-sc-face.k-term { --kc: var(--lx-violet); } .lx-sc-face.k-model { --kc: var(--lx-azure); } .lx-sc-face.k-threat { --kc: var(--lx-pink); } .lx-sc-face.k-incident { --kc: var(--lx-amber); } .lx-sc-face.k-room { --kc: var(--lx-coral); }
+.lx-sc-kind { font: 600 0.82rem var(--font-display); color: var(--kc); }
+.lx-sc-side strong { font: 600 1.4rem/1.2 var(--font-display); color: var(--ink); }
+.lx-sc-cue { font-size: 1.02rem; line-height: 1.55; color: var(--ink-2); }
+.lx-sc-side em { margin-top: auto; font-style: normal; font: 600 0.86rem var(--font-display); color: var(--ink-label); }
+.lx-sc-answer { font-size: 1.04rem; line-height: 1.6; color: var(--ink); }
+.lx-sc-grades { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: 12px; opacity: 0.4; transition: opacity 300ms; }
+.lx-sc-grades.on { opacity: 1; }
+.lx-sc-grades button { min-height: 54px; padding: 8px; border: 0; border-radius: 15px; corner-shape: superellipse(2.15); background: var(--lx-glass); box-shadow: inset 0 1px 0 var(--lx-rim); color: var(--ink); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+.lx-sc-grades button:disabled { cursor: default; }
+.lx-sc-grades strong { font: 600 0.96rem var(--font-display); }
+.lx-sc-grades span { font-size: 0.76rem; color: var(--ink-2); }
+.lx-sc-grades .g0 strong { color: var(--lx-pink); } .lx-sc-grades .g1 strong { color: var(--lx-amber); } .lx-sc-grades .g2 strong { color: var(--lx-azure); } .lx-sc-grades .g3 strong { color: var(--lx-orchid); }
+.lx-sc-grades button:focus-visible { outline: 2px solid var(--lx-violet); outline-offset: 2px; }
+.lx-sc-done { padding: 26px 8px 8px; }
+.lx-sc-done strong { font: 600 1.4rem var(--font-display); color: var(--ink); }
+.lx-sc-done p { color: var(--ink-2); line-height: 1.6; }
+
+/* ---------- twelve doors: every page, its sigil and its name ---------- */
+.lx-glance { list-style: none; margin: 40px auto 0; padding: 0; max-width: 960px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.lx-glance li { opacity: 0; transform: translateY(14px); transition: opacity 700ms var(--lx-ease), transform 700ms var(--lx-ease); transition-delay: calc(var(--i) * 60ms); }
+.lx-glance.in li, .lx.still .lx-glance li { opacity: 1; transform: none; }
+.lx-glance button {
+  width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 20px 10px 16px; border: 0; text-align: center; cursor: pointer; color: var(--ink);
+  border-radius: 24px; corner-shape: superellipse(2.2); background: none; transition: transform 260ms var(--lx-ease), background 260ms var(--lx-ease);
+}
+.lx-glance button:hover { transform: translateY(-3px); background: var(--lx-glass); }
+.lx-glance button:focus-visible { outline: 2px solid var(--lx-violet); outline-offset: 3px; }
+.lx-glance-sig .page-sigil { width: 64px; height: 64px; margin: 0; }
+.lx-glance-name { font: 600 0.95rem/1.25 var(--font-display); }
+
+/* ---------- the founder ---------- */
+.lx-role { font: 600 1.04rem var(--font-display) !important; color: var(--lx-amber) !important; }
+.lx-his { list-style: none; margin: 26px 0 18px; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.lx-his li { padding: 2px 0 2px 16px; box-shadow: inset 2px 0 0 var(--lx-amber); }
+.lx-his q { display: block; font: 600 1.06rem/1.45 var(--font-display); color: var(--ink); quotes: none; }
+.lx-his span { font-size: 0.86rem; color: var(--ink-2); }
+.lx-links-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.lx-links-row a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 13px; corner-shape: superellipse(2.15); background: var(--lx-glass); color: var(--ink); text-decoration: none; font: 600 0.9rem var(--font-display); box-shadow: inset 0 1px 0 var(--lx-rim); }
+.lx-links-row a:hover { box-shadow: inset 0 1px 0 var(--lx-rim), inset 0 0 0 1px color-mix(in srgb, var(--lx-violet) 50%, transparent); }
+.lx-frames { list-style: none; margin: 14px 0 0; padding: 0; width: 100%; max-width: 420px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.lx-frames li { padding: 10px 12px; border-radius: 14px; corner-shape: superellipse(2.15); background: var(--lx-glass); display: flex; flex-direction: column; gap: 2px; }
+.lx-frames strong { font: 600 0.9rem var(--font-display); color: var(--lx-violet); }
+.lx-frames span { font-size: 0.84rem; line-height: 1.4; color: var(--ink-2); }
+
+/* ---------- pricing ---------- */
+.lx-plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; max-width: 920px; margin: 34px auto 0; }
+.lx-plan { display: flex; flex-direction: column; gap: 12px; padding: 28px; border-radius: 30px; corner-shape: superellipse(2.2); background: var(--lx-glass); box-shadow: inset 0 1px 0 var(--lx-rim), 0 0 0 1px var(--lx-faint); }
+.lx-plan.motus { background: linear-gradient(150deg, color-mix(in srgb, var(--lx-amber) 12%, transparent), var(--lx-glass) 55%); box-shadow: inset 0 1px 0 var(--lx-rim), 0 0 0 1px color-mix(in srgb, var(--lx-amber) 35%, transparent), 0 30px 70px -44px var(--lx-amber); }
+.lx-plan-name { font: 700 0.9rem var(--font-display); letter-spacing: 0.04em; color: var(--lx-azure); }
+.lx-plan.motus .lx-plan-name { color: var(--lx-amber); }
+.lx-price { font: 600 clamp(1.7rem, 3vw, 2.4rem)/1.1 var(--font-display); color: var(--ink); }
+.lx-price small { font-size: 0.5em; color: var(--ink-2); font-weight: 500; }
+.lx-plan p { margin: 0 0 6px; line-height: 1.6; color: var(--ink-2); flex: 1; }
+.lx-plan .lx-btn { align-self: flex-start; }
+
+/* ---------- the close: the system again, holding ---------- */
+.lx-close { text-align: center; padding: 80px 0 72px; }
+.lx-close-stage { width: min(420px, 86vw); aspect-ratio: 1 / 1.05; margin: 0 auto 18px; }
+.lx-close-stage canvas { display: block; width: 100%; height: 100%; }
+
+.lx-close-line { max-width: 24em; margin: -10px auto 28px; text-wrap: balance; font: 600 clamp(1.05rem, 2vw, 1.3rem) var(--font-display); color: var(--lx-amber); letter-spacing: 0.01em; }
+.lx-foot { position: relative; z-index: 1; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 26px 28px 40px; font: 500 0.9rem var(--font-display); color: var(--ink-2); box-shadow: inset 0 1px 0 var(--lx-faint); }
+.lx-foot a { color: var(--ink-2); }
+
+/* ---------- smaller screens ---------- */
+@media (max-width: 1080px) {
+  .lx-glance { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .lx-bench { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 860px) {
+  .lx { --lx-head: 60px; }
+  .lx-top { padding: 0 16px; }
+  .lx-links { display: none; }
+  .lx-top .lx-btn.sm { margin-left: auto; }
+  .lx-main { padding: 0 16px; }
+  .lx-sec { padding: 88px 0; }
+  .lx-row { grid-template-columns: minmax(0, 1fr); gap: 34px; }
+  .lx-row.flip > .lx-fig { order: 0; }
+  .lx-fig > svg { max-width: 300px; }
+  .lx-claros-fig > svg { max-width: 190px; }
+
+  /* the system holds the top of the screen. Each line rises in the band beneath it and lifts away before it
+     reaches the system (the reading line in Lander.tsx sits at 92%, one chapter is 34svh), so nothing ever
+     passes under it; the opening fades as the reading starts */
+  .lxs { display: block; padding: var(--lx-head) 0 0; }
+  .lxs-stage { position: sticky; z-index: 0; top: var(--lx-head); height: 48svh; margin: 0 -16px; }
+  .lxs-steps { position: relative; z-index: 1; }
+  .lxs-step { min-height: 34svh; justify-content: flex-start; padding: 0; }
+  .lxs-hero { min-height: calc(44svh + 10px); padding-top: 18px; transition: none; }
+  .lx.still .lxs-stage { position: relative; }
+  .lxs-step p { font-size: 1.08rem; }
+  .lx.lx .lx-main h1 { font-size: clamp(2.6rem, 11.5vw, 3.6rem); margin-bottom: 14px; }
+  .lx.lx .lx-main h2 { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+  .lx-ctas { margin-top: 22px; }
+
+  .lx-live { padding: 14px; }
+  .lx-sc-face { height: 330px; }
+  .lx-sc-grades { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lx-plans { grid-template-columns: minmax(0, 1fr); }
+  .lx-glance { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
+  .lx-glance button { padding: 14px 4px 12px; }
+  .lx-glance-sig .page-sigil { width: 52px; height: 52px; }
+  .lx-glance-name { font-size: 0.86rem; }
+  .lx-frames { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lx [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .lx-sc-inner { transition: none; }
+  .lxs-step { transition: none; }
+}
+
+/* ---------- his statements: the page ---------- */
+
+/* a statement: each word in its own window, rising into it in turn (components/lander/Statement.tsx) */
+.lx-st { margin: 0; display: flex; flex-direction: column; font-family: var(--font-display); font-weight: 640; letter-spacing: -0.034em; line-height: 0.98; color: var(--ink); }
+.lx .lx-st[data-reveal] { opacity: 1; transform: none; transition: none; }
+.lx-st-line { display: block; text-wrap: balance; }
+.lx-st-w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.08em 0.06em 0.26em; margin: -0.08em -0.06em -0.26em; }
+.lx-st-wi { display: inline-block; opacity: 0; transform: translateY(108%) rotate(3deg); transform-origin: 0 100%; transition: transform 1.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease; transition-delay: var(--d, 0s); }
+.lx-st.in .lx-st-wi { opacity: 1; transform: none; }
+.lx.still .lx-st-wi { opacity: 1; transform: none; transition: none; }
+/* the second line of a pair, and the opening statement, carry the gradient word by word */
+.lx-st-line.l1 .lx-st-wi, .lx-st-hero .lx-st-wi {
+  background: linear-gradient(100deg, #f8f1fb 0%, #e2c8ff 30%, #c084fc 66%, #9cc3ef 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
+  background-size: var(--gw, 100%) 100%; background-position: calc(var(--gx, 0px) * -1) 0; background-repeat: no-repeat;
+}
+html[data-theme='meridian'] .lx-st-line.l1 .lx-st-wi, html[data-theme='meridian'] .lx-st-hero .lx-st-wi {
+  background: linear-gradient(100deg, #15122b 0%, #3f2a9e 60%, #8a2f86 100%); -webkit-background-clip: text; background-clip: text;
+  background-size: var(--gw, 100%) 100%; background-position: calc(var(--gx, 0px) * -1) 0; background-repeat: no-repeat;
+}
+/* beside the stage, a line rises while its chapter is read and settles away, upward, once the reading moves on.
+   Lines still to come wait below their windows, so scrolling back rewinds exactly */
+.lxs-step.on .lx-st-follow .lx-st-wi { opacity: 1; transform: none; }
+.lxs-step:not(.on) .lx-st-follow .lx-st-wi { transform: translateY(-104%) rotate(-2deg); transition: transform 0.6s cubic-bezier(0.5, 0, 0.75, 0), opacity 0.45s ease; transition-delay: 0s; }
+.lxs-step.on ~ .lxs-step .lx-st-follow .lx-st-wi { transform: translateY(108%) rotate(3deg); }
+.lxs-step:has(.lx-st-follow) { opacity: 1; transform: none; }
+
+/* the opening */
+.lx.lx .lx-main h1.lx-st-hero { margin: 0 0 30px; font-size: clamp(3.4rem, 7.2vw, 7.4rem); line-height: 0.94; background: none; color: var(--ink); }
+.lxs-step .lx-st-sound { max-width: none; margin: 0 0 34px; font-size: clamp(1.9rem, 3.3vw, 3rem); font-weight: 600; line-height: 1.04; letter-spacing: -0.026em; color: var(--ink); }
+.lx-in { opacity: 0; transform: translateY(18px); animation: lx-in 1.2s var(--lx-ease) var(--d, 0s) forwards; }
+@keyframes lx-in { to { opacity: 1; transform: none; } }
+.lx.still .lx-in { opacity: 1; transform: none; animation: none; }
+.lx-cue { width: 50px; padding: 0; }
+
+/* beside the stage: his couplet, then a two-word beat for each state */
+.lx.lx .lx-main .lxs-see .lx-st { font-size: clamp(2.7rem, 5.2vw, 5.4rem); }
+.lx.lx .lx-main .lxs-beat { margin: 0; font: 620 clamp(2.3rem, 4.4vw, 4.2rem)/1.02 var(--font-display); letter-spacing: -0.032em; color: var(--ink); }
+
+/* a scene: one statement, the whole screen */
+.lx-scene { min-height: 96svh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 36px; padding: 14svh 0; text-align: center; }
+.lx.lx .lx-main .lx-st.xl { margin: 0; font-size: clamp(3.1rem, 9vw, 9.2rem); line-height: 0.96; align-items: center; gap: 0.06em; }
+.lx.lx .lx-main .lx-st-caps { font-weight: 700; letter-spacing: 0.005em; }
+.lx.lx .lx-main .lx-st.xl.long { font-size: clamp(2.6rem, 6.2vw, 6.4rem); max-width: 15ch; }
+.lx-scene-fig > svg { max-width: 380px; }
+.lx-scene-fig.seal > svg { max-width: 190px; }
+.lx-tag { margin: 0; font: 600 0.84rem var(--font-display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-label); }
+.lx-copy.center .lx-tag { margin-top: -4px; }
+
+/* Trust But Verify: a signal crosses the space under it */
+.lx-scene-rule { --w: min(340px, 62vw); position: relative; display: block; width: var(--w); height: 1px; background: linear-gradient(90deg, transparent, var(--lx-line) 20%, var(--lx-line) 80%, transparent); }
+.lx-scene-rule::after { content: ''; position: absolute; top: -2.5px; left: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--lx-amber); box-shadow: 0 0 12px var(--lx-amber); opacity: 0; }
+.lx-sec.live .lx-scene-rule::after { animation: lx-rule-sig 5.2s cubic-bezier(0.65, 0, 0.35, 1) 1.8s infinite; }
+@keyframes lx-rule-sig { 0% { transform: translateX(0); opacity: 0; } 12% { opacity: 1; } 50% { transform: translateX(calc(var(--w) - 6px)); opacity: 1; } 62%, 100% { transform: translateX(calc(var(--w) - 6px)); opacity: 0; } }
+
+/* Do. It. Right.: one point of light, once the last word lands */
+.lx-scene-point { display: block; width: 12px; height: 12px; border-radius: 50%; background: var(--lx-amber); box-shadow: 0 0 24px var(--lx-amber), 0 0 4px #fff; opacity: 0; transform: scale(0.3); transition: opacity 0.9s ease 2.3s, transform 1.3s cubic-bezier(0.3, 1.6, 0.5, 1) 2.3s; }
+.lx-st-do.in ~ .lx-scene-point, .lx.still .lx-scene-point { opacity: 1; transform: none; }
+
+/* the Praxis in three moving symbols, each with its door */
+.lx-tri ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.lx-tri li { display: flex; flex-direction: column; align-items: center; gap: 26px; }
+.lx-tri-fig { width: min(250px, 72vw); aspect-ratio: 1 / 1; }
+.lx-tri-fig > svg { width: 100%; height: 100%; max-width: none; }
+.lx-tri-fig .page-sigil { width: 72%; height: 72%; }
+
+/* the close */
+.lx-close { display: flex; flex-direction: column; align-items: center; }
+.lx.lx .lx-main .lx-mark { margin: 6px 0 20px; padding-left: 0.2em; font-size: clamp(3rem, 10vw, 7.4rem); font-weight: 600; letter-spacing: 0.2em; line-height: 1; align-items: center; }
+.lx-mark .lx-st-wi { color: color-mix(in srgb, #c084fc calc(var(--i, 0) * 11%), #f8f1fb); }
+html[data-theme='meridian'] .lx-mark .lx-st-wi { color: color-mix(in srgb, #8a2f86 calc(var(--i, 0) * 11%), #15122b); }
+.lx-st-gap { display: inline-block; width: 0.42em; }
+.lx.lx .lx-main .lx-st-close { margin: 0 auto 22px; max-width: 20ch; font-size: clamp(2rem, 4.6vw, 4.3rem); line-height: 1.02; align-items: center; }
+.lx-st-close .lx-st-line { text-align: center; }
+
+/* his dedication, signed and dated, at the foot */
+.lx-dedication { max-width: 720px; margin: 0 auto; padding: 8px 0 110px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.lx-ded-line { margin: 0; font: 500 clamp(1.1rem, 1.8vw, 1.36rem)/1.6 var(--font-display); color: var(--ink); text-wrap: balance; }
+.lx-ded-sign { margin: 6px 0 0; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.lx-ded-sign span:first-child { font: 600 1.45rem var(--font-display); color: var(--lx-amber); }
+.lx-ded-sign span:last-child { font: 500 0.95rem var(--font-display); color: var(--ink-2); font-variant-numeric: tabular-nums; letter-spacing: 0.05em; }
+.lx-ded-dash { margin: 10px 0 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 14px; }
+.lx-ded-dash span { font: 600 1rem var(--font-display); color: var(--lx-azure); }
+.lx-ded-dash a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 14px; corner-shape: superellipse(2.15); color: var(--ink); text-decoration: none; font: 600 0.95rem var(--font-display); box-shadow: inset 0 0 0 1px var(--lx-line); transition: background 200ms, box-shadow 200ms; }
+.lx-ded-dash a:hover { background: var(--lx-glass); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--lx-violet) 55%, transparent); }
+.lx-ded-dash a:focus-visible { outline: 2px solid var(--lx-violet); outline-offset: 3px; }
+
+/* where the browser can tie motion to the scroll, each scene's statement settles in and lifts away with it,
+   on the compositor; elsewhere the words simply arrive */
+@supports (animation-timeline: view()) {
+  .lx-scene > .lx-st, .lx-close > .lx-st-close { animation: lx-drift linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+  @keyframes lx-drift { from { transform: translateY(8vh) scale(0.95); } 38%, 62% { transform: none; } to { transform: translateY(-8vh) scale(1.02); } }
+}
+
+@media (max-width: 860px) {
+  .lx-scene { min-height: 84svh; gap: 28px; padding: 10svh 0; }
+  .lx.lx .lx-main .lx-st.xl { font-size: clamp(3rem, 15vw, 4.6rem); }
+  .lx.lx .lx-main .lx-st.xl.long { font-size: clamp(2.3rem, 10.6vw, 3.4rem); }
+  .lx.lx .lx-main .lx-mark { font-size: clamp(2.4rem, 12vw, 3.6rem); letter-spacing: 0.16em; padding-left: 0.16em; }
+  .lx-tri ul { grid-template-columns: minmax(0, 1fr); gap: 64px; }
+  .lx-dedication { padding-bottom: 80px; }
+  .lx.lx .lx-main h1.lx-st-hero { font-size: clamp(2.9rem, 12.6vw, 4rem); margin-bottom: 18px; }
+  .lxs-step .lx-st-sound { font-size: clamp(1.6rem, 7.2vw, 2.2rem); margin-bottom: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lx-in, .lx-st-wi, .lx-scene-point { opacity: 1; transform: none; animation: none; transition: none; }
+  .lx-scene > .lx-st, .lx-close > .lx-st-close { animation: none !important; }
+}
+
+/* ---------- refinements: the hand-offs between scenes ---------- */
+
+/* the Sense ends: the system fades as the last beat leaves */
+.lxs-stage { transition: opacity 0.9s var(--lx-ease); }
+.lxs-stage.out { opacity: 0; }
+.lxs-end, .lxs-lift { height: 1px; }
+
+/* a thread runs into every scene from above, and a signal comes down it as the scene arrives */
+.lx-scene { position: relative; }
+.lx-scene::before { content: ''; position: absolute; top: 0; left: 50%; width: 1px; height: 11svh; background: linear-gradient(180deg, transparent, var(--lx-line)); pointer-events: none; }
+.lx-scene::after { content: ''; position: absolute; top: 0; left: 50%; width: 5px; height: 5px; margin-left: -2px; border-radius: 50%; background: var(--lx-amber); box-shadow: 0 0 10px var(--lx-amber), 0 0 2px #fff; opacity: 0; pointer-events: none; }
+.lx-scene.live::after { animation: lx-thread 1.9s cubic-bezier(0.45, 0, 0.25, 1) 0.1s 1 both; }
+@keyframes lx-thread { 0% { transform: translateY(0); opacity: 0; } 14% { opacity: 1; } 86% { opacity: 1; } 100% { transform: translateY(11svh); opacity: 0; } }
+
+/* the seal over the record: rings gather around it while it holds, each one brighter than the last */
+.lx-scene-fig.seal > svg { max-width: 240px; }
+.lm-grow { fill: none; stroke: var(--lx-violet); stroke-width: 1.2; opacity: 0; transform-box: fill-box; transform-origin: center; animation: lm-grow 7s cubic-bezier(0.16, 1, 0.3, 1) infinite; animation-delay: calc(var(--g) * 0.8s); }
+@keyframes lm-grow { 0%, 30% { opacity: 0; transform: scale(0.94); } 40% { opacity: var(--a); transform: none; } 88% { opacity: var(--a); transform: none; } 100% { opacity: 0; transform: scale(1.03); } }
+
+@media (max-width: 860px) {
+  .lx-scene::before { height: 8svh; }
+  @keyframes lx-thread { 0% { transform: translateY(0); opacity: 0; } 14% { opacity: 1; } 86% { opacity: 1; } 100% { transform: translateY(8svh); opacity: 0; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lx-scene::after { display: none; }
+  .lxs-stage { transition: none; }
+  .lm-grow { animation: none; opacity: var(--a); }
+}
+
+/* the last beat keeps the system pinned through the hardest day; then the first scene rises through the
+   system's fade instead of after it. On a phone the last line lifts away like the others and the system holds
+   on alone for a moment (.lxs-lift) */
+.lxs-steps > .lxs-last { min-height: 100svh; }
+.lxs + .lx-scene { margin-top: -34svh; }
+@media (max-width: 860px) {
+  .lxs-steps > .lxs-last { min-height: 34svh; }
+  .lxs-steps > .lxs-lift { height: 22svh; }
+  .lxs + .lx-scene { margin-top: -22svh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lxs-step .lx-st-follow .lx-st-wi { transition: none !important; }
+}
+.lx.still .lxs-step .lx-st-follow .lx-st-wi { transition: none; }
+/* reduced motion: every line in place, nothing waiting above or below its window */
+.lx.still .lxs .lxs-step .lx-st-follow .lx-st-wi { opacity: 1; transform: none; transition: none; }
+
+/* a door that is a link (the proposal pages are their own pages) reads like every other door */
+a.lx-door { text-decoration: none; color: inherit; }
+.lx-proposals { text-align: center; padding-top: 0; }
+.lx-proposals .lx-doors { margin-top: 18px; }
+/* a section far off the screen rests: its loops pause until it is near again */
+.lx-sec[data-away] *, .lx-sec[data-away] *::before, .lx-sec[data-away] *::after { animation-play-state: paused; }
+@media (max-width: 560px) { #lx-claros .lx-doors { flex-direction: column; align-items: flex-start; } }

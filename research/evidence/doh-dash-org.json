@@ -1,0 +1,94 @@
+{
+ "_read": "2026-11-10",
+ "_from": "https://dns.google/resolve?name=dash.org&type=<NS|A|AAAA|MX|CAA>",
+ "NS": {
+  "Status": 0,
+  "Answer": [
+   {
+    "name": "dash.org.",
+    "type": 2,
+    "TTL": 21600,
+    "data": "angela.ns.cloudflare.com."
+   },
+   {
+    "name": "dash.org.",
+    "type": 2,
+    "TTL": 21600,
+    "data": "owen.ns.cloudflare.com."
+   }
+  ]
+ },
+ "A": {
+  "Status": 0,
+  "Answer": [
+   {
+    "name": "dash.org.",
+    "type": 1,
+    "TTL": 300,
+    "data": "172.67.182.239"
+   },
+   {
+    "name": "dash.org.",
+    "type": 1,
+    "TTL": 300,
+    "data": "104.21.59.194"
+   }
+  ]
+ },
+ "AAAA": {
+  "Status": 0,
+  "Answer": [
+   {
+    "name": "dash.org.",
+    "type": 28,
+    "TTL": 300,
+    "data": "2606:4700:3035::6815:3bc2"
+   },
+   {
+    "name": "dash.org.",
+    "type": 28,
+    "TTL": 300,
+    "data": "2606:4700:3033::ac43:b6ef"
+   }
+  ]
+ },
+ "MX": {
+  "Status": 0,
+  "Answer": [
+   {
+    "name": "dash.org.",
+    "type": 15,
+    "TTL": 120,
+    "data": "1 aspmx.l.google.com."
+   },
+   {
+    "name": "dash.org.",
+    "type": 15,
+    "TTL": 120,
+    "data": "5 alt1.aspmx.l.google.com."
+   },
+   {
+    "name": "dash.org.",
+    "type": 15,
+    "TTL": 120,
+    "data": "10 alt3.aspmx.l.google.com."
+   },
+   {
+    "name": "dash.org.",
+    "type": 15,
+    "TTL": 120,
+    "data": "5 alt2.aspmx.l.google.com."
+   },
+   {
+    "name": "dash.org.",
+    "type": 15,
+    "TTL": 120,
+    "data": "10 alt4.aspmx.l.google.com."
+   }
+  ]
+ },
+ "CAA": {
+  "Status": 0,
+  "Answer": []
+ }
+}

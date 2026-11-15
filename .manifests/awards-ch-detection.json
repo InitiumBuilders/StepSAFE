@@ -1,0 +1,202 @@
+{
+ "chId": "ch-detection",
+ "chTitle": "THE LANTERN",
+ "missingAwards": [
+  {
+   "id": "award-funnel-sight",
+   "step": "The Detection Is Not the Alert",
+   "kind": "construct",
+   "statement": "A detection is the entire path from an event that was logged to a human who made a decision, and it fails at whichever stage you never measured.",
+   "respect": 70
+  },
+  {
+   "id": "award-ads-authored",
+   "step": "The Alerting and Detection Strategy",
+   "kind": "lesson",
+   "statement": "A detection that only its author can operate is a liability disguised as a control; write the document that lets a stranger run it at 03:00.",
+   "respect": 130
+  },
+  {
+   "id": "award-first-detection-shipped",
+   "step": "Detection-as-Code: Sigma, Backends, and a CI That Says No",
+   "kind": "lab",
+   "statement": "If a detection can reach production without passing a test, you are not running detection engineering, you are running a suggestion box.",
+   "respect": 190
+  },
+  {
+   "id": "award-noise-slayer",
+   "step": "Detection-as-Code: Sigma, Backends, and a CI That Says No",
+   "kind": "lab",
+   "statement": "If a detection can reach production without passing a test, you are not running detection engineering, you are running a suggestion box.",
+   "respect": 190
+  },
+  {
+   "id": "award-quiet-pager",
+   "step": "Drill: The Rule That Is Right and Loud",
+   "kind": "drill",
+   "statement": "Under a live campaign, the choice is never noisy versus quiet; it is which queue absorbs the noise and who owns the decay clock.",
+   "respect": 145
+  },
+  {
+   "id": "award-debt-register",
+   "step": "Tuning Debt and the Systems View of Alert Fatigue",
+   "kind": "lesson",
+   "statement": "Alert fatigue is a property of the alert generator, not of the people receiving alerts, and no amount of hiring fixes a generator.",
+   "respect": 165
+  },
+  {
+   "id": "award-guild-founded",
+   "step": "Field: Stand Up the Detection Guild",
+   "kind": "field",
+   "statement": "The repository, the review gate and the owner are the program; everything else is content that flows through them.",
+   "respect": 175
+  },
+  {
+   "id": "award-questions-first",
+   "step": "The Question You Cannot Ask Later",
+   "kind": "construct",
+   "statement": "Logging decisions are made once and paid for forever, in both directions: what you did not collect is not merely missing, it is unknowable.",
+   "respect": 65
+  },
+  {
+   "id": "award-budget-defender",
+   "step": "The Real Price of a Log Line",
+   "kind": "lesson",
+   "statement": "Telemetry is not bought once; it is rented per gigabyte per day forever, and the only defensible unit of value is questions answered per dollar.",
+   "respect": 155
+  },
+  {
+   "id": "award-pipeline-architect",
+   "step": "Lab: The Pipeline That Routes by Value",
+   "kind": "lab",
+   "statement": "Decouple collection from destination, and the annual budget fight becomes a routing change instead of a capability loss.",
+   "respect": 195
+  },
+  {
+   "id": "award-honest-map",
+   "step": "Drill: Forty Percent, Thirty Days",
+   "kind": "drill",
+   "statement": "A telemetry cut executed by volume destroys capability at random; a cut executed by detection dependency destroys almost nothing.",
+   "respect": 160
+  },
+  {
+   "id": "award-schema-keeper",
+   "step": "Schema, Normalisation, and the Evidence You Destroyed",
+   "kind": "lesson",
+   "statement": "Normalise so detections are portable, preserve the raw so investigations are possible; a pipeline that does only the first has traded tomorrow's truth for today's convenience.",
+   "respect": 170
+  },
+  {
+   "id": "award-board-clarity",
+   "step": "Council: Buying Visibility From Someone Who Sees a Cost Centre",
+   "kind": "council",
+   "statement": "Finance does not refuse to fund visibility; it refuses to fund a number with no unit of value attached, and that is your failure to translate, not their failure to care.",
+   "respect": 180
+  },
+  {
+   "id": "award-coverage-auditor",
+   "step": "Generating the Map Instead of Painting It",
+   "kind": "lesson",
+   "statement": "If a human colours your coverage map, it records what that human believed on that day; if your pipeline generates it, it records what your detections actually do.",
+   "respect": 120
+  },
+  {
+   "id": "award-robust-analytic",
+   "step": "Summiting the Pyramid: How Hard Is Your Analytic to Evade",
+   "kind": "lesson",
+   "statement": "Two detections for the same technique can differ by an order of magnitude in how easily an adversary defeats them, and until you score that difference you are counting rules rather than measuring defence.",
+   "respect": 200
+  },
+  {
+   "id": "award-atomic-validator",
+   "step": "Lab: Atomic Tests, Caldera Chains, and the Validation Ledger",
+   "kind": "lab",
+   "statement": "A detection is validated when a real technique execution produced a real alert in the real environment, and everything short of that is a hypothesis wearing a lab coat.",
+   "respect": 190
+  },
+  {
+   "id": "award-red-to-green",
+   "step": "Lab: Atomic Tests, Caldera Chains, and the Validation Ledger",
+   "kind": "lab",
+   "statement": "A detection is validated when a real technique execution produced a real alert in the real environment, and everything short of that is a hypothesis wearing a lab coat.",
+   "respect": 190
+  },
+  {
+   "id": "award-purple-discipline",
+   "step": "Drill: The Exercise That Stopped at Step Two",
+   "kind": "drill",
+   "statement": "A control that blocks early is a good outcome and a bad test; conflating the two is how organisations certify coverage they do not have.",
+   "respect": 165
+  },
+  {
+   "id": "award-hunt-first-blood",
+   "step": "Hypothesis, Not Vibes",
+   "kind": "construct",
+   "statement": "A hunt without a written hypothesis and a defined negative result is browsing, and browsing produces neither findings nor the ability to say what you ruled out.",
+   "respect": 80
+  },
+  {
+   "id": "award-metronome",
+   "step": "Lab: Stacking, the Long Tail, and Finding the Metronome",
+   "kind": "lab",
+   "statement": "Three techniques — count the rare, rank the unusual, and measure the regularity — will find more real intrusions than any list of indicators you will ever be given.",
+   "respect": 200
+  },
+  {
+   "id": "award-canary-keeper",
+   "step": "Deception: The Cheapest True Positive You Will Ever Own",
+   "kind": "lesson",
+   "statement": "Every other detection asks whether unusual activity is malicious; a canary only fires when something touched an object that exists for no other reason.",
+   "respect": 145
+  },
+  {
+   "id": "award-trap-setter",
+   "step": "Deception: The Cheapest True Positive You Will Ever Own",
+   "kind": "lesson",
+   "statement": "Every other detection asks whether unusual activity is malicious; a canary only fires when something touched an object that exists for no other reason.",
+   "respect": 145
+  },
+  {
+   "id": "award-queue-sight",
+   "step": "The SOC Is a Queueing System",
+   "kind": "construct",
+   "statement": "Attention is the scarce resource, arrival rate is set by your own engineering choices, and every queueing system fails the same way when utilisation approaches one.",
+   "respect": 75
+  },
+  {
+   "id": "award-clean-handoff",
+   "step": "Tiered, Tierless, and the Handoff Problem",
+   "kind": "lesson",
+   "statement": "Tiering optimises for throughput on repetitive work and taxes every investigation that crosses its boundary; choose it deliberately or it will choose itself.",
+   "respect": 150
+  },
+  {
+   "id": "award-metric-honesty",
+   "step": "MTTD, MTTR, and the Metric That Eats Your Program",
+   "kind": "lesson",
+   "statement": "Every operational metric you publish becomes a target, and the cheapest way to move almost all of them is to do less real work.",
+   "respect": 175
+  },
+  {
+   "id": "award-cloud-eyes",
+   "step": "Lab: Cloud Detection Where the Control Plane Is the Crime Scene",
+   "kind": "lab",
+   "statement": "In cloud, the attacker rarely runs code on a host you monitor; they make API calls as an identity, and if you are not detecting on the control plane you are not detecting.",
+   "respect": 210
+  },
+  {
+   "id": "award-keeper-of-people",
+   "step": "Drill: The Analyst Who Is Done",
+   "kind": "drill",
+   "statement": "Analyst burnout is not a wellbeing problem adjacent to security; it is the failure mode of your detection architecture presenting as a human being.",
+   "respect": 170
+  },
+  {
+   "id": "award-lantern-lit",
+   "step": "Council: Telling the Board What You Cannot See",
+   "kind": "council",
+   "statement": "Boards do not need your coverage percentage; they need to know which questions you could answer tomorrow morning and which you could not, and to decide whether that is acceptable.",
+   "respect": 195
+  }
+ ]
+}

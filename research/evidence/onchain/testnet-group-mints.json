@@ -1,0 +1,259 @@
+{
+ "net": "testnet",
+ "read": "2026-11-14",
+ "dc": {
+  "identifier": "2ihQW5TFF7qTBMrg9SpXCV5P6iKcho6iSH1Qfu5EsSGx",
+  "name": null,
+  "owner": {
+   "identifier": "BR1jNbxTQpQs8CXLzTAqTMYrCAu5YrP6Qasxo33vZuc7",
+   "aliases": []
+  },
+  "schema": "{}",
+  "version": 1,
+  "txHash": "8DDFB54E91C10E783F95A57F7386E481B19EB1D01A3A809E5CB5279532637F06",
+  "timestamp": "2026-10-24T13:30:37.718Z",
+  "isSystem": false,
+  "documentsCount": 0,
+  "tokensCount": 1,
+  "identitiesInteracted": 0,
+  "totalGasUsed": 20092401780,
+  "averageGasUsed": 20092401780,
+  "groups": [
+   {
+    "members": {
+     "5u3RmxZ65fVBAhRhCm4rc199gXpicEiZp6tCW9EAcNAJ": 1,
+     "BR1jNbxTQpQs8CXLzTAqTMYrCAu5YrP6Qasxo33vZuc7": 1,
+     "C5Jma7orymt84Xd6f3NE2ezFKurJJhmrrJ3JuDzBH4sp": 1
+    },
+    "requiredPower": 2
+   }
+  ],
+  "tokens": [
+   {
+    "identifier": "CpVmdt7w3LBumwa9bbNMiAQ64SsDbPntKmKDmyJQMML1",
+    "position": 0,
+    "timestamp": null,
+    "description": "TK-014 group-gated mint token (rs-platform-wallet e2e).",
+    "localizations": {
+     "en": {
+      "pluralForm": "E2ETestTokens",
+      "singularForm": "E2ETestToken",
+      "shouldCapitalize": false
+     }
+    },
+    "baseSupply": "0",
+    "totalSupply": "42",
+    "maxSupply": "1000000000000000",
+    "owner": {
+     "identifier": "BR1jNbxTQpQs8CXLzTAqTMYrCAu5YrP6Qasxo33vZuc7",
+     "aliases": []
+    },
+    "mintable": true,
+    "burnable": true,
+    "freezable": true,
+    "unfreezable": true,
+    "destroyable": true,
+    "allowedEmergencyActions": true,
+    "dataContractIdentifier": "2ihQW5TFF7qTBMrg9SpXCV5P6iKcho6iSH1Qfu5EsSGx",
+    "changeMaxSupply": true,
+    "totalGasUsed": null,
+    "mainGroup": 0,
+    "totalTransitionsCount": null,
+    "totalFreezeTransitionsCount": null,
+    "totalBurnTransitionsCount": null,
+    "decimals": 8,
+    "perpetualDistribution": null,
+    "preProgrammedDistribution": null,
+    "price": null,
+    "prices": null
+   }
+  ],
+  "description": null,
+  "keywords": []
+ },
+ "dec": {
+  "type": 0,
+  "typeString": "DATA_CONTRACT_CREATE",
+  "internalConfig": {
+   "canBeDeleted": false,
+   "readonly": false,
+   "keepsHistory": false,
+   "documentsKeepHistoryContractDefault": false,
+   "documentsMutableContractDefault": true,
+   "documentsCanBeDeletedContractDefault": true,
+   "requiresIdentityDecryptionBoundedKey": null,
+   "requiresIdentityEncryptionBoundedKey": null
+  },
+  "version": 1,
+  "userFeeIncrease": 0,
+  "identityNonce": "1",
+  "dataContractId": "2ihQW5TFF7qTBMrg9SpXCV5P6iKcho6iSH1Qfu5EsSGx",
+  "ownerId": "BR1jNbxTQpQs8CXLzTAqTMYrCAu5YrP6Qasxo33vZuc7",
+  "schema": {},
+  "tokens": [
+   {
+    "position": 0,
+    "tokenId": "CpVmdt7w3LBumwa9bbNMiAQ64SsDbPntKmKDmyJQMML1",
+    "conventions": {
+     "decimals": 8,
+     "localizations": {
+      "en": {
+       "pluralForm": "E2ETestTokens",
+       "singularForm": "E2ETestToken",
+       "shouldCapitalize": false
+      }
+     }
+    },
+    "conventionsChangeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "baseSupply": "0",
+    "keepsHistory": {
+     "keepsTransferHistory": true,
+     "keepsFreezingHistory": true,
+     "keepsMintingHistory": true,
+     "keepsBurningHistory": true,
+     "keepsDirectPricingHistory": true,
+     "keepsDirectPurchaseHistory": true
+    },
+    "startAsPaused": false,
+    "isAllowedTransferToFrozenBalance": false,
+    "maxSupply": "1000000000000000",
+    "maxSupplyChangeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "distributionRules": {
+     "perpetualDistribution": null,
+     "preProgrammedDistribution": null,
+     "newTokenDestinationIdentity": "BR1jNbxTQpQs8CXLzTAqTMYrCAu5YrP6Qasxo33vZuc7",
+     "mintingAllowChoosingDestination": true
+    },
+    "marketplaceRules": {
+     "tradeMode": "NotTradeable",
+     "tradeModeChangeRules": {
+      "authorizedToMakeChange": {
+       "takerType": "ContractOwner",
+       "taker": null
+      },
+      "adminActionTakers": {
+       "takerType": "ContractOwner",
+       "taker": null
+      },
+      "changingAuthorizedActionTakersToNoOneAllowed": false,
+      "changingAdminActionTakersToNoOneAllowed": false,
+      "selfChangingAdminActionTakersAllowed": false
+     }
+    },
+    "manualMintingRules": {
+     "authorizedToMakeChange": {
+      "takerType": "Group(0)",
+      "taker": 0
+     },
+     "adminActionTakers": {
+      "takerType": "Group(0)",
+      "taker": 0
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "manualBurningRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "freezeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "unfreezeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "destroyFrozenFundsRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "emergencyActionRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": false
+    },
+    "mainControlGroupCanBeModified": {
+     "takerType": "ContractOwner",
+     "taker": null
+    },
+    "mainControlGroup": 0,
+    "description": "TK-014 group-gated mint token (rs-platform-wallet e2e)."
+   }
+  ],
+  "groups": [
+   {
+    "position": 0
+   }
+  ]
+ }
+}

@@ -1,0 +1,29 @@
+/* WCAG 2.5.8: a slider is a target too, and its track is drawn 16px tall by default: at every width it takes at
+   least 24px, and on touch screens a full finger below. */
+input[type='range'] { min-height: 24px; }
+
+/* A FINGER NEEDS 44PX. On a touch screen, or any narrow one, every small control grows to a full finger. Loaded
+   last, so it holds whatever a component's own stylesheet says. probe-touch.mjs walks every page and measures it. */
+@media (max-width: 720px), (hover: none) and (pointer: coarse) {
+  .btn-sm, .sg-tab, .minds-ask, .minds-listen, .tr-add, .mx-chip, button.chip, a.chip { min-height: 44px; }
+  button.chip, a.chip, .mx-chip { padding-inline: 16px; }
+  .minds-tool, .tr-x { width: 44px; height: 44px; }
+  input[type='range'] { min-height: 44px; }
+
+  /* a long row of filters is one row that scrolls sideways, not a wall; rows of a few choices keep wrapping */
+  .row-scroll { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; padding-block: 2px 4px; }
+  .row-scroll::-webkit-scrollbar { display: none; }
+  .row-scroll > * { flex: none; }
+}
+
+/* the app's own bar is the most-used control on a phone */
+@media (max-width: 1080px) {
+  .navbtn, .nav-find { min-height: 44px; }
+}
+
+/* fields, disclosures and the small routes are pressed too */
+@media (max-width: 720px), (hover: none) and (pointer: coarse) {
+  input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='hidden']), select { min-height: 44px; }
+  summary { min-height: 44px; align-content: center; }
+  .minds-route { min-height: 44px; }
+}

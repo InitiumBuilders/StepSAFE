@@ -1,0 +1,68 @@
+/* STEPSAFE'S OWN RECORD (views/TrustView.tsx, lib/selfread.ts). Each status is drawn by its shape as well as its
+   colour: a whole disc holds, a half disc holds in part, an open ring does not, a dash was not read or does not
+   apply. Night, Meridian and Mov set the colours below, the same inks the token page uses; the rest reads from the
+   theme tokens. Nothing here moves. */
+
+.ownr { --ownr-hold: #8fd8e0; --ownr-half: #e8c46b; --ownr-open: #f6a58f; --ownr-quiet: #c4cadc; }
+html[data-theme='meridian'] .ownr { --ownr-hold: #0a5a4e; --ownr-half: #6b4a00; --ownr-open: #8a3820; --ownr-quiet: #3b4a43; }
+html[data-theme='mov'] .ownr { --ownr-hold: #8fe3ea; --ownr-half: #ffd76a; --ownr-open: #ffb169; --ownr-quiet: #d0d4e4; }
+
+.wrap.ownr { max-width: var(--wrap-wide); }
+/* /trust on its own (views/trustMount.tsx): the page's own margins and a way into the app */
+/* lifted above the body's fixed lattice and grain (future.css, calm.css), as the app's shell is; left in the flow, the
+   page's unpanelled words were drawn under them and could not be seen */
+.ownr-alone { position: relative; z-index: 1; display: block; padding: clamp(18px, 4vw, 44px) clamp(16px, 4vw, 40px) 56px; }
+.ownr-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: clamp(18px, 4vw, 36px); }
+.ownr-brand { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--ink); text-decoration: none; font: 600 1.1rem var(--font-display); }
+.ownr-brand:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; border-radius: 10px; }
+.ownr .view-head .lede { max-width: 42em; }
+.ownr-h { margin: 0; font: 600 1.18rem/1.3 var(--font-display); letter-spacing: 0; color: var(--ink); }
+
+/* ---------- the two reads ---------- */
+.ownr-read { display: flex; flex-direction: column; gap: 14px; padding: clamp(20px, 3vw, 32px); margin-bottom: var(--s6); }
+.ownr-read p { margin: 0; }
+.ownr-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.ownr-actions .btn-key { min-height: 52px; }
+.ownr-actions .btn-sm { min-height: 44px; }
+.ownr-says { max-width: 62em; line-height: 1.55; }
+.ownr-waits { color: var(--ink); font-weight: 600; }
+.ownr-result-head { display: flex; flex-direction: column; gap: 8px; }
+.ownr-result-head .sec { margin: 0; max-width: 56em; line-height: 1.6; }
+.ownr-sum { margin: 4px 0 0; font: 500 clamp(1.5rem, 3vw, 2.2rem)/1.15 var(--font-display); color: var(--ink); text-wrap: balance; }
+.ownr-sum:focus:not(:focus-visible) { outline: none; }
+.ownr-when { white-space: nowrap; }
+
+/* ---------- a finding, an answer, a row ---------- */
+.ownr-findings, .ownr-answers { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.ownr-f, .ownr-a { --ownr-hue: var(--ownr-quiet); display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 14px; padding: 16px 18px; border-radius: 20px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--ink) 4%, transparent); }
+.ownr-waiting .ownr-f { padding: 12px 18px; align-items: center; }
+.ownr-k-shown, .ownr-ans-yes, .ownr-st-in-place { --ownr-hue: var(--ownr-hold); }
+.ownr-ans-partly, .ownr-st-partly { --ownr-hue: var(--ownr-half); }
+.ownr-k-gap, .ownr-ans-no, .ownr-st-not-yet, .ownr-st-not-certified { --ownr-hue: var(--ownr-open); }
+.ownr-mark { width: 28px; height: 28px; fill: none; stroke: var(--ownr-hue); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.ownr-mark .ownr-fill { fill: var(--ownr-hue); stroke: none; }
+.ownr-f-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.ownr-f-title { font: 600 1.12rem/1.3 var(--font-display); color: var(--ink); }
+.ownr-f-state { font: 600 0.88rem var(--font-display); color: var(--ink-label); }
+.ownr-f-body p { margin: 0; max-width: 62em; line-height: 1.6; color: var(--ink); overflow-wrap: anywhere; }
+.ownr-f-body .ownr-ask { color: var(--ink-2); }
+.ownr-f-body .ownr-f-from { font-size: 0.88rem; color: var(--ink-2); }
+.ownr-f-from a { color: inherit; text-underline-offset: 3px; }
+.ownr-f-body .ownr-read-line { font-size: 0.95rem; }
+.ownr-f-body .ownr-disagree { font-weight: 600; }
+.ownr-move .label { display: block; margin-bottom: 4px; }
+/* on a phone a finding sits inside a panel: less padding and a smaller mark give its words the width */
+@media (max-width: 560px) {
+  .ownr-read { padding: 18px 14px; }
+  .ownr-f, .ownr-a { grid-template-columns: 22px minmax(0, 1fr); gap: 10px; padding: 14px; }
+  .ownr-mark { width: 22px; height: 22px; }
+}
+
+/* ---------- what a browser cannot read ---------- */
+.ownr-block { display: flex; flex-direction: column; gap: 16px; margin-bottom: var(--s6); }
+.ownr-tests { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.ownr-tests li { display: grid; grid-template-columns: minmax(130px, 170px) minmax(0, 1fr); gap: 14px; padding: 14px 18px; border-radius: 18px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--ink) 4%, transparent); line-height: 1.55; color: var(--ink); }
+.ownr-tests code { font: 600 0.92rem var(--font-mono, ui-monospace, monospace); color: var(--ink); overflow-wrap: anywhere; }
+@media (max-width: 560px) { .ownr-tests li { grid-template-columns: 1fr; gap: 4px; } }
+.ownr-foot { margin: 0 0 var(--s6); max-width: 62em; color: var(--ink-2); line-height: 1.6; }
+.ownr-foot a { color: var(--ink); text-underline-offset: 3px; }

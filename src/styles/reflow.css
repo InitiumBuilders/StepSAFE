@@ -1,0 +1,84 @@
+/* On a phone nothing asks to be scrolled sideways. A table of three columns or more is read as one card for each
+   row, every value under its column's name; a table of two fits once it may wrap; code wraps; what was one long
+   row becomes a few short ones. probe-wide.mts opens every Step, guide, model and page at 390 wide and holds it.
+   Loaded after every page's styles and before the tab bar and the touch floor. */
+
+/* a word too long for its line (a path, an address, a run of names joined by slashes) breaks instead of pushing the
+   page sideways; ordinary words are untouched */
+.stage { overflow-wrap: break-word; }
+
+@media (max-width: 720px) {
+  /* ---------- tables ---------- */
+  table.dt { min-width: 0; font-size: 0.95rem; }
+  table.dt th, table.dt td { padding: 10px 12px; overflow-wrap: break-word; }
+  /* in a table of two, the first column keeps its words whole and the second takes the rest */
+  table.dt:not(.dt-stack) th:first-child, table.dt:not(.dt-stack) td:first-child { width: 36%; }
+  table.dt:not(.dt-stack) th { letter-spacing: 0.06em; }
+  table.dt:not(.dt-stack) th:last-child, table.dt:not(.dt-stack) td:last-child { overflow-wrap: anywhere; }
+
+  .tablewrap.tw-stack { overflow: visible; border: 0; border-radius: 0; background: none; box-shadow: none; }
+  table.dt-stack, table.dt-stack tbody { display: block; }
+  table.dt-stack thead { display: none; }
+  /* the one column may be narrower than a row's longest word (an address, a hash), which then breaks */
+  table.dt-stack tbody { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  table.dt-stack tr {
+    display: block; min-width: 0; padding: 14px 16px;
+    border-radius: 18px; corner-shape: superellipse(2.15);
+    background: var(--panel-2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 3px 0 0 color-mix(in srgb, var(--cyan) 46%, transparent);
+  }
+  table.dt-stack tbody tr:hover { background: var(--panel-2); }
+  table.dt-stack td { display: block; padding: 0; border: 0; overflow-wrap: anywhere; }
+  table.dt-stack td + td { margin-top: 10px; }
+  table.dt-stack td[data-label]::before {
+    content: attr(data-label); display: block; margin-bottom: 2px;
+    font: 600 12px/1.35 var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-label);
+  }
+  /* the first value names the row */
+  table.dt-stack td:first-child { font-size: 1.06rem; font-weight: 600; color: var(--ink); }
+
+  /* the chapter map is drawn a little under its own size on a phone: its numbers stay 12px */
+  .cmap-num { font-size: 13.5px; }
+
+  /* ---------- code ---------- */
+  pre.code {
+    white-space: pre-wrap; overflow-wrap: anywhere; overflow-x: visible;
+    padding: 14px; font-size: 13px; line-height: 1.62; tab-size: 2;
+  }
+
+  /* ---------- a metric: the number, then what it means ---------- */
+  .metric { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .metric .mv { font-size: 2rem; overflow-wrap: anywhere; }
+  .metric > div { min-width: 0; max-width: 100%; }
+  /* a linked term breaks with its line instead of pushing past the edge */
+  .term-link { overflow-wrap: anywhere; }
+
+  /* ---------- the system map's rows of choices, and the commons' rocks, wrap ---------- */
+  .sa-frames, .sa-layers, .sa-states-row { flex-wrap: wrap; overflow-x: visible; margin: 0; padding: 0; }
+  .cm-band { flex-wrap: wrap; }
+  .cm-rock { flex: 1 1 auto; overflow: visible; text-overflow: clip; padding-inline: 8px; }
+  .cm-rest-name span { white-space: normal; overflow: visible; text-overflow: clip; }
+
+  /* ---------- Seva's suggestions wrap, each on as many lines as it needs ---------- */
+  .minds-asks { flex-wrap: wrap; overflow-x: visible; margin: 0; padding: 0 2px; }
+  .minds-ask { flex: 0 1 auto; white-space: normal; text-align: left; }
+
+  /* ---------- a long row of chips for one choice is one picker ---------- */
+  .phone-select { position: relative; display: flex; flex-direction: column; gap: 5px; min-width: 0; margin: 0 0 12px; }
+  .phone-select select {
+    width: 100%; min-height: 48px; padding: 10px 42px 10px 14px;
+    border: 1px solid var(--frame-strong); border-radius: 14px; corner-shape: superellipse(2.15);
+    background: var(--panel-2); color: var(--ink); font: inherit; box-shadow: var(--inset);
+    appearance: none; -webkit-appearance: none; text-overflow: ellipsis;
+  }
+  .phone-select::after {
+    content: ''; position: absolute; right: 18px; bottom: 20px; width: 8px; height: 8px; pointer-events: none;
+    border-right: 1.8px solid var(--ink-2); border-bottom: 1.8px solid var(--ink-2); transform: rotate(45deg);
+  }
+  .phone-select + .row-scroll, .phone-select + .gl-subjects { display: none; }
+  /* the deck's four pickers sit two to a row, so its cards start a screen sooner */
+  .sg-selects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* the picker is a phone's; wider screens keep the chips */
+@media (min-width: 720.02px) { .phone-select { display: none; } }

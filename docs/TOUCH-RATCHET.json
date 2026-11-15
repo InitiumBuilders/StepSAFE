@@ -1,0 +1,8 @@
+{
+  "at": "2026-11-11",
+  "note": "Controls under 44px at 390 wide, by place. A count may fall and may not rise. Seva: the columns of the time chart are as wide as a day. Chapters: one node of the map is 41px wide.",
+  "small": {
+    "chapters": 1,
+    "seva": 15
+  }
+}

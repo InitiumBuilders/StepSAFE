@@ -1,0 +1,46 @@
+/* Two Hundred Days (components/ManyDays.tsx). Shapes in the SVG stretch with the box; every word is HTML, so type
+   keeps its size at every width. */
+.mdays-lead { margin: 0 0 var(--s3, 12px); max-width: 68ch; }
+.mdays-fan { position: relative; height: 190px; margin: 18px 0 22px 0; }
+.mdays-fan svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.mdays-grid { stroke: color-mix(in srgb, var(--ink-2) 18%, transparent); stroke-width: 1; }
+.mdays-outer { fill: color-mix(in srgb, var(--ink-accent) 14%, transparent); }
+.mdays-inner { fill: color-mix(in srgb, var(--ink-accent) 28%, transparent); }
+.mdays-mid { fill: none; stroke: var(--ink-accent); stroke-width: 2.4; stroke-linejoin: round; }
+.mdays-cmp { fill: none; stroke: var(--ink-signal); stroke-width: 2; stroke-linejoin: round; }
+.mdays-stress { fill: none; stroke: var(--ink-warn, var(--ink-gold)); stroke-width: 1.6; stroke-dasharray: 5 4; }
+.mdays-xl { position: absolute; bottom: -20px; transform: translateX(-50%); font-size: 12px; color: var(--ink-2); white-space: nowrap; }
+.mdays-yl { position: absolute; left: 6px; transform: translateY(-100%); font-size: 12px; color: var(--ink-2); pointer-events: none; }
+.mdays-key { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; margin: 0 0 12px; font-size: 13px; }
+.mdays-ki { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+.mdays-k { display: inline-block; flex: none; width: 18px; height: 10px; border-radius: 3px; vertical-align: -1px; }
+.mdays-k.mid { height: 3px; background: var(--ink-accent); }
+.mdays-k.inner { background: color-mix(in srgb, var(--ink-accent) 40%, transparent); }
+.mdays-k.outer { background: color-mix(in srgb, var(--ink-accent) 18%, transparent); }
+.mdays-k.cmp { height: 3px; background: var(--ink-signal); }
+.mdays-k.stress { height: 0; border-top: 2px dashed var(--ink-warn, var(--ink-gold)); }
+.mdays-rug { position: relative; height: 34px; margin: 4px 0 28px; }
+.mdays-rug svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mdays-tick { stroke: color-mix(in srgb, var(--ink-alarm) 55%, transparent); stroke-width: 1; }
+.mdays-tick.held { stroke: color-mix(in srgb, var(--ink-accent) 70%, transparent); }
+.mdays-heldline { stroke: var(--ink); stroke-width: 1.4; }
+.mdays-nums { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 12px; font-size: 14px; color: var(--ink-2); }
+.mdays-nums strong { color: var(--ink); font-size: 16px; }
+.mdays-cmp-nums { margin-top: -6px; }
+.mdays-cmp-nums strong { color: var(--ink-signal); }
+.mdays-line { margin: 0 0 12px; max-width: 72ch; }
+.mdays-h4 { margin: 18px 0 8px; font-size: 15px; }
+.mdays-sens { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 8px; }
+.mdays-sens li { display: grid; grid-template-columns: minmax(0, 15em) 1fr 6.5em; gap: 10px; align-items: center; font-size: 14px; }
+.mdays-sens-label { min-width: 0; }
+.mdays-sens-bar { position: relative; height: 8px; border-radius: 4px; background: color-mix(in srgb, var(--ink-2) 14%, transparent); }
+.mdays-sens-bar i { position: absolute; top: -3px; bottom: -3px; width: 1px; background: var(--ink-2); opacity: 0.5; }
+.mdays-sens-bar span { position: absolute; top: 0; bottom: 0; border-radius: 4px; background: var(--ink-accent); }
+.mdays-sens-val { color: var(--ink-2); white-space: nowrap; font-size: 13px; text-align: right; }
+.mdays-moves { margin: 0 0 8px; padding-left: 1.3em; display: grid; gap: 6px; }
+.mdays-moves li span { display: block; color: var(--ink-2); font-size: 14px; }
+@media (max-width: 560px) {
+  .mdays-sens li { grid-template-columns: 1fr 6.5em; }
+  .mdays-sens-label { grid-column: 1 / -1; }
+  .mdays-fan { height: 160px; }
+}

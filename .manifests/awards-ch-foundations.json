@@ -1,0 +1,356 @@
+{
+ "chId": "ch-foundations",
+ "chTitle": "Ground",
+ "missingAwards": [
+  {
+   "id": "first-model-drawn",
+   "step": "Stocks, Flows, and the Bathtub You Are Standing In",
+   "kind": "construct",
+   "statement": "Your risk is a stock, your controls act on flows, and almost every argument in security is people confusing the two.",
+   "respect": 70
+  },
+  {
+   "id": "bathtub-clarity",
+   "step": "Stocks, Flows, and the Bathtub You Are Standing In",
+   "kind": "construct",
+   "statement": "Your risk is a stock, your controls act on flows, and almost every argument in security is people confusing the two.",
+   "respect": 70
+  },
+  {
+   "id": "loop-cartographer",
+   "step": "Loops: Why Programs Compound or Erode",
+   "kind": "lesson",
+   "statement": "Every security program is already running feedback loops; the only question is whether you designed them or inherited them.",
+   "respect": 95
+  },
+  {
+   "id": "delay-hunter",
+   "step": "Delay Is the Dominant Failure Mode",
+   "kind": "lesson",
+   "statement": "Most security programs are not under-resourced; they are over-delayed, and the two look identical from the outside.",
+   "respect": 120
+  },
+  {
+   "id": "leverage-audit",
+   "step": "Twelve Places to Intervene, Ranked",
+   "kind": "lesson",
+   "statement": "The interventions that are easiest to fund are the ones Meadows ranks last, and that inversion is the structural reason security budgets under-deliver.",
+   "respect": 150
+  },
+  {
+   "id": "meadows-ladder",
+   "step": "Twelve Places to Intervene, Ranked",
+   "kind": "lesson",
+   "statement": "The interventions that are easiest to fund are the ones Meadows ranks last, and that inversion is the structural reason security budgets under-deliver.",
+   "respect": 150
+  },
+  {
+   "id": "first-simulation",
+   "step": "Lab: Simulate the Pipeline Before You Fund It",
+   "kind": "lab",
+   "statement": "If you cannot simulate your remediation pipeline in fifty lines of code, you do not understand it well enough to spend money on it.",
+   "respect": 175
+  },
+  {
+   "id": "exposure-days",
+   "step": "Lab: Simulate the Pipeline Before You Fund It",
+   "kind": "lab",
+   "statement": "If you cannot simulate your remediation pipeline in fifty lines of code, you do not understand it well enough to spend money on it.",
+   "respect": 175
+  },
+  {
+   "id": "first-blood-drill",
+   "step": "Drill: Forty-One Days",
+   "kind": "drill",
+   "statement": "When the number is bad, the reflex is to change the number; the discipline is to change the structure that produced it.",
+   "respect": 140
+  },
+  {
+   "id": "variety-audit",
+   "step": "Requisite Variety: Only Variety Absorbs Variety",
+   "kind": "construct",
+   "statement": "You cannot regulate a system with more states than your regulator can distinguish, and an adversary's job is to find a state you have no response for.",
+   "respect": 85
+  },
+  {
+   "id": "viable-system-map",
+   "step": "The Viable System Model of a Security Function",
+   "kind": "lesson",
+   "statement": "Most security orgs are missing System Four, and that is why they are always surprised.",
+   "respect": 155
+  },
+  {
+   "id": "three-star-channel",
+   "step": "The Viable System Model of a Security Function",
+   "kind": "lesson",
+   "statement": "Most security orgs are missing System Four, and that is why they are always surprised.",
+   "respect": 155
+  },
+  {
+   "id": "depth-vs-breadth",
+   "step": "Depth, Breadth, and the Control-versus-Capability Line",
+   "kind": "lesson",
+   "statement": "A control is a frozen answer to a question the adversary has already moved past; a capability is the ability to produce a new answer.",
+   "respect": 130
+  },
+  {
+   "id": "capability-ledger",
+   "step": "Depth, Breadth, and the Control-versus-Capability Line",
+   "kind": "lesson",
+   "statement": "A control is a frozen answer to a question the adversary has already moved past; a capability is the ability to produce a new answer.",
+   "respect": 130
+  },
+  {
+   "id": "half-life-measured",
+   "step": "Lab: Measure the Half-Life of a Control",
+   "kind": "lab",
+   "statement": "Every control has a decay rate, and if you have never measured it you are reporting a number from the day you deployed.",
+   "respect": 185
+  },
+  {
+   "id": "denominator-independence",
+   "step": "Lab: Measure the Half-Life of a Control",
+   "kind": "lab",
+   "statement": "Every control has a decay rate, and if you have never measured it you are reporting a number from the day you deployed.",
+   "respect": 185
+  },
+  {
+   "id": "budget-under-fire",
+   "step": "Drill: Two Million and One Choice",
+   "kind": "drill",
+   "statement": "The layer you already cover is the one everyone wants to reinforce, and it is almost never the layer that will be used against you.",
+   "respect": 160
+  },
+  {
+   "id": "room-held",
+   "step": "Council: The Executive Who Has Already Chosen the Product",
+   "kind": "council",
+   "statement": "When an executive brings you a control, they are usually bringing you a fear; answer the fear or you will be arguing forever.",
+   "respect": 145
+  },
+  {
+   "id": "substitute-not-refuse",
+   "step": "Council: The Executive Who Has Already Chosen the Product",
+   "kind": "council",
+   "statement": "When an executive brings you a control, they are usually bringing you a fear; answer the fear or you will be arguing forever.",
+   "respect": 145
+  },
+  {
+   "id": "four-questions",
+   "step": "The Four Questions",
+   "kind": "construct",
+   "statement": "Threat modeling is not a methodology, it is four questions, and the methodologies are only ways of answering the second one.",
+   "respect": 65
+  },
+  {
+   "id": "stride-on-boundaries",
+   "step": "STRIDE Applied to Boundaries, Not Boxes",
+   "kind": "lesson",
+   "statement": "STRIDE is a checklist against security properties, and it only works when you point it at an interaction rather than at a component.",
+   "respect": 125
+  },
+  {
+   "id": "attack-tree-annotated",
+   "step": "Attack Trees, PASTA, and Choosing the Right Instrument",
+   "kind": "lesson",
+   "statement": "Different methods answer different questions, and using the wrong one produces an impeccable answer to something nobody asked.",
+   "respect": 165
+  },
+  {
+   "id": "right-instrument",
+   "step": "Attack Trees, PASTA, and Choosing the Right Instrument",
+   "kind": "lesson",
+   "statement": "Different methods answer different questions, and using the wrong one produces an impeccable answer to something nobody asked.",
+   "respect": 165
+  },
+  {
+   "id": "linddun-pass",
+   "step": "Lab: LINDDUN Against a Real Data Flow",
+   "kind": "lab",
+   "statement": "Security threat modeling asks what an attacker could do to the system; privacy threat modeling asks what the system does to a person when it is working perfectly.",
+   "respect": 180
+  },
+  {
+   "id": "quasi-identifier-found",
+   "step": "Lab: LINDDUN Against a Real Data Flow",
+   "kind": "lab",
+   "statement": "Security threat modeling asks what an attacker could do to the system; privacy threat modeling asks what the system does to a person when it is working perfectly.",
+   "respect": 180
+  },
+  {
+   "id": "boundary-from-deployment",
+   "step": "Drill: The Diagram Lied",
+   "kind": "drill",
+   "statement": "A threat model of the architecture you intended is a threat model of a system that does not exist.",
+   "respect": 155
+  },
+  {
+   "id": "taught-not-told",
+   "step": "Drill: The Diagram Lied",
+   "kind": "drill",
+   "statement": "A threat model of the architecture you intended is a threat model of a system that does not exist.",
+   "respect": 155
+  },
+  {
+   "id": "first-real-model",
+   "step": "Field: Model a System You Actually Operate",
+   "kind": "field",
+   "statement": "You have not threat modeled until a design changed because of it.",
+   "respect": 200
+  },
+  {
+   "id": "assumption-ledger",
+   "step": "Field: Model a System You Actually Operate",
+   "kind": "field",
+   "statement": "You have not threat modeled until a design changed because of it.",
+   "respect": 200
+  },
+  {
+   "id": "two-changes-shipped",
+   "step": "Field: Model a System You Actually Operate",
+   "kind": "field",
+   "statement": "You have not threat modeled until a design changed because of it.",
+   "respect": 200
+  },
+  {
+   "id": "kill-chain-read",
+   "step": "The Kill Chain Argument, and What ATT&CK Added",
+   "kind": "lesson",
+   "statement": "The kill chain's contribution was never the seven boxes; it was the claim that a defender gets many chances against one campaign.",
+   "respect": 110
+  },
+  {
+   "id": "pyramid-graded",
+   "step": "The Pyramid of Pain, Graded Honestly",
+   "kind": "construct",
+   "statement": "Detection quality is measured in what it costs the adversary to evade, and almost every detection you own costs them minutes.",
+   "respect": 105
+  },
+  {
+   "id": "adversary-economics",
+   "step": "Commodity, Criminal, State: Three Economies, Three Defences",
+   "kind": "lesson",
+   "statement": "You do not defend against attackers; you defend against business models, and the three models fail differently.",
+   "respect": 160
+  },
+  {
+   "id": "retro-hunt",
+   "step": "Drill: Fourteen Hundred Indicators",
+   "kind": "drill",
+   "statement": "An indicator list is a receipt for someone else's incident, and treating it as a defence buys you the illusion of action for the price of a day.",
+   "respect": 150
+  },
+  {
+   "id": "honest-coverage",
+   "step": "Lab: Grade Your Detection Portfolio",
+   "kind": "lab",
+   "statement": "A coverage map you did not grade is a wish list with colours.",
+   "respect": 190
+  },
+  {
+   "id": "invariant-detection",
+   "step": "Lab: Grade Your Detection Portfolio",
+   "kind": "lab",
+   "statement": "A coverage map you did not grade is a wish list with colours.",
+   "respect": 190
+  },
+  {
+   "id": "threat-informed",
+   "step": "Field: Build an Adversary-Informed Portfolio",
+   "kind": "field",
+   "statement": "Pick one adversary who genuinely targets organisations like yours, and become undeniably expensive to that one adversary.",
+   "respect": 215
+  },
+  {
+   "id": "purple-validated",
+   "step": "Field: Build an Adversary-Informed Portfolio",
+   "kind": "field",
+   "statement": "Pick one adversary who genuinely targets organisations like yours, and become undeniably expensive to that one adversary.",
+   "respect": 215
+  },
+  {
+   "id": "property-set",
+   "step": "Beyond the Triad: What Actually Gets Violated",
+   "kind": "lesson",
+   "statement": "Confidentiality, integrity and availability were a good start in 1975 and they will not describe your worst day.",
+   "respect": 100
+  },
+  {
+   "id": "blast-radius-computed",
+   "step": "Blast Radius: The Only Asset Question That Matters",
+   "kind": "construct",
+   "statement": "An asset's importance is not what it holds, it is what it reaches.",
+   "respect": 95
+  },
+  {
+   "id": "edge-cut",
+   "step": "Blast Radius: The Only Asset Question That Matters",
+   "kind": "construct",
+   "statement": "An asset's importance is not what it holds, it is what it reaches.",
+   "respect": 95
+  },
+  {
+   "id": "calibrated",
+   "step": "Lab: Calibrate Yourself, Then Model the Loss",
+   "kind": "lab",
+   "statement": "You are overconfident by a measurable amount, and until you measure it every number you give a board is a guess wearing a suit.",
+   "respect": 195
+  },
+  {
+   "id": "monte-carlo-run",
+   "step": "Lab: Calibrate Yourself, Then Model the Loss",
+   "kind": "lab",
+   "statement": "You are overconfident by a measurable amount, and until you measure it every number you give a board is a guess wearing a suit.",
+   "respect": 195
+  },
+  {
+   "id": "interval-discipline",
+   "step": "Lab: Calibrate Yourself, Then Model the Loss",
+   "kind": "lab",
+   "statement": "You are overconfident by a measurable amount, and until you measure it every number you give a board is a guess wearing a suit.",
+   "respect": 195
+  },
+  {
+   "id": "reachability-first",
+   "step": "Drill: The 9.8",
+   "kind": "drill",
+   "statement": "Severity is a property of the vulnerability; risk is a property of your deployment, and confusing the two is how organisations spend a quarter on nothing.",
+   "respect": 155
+  },
+  {
+   "id": "trigger-attached",
+   "step": "Drill: The 9.8",
+   "kind": "drill",
+   "statement": "Severity is a property of the vulnerability; risk is a property of your deployment, and confusing the two is how organisations spend a quarter on nothing.",
+   "respect": 155
+  },
+  {
+   "id": "board-credibility",
+   "step": "Council: Telling a Board the Truth About Uncertainty",
+   "kind": "council",
+   "statement": "A board does not need certainty from you; it needs to know which decisions are theirs and what each one costs.",
+   "respect": 185
+  },
+  {
+   "id": "appetite-agreed",
+   "step": "Council: Telling a Board the Truth About Uncertainty",
+   "kind": "council",
+   "statement": "A board does not need certainty from you; it needs to know which decisions are theirs and what each one costs.",
+   "respect": 185
+  },
+  {
+   "id": "falsifiable-register",
+   "step": "Field: Publish a Register That Can Be Wrong",
+   "kind": "field",
+   "statement": "A risk register that has never been falsified is a filing system; make yours capable of being proven wrong and then track how often it is.",
+   "respect": 220
+  },
+  {
+   "id": "scored-and-wrong",
+   "step": "Field: Publish a Register That Can Be Wrong",
+   "kind": "field",
+   "statement": "A risk register that has never been falsified is a filing system; make yours capable of being proven wrong and then track how often it is.",
+   "respect": 220
+  }
+ ]
+}

@@ -1,0 +1,75 @@
+/* THE PAGE SIGILS, moving (components/PageSigil.tsx). Each figure moves with its page's meaning and nothing
+   else: transform and opacity, a few strokes and fills, on a slow clock. Reduced or calm motion holds the
+   still figure. The sizes here give the sigil more presence beside a page's heading. */
+
+.view-head .page-sigil { width: 84px; height: 84px; margin-top: -4px; }
+@media (max-width: 720px) { .view-head .page-sigil { width: 58px; height: 58px; } }
+
+/* a sigil inside a page's own hero, top right; on a phone it sits above the heading */
+.mx-hero, .sg-hero { position: relative; }
+.hero-sigil { position: absolute; z-index: 1; top: 22px; right: 26px; width: 108px; height: 108px; pointer-events: none; }
+.hero-sigil .page-sigil { width: 100%; height: 100%; margin: 0; }
+@media (max-width: 760px) { .hero-sigil { position: static; display: block; width: 62px; height: 62px; margin: 0 0 8px; } }
+
+.page-sigil .ps-beat { animation: ps-beat 4.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes ps-beat { 0%, 100% { transform: scale(0.86); } 50% { transform: scale(1.18); } }
+
+/* Ground: the seed of life, each ring brightening in turn */
+.k-seed .ps-seq { animation: ps-seq 7s ease-in-out infinite; animation-delay: calc(var(--i) * 0.55s); }
+@keyframes ps-seq { 0%, 24%, 100% { opacity: 0.5; } 9% { opacity: 1; stroke-width: 2.1; } }
+
+/* Chapters: twelve lock in around the centre, one after another */
+.k-twelve .ps-tick, .k-web .ps-tick { transform-box: fill-box; transform-origin: center; animation: ps-tick 9.6s ease-out infinite; animation-delay: calc(var(--i) * 0.4s); }
+.k-web .ps-tick { animation-duration: 6.4s; animation-delay: calc(var(--i) * 0.8s); }
+@keyframes ps-tick { 0% { transform: scale(1); } 3% { transform: scale(1.9); } 12%, 100% { transform: scale(1); } }
+.k-twelve .ps-spoke { animation: ps-spoke 9.6s ease-out infinite; animation-delay: calc(var(--i) * 0.4s); }
+@keyframes ps-spoke { 0%, 100% { opacity: 0.25; } 3% { opacity: 1; } 14% { opacity: 0.4; } }
+
+/* The Practice: a message reaches you through the rooms, and your choice goes out as a ring */
+.k-rooms .ps-msg { animation: ps-msg 4.8s cubic-bezier(0.55, 0, 0.75, 0.4) infinite; }
+@keyframes ps-msg { 0% { transform: translate(-30px, -24px); opacity: 0; } 8% { opacity: 1; } 40% { transform: translate(0, 0); opacity: 1; } 44%, 100% { transform: translate(0, 0); opacity: 0; } }
+.k-rooms .ps-ring { opacity: 0; transform-box: fill-box; transform-origin: center; animation: ps-ring 4.8s ease-out infinite; }
+@keyframes ps-ring { 0%, 40% { opacity: 0; transform: scale(0.5); } 43% { opacity: 1; transform: scale(1); } 82%, 100% { opacity: 0; transform: scale(4); } }
+
+/* StepGuides: a light runs the path */
+.k-path .ps-run { stroke: var(--pa); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 7 93; animation: ps-run 4.2s cubic-bezier(0.45, 0, 0.25, 1) infinite; filter: drop-shadow(0 0 3px var(--pb)); }
+@keyframes ps-run { from { stroke-dashoffset: 7; } to { stroke-dashoffset: -93; } }
+
+/* Steps: a light climbs to the top */
+.k-stairs .ps-climb { animation: ps-climb 5s cubic-bezier(0.5, 0, 0.3, 1) infinite; }
+@keyframes ps-climb { 0% { transform: none; opacity: 0; } 6% { opacity: 1; } 22%, 30% { transform: translate(12px, -8px); } 46%, 54% { transform: translate(24px, -16px); } 70%, 80% { transform: translate(36px, -24px); opacity: 1; } 92%, 100% { transform: translate(36px, -24px); opacity: 0; } }
+
+/* UNIT: seats fill around the table, one by one */
+.k-unit .ps-seat { fill: transparent; animation: ps-seat 9s ease-in-out infinite; animation-delay: calc(var(--i) * 0.6s); }
+@keyframes ps-seat { 0% { fill: transparent; } 6%, 70% { fill: var(--pb); } 82%, 100% { fill: transparent; } }
+
+/* Praxis Profile: the keystone settles into its arch */
+.k-keystone .ps-drop { animation: ps-drop 6.4s cubic-bezier(0.3, 1.45, 0.5, 1) infinite; }
+@keyframes ps-drop { 0%, 6% { transform: translateY(-12px); opacity: 0; } 24% { transform: none; opacity: 1; } 86% { transform: none; opacity: 1; } 100% { transform: translateY(-12px); opacity: 0; } }
+
+/* NextSteps: a signal runs the vector to where it points */
+.k-vector .ps-shot { animation: ps-shot 3.6s cubic-bezier(0.6, 0, 0.2, 1) infinite; }
+@keyframes ps-shot { 0% { transform: none; opacity: 0; } 10% { opacity: 1; } 60% { transform: translate(40px, -32px); opacity: 1; } 72%, 100% { transform: translate(40px, -32px); opacity: 0; } }
+
+/* Settings: three lights, one at a time */
+.k-tune .ps-light { opacity: 0.35; transform-box: fill-box; transform-origin: center; animation: ps-light 6s ease-in-out infinite; animation-delay: calc(var(--i) * 2s); }
+@keyframes ps-light { 0%, 32%, 100% { opacity: 0.35; transform: scale(1); } 8%, 26% { opacity: 1; transform: scale(1.5); } }
+
+/* Modux Models: the threads light in turn */
+.k-web .ps-thread { animation: ps-thread 6.4s ease-in-out infinite; animation-delay: calc(var(--i) * 0.8s); }
+@keyframes ps-thread { 0%, 22%, 100% { opacity: 0.35; } 8% { opacity: 1; } }
+
+/* StudyMode: the top card turns over and is put back */
+.k-deck .ps-top { transform-box: fill-box; transform-origin: center; animation: ps-turn 6s ease-in-out infinite; }
+@keyframes ps-turn { 0%, 34% { transform: none; } 42% { transform: scaleX(0.06); } 50%, 100% { transform: none; } }
+
+/* Seva and Claros: light closes on one point */
+.k-lens .ps-ray { stroke-dasharray: 30 70; animation: ps-ray 4.8s ease-in infinite; animation-delay: calc(var(--i) * 0.12s); }
+@keyframes ps-ray { 0% { stroke-dashoffset: 30; opacity: 0.2; } 40% { stroke-dashoffset: -70; opacity: 1; } 41%, 100% { stroke-dashoffset: -70; opacity: 0.2; } }
+
+@media (prefers-reduced-motion: reduce) { .page-sigil * { animation: none !important; } }
+html[data-motion='calm'] .page-sigil * { animation: none !important; }
+
+/* the frame a returning learner sees while the Praxis downloads (main.tsx) */
+.boot-frame { position: fixed; inset: 0; display: grid; place-items: center; background: var(--ground); }
+.boot-frame .page-sigil { width: 96px; height: 96px; }

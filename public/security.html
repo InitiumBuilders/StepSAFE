@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Report a Security Problem · StepSAFE</title>
+<meta name="description" content="How to report a security problem in StepSAFE, what is in scope, and what we ask and offer in return." />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0b1030; color: #f4f2ff; font: 18px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 44rem; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+  h1 { font-size: 2.1rem; line-height: 1.2; margin: 0 0 1rem; }
+  h2 { font-size: 1.25rem; margin: 2.25rem 0 0.5rem; color: #d9d2ff; }
+  p, li { color: #e4e0f7; }
+  ul { padding-left: 1.25rem; }
+  li { margin: 0.35rem 0; }
+  a { color: #b9a6ff; text-underline-offset: 3px; }
+  a:focus-visible { outline: 3px solid #b9a6ff; outline-offset: 3px; border-radius: 4px; }
+  .foot { margin-top: 3rem; font-size: 0.95rem; color: #c9c3e6; }
+  .foot a { display: inline-block; padding: 0.6rem 0; margin-right: 1rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>Report a Security Problem</h1>
+<p>StepSAFE welcomes reports of security problems from anyone. This page says what is in scope, how to report, and what we ask and offer in return.</p>
+
+<h2>Where To Send It</h2>
+<p>Email <a href="mailto:August@Outlier.Systems">August@Outlier.Systems</a>. The same address is in <a href="/.well-known/security.txt">/.well-known/security.txt</a>.</p>
+<p>Tell us what you found, where it is, the steps that show it, and what someone could do with it. Please leave out any personal data you came across.</p>
+
+<h2>In Scope</h2>
+<ul>
+  <li>unitium-safe.vercel.app, the StepSAFE web app.</li>
+  <li>Its one server function, /api/seva, which sends a guide's conversation to Claude.</li>
+</ul>
+
+<h2>Out Of Scope</h2>
+<ul>
+  <li>The outside services the app can contact, listed on the <a href="/privacy.html">privacy page</a>. Report those to their owners.</li>
+  <li>Denial-of-service testing, or anything that slows the site for others.</li>
+  <li>Social engineering, phishing or physical attacks.</li>
+  <li>Reports from automated scanners with no shown impact.</li>
+</ul>
+
+<h2>What Ships To Your Browser</h2>
+<p>The open-source packages and font files StepSAFE ships are listed, with their versions and checksums, in <a href="/sbom.cdx.json">sbom.cdx.json</a>, a software bill of materials in the CycloneDX format. The site's content security policy lets a page run scripts from this site only.</p>
+<p><a href="/trust">StepSAFE's own record</a> reads these promises from the site in your browser and says which hold, with StepSAFE's gaps listed first.</p>
+
+<h2>What We Ask</h2>
+<ul>
+  <li>Test only with your own data, in your own browser.</li>
+  <li>Stop as soon as you have shown the problem, and report it.</li>
+  <li>Give us time to fix it before you share it publicly. We will agree a date with you.</li>
+</ul>
+
+<h2>What We Offer</h2>
+<ul>
+  <li>We will confirm we received your report within three business days.</li>
+  <li>We will tell you what we found and when it is fixed.</li>
+  <li>If you follow this policy in good faith, we will not take or support legal action against you for your research.</li>
+  <li>With your permission, we will credit you when the fix ships.</li>
+</ul>
+
+<p class="foot">This policy is based on the vulnerability disclosure policy template that CISA, the US Cybersecurity and Infrastructure Security Agency, publishes.<br />
+<a href="/privacy.html">Privacy</a> <a href="/accessibility.html">Accessibility</a> <a href="/">Back to StepSAFE</a></p>
+</main>
+</body>
+</html>

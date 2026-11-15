@@ -1,0 +1,165 @@
+/* DASH DEFENDERS · READ A TOKEN (views/ReadView.tsx, components/TokenVessel.tsx). The figure is the token as a
+   stock: a glass vessel filled to its supply, with the pipe that mints into it. Four colours each name one thing,
+   and a shape says it too: coral is one key acting alone, violet is a group, amber is a rule that can still be
+   changed, ice is a rule fixed for good. Night, Meridian and Mov set those four below; the rest reads from the
+   theme tokens. */
+
+.tkr, .tkr-door { --tkr-liquid: #9cc3ef; --tkr-glass: rgb(216 226 255 / 0.62); --tkr-one: #f6a58f; --tkr-group: #b9a3ff; --tkr-change: #e8c46b; --tkr-set: #8fd8e0; --tkr-quiet: #c4cadc; }
+html[data-theme='meridian'] .tkr, html[data-theme='meridian'] .tkr-door { --tkr-liquid: #1f4f86; --tkr-glass: rgb(16 25 21 / 0.56); --tkr-one: #8a3820; --tkr-group: #4a2fb8; --tkr-change: #6b4a00; --tkr-set: #0a5a4e; --tkr-quiet: #3b4a43; }
+html[data-theme='mov'] .tkr, html[data-theme='mov'] .tkr-door { --tkr-liquid: #7aa8ff; --tkr-glass: rgb(255 255 255 / 0.7); --tkr-one: #ffb169; --tkr-group: #c3b6ff; --tkr-change: #ffd76a; --tkr-set: #8fe3ea; --tkr-quiet: #d0d4e4; }
+
+.wrap.tkr { max-width: var(--wrap-wide); }
+.tkr .view-head .lede { max-width: 42em; }
+.tkr-h { margin: 12px 0 0; font: 600 1.18rem/1.3 var(--font-display); letter-spacing: 0; color: var(--ink); }
+
+/* ---------- the field ---------- */
+.tkr-form { display: flex; flex-direction: column; gap: 14px; padding: clamp(20px, 3vw, 32px); margin-bottom: var(--s6); }
+.tkr-form .tkr-h { margin: 0; }
+.tkr-form-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 14px; }
+.tkr-field { display: flex; flex-direction: column; gap: 6px; flex: 1 1 340px; min-width: 0; }
+.tkr-field input { width: 100%; min-height: 52px; padding: 0 16px; border: 0; border-radius: 16px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--ground) 55%, var(--panel)); color: var(--ink); font: 500 0.98rem var(--font-mono, ui-monospace, monospace); box-shadow: var(--inset); }
+.tkr-field input::placeholder { color: var(--ink-2); opacity: 0.8; }
+.tkr-field input:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+.tkr-net { display: flex; flex-direction: column; gap: 6px; }
+.tkr-net-opts { display: inline-flex; gap: 4px; padding: 4px; border-radius: 16px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--ground) 55%, var(--panel)); box-shadow: var(--inset); }
+.tkr-net-opt { position: relative; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 18px; border-radius: 12px; corner-shape: superellipse(2.15); font: 600 0.96rem var(--font-body); color: var(--ink-2); cursor: pointer; transition: background 200ms var(--ease), color 200ms var(--ease); }
+.tkr-net-opt input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.tkr-net-opt.tkr-on { background: var(--panel-3); color: var(--ink); box-shadow: inset 0 1px 0 var(--relief-light); }
+.tkr-net-opt:focus-within { outline: 2px solid var(--violet); outline-offset: 2px; }
+.tkr-form .btn-key { min-height: 52px; }
+.tkr-form p { margin: 0; }
+.tkr-waits { color: var(--ink); font-weight: 600; }
+.tkr-err { color: var(--ink-alarm); font-weight: 600; }
+.tkr-says { max-width: 62em; line-height: 1.55; }
+
+/* ---------- a reading ---------- */
+.tkr-result, .tkr-examples { display: flex; flex-direction: column; gap: 18px; }
+.tkr-result { margin-bottom: var(--s6); }
+.tkr-result.tkr-example { margin-bottom: 0; }
+.tkr-result-head { display: flex; flex-direction: column; gap: 8px; }
+.tkr-result-head h2 { margin: 0; font: 500 clamp(1.9rem, 4vw, 3rem)/1.1 var(--font-display); color: var(--ink); text-wrap: balance; overflow-wrap: anywhere; }
+.tkr-result-head h2:focus:not(:focus-visible) { outline: none; }
+.tkr-result-head .sec { margin: 0; max-width: 52em; line-height: 1.6; }
+.tkr-id { font-family: var(--font-mono, ui-monospace, monospace); font-size: 0.94em; color: var(--ink); }
+.tkr-pick { display: flex; flex-wrap: wrap; gap: 8px; }
+.tkr-pick .btn.tkr-on { background: var(--panel-3); }
+.tkr-none { margin: 0; color: var(--ink); }
+
+.tkr-token { display: flex; flex-direction: column; gap: 16px; padding: clamp(20px, 3.4vw, 40px); }
+.tkr-top { display: grid; grid-template-columns: minmax(200px, 320px) minmax(0, 1fr); gap: clamp(16px, 4vw, 52px); align-items: center; }
+.tkr-fig { min-width: 0; }
+.tkr-facts { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.tkr-facts .label { display: block; }
+.tkr-name { margin: 0; font: 500 clamp(1.5rem, 3vw, 2.1rem)/1.15 var(--font-display); color: var(--ink); overflow-wrap: anywhere; }
+.tkr-said { margin: 0; color: var(--ink-2); line-height: 1.55; overflow-wrap: anywhere; }
+.tkr-said .label { margin-bottom: 4px; }
+.tkr-supply { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.tkr-supply div { display: flex; flex-direction: column; gap: 6px; min-width: 0; padding: 14px 16px; border-radius: 18px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--ink) 5%, transparent); }
+.tkr-supply dt { font: 600 0.88rem var(--font-display); color: var(--ink-label); }
+.tkr-supply dd { margin: 0; font: 500 clamp(1.15rem, 2vw, 1.55rem)/1.15 var(--font-display); color: var(--ink); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.tkr-grown { margin: 0; }
+
+/* ---------- the vessel ---------- */
+.tkr-vessel { display: block; width: 100%; max-width: 300px; height: auto; margin: 0 auto; overflow: visible; --tkr-hue: var(--tkr-quiet); }
+.tkr-v-alone { --tkr-hue: var(--tkr-one); }
+.tkr-v-shared { --tkr-hue: var(--tkr-group); }
+.tkr-v-shut { --tkr-hue: var(--tkr-change); }
+.tkr-v-plugged { --tkr-hue: var(--tkr-set); }
+.tkr-pipe { fill: none; stroke: var(--tkr-glass); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; opacity: 0.5; }
+.tkr-v-shut .tkr-pipe, .tkr-v-plugged .tkr-pipe, .tkr-v-unread .tkr-pipe { opacity: 0.26; }
+.tkr-flow { fill: none; stroke: var(--tkr-hue); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 7 13; animation: tkr-flow 2.6s linear infinite; }
+@keyframes tkr-flow { to { stroke-dashoffset: -20; } }
+.tkr-valve circle { fill: var(--panel); stroke: var(--tkr-hue); stroke-width: 2.6; }
+.tkr-valve path { fill: none; stroke: var(--tkr-hue); stroke-width: 3.4; stroke-linecap: round; }
+.tkr-valve-keys circle { fill: none; stroke: var(--tkr-hue); stroke-width: 1.7; }
+.tkr-valve-keys circle.tkr-on { fill: var(--tkr-hue); }
+.tkr-plug { fill: var(--tkr-set); }
+/* the schedule's pipe keeps its light whatever the valve says */
+.tkr-timed { --tkr-hue: var(--tkr-liquid); }
+.tkr-vessel .tkr-timed .tkr-pipe { opacity: 0.5; }
+.tkr-timed circle { fill: var(--panel); stroke: var(--tkr-hue); stroke-width: 2.2; }
+.tkr-hands { fill: none; stroke: var(--tkr-hue); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.tkr-glass { fill: none; stroke-width: 2.6; stroke-linecap: round; }
+.tkr-surface { fill: var(--tkr-liquid); opacity: 0.5; }
+.tkr-base { fill: none; stroke: var(--ink); stroke-width: 1.7; stroke-dasharray: 2 6; stroke-linecap: round; opacity: 0.75; }
+.tkr-rim { fill: none; stroke: var(--tkr-glass); stroke-width: 2.6; }
+.tkr-light { fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; opacity: 0.3; }
+
+/* ---------- what a holder is trusting ---------- */
+.tkr-findings { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.tkr-f { --tkr-hue: var(--tkr-quiet); display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 14px; padding: 16px 18px; border-radius: 20px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--tkr-hue) 8%, transparent); }
+.tkr-t-alone { --tkr-hue: var(--tkr-one); }
+.tkr-t-held { --tkr-hue: var(--tkr-group); }
+.tkr-t-open { --tkr-hue: var(--tkr-change); }
+.tkr-t-fixed { --tkr-hue: var(--tkr-set); }
+.tkr-mark { width: 28px; height: 28px; fill: none; stroke: var(--tkr-hue); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.tkr-mark .tkr-fill { fill: var(--tkr-hue); stroke: none; }
+.tkr-f-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.tkr-f-title { font: 600 1.12rem/1.3 var(--font-display); color: var(--ink); }
+.tkr-f-body p { margin: 0; max-width: 62em; line-height: 1.6; color: var(--ink); }
+.tkr-f-body .tkr-f-from { font-size: 0.88rem; color: var(--ink-2); }
+.tkr-f-from code { font: 500 0.86rem var(--font-mono, ui-monospace, monospace); overflow-wrap: anywhere; }
+.tkr-f-models { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.tkr-f-models .chip { border: 0; min-height: 36px; cursor: pointer; font: inherit; font-family: var(--font-display); font-size: 0.88rem; letter-spacing: 0; white-space: normal; text-align: left; }
+.tkr-f-models .chip:hover { color: var(--ink); }
+.tkr-f-models .chip:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+
+/* ---------- who holds each power ---------- */
+.tkr-powers { width: 100%; border-collapse: separate; border-spacing: 0 6px; margin: -6px 0; text-align: left; }
+.tkr-powers thead th { padding: 6px 16px; font: 600 0.88rem var(--font-display); color: var(--ink-label); }
+.tkr-powers tbody th, .tkr-powers td { padding: 13px 16px; vertical-align: top; background: color-mix(in srgb, var(--ink) 4%, transparent); line-height: 1.5; }
+.tkr-powers tbody th { width: 32%; font: 600 1rem/1.5 var(--font-body); color: var(--ink); border-radius: 16px 0 0 16px; }
+.tkr-powers td { color: var(--ink); }
+.tkr-powers td:last-child { border-radius: 0 16px 16px 0; }
+.tkr-holder { display: inline-flex; align-items: baseline; gap: 10px; }
+.tkr-keys { --tkr-hue: var(--tkr-group); display: inline-flex; flex: none; gap: 3px; }
+.tkr-keys-one { --tkr-hue: var(--tkr-one); }
+.tkr-keys i { width: 9px; height: 9px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--tkr-hue); }
+.tkr-keys i.tkr-on { background: var(--tkr-hue); }
+
+/* ---------- the rest of the record ---------- */
+.tkr-more { display: flex; flex-direction: column; gap: 10px; }
+.tkr-more .tkr-h { margin: 0; }
+.tkr-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.tkr-list li { max-width: 64em; padding: 12px 16px; border-radius: 16px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--ink) 4%, transparent); line-height: 1.6; color: var(--ink); overflow-wrap: anywhere; }
+.tkr-list strong { font-weight: 600; margin-right: 6px; }
+.tkr-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.tkr-actions a.btn { text-decoration: none; }
+.tkr-foot { margin: var(--s5) 0 0; max-width: 60em; font-size: 0.92rem; line-height: 1.6; color: var(--ink-2); }
+
+/* ---------- the door on the checks page ---------- */
+.tkr-door { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: center; margin-top: 14px; padding: 20px 24px; }
+.tkr-door-text { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.tkr-door h2 { margin: 0; font: 600 1.25rem/1.25 var(--font-display); letter-spacing: 0; color: var(--ink); }
+.tkr-door p { margin: 0; max-width: 46em; line-height: 1.55; }
+
+@media (max-width: 760px) {
+  .tkr-top { grid-template-columns: minmax(0, 1fr); }
+  .tkr-vessel { max-width: 250px; }
+  .tkr-supply { grid-template-columns: minmax(0, 1fr); }
+  .tkr-supply div { flex-direction: row; align-items: baseline; justify-content: space-between; gap: 14px; }
+  .tkr-supply dd { text-align: right; }
+  .tkr-form-row > .btn { flex: 1 1 100%; }
+  .tkr-door { grid-template-columns: minmax(0, 1fr); }
+  .tkr-door .btn { justify-self: start; }
+
+  /* the table becomes one block a power, each holder under its own label */
+  .tkr-powers { display: block; margin: 0; }
+  .tkr-powers thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .tkr-powers tbody { display: flex; flex-direction: column; gap: 8px; }
+  .tkr-powers tr { display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border-radius: 18px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--ink) 4%, transparent); }
+  .tkr-powers tbody th, .tkr-powers td { display: block; width: auto; padding: 0; background: none; border-radius: 0; }
+  .tkr-powers td { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 10px; row-gap: 2px; }
+  .tkr-powers td::before { content: attr(data-label); flex: none; font: 600 12.5px var(--font-display); letter-spacing: 0.02em; color: var(--ink-label); }
+}
+
+/* a finger needs 44px: the structures under a finding are pressed too */
+@media (max-width: 720px), (hover: none) and (pointer: coarse) {
+  .tkr-f-models .chip { min-height: 44px; padding-inline: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tkr-flow { animation: none; }
+  .tkr-net-opt { transition: none; }
+}
+html[data-motion='calm'] .tkr-flow { animation: none; }

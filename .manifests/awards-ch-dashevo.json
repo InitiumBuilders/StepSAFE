@@ -1,0 +1,293 @@
+{
+ "chId": "ch-dashevo",
+ "chTitle": "Dash EVO Operator",
+ "missingAwards": [
+  {
+   "id": "award-seam-mapper",
+   "step": "Two Chains, One Trust Boundary",
+   "kind": "construct",
+   "statement": "Dash is not one ledger with a feature bolted on; it is two state machines sharing a single Sybil-resistance root, and almost every real security question lives at the seam between them.",
+   "respect": 90
+  },
+  {
+   "id": "award-threshold-thinker",
+   "step": "LLMQ: How a Crowd Becomes a Key",
+   "kind": "lesson",
+   "statement": "A threshold quorum converts a Sybil-resistant list into a single signing key, and the entire security of that key reduces to the assumption that fewer than the threshold of its members collude.",
+   "respect": 145
+  },
+  {
+   "id": "award-finality-reader",
+   "step": "ChainLocks: Finality as a Signed Assertion",
+   "kind": "lesson",
+   "statement": "ChainLocks convert probabilistic settlement into a signed statement, which moves your risk from hashrate economics to quorum honesty; that is a different risk, not automatically a smaller one.",
+   "respect": 105
+  },
+  {
+   "id": "award-bft-operator",
+   "step": "Tenderdash: A Machine That Would Rather Stop Than Lie",
+   "kind": "lesson",
+   "statement": "Platform chooses consistency over availability, so when the validator quorum cannot agree the correct behaviour is to halt, and your product architecture has to be able to survive halting.",
+   "respect": 155
+  },
+  {
+   "id": "award-proof-verifier",
+   "step": "DAPI Is a Gateway, Not an Oracle",
+   "kind": "lab",
+   "statement": "Any answer you take from a DAPI node without a proof is an answer you have chosen to trust a stranger for, and proofs cover fewer things than most engineers assume.",
+   "respect": 165
+  },
+  {
+   "id": "award-dependency-profiler",
+   "step": "The Nakamoto Coefficient Is Not a Vanity Metric",
+   "kind": "drill",
+   "statement": "Decentralization is an operational control with a number attached, and if you cannot state that number for a dependency you are not managing the risk, you are admiring it.",
+   "respect": 185
+  },
+  {
+   "id": "award-quorum-cartographer",
+   "step": "The Nakamoto Coefficient Is Not a Vanity Metric",
+   "kind": "drill",
+   "statement": "Decentralization is an operational control with a number attached, and if you cannot state that number for a dependency you are not managing the risk, you are admiring it.",
+   "respect": 185
+  },
+  {
+   "id": "award-identity-cartographer",
+   "step": "An Identity Is a Key Set With a Balance",
+   "kind": "construct",
+   "statement": "A Platform identity is not an account you log into; it is a set of public keys with a spendable balance, and whoever holds a key holds the identity to exactly the extent that key permits.",
+   "respect": 100
+  },
+  {
+   "id": "award-key-lattice-architect",
+   "step": "Purpose, Security Level, and the Master Key Trap",
+   "kind": "lesson",
+   "statement": "Platform gives you a key lattice with two independent axes, what a key may do and how carefully it must be stored, and most real losses come from operators who collapsed the two axes into one key.",
+   "respect": 175
+  },
+  {
+   "id": "award-assetlock-operator",
+   "step": "The Asset Lock: Where L1 Money Becomes L2 Capability",
+   "kind": "lab",
+   "statement": "The asset lock is the most dangerous short stretch of code in any Platform integration, because a one-time key generated off-chain is the only thing standing between locked value and whoever finds it first.",
+   "respect": 205
+  },
+  {
+   "id": "award-idempotence-discipline",
+   "step": "The Asset Lock: Where L1 Money Becomes L2 Capability",
+   "kind": "lab",
+   "statement": "The asset lock is the most dangerous short stretch of code in any Platform integration, because a one-time key generated off-chain is the only thing standing between locked value and whoever finds it first.",
+   "respect": 205
+  },
+  {
+   "id": "award-namespace-defender",
+   "step": "DPNS: Human Names Are an Attack Surface With a Defence",
+   "kind": "lab",
+   "statement": "A human-readable name is a security control for users and a phishing primitive for attackers, and DPNS answers both with commit-reveal, aggressive normalization, and a vote.",
+   "respect": 145
+  },
+  {
+   "id": "award-schema-steward",
+   "step": "Data Contracts: Schema as an Irreversible Decision",
+   "kind": "lesson",
+   "statement": "A data contract is a schema you can add to but never take back, so every optional field you ship is a permanent liability you have chosen to carry forever.",
+   "respect": 175
+  },
+  {
+   "id": "award-commitment-designer",
+   "step": "Privacy on a State Everyone Can Read Forever",
+   "kind": "drill",
+   "statement": "On a public state machine, confidentiality is not a property of the system; it is a property of what you decided to put into it.",
+   "respect": 195
+  },
+  {
+   "id": "award-metadata-realist",
+   "step": "Privacy on a State Everyone Can Read Forever",
+   "kind": "drill",
+   "statement": "On a public state machine, confidentiality is not a property of the system; it is a property of what you decided to put into it.",
+   "respect": 195
+  },
+  {
+   "id": "award-blast-radius-mapper",
+   "step": "Four Keys, Four Blast Radii",
+   "kind": "construct",
+   "statement": "Dash separates collateral, operation and voting into distinct keys precisely so that the key sitting on your internet-facing server is the one worth the least.",
+   "respect": 115
+  },
+  {
+   "id": "award-node-hardener",
+   "step": "Standing Up an Evonode You Would Bet On",
+   "kind": "lab",
+   "statement": "An evonode is a production service with a public IP, a renewing certificate, live signing material and a four-thousand-DASH reason for someone to care about it.",
+   "respect": 205
+  },
+  {
+   "id": "award-liveness-guardian",
+   "step": "Availability Is a Security Property When Downtime Costs Collateral",
+   "kind": "lesson",
+   "statement": "On this network your uptime is enforced by the protocol, so an availability incident and a security incident have the same shape, the same clock, and often the same cause.",
+   "respect": 165
+  },
+  {
+   "id": "award-rotation-runner",
+   "step": "Rotating a Key You Cannot Un-Publish",
+   "kind": "drill",
+   "statement": "Key rotation on a public chain is itself a public event, so the rotation is a signal to your adversary and must be sequenced with that in mind.",
+   "respect": 195
+  },
+  {
+   "id": "award-authority-containment",
+   "step": "03:14 — The Node Is Signing Things You Did Not Ask For",
+   "kind": "drill",
+   "statement": "When a machine holding signing material misbehaves, the first decision is always containment of authority, never containment of the host.",
+   "respect": 205
+  },
+  {
+   "id": "award-three-am-operator",
+   "step": "03:14 — The Node Is Signing Things You Did Not Ask For",
+   "kind": "drill",
+   "statement": "When a machine holding signing material misbehaves, the first decision is always containment of authority, never containment of the host.",
+   "respect": 205
+  },
+  {
+   "id": "award-baseline-published",
+   "step": "Publish an Evonode Security Baseline",
+   "kind": "field",
+   "statement": "A baseline nobody can audit is a preference; a baseline with checks, thresholds, owners and evidence is a control.",
+   "respect": 210
+  },
+  {
+   "id": "award-adversarial-review",
+   "step": "Publish an Evonode Security Baseline",
+   "kind": "field",
+   "statement": "A baseline nobody can audit is a preference; a baseline with checks, thresholds, owners and evidence is a control.",
+   "respect": 210
+  },
+  {
+   "id": "award-treasury-literate",
+   "step": "A Budget Nobody Owns",
+   "kind": "lesson",
+   "statement": "A treasury governed by voters you cannot hire or fire changes the security question from who approved this to who could be persuaded.",
+   "respect": 125
+  },
+  {
+   "id": "award-vote-custodian",
+   "step": "Voting Keys Are Credentials",
+   "kind": "lesson",
+   "statement": "Every governance mechanism is an authentication system wearing a democratic costume, and it fails in exactly the ways authentication fails.",
+   "respect": 165
+  },
+  {
+   "id": "award-public-funder",
+   "step": "Asking a Network for Money",
+   "kind": "council",
+   "statement": "In a decentralized treasury there is no budget owner to convince, so a security proposal must be written to survive being read by a thousand strangers with incompatible incentives.",
+   "respect": 185
+  },
+  {
+   "id": "award-plain-language",
+   "step": "Asking a Network for Money",
+   "kind": "council",
+   "statement": "In a decentralized treasury there is no budget owner to convince, so a security proposal must be written to survive being read by a thousand strangers with incompatible incentives.",
+   "respect": 185
+  },
+  {
+   "id": "award-coordinator",
+   "step": "Disclosing to a Network With No CISO",
+   "kind": "drill",
+   "statement": "Coordinated disclosure assumes a coordinator; when the system has none, your first job is to manufacture one before you publish anything.",
+   "respect": 205
+  },
+  {
+   "id": "award-two-clocks",
+   "step": "Disclosing to a Network With No CISO",
+   "kind": "drill",
+   "statement": "Coordinated disclosure assumes a coordinator; when the system has none, your first job is to manufacture one before you publish anything.",
+   "respect": 205
+  },
+  {
+   "id": "award-risk-memo",
+   "step": "Governance Risk Memo for a Decentralized Dependency",
+   "kind": "field",
+   "statement": "If your organization's uptime depends on votes cast by people you have never met, that is a supply-chain risk with a name, and it belongs in the register with a number next to it.",
+   "respect": 210
+  },
+  {
+   "id": "award-unanswered-questions",
+   "step": "Governance Risk Memo for a Decentralized Dependency",
+   "kind": "field",
+   "statement": "If your organization's uptime depends on votes cast by people you have never met, that is a supply-chain risk with a name, and it belongs in the register with a number next to it.",
+   "respect": 210
+  },
+  {
+   "id": "award-doctrine-drafted",
+   "step": "The Doctrine: Six Acts, One Sentence Each",
+   "kind": "construct",
+   "statement": "A doctrine is what you do when you have no time to think, so it must be short enough to remember and specific enough to act on.",
+   "respect": 185
+  },
+  {
+   "id": "award-procedure-holder",
+   "step": "The Decision Procedure",
+   "kind": "lesson",
+   "statement": "Judgment does not scale; a written procedure that reliably reproduces your judgment does.",
+   "respect": 195
+  },
+  {
+   "id": "award-invariant-engineer",
+   "step": "Invariants You Can Actually Run",
+   "kind": "lab",
+   "statement": "An invariant that is not executed on a schedule is a sentence in a document, and documents do not fail loudly.",
+   "respect": 200
+  },
+  {
+   "id": "award-heartbeat-discipline",
+   "step": "Invariants You Can Actually Run",
+   "kind": "lab",
+   "statement": "An invariant that is not executed on a schedule is a sentence in a document, and documents do not fail loudly.",
+   "respect": 200
+  },
+  {
+   "id": "award-two-rooms",
+   "step": "Two Rooms, One Truth",
+   "kind": "council",
+   "statement": "You will have to say the same true thing to a board that fears liability and a community that fears capture, and if the two versions differ in substance you have already lost both.",
+   "respect": 195
+  },
+  {
+   "id": "award-conflict-disclosed",
+   "step": "Two Rooms, One Truth",
+   "kind": "council",
+   "statement": "You will have to say the same true thing to a board that fears liability and a community that fears capture, and if the two versions differ in substance you have already lost both.",
+   "respect": 195
+  },
+  {
+   "id": "award-doctrine-published",
+   "step": "THE PRAXIS: Publish a Complete Security Doctrine",
+   "kind": "field",
+   "statement": "You are not certified by finishing the last Step; you are certified by an organization that can be operated from the document you wrote.",
+   "respect": 220
+  },
+  {
+   "id": "award-evo-operator",
+   "step": "THE PRAXIS: Publish a Complete Security Doctrine",
+   "kind": "field",
+   "statement": "You are not certified by finishing the last Step; you are certified by an organization that can be operated from the document you wrote.",
+   "respect": 220
+  },
+  {
+   "id": "award-gold-seal",
+   "step": "THE PRAXIS: Publish a Complete Security Doctrine",
+   "kind": "field",
+   "statement": "You are not certified by finishing the last Step; you are certified by an organization that can be operated from the document you wrote.",
+   "respect": 220
+  },
+  {
+   "id": "award-unitium-unlocked",
+   "step": "THE PRAXIS: Publish a Complete Security Doctrine",
+   "kind": "field",
+   "statement": "You are not certified by finishing the last Step; you are certified by an organization that can be operated from the document you wrote.",
+   "respect": 220
+  }
+ ]
+}

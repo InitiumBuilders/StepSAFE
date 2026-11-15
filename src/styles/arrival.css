@@ -1,0 +1,49 @@
+/* THE THRESHOLD (views/Arrival.tsx): the welcome page's night, its system holding beside the visitor, and two
+   choices. Everything here uses the welcome page's tokens (.lx in lander.css). */
+
+.ar { min-height: 100svh; display: flex; flex-direction: column; }
+.ar-top { display: flex; align-items: center; height: var(--lx-head); padding: 0 28px; }
+.ar-main { flex: 1; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 28px 48px; display: grid; grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); column-gap: 56px; align-items: center; }
+.ar-stage { grid-column: 2; grid-row: 1; height: min(78svh, 720px); }
+.ar-stage canvas { display: block; width: 100%; height: 100%; }
+.ar-form { grid-column: 1; grid-row: 1; display: flex; flex-direction: column; gap: 30px; max-width: 460px; }
+
+.lx.lx .ar-st { margin: 0 0 6px; font-size: clamp(3.6rem, 7.4vw, 6.6rem); font-weight: 700; letter-spacing: 0.005em; line-height: 0.96; }
+
+.ar-label { display: block; margin-bottom: 12px; padding: 0; font: 600 0.84rem var(--font-display); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-label); }
+.ar-field input {
+  width: 100%; min-height: 60px; padding: 0 20px; border: 0; border-radius: 18px; corner-shape: superellipse(2.2);
+  font: 500 1.24rem var(--font-display); color: var(--ink); background: var(--lx-glass);
+  box-shadow: inset 0 1px 0 var(--lx-rim), inset 0 0 0 1px var(--lx-line); transition: box-shadow 260ms var(--lx-ease), background 260ms var(--lx-ease);
+}
+.ar-field input::placeholder { color: color-mix(in srgb, var(--ink-2) 62%, transparent); }
+.ar-field input:focus { outline: none; background: color-mix(in srgb, var(--lx-violet) 8%, var(--lx-glass)); box-shadow: inset 0 1px 0 var(--lx-rim), inset 0 0 0 1.5px color-mix(in srgb, var(--lx-violet) 70%, transparent), 0 0 0 5px color-mix(in srgb, var(--lx-violet) 16%, transparent); }
+
+.ar-guides { margin: 0; padding: 0; border: 0; min-width: 0; }
+.ar-choice { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.ar-guise {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 14px; border: 0; cursor: pointer;
+  border-radius: 17px; corner-shape: superellipse(2.2); font: 600 1.02rem var(--font-display); color: var(--ink-2); background: var(--lx-glass);
+  box-shadow: inset 0 1px 0 var(--lx-rim), inset 0 0 0 1px var(--lx-faint); transition: color 220ms, background 260ms var(--lx-ease), box-shadow 260ms var(--lx-ease), transform 200ms var(--lx-ease);
+}
+.ar-guise i { width: 8px; height: 8px; border-radius: 50%; background: var(--lx-line); transition: background 260ms, box-shadow 260ms, transform 360ms var(--lx-ease); }
+.ar-guise:hover { color: var(--ink); transform: translateY(-1px); }
+.ar-guise.on { color: var(--ink); background: color-mix(in srgb, var(--lx-violet) 16%, var(--lx-glass)); box-shadow: inset 0 1px 0 var(--lx-rim), inset 0 0 0 1.5px color-mix(in srgb, var(--lx-violet) 65%, transparent), 0 12px 30px -16px var(--lx-violet); }
+.ar-guise.on i { background: var(--lx-amber); box-shadow: 0 0 10px var(--lx-amber); transform: scale(1.25); }
+.ar-guise:focus-visible { outline: 2px solid var(--lx-violet); outline-offset: 3px; }
+
+.ar-go .lx-btn { width: 100%; min-height: 58px; font-size: 1.08rem; transition: opacity 320ms var(--lx-ease), transform 200ms var(--lx-ease), box-shadow 200ms var(--lx-ease); }
+.ar-go .lx-btn:disabled { opacity: 0.32; box-shadow: none; }
+.ar-go .lx-btn.ready { animation: ar-ready 0.9s var(--lx-ease) 1; }
+@keyframes ar-ready { 0% { transform: scale(0.98); } 55% { transform: scale(1.015); } 100% { transform: none; } }
+
+@media (max-width: 860px) {
+  .ar-top { padding: 0 16px; }
+  .ar-main { display: flex; flex-direction: column; align-items: stretch; padding: 0 16px 40px; }
+  .ar-stage { height: 34svh; margin: 0 -16px; }
+  .ar-form { max-width: none; gap: 24px; }
+  .lx.lx .ar-st { font-size: clamp(3rem, 15vw, 4.4rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ar-go .lx-btn.ready { animation: none; }
+}

@@ -1,0 +1,367 @@
+/* DASH DEFENDERS · THE TEN-MINUTE TREASURY CHECK. The figure is the treasury's ring: twelve arcs in three
+   parts, each part in a colour that names it (signers in ice, multisig and spending in violet, recovery in
+   coral). An answer is drawn by shape, never by colour alone: lit for Yes, half lit for Partly, a break for
+   No, dashed for Not sure, a hairline for Does not apply. One statement stands in front at a time. Night,
+   Meridian and Mov read from the theme tokens; the three part colours are set per theme below. */
+
+.ck { --ck-p1: #9cc3ef; --ck-p2: #b9a3ff; --ck-p3: #f6a58f; --ck-faint: 0.3; }
+html[data-theme='meridian'] .ck { --ck-p1: #1f4f86; --ck-p2: #4a2fb8; --ck-p3: #8a3820; --ck-faint: 0.34; }
+html[data-theme='mov'] .ck { --ck-p1: #7aa8ff; --ck-p2: #c3b6ff; --ck-p3: #ffb169; }
+.ck .p-1, .ck-door .p-1 { --hue: var(--ck-p1); }
+.ck .p-2, .ck-door .p-2 { --hue: var(--ck-p2); }
+.ck .p-3, .ck-door .p-3 { --hue: var(--ck-p3); }
+.ck-door { --ck-p1: #9cc3ef; --ck-p2: #b9a3ff; --ck-p3: #f6a58f; --ck-faint: 0.3; }
+html[data-theme='meridian'] .ck-door { --ck-p1: #1f4f86; --ck-p2: #4a2fb8; --ck-p3: #8a3820; --ck-faint: 0.34; }
+html[data-theme='mov'] .ck-door { --ck-p1: #7aa8ff; --ck-p2: #c3b6ff; --ck-p3: #ffb169; }
+
+.wrap.ck { max-width: var(--wrap-wide); }
+.ck .view-head .lede { max-width: 40em; }
+
+/* ---------- where the checks live ---------- */
+.ck-keep { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: start; margin: 0 0 var(--s5); padding: 16px 18px; border-radius: 20px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--panel-2) 70%, transparent); border: 1px solid color-mix(in srgb, var(--ink) 7%, transparent); }
+.ck-keep-lock { width: 22px; height: 22px; margin-top: 2px; fill: none; stroke: var(--ink-label); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ck-keep.k-open .ck-keep-lock, .ck-keep.k-locked .ck-keep-lock { stroke: var(--ink-gold); }
+.ck-keep-body { display: flex; flex-wrap: wrap; align-items: center; column-gap: 18px; row-gap: 10px; min-width: 0; }
+.ck-keep-body > * { flex: 1 1 100%; }
+.ck-keep-body > .ck-keep-line { flex: 1 1 320px; }
+.ck-keep-body > .ck-keep-act { flex: 0 0 auto; }
+.ck-keep p { margin: 0; }
+.ck-keep-line { color: var(--ink); line-height: 1.55; max-width: 62em; }
+.ck-keep-line .label { display: block; margin-bottom: 4px; }
+.ck-keep-form { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; }
+.ck-keep-form label { display: flex; flex-direction: column; gap: 6px; flex: 1 1 240px; max-width: 360px; }
+.ck-keep-form input { width: 100%; min-height: 44px; padding: 0 14px; border: 0; border-radius: 14px; corner-shape: superellipse(2.15); background: var(--panel); color: var(--ink); font: 500 1rem var(--font-body); box-shadow: var(--inset); }
+.ck-keep-form input:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+.ck-keep-form > .sec { flex-basis: 100%; }
+.ck-keep-act { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.ck-keep-note { color: var(--ink-accent); }
+.ck-keep-note.bad { color: var(--ink-alarm); }
+
+/* ---------- the ring ---------- */
+.ck-ring { position: relative; width: 100%; max-width: 320px; aspect-ratio: 1; margin: 0 auto; }
+.ck-hero .ck-ring { max-width: 300px; }
+.ck-result-head .ck-ring { max-width: 360px; }
+.ck-ring svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.ck-seg { color: var(--hue); outline: none; }
+.ck-ring .ck-seg path, .ck-ring .ck-seg line { fill: none; stroke: currentColor; stroke-linecap: round; transition: opacity 300ms var(--ease), stroke-width 300ms var(--ease); }
+.ck-ring .ck-seg-base { stroke-width: 10; opacity: var(--ck-faint); }
+.ck-ring .ck-seg-lit { stroke-width: 15; filter: drop-shadow(0 0 6px color-mix(in srgb, currentColor 55%, transparent)); animation: ck-lit 420ms var(--ease) both; }
+.ck-ring .ck-seg-dash { stroke-width: 10; stroke-dasharray: 0.1 12; }
+.ck-ring .ck-seg-tick { stroke-width: 3.5; }
+.ck-ring .s-yes .ck-seg-base, .ck-ring .s-unsure .ck-seg-base, .ck-ring .s-no .ck-seg-base { opacity: 0; }
+.ck-ring .s-na .ck-seg-base { stroke-width: 2; opacity: 0.45; stroke: var(--ink-2); }
+.ck-ring .ck-seg .ck-seg-hit { stroke: transparent; stroke-width: 40; pointer-events: stroke; cursor: pointer; }
+.ck-ring .ck-seg-mark { fill: var(--ink); }
+.ck-ring .ck-seg.on .ck-seg-base { opacity: calc(var(--ck-faint) + 0.18); }
+.ck-ring .ck-seg:focus-visible .ck-seg-base, .ck-ring .ck-seg:hover .ck-seg-base { opacity: 0.5; }
+.ck-ring .ck-seg:focus-visible .ck-seg-hit { stroke: color-mix(in srgb, var(--violet) 22%, transparent); }
+@keyframes ck-lit { from { opacity: 0; stroke-width: 6; } to { opacity: 1; stroke-width: 15; } }
+/* before a check, the twelve arrive one by one */
+.ck-hero .ck-seg { animation: ck-arc 520ms var(--ease) both; animation-delay: calc(var(--i) * 55ms + 200ms); }
+.ck-hero .ck-ring .ck-seg-base { opacity: calc(var(--ck-faint) + 0.22); stroke-width: 12; }
+@keyframes ck-arc { from { opacity: 0; } to { opacity: 1; } }
+
+.ck-ring-c { position: absolute; inset: 22%; display: grid; place-items: center; text-align: center; pointer-events: none; }
+.ck-ring-num { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.ck-ring-num strong { font: 500 clamp(3rem, 6vw, 4.25rem)/1 var(--font-display); color: var(--ink); font-variant-numeric: tabular-nums; }
+.ck-ring-num span { font: 500 0.95rem var(--font-display); color: var(--ink-2); }
+.ck-ring-num em { font-style: normal; }
+.ck-ring-peek { display: flex; flex-direction: column; align-items: center; gap: 4px; max-width: 100%; animation: ck-in 200ms var(--ease) both; }
+.ck-ring-peek small { font: 600 0.8rem var(--font-display); color: var(--hue); }
+.ck-ring-peek strong { font: 500 1.08rem/1.3 var(--font-display); color: var(--ink); text-wrap: balance; }
+.ck-ring-peek span { font-size: 0.9rem; color: var(--ink-2); }
+
+/* the ring closes: every statement that applies holds */
+.ck-ring-whole { fill: none; stroke: color-mix(in srgb, var(--ck-p2) 55%, var(--ck-p1)); stroke-width: 7; opacity: 0; animation: ck-whole 900ms var(--ease) 700ms both; }
+@keyframes ck-whole { to { opacity: 0.7; } }
+.ck-ring.closed svg { animation: ck-close 1600ms var(--ease) 200ms both; }
+@keyframes ck-close { 0% { transform: scale(0.97); filter: none; } 45% { transform: scale(1.015); filter: drop-shadow(0 0 18px color-mix(in srgb, var(--ck-p2) 45%, transparent)); } 100% { transform: none; filter: drop-shadow(0 0 8px color-mix(in srgb, var(--ck-p2) 25%, transparent)); } }
+
+/* the answer marks, small, inside the answer buttons and the legend */
+.ck-glyph { width: 28px; height: 20px; flex: none; overflow: visible; color: var(--hue, var(--ink-2)); }
+.ck-glyph path, .ck-glyph line { fill: none; stroke: currentColor; stroke-linecap: round; }
+.ck-glyph .ck-seg-base { stroke-width: 3.2; opacity: 0.3; }
+.ck-glyph .ck-seg-lit { stroke-width: 4.4; }
+.ck-glyph .ck-seg-dash { stroke-width: 3.2; stroke-dasharray: 0.5 4.5; }
+.ck-glyph .ck-seg-tick { stroke-width: 2; }
+.ck-glyph.s-yes .ck-seg-base, .ck-glyph.s-unsure .ck-seg-base, .ck-glyph.s-no .ck-seg-base { opacity: 0; }
+.ck-glyph.s-na .ck-seg-base { stroke-width: 1.4; opacity: 0.7; color: var(--ink-2); }
+
+/* the three parts */
+.ck-partrows { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.ck-partrows li { display: grid; grid-template-columns: 4px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 0; border-top: 1px solid color-mix(in srgb, var(--ink) 8%, transparent); }
+.ck-partrows li:first-child { border-top: 0; }
+.ck-partrows i { align-self: stretch; border-radius: 4px; background: var(--hue); }
+.ck-partrows span { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.ck-partrows strong { font: 600 1rem var(--font-display); color: var(--ink); }
+.ck-partrows em { font-style: normal; font-size: 0.92rem; line-height: 1.45; color: var(--ink-2); }
+.ck-partrows b { font: 600 1rem var(--font-display); color: var(--hue); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ---------- before a check: the empty ring ---------- */
+.ck-hero { display: grid; grid-template-columns: minmax(240px, 340px) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding: clamp(24px, 4vw, 52px); }
+.ck-hero-text { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.ck-hero-lead { margin: 0; font: 500 clamp(1.3rem, 2.2vw, 1.7rem)/1.35 var(--font-display); color: var(--ink); text-wrap: balance; max-width: 26em; }
+.ck-hero .sec { margin: 0; max-width: 40em; font-size: 1rem; line-height: 1.6; }
+.ck-begin { align-self: flex-start; min-height: 52px; padding: 0 26px; font-size: 1.02rem; }
+
+/* ---------- the bar ---------- */
+.ck-bar { display: flex; flex-direction: column; gap: 10px; }
+.ck-name { display: flex; flex-direction: column; gap: 8px; }
+.ck-name input { width: 100%; min-height: 48px; padding: 0 16px; border: 0; border-radius: 15px; corner-shape: superellipse(2.15); background: var(--panel-2); color: var(--ink); font: 500 1.02rem var(--font-body); box-shadow: var(--inset); }
+.ck-name input:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+.ck-progress { display: flex; align-items: baseline; gap: 8px; font: 500 0.95rem var(--font-display); color: var(--ink-2); }
+.ck-progress strong { font: 500 1.3rem var(--font-display); color: var(--ink); font-variant-numeric: tabular-nums; }
+
+/* ---------- one statement in front ---------- */
+.ck-stage { scroll-margin-top: 88px; display: grid; grid-template-columns: minmax(260px, 340px) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.ck-aside { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 18px; }
+.ck-to-result { align-self: flex-start; }
+
+.ck-card { position: relative; padding: clamp(24px, 3.4vw, 44px); display: flex; flex-direction: column; gap: 18px; border-radius: 28px; corner-shape: superellipse(2.15);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--hue) 22%, transparent), inset 0 -10px 18px color-mix(in srgb, var(--hue) 14%, transparent), var(--raise);
+  animation: ck-in 300ms var(--ease) both; }
+.ck-card-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+.ck-chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 10px; border-radius: 999px; background: color-mix(in srgb, var(--hue) 14%, transparent); color: var(--hue); font: 600 0.88rem var(--font-display); }
+.ck-chip i { width: 8px; height: 8px; border-radius: 50%; background: var(--hue); }
+.ck-count { font: 500 0.92rem var(--font-display); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.ck-ask { margin: 4px 0 0; font: 500 clamp(1.55rem, 2.6vw, 2.2rem)/1.25 var(--font-display); color: var(--ink); letter-spacing: normal; text-wrap: balance; max-width: 28em; }
+.ck-why { margin: 0; font-size: 1.08rem; line-height: 1.65; color: var(--ink-2); max-width: 40em; text-wrap: pretty; }
+.ck-answers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 6px; }
+.ck-ans {
+  position: relative; display: flex; align-items: center; gap: 10px; min-height: 58px; padding: 0 14px; border: 1px solid color-mix(in srgb, var(--ink) 9%, transparent);
+  border-radius: 16px; corner-shape: superellipse(2.15); cursor: pointer; text-align: left;
+  background: color-mix(in srgb, var(--ink-2) 6%, transparent); color: var(--ink); font: 600 1rem var(--font-display);
+  transition: background 200ms var(--ease), border-color 200ms var(--ease), box-shadow 200ms var(--ease), transform 200ms var(--ease);
+}
+.ck-ans span { flex: 1; min-width: 0; }
+.ck-ans kbd { font: 600 0.78rem var(--font-mono, ui-monospace, monospace); color: var(--ink-2); padding: 2px 7px; border-radius: 6px; border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); }
+.ck-ans.wide { grid-column: 1 / -1; }
+.ck-ans:hover { background: color-mix(in srgb, var(--hue) 10%, transparent); border-color: color-mix(in srgb, var(--hue) 35%, transparent); transform: translateY(-1px); }
+.ck-ans:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+.ck-ans.on { background: color-mix(in srgb, var(--hue) 20%, transparent); border-color: var(--hue); box-shadow: inset 0 -6px 12px color-mix(in srgb, var(--hue) 16%, transparent); }
+.ck-ans.on kbd { border-color: var(--hue); color: var(--ink); }
+
+.ck-move { padding: 18px; border-radius: 20px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--gold) 9%, transparent); border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent); animation: ck-in 300ms var(--ease) both; }
+.ck-move .label { color: var(--ink-gold); }
+.ck-move p { margin: 6px 0 12px; color: var(--ink); font-size: 1.06rem; line-height: 1.6; max-width: 40em; }
+.ck-models { display: flex; flex-wrap: wrap; gap: 6px; }
+.ck-models .chip { border: 0; cursor: pointer; font: inherit; font-family: var(--font-display); min-height: 36px; }
+.ck-models .chip:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+/* the lessons that teach a gap's move: the loop into the corpus */
+.ck-learn { margin-top: 16px; padding-top: 14px; border-top: 1px solid color-mix(in srgb, var(--gold) 20%, transparent); }
+.ck-learn ul { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.ck-learn button { width: 100%; min-height: 48px; display: flex; align-items: center; gap: 12px; padding: 10px 14px; border: 0; border-radius: 14px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--panel) 70%, transparent); color: var(--ink); text-align: left; cursor: pointer; font: inherit; transition: background 200ms var(--ease), transform 200ms var(--ease); }
+.ck-learn button:hover { background: var(--panel); transform: translateY(-1px); }
+.ck-learn button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+.ck-learn-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.ck-learn-text small { font: 600 0.82rem var(--font-display); color: var(--ink-label); }
+.ck-learn-text strong { font: 600 0.98rem/1.4 var(--font-display); color: var(--ink); }
+.ck-learn-mark { width: 20px; height: 20px; flex: none; fill: none; stroke: var(--ink-label); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ck-learn button.done .ck-learn-mark { stroke: var(--ink-gold); stroke-width: 2.4; }
+.ck-recheck { margin: 10px 0 0; color: var(--ink); font-weight: 600; }
+
+.ck-card-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 6px; padding-top: 16px; border-top: 1px solid color-mix(in srgb, var(--ink) 8%, transparent); }
+.ck-keys { font-size: 0.88rem; color: var(--ink-2); }
+@media (hover: none) { .ck-keys, .ck-ans kbd { display: none; } }
+
+@keyframes ck-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* ---------- the result ---------- */
+.ck-result { padding: clamp(24px, 4vw, 52px); }
+.ck-result-head { display: grid; grid-template-columns: minmax(260px, 380px) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; margin-bottom: var(--s5); }
+.ck-result-side { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.ck-held { display: flex; flex-direction: column; gap: 6px; }
+.ck-held h2 { margin: 0; font: 500 clamp(1.8rem, 3.4vw, 2.8rem)/1.15 var(--font-display); color: var(--ink); text-wrap: balance; overflow-wrap: anywhere; }
+.ck-held p { margin: 0; font: 500 1.15rem var(--font-display); color: var(--ink-2); }
+.ck-result-head .ck-ring-num strong { font-size: clamp(3.6rem, 7vw, 5rem); }
+.ck-legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.ck-legend li { display: inline-flex; align-items: center; gap: 6px; font-size: 0.92rem; color: var(--ink-2); }
+.ck-verdict { margin: 0 0 var(--s5); font: 500 clamp(1.2rem, 2vw, 1.5rem)/1.45 var(--font-display); color: var(--ink); max-width: 34em; text-wrap: balance; }
+.ck-result h3 { margin: 0 0 12px; }
+.ck-gaps { list-style: none; margin: 0 0 var(--s5); padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.ck-gaps button { width: 100%; display: grid; grid-template-columns: 4px minmax(0, 1fr) auto; gap: 16px; align-items: stretch; padding: 14px 16px; border: 1px solid color-mix(in srgb, var(--ink) 7%, transparent); border-radius: 18px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--panel-2) 60%, transparent); color: var(--ink); text-align: left; cursor: pointer; font: inherit; transition: background 200ms var(--ease), border-color 200ms var(--ease), transform 200ms var(--ease); }
+.ck-gaps button:hover { border-color: color-mix(in srgb, var(--hue) 40%, transparent); transform: translateY(-1px); }
+.ck-gaps button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+.ck-gaps i { border-radius: 4px; background: var(--hue); }
+.ck-gaps span { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.ck-gaps strong { font: 600 1.04rem/1.5 var(--font-display); color: var(--ink); }
+.ck-gaps em { font-style: normal; font-size: 0.94rem; line-height: 1.5; color: var(--ink-2); }
+.ck-open { align-self: center; width: 20px; height: 20px; fill: none; stroke: var(--hue); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 200ms var(--ease); }
+.ck-gaps button:hover .ck-open { transform: translateX(2px); }
+.ck-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.ck-copy { box-shadow: inset 0 -7px 11px rgba(164, 143, 255, 0.16), var(--raise); }
+.ck-note { margin: 14px 0 0; font-size: 0.92rem; color: var(--ink-2); max-width: 56em; }
+
+/* ---------- earlier checks, sources ---------- */
+.ck-past { margin-top: var(--s5); }
+.ck-past ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.ck-past li { display: flex; align-items: stretch; gap: 6px; }
+.ck-past li > button:first-child { flex: 1; display: flex; flex-direction: column; gap: 2px; align-items: flex-start; padding: 12px 14px; border: 0; border-radius: 16px; corner-shape: superellipse(2.15); background: var(--panel-2); color: var(--ink); cursor: pointer; text-align: left; }
+.ck-past li.on > button:first-child { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--violet) 55%, transparent); }
+.ck-past strong { font: 600 0.98rem var(--font-display); }
+.ck-past span { font-size: 0.88rem; color: var(--ink-2); }
+.ck-remove { border: 0; padding: 0 14px; border-radius: 14px; corner-shape: superellipse(2.15); background: none; color: var(--ink-2); cursor: pointer; font: 600 0.88rem var(--font-display); }
+.ck-remove:hover { color: var(--ink); background: var(--panel-2); }
+.ck-sources { margin: var(--s5) 0 0; color: var(--ink-2); }
+.ck-sources summary { cursor: pointer; min-height: 40px; display: inline-flex; align-items: center; font: 600 0.92rem var(--font-display); color: var(--ink-label); }
+.ck-sources ul { margin: 8px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 0.92rem; }
+.ck-sources a { color: var(--ink); }
+
+/* the door on Ground sits under StudyMode, its latest ring at the left */
+.watch-study.ck-door { margin-top: 8px; flex-wrap: nowrap; }
+.ck-door > span { flex: 1; }
+.ck-door .ck-ring.mini { width: 46px; flex: none; }
+@media (max-width: 420px) { .watch-study.ck-door { flex-wrap: wrap; } }
+
+/* ---------- a small ring: the list of checks, the door ---------- */
+.ck-ring.mini .ck-seg-base { stroke-width: 16; }
+.ck-ring.mini .ck-seg-lit { stroke-width: 22; filter: none; }
+.ck-ring.mini .ck-seg-dash { stroke-width: 14; stroke-dasharray: 0.1 18; }
+.ck-ring.mini .ck-seg-tick { stroke-width: 6; }
+.ck-ring.mini .ck-ring-whole { stroke-width: 12; }
+
+/* ---------- the list of checks ---------- */
+.ck-back { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; margin: 0 0 6px -6px; padding: 0 12px 0 6px; border: 0; border-radius: 12px; corner-shape: superellipse(2.15); background: none; color: var(--ink-label); font: 600 0.92rem var(--font-display); cursor: pointer; }
+.ck-back svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ck-back:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); color: var(--ink); }
+.ck-back:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+/* the five checks side by side, in the order a project meets them; one under another below 1100px */
+.ck-hub { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+.ck-hub-card { padding: 0; overflow: hidden; display: flex; }
+.ck-hub-open { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 22px 20px 20px; border: 0; background: none; color: var(--ink); text-align: left; cursor: pointer; font: inherit; transition: background 200ms var(--ease); }
+.ck-hub-open:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
+.ck-hub-open:focus-visible { outline: 2px solid var(--violet); outline-offset: -4px; border-radius: 28px; }
+.ck-hub-open .ck-ring { width: 100px; max-width: 100px; margin: 0; flex: none; }
+.ck-hub-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.ck-hub-text strong { font: 500 1.28rem/1.2 var(--font-display); color: var(--ink); }
+.ck-hub-text em { font-style: normal; font-size: 0.95rem; line-height: 1.5; color: var(--ink-2); }
+.ck-hub-state { margin-top: 6px; font: 500 0.92rem var(--font-display); color: var(--ink-label); overflow-wrap: anywhere; }
+.ck-hub-go { margin-top: auto; display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 12px 0 16px; border-radius: 14px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--violet) 18%, transparent); color: var(--ink); font: 600 0.95rem var(--font-display); }
+.ck-hub-go svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 200ms var(--ease); }
+.ck-hub-open:hover .ck-hub-go svg { transform: translateX(2px); }
+@media (max-width: 1100px) {
+  .ck-hub { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .ck-hub-open { display: grid; grid-template-columns: 88px minmax(0, 1fr) auto; align-items: center; gap: 20px; padding: 18px 22px; }
+  .ck-hub-open .ck-ring { width: 88px; max-width: 88px; }
+  .ck-hub-go { margin-top: 0; }
+}
+@media (max-width: 560px) {
+  .ck-hub-open { grid-template-columns: 72px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 16px; row-gap: 12px; padding: 16px; }
+  .ck-hub-open .ck-ring { width: 72px; max-width: 72px; grid-row: 1 / 3; align-self: start; }
+  .ck-hub-go { grid-column: 2; justify-self: start; }
+}
+
+/* the launch record: every check's newest finished run, joined for a reviewer */
+.ck-launch { margin-top: var(--s5); padding: clamp(24px, 4vw, 44px); display: flex; flex-direction: column; gap: 18px; }
+.ck-launch-head { display: flex; flex-direction: column; gap: 6px; }
+.ck-launch-head h2 { margin: 0; font: 500 clamp(1.6rem, 3vw, 2.3rem)/1.15 var(--font-display); color: var(--ink); text-wrap: balance; }
+.ck-launch-head .sec { margin: 0; max-width: 46em; line-height: 1.6; }
+.ck-launch-tally { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.ck-launch-tally div { display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; border-radius: 18px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--ink) 5%, transparent); }
+.ck-launch-tally dt { font: 600 0.9rem var(--font-display); color: var(--ink-label); }
+.ck-launch-tally dd { margin: 0; font: 500 clamp(1.9rem, 3.2vw, 2.5rem)/1 var(--font-display); color: var(--ink); font-variant-numeric: tabular-nums; }
+.ck-launch-tally dd small { font-size: 1rem; color: var(--ink-2); }
+.ck-launch-against { margin: 0; color: var(--ink-alarm); font-weight: 600; }
+.ck-launch h3 { margin: 8px 0 0; }
+.ck-launch .ck-gaps { margin: 0; }
+.ck-launch-more { margin: 0; }
+.ck-launch-changes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.ck-launch-changes li { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; border-radius: 16px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--panel-2) 60%, transparent); }
+.ck-launch-changes strong { font: 600 1rem var(--font-display); color: var(--ink); }
+.ck-launch-changes span { font-size: 0.95rem; line-height: 1.5; color: var(--ink-2); }
+.ck-launch-empty { margin: 0; color: var(--ink-2); }
+.ck-launch .ck-note { margin: 0; }
+@media (max-width: 760px) { .ck-launch-tally { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* the spine: the six CSF functions, the pages that teach each and the statements that test it; rows of three,
+   then two, then one, never a lone tile under a pair */
+.ck-spine { margin-top: var(--s5); padding: clamp(24px, 4vw, 44px); display: flex; flex-direction: column; gap: 18px; }
+.ck-spine-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; align-items: start; }
+.ck-spine-grid > li { border-radius: 18px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--ink) 5%, transparent); }
+.ck-spine-grid > li.thin { background: color-mix(in srgb, var(--ink-alarm) 9%, transparent); }
+.ck-spine details > summary { list-style: none; cursor: pointer; display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; min-height: 44px; border-radius: 18px; corner-shape: superellipse(2.15); }
+.ck-spine details > summary::-webkit-details-marker { display: none; }
+.ck-spine details > summary:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+.ck-spine-fn { display: flex; align-items: baseline; gap: 8px; font: 500 1.3rem/1.2 var(--font-display); color: var(--ink); }
+.ck-spine-fn small { font: 600 0.82rem var(--font-display); color: var(--ink-label); }
+.ck-spine-n { font-size: 0.95rem; line-height: 1.45; color: var(--ink-2); }
+.ck-spine-n strong { font: 600 1rem var(--font-display); color: var(--ink); font-variant-numeric: tabular-nums; }
+.ck-spine-thin { align-self: flex-start; padding: 2px 10px; border-radius: 10px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--ink-alarm) 16%, transparent); color: var(--ink); font: 600 0.82rem var(--font-display); }
+.ck-spine details ol { list-style: none; margin: 0; padding: 0 10px 12px; display: flex; flex-direction: column; gap: 4px; }
+.ck-spine details ol button { width: 100%; min-height: 44px; display: flex; flex-direction: column; gap: 2px; padding: 8px 10px; border: 0; border-radius: 12px; corner-shape: superellipse(2.15); background: none; color: var(--ink); text-align: left; cursor: pointer; font: inherit; }
+.ck-spine details ol button:hover { background: color-mix(in srgb, var(--ink) 5%, transparent); }
+.ck-spine details ol button:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+.ck-spine details ol strong { font: 600 0.95rem/1.35 var(--font-display); }
+.ck-spine details ol em { font-style: normal; font-size: 0.86rem; color: var(--ink-2); }
+.ck-spine details ol li.also strong { font-weight: 500; }
+@media (max-width: 900px) { .ck-spine-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .ck-spine-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* the public record beside a statement that can be shown */
+.ck-ev { display: flex; flex-direction: column; gap: 10px; padding: 16px; border-radius: 20px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--ink) 4%, transparent); border: 1px solid color-mix(in srgb, var(--ink) 9%, transparent); }
+.ck-ev.shown { border-color: color-mix(in srgb, var(--hue) 45%, transparent); }
+.ck-ev.against { border-color: color-mix(in srgb, var(--ink-alarm) 55%, transparent); }
+.ck-ev p { margin: 0; line-height: 1.55; }
+.ck-ev-line { color: var(--ink-2); max-width: 44em; }
+.ck-ev-form { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px; }
+.ck-ev-form label { display: flex; flex-direction: column; gap: 6px; flex: 1 1 260px; max-width: 420px; }
+.ck-ev-form input { width: 100%; min-height: 44px; padding: 0 14px; border: 0; border-radius: 14px; corner-shape: superellipse(2.15); background: var(--panel); color: var(--ink); font: 500 0.98rem var(--font-mono, ui-monospace, monospace); box-shadow: var(--inset); }
+.ck-ev-form input:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+.ck-ev-err { color: var(--ink-alarm); }
+.ck-ev-found strong { color: var(--ink); font-weight: 600; }
+.ck-ev-found .sec a { color: var(--ink-label); }
+.ck-ev-against { display: flex; flex-direction: column; gap: 8px; padding-top: 10px; border-top: 1px solid color-mix(in srgb, var(--ink) 8%, transparent); }
+.ck-ev-against p { color: var(--ink); font-weight: 600; }
+.ck-ev-shown { color: var(--ink-label); font-weight: 600; }
+.ck-held .ck-shown-line { font-size: 0.98rem; color: var(--ink-label); }
+/* the milestones a run reached, in the result itself, so no toast covers the ring as it closes */
+.ck-earned { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ck-earned li { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 6px 14px 6px 12px; border-radius: 14px; corner-shape: superellipse(2.15); background: color-mix(in srgb, var(--gold) 12%, transparent); color: var(--ink); font: 600 0.92rem/1.35 var(--font-display); animation: ck-in 420ms var(--ease) 500ms both; }
+.ck-earned li + li { animation-delay: 700ms; }
+.ck-earned-glyph { color: var(--ink-gold); font-size: 1rem; line-height: 1; }
+/* the ring's evidence marks: a filled dot for an answer a record backs, a hollow ring for one it does not allow */
+.ck-ring .ck-seg .ck-seg-ev, .ck-ev-dot { fill: var(--hue, var(--ink-label)); stroke: none; }
+.ck-ring .ck-seg .ck-seg-ev.against, .ck-ev-dot.against { fill: none; stroke: var(--ink-alarm); stroke-width: 2.4; }
+
+/* the statement's place in NIST CSF 2.0, and when its sources were read */
+.ck-csf { margin: 0; font-size: 0.86rem; color: var(--ink-2); }
+.ck-csf abbr { text-decoration: none; font-weight: 600; color: var(--ink-label); }
+.ck-sources li span { color: var(--ink-2); font-size: 0.86rem; }
+
+@media (max-width: 960px) {
+  .ck-stage { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .ck-aside { position: static; display: grid; grid-template-columns: minmax(140px, 200px) minmax(0, 1fr); grid-template-areas: 'ring bar' 'ring parts' 'ring go'; align-items: center; column-gap: 22px; row-gap: 12px; }
+  .ck-aside .ck-ring { grid-area: ring; }
+  .ck-aside .ck-bar { grid-area: bar; }
+  .ck-aside .ck-partrows { grid-area: parts; }
+  .ck-aside .ck-partrows em { display: none; }
+  .ck-aside .ck-partrows li { padding: 6px 0; }
+  .ck-to-result { grid-area: go; }
+}
+@media (max-width: 760px) {
+  .ck-hero, .ck-result-head { grid-template-columns: minmax(0, 1fr); }
+  .ck-hero .ck-ring, .ck-result-head .ck-ring { max-width: 260px; }
+  .ck-answers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ck-keys { display: none; }
+}
+@media (max-width: 520px) {
+  .ck-aside { grid-template-columns: 116px minmax(0, 1fr); grid-template-areas: 'ring bar' 'ring go'; column-gap: 16px; row-gap: 8px; }
+  .ck-aside .ck-partrows { display: none; }
+  .ck-aside .ck-ring-num strong { font-size: 1.9rem; }
+  .ck-aside .ck-ring-num span { font-size: 0.78rem; }
+  .ck-aside .ck-ring-num em { display: none; }
+  .ck-aside .ck-ring-c { inset: 18%; }
+  .ck-ring-num strong { font-size: 2.6rem; }
+  .ck-card { border-radius: 24px; padding: 22px 18px; }
+  .ck-ask { font-size: 1.45rem; }
+  .ck-why { font-size: 1rem; }
+  .ck-keep { padding: 14px; }
+  .ck-ans kbd { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ck-card, .ck-move, .ck-ring-peek, .ck-ring .ck-seg-lit, .ck-ring.closed svg, .ck-hero .ck-seg, .ck-earned li { animation: none; }
+  .ck-hub-open, .ck-hub-go svg, .ck-back { transition: none; }
+  .ck-ring-whole { animation: none; opacity: 0.7; }
+  .ck-ring .ck-seg path, .ck-ans, .ck-gaps button { transition: none; }
+  .ck-hub-open:hover .ck-hub-go svg, .ck-gaps button:hover .ck-open { transform: none; }
+}

@@ -1,0 +1,110 @@
+{
+ "date": "2026-11-05T08:37:19Z",
+ "repo": {
+  "name": "github.com/ossf/scorecard",
+  "commit": "e73dbc5037aa4940d567e4878d50a7f524f30f08"
+ },
+ "scorecard": {
+  "version": "v5.6.0"
+ },
+ "checks": [
+  {
+   "name": "Security-Policy",
+   "score": 10,
+   "reason": "security policy file detected",
+   "details": [
+    "Info: security policy file detected: SECURITY.md:1",
+    "Info: Found linked content: SECURITY.md:1",
+    "Info: Found disclosure, vulnerability, and/or timelines in security policy: SECURITY.md:1",
+    "Info: Found text in security policy: SECURITY.md:1"
+   ]
+  },
+  {
+   "name": "Dependency-Update-Tool",
+   "score": 10,
+   "reason": "update tool detected",
+   "details": [
+    "Info: detected update tool: Dependabot: .github/dependabot.yml:1"
+   ]
+  },
+  {
+   "name": "Code-Review",
+   "score": 6,
+   "reason": "Found 3/5 approved changesets -- score normalized to 6",
+   "details": []
+  },
+  {
+   "name": "Token-Permissions",
+   "score": 9,
+   "reason": "detected GitHub workflow tokens with excessive permissions",
+   "details": [
+    "Info: jobLevel 'actions' permission set to 'read': .github/workflows/codeql-analysis.yml:45",
+    "Info: jobLevel 'contents' permission set to 'read': .github/workflows/codeql-analysis.yml:46",
+    "Info: jobLevel 'contents' permission set to 'read': .github/workflows/docker.yml:33",
+    "Info: jobLevel 'contents' permission set to 'read': .github/workflows/docker.yml:61",
+    "Info: jobLevel 'actions' permission set to 'read': .github/workflows/goreleaser.yaml:77",
+    "Info: jobLevel permissions set to 'read-all': .github/workflows/goreleaser.yaml:88",
+    "Info: jobLevel 'contents' permission set to 'read': .github/workflows/main.yml:36",
+    "Info: jobLevel 'contents' permission set to 'read': .github/workflows/main.yml:90",
+    "Info: jobLevel 'contents' permission set to 'read': .github/workflows/main.yml:133",
+    "Info: jobLevel 'contents' permission set to 'read': .github/workflows/main.yml:166",
+    "Info: jobLevel 'contents' permission set to 'read': .github/workflows/main.yml:205",
+    "Info: jobLevel 'contents' permission set to 'read': .github/workflows/main.yml:247",
+    "Info: jobLevel 'contents' permission set to 'read': .github/workflows/main.yml:270",
+    "Info: jobLevel 'contents' permission set to 'read': .github/workflows/osps-baseline-publish.yml:43",
+    "Info: jobLevel 'contents' permission set to 'read': .github/workflows/osps-baseline-publish.yml:59",
+    "Warn: jobLevel 'security-events' permission set to 'write': .github/workflows/osps-baseline-publish.yml:63",
+    "Info: jobLevel 'contents' permission set to 'read': .github/workflows/osps-baseline.yml:13",
+    "Warn: jobLevel 'security-events' permission set to 'write': .github/workflows/osps-baseline.yml:14",
+    "Info: jobLevel 'contents' permission set to 'read': .github/workflows/publishimage.yml:32",
+    "Warn: jobLevel 'checks' permission set to 'write': .github/workflows/verify.yml:24",
+    "Info: topLevel 'contents' permission set to 'read': .github/workflows/codeql-analysis.yml:37",
+    "Info: topLevel 'contents' permission set to 'read': .github/workflows/depsreview.yml:18",
+    "Info: topLevel 'contents' permission set to 'read': .github/workflows/docker.yml:16",
+    "Info: topLevel permissions set to 'read-all': .github/workflows/gitlab.yml:17",
+    "Info: topLevel 'contents' permission set to 'read': .github/workflows/goreleaser.yaml:23",
+    "Info: topLevel 'contents' permission set to 'read': .github/workflows/integration.yml:23",
+    "Info: topLevel 'contents' permission set to 'read': .github/workflows/lint.yml:11",
+    "Info: topLevel 'pull-requests' permission set to 'read': .github/workflows/lint.yml:12",
+    "Info: topLevel 'contents' permission set to 'read': .github/workflows/main.yml:18",
+    "Info: found token with 'none' permissions: .github/workflows/osps-baseline-publish.yml:1",
+    "Warn: no topLevel permission defined: .github/workflows/osps-baseline.yml:1",
+    "Info: topLevel permissions set to 'read-all': .github/workflows/publishimage.yml:17",
+    "Info: topLevel permissions set to 'read-all': .github/workflows/scdiff.yml:6",
+    "Info: topLevel permissions set to 'read-all': .github/workflows/scorecard-analysis.yml:11",
+    "Info: topLevel 'contents' permission set to 'read': .github/workflows/security-insights.yml:28",
+    "Info: topLevel permissions set to 'read-all': .github/workflows/stale.yml:20",
+    "Info: topLevel permissions set to 'read-all': .github/workflows/verify.yml:19"
+   ]
+  },
+  {
+   "name": "Signed-Releases",
+   "score": 10,
+   "reason": "5 out of the last 5 releases have a total of 5 signed artifacts.",
+   "details": [
+    "Info: provenance for release artifact: multiple.intoto.jsonl: https://github.com/ossf/scorecard/releases/tag/v5.6.0",
+    "Info: provenance for release artifact: multiple.intoto.jsonl: https://github.com/ossf/scorecard/releases/tag/v5.5.0",
+    "Info: provenance for release artifact: multiple.intoto.jsonl: https://github.com/ossf/scorecard/releases/tag/v5.4.0",
+    "Info: provenance for release artifact: multiple.intoto.jsonl: https://github.com/ossf/scorecard/releases/tag/v5.3.0",
+    "Info: provenance for release artifact: multiple.intoto.jsonl: https://github.com/ossf/scorecard/releases/tag/v5.2.1"
+   ]
+  },
+  {
+   "name": "Branch-Protection",
+   "score": 5,
+   "reason": "branch protection is not maximal on development and all release branches",
+   "details": [
+    "Info: 'allow deletion' disabled on branch 'main'",
+    "Info: 'force pushes' disabled on branch 'main'",
+    "Warn: 'branch protection settings apply to administrators' is disabled on branch 'main'",
+    "Warn: 'stale review dismissal' is disabled on branch 'main'",
+    "Warn: required approving review count is 1 on branch 'main'",
+    "Warn: codeowners review is not required on branch 'main'",
+    "Warn: 'last push approval' is disabled on branch 'main'",
+    "Info: 'up-to-date branches' is required to merge on branch 'main'",
+    "Info: status check found to merge onto on branch 'main'",
+    "Info: PRs are required in order to make changes on branch 'main'"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,562 @@
+[
+ {
+  "id": "access-control",
+  "refs": 7,
+  "chapter": "The Chain Does Not Forgive",
+  "step": "The Loss Distribution Is Not the Audit Report",
+  "statement": "The bug classes that get the most audit attention are not the ones that lose the most money."
+ },
+ {
+  "id": "safe-multisig",
+  "refs": 5,
+  "chapter": "The Chain Does Not Forgive",
+  "step": "First Dollar of Security",
+  "statement": "A finite security budget spent on the most interesting risk instead of the largest one is a subsidy to the attacker."
+ },
+ {
+  "id": "standing-privilege",
+  "refs": 4,
+  "chapter": "Ground",
+  "step": "Drill: Two Million and One Choice",
+  "statement": "The layer you already cover is the one everyone wants to reinforce, and it is almost never the layer that will be used against you."
+ },
+ {
+  "id": "reorg",
+  "refs": 3,
+  "chapter": "The Chain Does Not Forgive",
+  "step": "MEV Is an Adversary, Not a Fee",
+  "statement": "The order of transactions is itself a resource, and someone is extracting value from yours whether or not you modeled them."
+ },
+ {
+  "id": "insider-threat",
+  "refs": 3,
+  "chapter": "The Chain Does Not Forgive",
+  "step": "Exchange-Grade Custody and the Insider You Cannot Audit",
+  "statement": "Hot, warm, and cold segmentation stops the outside attacker; only dual control and least privilege stop the one you hired."
+ },
+ {
+  "id": "analytic-robustness",
+  "refs": 3,
+  "chapter": "THE LANTERN",
+  "step": "Summiting the Pyramid: How Hard Is Your Analytic to Evade",
+  "statement": "Two detections for the same technique can differ by an order of magnitude in how easily an adversary defeats them, and until you score that difference you are counting rules rather than measuring defence."
+ },
+ {
+  "id": "remote-attestation",
+  "refs": 2,
+  "chapter": "The Oracle Problem",
+  "step": "Your Perimeter Runs Through Someone Else's Datacentre",
+  "statement": "The weights are decrypted in the memory of hardware you do not own, in a building you have never entered, on a chip whose firmware you did not write."
+ },
+ {
+  "id": "machine-tempo",
+  "refs": 2,
+  "chapter": "The Oracle Problem",
+  "step": "The Same Capability Points Both Ways",
+  "statement": "AI-assisted vulnerability research favours whoever can act on its output fastest, and that is a patching question before it is a research question."
+ },
+ {
+  "id": "disposition",
+  "refs": 2,
+  "chapter": "THE FORGE",
+  "step": "Threat Modelling Inside The Design Review",
+  "statement": "A threat model is not a document; it is a forty-minute argument held before the code exists, and its only artefact worth keeping is the decisions it changed."
+ },
+ {
+  "id": "trusted-publishing",
+  "refs": 2,
+  "chapter": "THE FORGE",
+  "step": "Four Ways A Chain Breaks",
+  "statement": "Almost every open source compromise of the last two years reduces to phishing, a privileged automated trigger, a stolen long-lived credential, or a handover of control — and each has a different defence."
+ },
+ {
+  "id": "checks-effects-interactions",
+  "refs": 2,
+  "chapter": "The Chain Does Not Forgive",
+  "step": "Reentrancy Has Four Doors, Not One",
+  "statement": "The checks-effects-interactions rule stops the classic attack and none of its three modern relatives."
+ },
+ {
+  "id": "delegatecall",
+  "refs": 2,
+  "chapter": "The Chain Does Not Forgive",
+  "step": "Safe Multisig, MPC, and the Delegatecall Foot-Gun",
+  "statement": "A multisig only protects you if each signer can independently see and refuse what they are signing."
+ },
+ {
+  "id": "superblock",
+  "refs": 2,
+  "chapter": "The Chain Does Not Forgive",
+  "step": "A Treasury That Governs Itself: The Masternode Model",
+  "statement": "A DAO treasury's real security control is not the smart contract but the humans who read every proposal before it can spend."
+ },
+ {
+  "id": "materiality-determination",
+  "refs": 2,
+  "chapter": "The Chair",
+  "step": "Day Thirty-One: The Incident You Did Not Build The Program For",
+  "statement": "In your first month you have no credibility to spend, so spend process instead."
+ },
+ {
+  "id": "span-of-control",
+  "refs": 2,
+  "chapter": "The Chair",
+  "step": "The Three Shapes And What Each One Costs",
+  "statement": "There is no correct security org shape, only a shape whose failure mode you have chosen on purpose."
+ },
+ {
+  "id": "synthetic-probe",
+  "refs": 2,
+  "chapter": "Dash EVO Operator",
+  "step": "Availability Is a Security Property When Downtime Costs Collateral",
+  "statement": "On this network your uptime is enforced by the protocol, so an availability incident and a security incident have the same shape, the same clock, and often the same cause."
+ },
+ {
+  "id": "tamper-evidence",
+  "refs": 2,
+  "chapter": "THE PERMANENT RECORD",
+  "step": "A CID Is A Name, Not A Promise",
+  "statement": "Content addressing gives you integrity for free and gives you availability not at all, and almost every architecture mistake in this domain comes from conflating the two."
+ },
+ {
+  "id": "sigma-rule",
+  "refs": 2,
+  "chapter": "THE LANTERN",
+  "step": "Detection-as-Code: Sigma, Backends, and a CI That Says No",
+  "statement": "If a detection can reach production without passing a test, you are not running detection engineering, you are running a suggestion box."
+ },
+ {
+  "id": "validation-ledger",
+  "refs": 2,
+  "chapter": "THE LANTERN",
+  "step": "Generating the Map Instead of Painting It",
+  "statement": "If a human colours your coverage map, it records what that human believed on that day; if your pipeline generates it, it records what your detections actually do."
+ },
+ {
+  "id": "token-inventory",
+  "refs": 2,
+  "chapter": "THE LANTERN",
+  "step": "Deception: The Cheapest True Positive You Will Ever Own",
+  "statement": "Every other detection asks whether unusual activity is malicious; a canary only fires when something touched an object that exists for no other reason."
+ },
+ {
+  "id": "hero-threat-modeler",
+  "refs": 2,
+  "chapter": "Ground",
+  "step": "The Four Questions",
+  "statement": "Threat modeling is not a methodology, it is four questions, and the methodologies are only ways of answering the second one."
+ },
+ {
+  "id": "linkability",
+  "refs": 2,
+  "chapter": "Ground",
+  "step": "Lab: LINDDUN Against a Real Data Flow",
+  "statement": "Security threat modeling asks what an attacker could do to the system; privacy threat modeling asks what the system does to a person when it is working perfectly."
+ },
+ {
+  "id": "item-1-05",
+  "refs": 2,
+  "chapter": "The Ledger of Consequence",
+  "step": "Four Business Days and the Word Material",
+  "statement": "The SEC clock does not start when you detect an incident; it starts when you determine it is material, and the duty is to make that determination without unreasonable delay."
+ },
+ {
+  "id": "time-to-revoke",
+  "refs": 2,
+  "chapter": "THE KEEPER",
+  "step": "Zanzibar, and the Cost of Being Right Everywhere at Once",
+  "statement": "Google's answer to fine-grained authorization was not a clever data model; it was an explicit, per-request contract about how stale an answer may be."
+ },
+ {
+  "id": "decision-log",
+  "refs": 2,
+  "chapter": "THE HOUR THE BUILDING BURNS",
+  "step": "One Record, One Writer, One Hand on the System",
+  "statement": "Two people editing the truth produces two truths; two people editing production produces an outage inside an incident."
+ },
+ {
+  "id": "holding-statement",
+  "refs": 2,
+  "chapter": "THE HOUR THE BUILDING BURNS",
+  "step": "The First Hour of Executive Communication",
+  "statement": "In the first hour you have almost no facts and all of your credibility, and how you spend the second determines how much of the first you keep."
+ },
+ {
+  "id": "evidence-bearing-dispute",
+  "refs": 2,
+  "chapter": "THE HONEST GRAPH",
+  "step": "Griefing an Honest Claim",
+  "statement": "Some attackers are not trying to make you believe something false; they are trying to make believing anything expensive, and against that goal your careful process is the weapon."
+ },
+ {
+  "id": "atomic-asset",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "The Asset Is a File",
+  "statement": "The most valuable thing your organisation owns is a set of floating point numbers, and everything about your security programme should be rearranged around that fact."
+ },
+ {
+  "id": "egress-bandwidth-control",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "Egress Is the Control That Fits the Asset",
+  "statement": "You cannot stop a legitimate user from reading the weights, so make it impossible for them to move the weights quietly."
+ },
+ {
+  "id": "conviction-insider",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "The Engineer Who Resigned On Tuesday",
+  "statement": "Insider response is the one discipline where the fastest visible action is almost always the worst one."
+ },
+ {
+  "id": "key-release-policy",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "Your Perimeter Runs Through Someone Else's Datacentre",
+  "statement": "The weights are decrypted in the memory of hardware you do not own, in a building you have never entered, on a chip whose firmware you did not write."
+ },
+ {
+  "id": "improper-output-handling",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "The Top Ten as a Coverage Map, Not a Design",
+  "statement": "A shared taxonomy is worth adopting even when it is imperfect, because it makes disagreement specific."
+ },
+ {
+  "id": "safety-failure",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "Safety Failure or Security Failure",
+  "statement": "If the harmed party is the user themselves, it is a safety problem; if the harmed party is someone else, it is a security problem, and the difference decides who gets paged."
+ },
+ {
+  "id": "backdoor-trigger",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "Poisoning Does Not Scale With Your Corpus",
+  "statement": "The intuition that a bigger training set dilutes an attacker's contribution is wrong, and it is the most load-bearing wrong intuition in AI security."
+ },
+ {
+  "id": "distillation-attack",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "Your API Is a Side Channel",
+  "statement": "Every convenience you expose in an inference API — logprobs, logit bias, deterministic sampling, verbose errors — is an oracle someone will query systematically."
+ },
+ {
+  "id": "invisible-codepoints",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "The Instruction That Arrived As Pixels",
+  "statement": "Any channel the model can perceive is an instruction channel, including the ones your threat model calls attachments."
+ },
+ {
+  "id": "markdown-image-exfil",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "The Lethal Trifecta",
+  "statement": "Private data, untrusted content, external communication — any two are workable, all three are an exfiltration primitive."
+ },
+ {
+  "id": "quarantined-llm",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "Six Patterns, and the Price of Each",
+  "statement": "Every real defence against injection buys security by removing capability, and the engineering skill is choosing which capability you did not need."
+ },
+ {
+  "id": "manifest-pinning",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "Reviewing a Connector Ecosystem",
+  "statement": "A tool description is executable text that nobody reviews, delivered by a server nobody vetted, running with credentials nobody scoped."
+ },
+ {
+  "id": "delegation-token",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "Delegation That Attenuates",
+  "statement": "Authority must narrow as it passes down a chain of agents, and the default in every system you will inherit is that it widens."
+ },
+ {
+  "id": "comprehension-check",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "Oversight That Is Not a Reflex",
+  "statement": "A human in the loop who approves in three seconds is not oversight; they are a latency cost that legal mistook for a control."
+ },
+ {
+  "id": "shadow-automation",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "The Agent Inventory Nobody Has",
+  "statement": "You cannot govern agents you cannot list, and every organisation has more of them than its architecture diagram admits."
+ },
+ {
+  "id": "alert-borne-injection",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "Three Places It Works, Three Places It Hurts",
+  "statement": "A language model is excellent at compressing evidence into language and terrible at deciding what is true, so let it write and never let it conclude."
+ },
+ {
+  "id": "coverage-claim",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "Detection Authoring With a Test Harness",
+  "statement": "A model-drafted detection is a hypothesis; the harness that tests it against real data is the actual deliverable."
+ },
+ {
+  "id": "labelled-regression-set",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "The Alert That Closed Itself",
+  "statement": "When an automated conclusion cites evidence that does not exist, the defect is not the model — it is that your pipeline accepted an unverifiable claim."
+ },
+ {
+  "id": "directed-analysis",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "The Same Capability Points Both Ways",
+  "statement": "AI-assisted vulnerability research favours whoever can act on its output fastest, and that is a patching question before it is a research question."
+ },
+ {
+  "id": "blast-radius-expiry",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "Containment at Machine Tempo",
+  "statement": "A containment plan whose steps assume a human reads a queue is not a plan against an adversary that does not sleep."
+ },
+ {
+  "id": "behavioural-drift",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "Measure the Tool You Bought",
+  "statement": "Any AI security capability you cannot measure against labelled ground truth over time is a vendor claim you are storing in production."
+ },
+ {
+  "id": "systemic-risk-gpai",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "The Frameworks You Will Be Held To",
+  "statement": "Map your controls to the frameworks once, properly, and you will spend the next three years answering questions instead of rebuilding evidence."
+ },
+ {
+  "id": "elicitation-effort",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "An Evaluation Is a Control, Not a Report",
+  "statement": "An evaluation only becomes a security control at the moment a result is bound in advance to an action nobody can talk their way out of."
+ },
+ {
+  "id": "capability-threshold",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "Pre-Commitment as a Control",
+  "statement": "The purpose of a capability threshold is to make a decision now that your future self, under commercial pressure, will not be able to argue away."
+ },
+ {
+  "id": "alignment-versus-control",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "Alignment and Control Are Different Bets",
+  "statement": "Alignment is a bet that the system wants what you want; control is a bet that it does not matter what it wants — a security leader funds the second and hopes for the first."
+ },
+ {
+  "id": "observed-unobserved-delta",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "Alignment and Control Are Different Bets",
+  "statement": "Alignment is a bet that the system wants what you want; control is a bet that it does not matter what it wants — a security leader funds the second and hopes for the first."
+ },
+ {
+  "id": "maturity-theatre",
+  "refs": 1,
+  "chapter": "The Oracle Problem",
+  "step": "The Board Asks How Exposed We Are",
+  "statement": "A board does not want your risk assessment; it wants to know which decisions are theirs and what happens if they choose wrongly."
+ },
+ {
+  "id": "vulnerability-class",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "The Class, Not The Instance",
+  "statement": "Every ticket you close is one instance; every condition you change is every instance, forever."
+ },
+ {
+  "id": "incidence-rate",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "The Top Ten Is A Census, Not A Threat Model",
+  "statement": "The OWASP Top 10 tells you what testers found in the applications that agreed to be measured; it does not tell you what will be used against you."
+ },
+ {
+  "id": "code-age-decay",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "Memory Safety: The Only Class We Know How To Delete",
+  "statement": "Memory unsafety is the one major vulnerability class with a proven industrial cure, and the cure is not a rewrite."
+ },
+ {
+  "id": "link-local-address",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "Lab: SSRF Into The Metadata Service",
+  "statement": "In cloud environments server-side request forgery is not an information leak, it is a credential handoff."
+ },
+ {
+  "id": "hard-gate",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "Guardrails Over Gates",
+  "statement": "Every gate you install is a tax on every release forever; charge it only where the loss is unrecoverable."
+ },
+ {
+  "id": "feature-flag",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "Drill: The Gate And The Release Train",
+  "statement": "The moment your control blocks revenue is the moment you discover whether you designed it or inherited it."
+ },
+ {
+  "id": "capability-transfer",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "Council: A Champions Network That Does Not Decay",
+  "statement": "A security champions programme is a distribution network for judgement, and every one that fails does so because it distributed tasks instead."
+ },
+ {
+  "id": "shadow-mode",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "The False Positive Is An Economic Instrument",
+  "statement": "A tool's precision is not a technical specification; it is the exchange rate between your programme and your engineers' trust."
+ },
+ {
+  "id": "property-based-testing",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "Lab: Properties Beat Examples",
+  "statement": "An example test asserts what you already thought of; a property test asserts what must always be true, and then goes looking for the counterexample."
+ },
+ {
+  "id": "oss-fuzz",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "Field: Continuous Fuzzing With Honest Coverage",
+  "statement": "Claiming a project is fuzzed without publishing its coverage is the assurance equivalent of a green dashboard nobody validated."
+ },
+ {
+  "id": "reproducible-builds",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "xz-utils: How To Buy A Maintainer",
+  "statement": "The most sophisticated supply chain attack yet documented did not exploit a single vulnerability; it exploited the fact that critical infrastructure is maintained by exhausted volunteers."
+ },
+ {
+  "id": "sha-pinning",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "Lab: Harden The Pipeline",
+  "statement": "Your CI system holds credentials to everything you own, executes arbitrary code by design, and is usually the least monitored production system in the company."
+ },
+ {
+  "id": "in-toto-attestation",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "Lab: Sign, Attest, Verify",
+  "statement": "An artefact you cannot trace back to a specific commit built by a specific workflow is an artefact you are choosing to trust on faith."
+ },
+ {
+  "id": "vendored-code",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "What An SBOM Solves, And What It Does Not",
+  "statement": "An SBOM is an inventory, and an inventory is enormously valuable on exactly one kind of day and largely inert on every other."
+ },
+ {
+  "id": "change-window",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "Drill: The 9.8 And The 6.5",
+  "statement": "The moment you have capacity for one of two vulnerabilities is the moment your prioritisation model is either real or decorative."
+ },
+ {
+  "id": "named-accepter",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "Council: How To Say No To A Scanner Report",
+  "statement": "A no you can defend in writing is a security control; a no delivered verbally in a meeting is a liability with your name on it."
+ },
+ {
+  "id": "back-test",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "Field: Publish A Standard With Teeth",
+  "statement": "A vulnerability management standard that does not specify enforcement, exceptions and evidence is a wish list with a document number."
+ },
+ {
+  "id": "attack-class-framing",
+  "refs": 1,
+  "chapter": "THE FORGE",
+  "step": "Council: The Board Asks If We Are Exposed",
+  "statement": "A board does not want your findings count; it wants to know whether you would recognise the day this goes wrong, and what happens next."
+ },
+ {
+  "id": "domain-separator",
+  "refs": 1,
+  "chapter": "The Chain Does Not Forgive",
+  "step": "Access Control, Proxy Slots, and the Signature You Can Replay",
+  "statement": "The quiet bugs — a missing modifier, a colliding storage slot, a domain separator left off — move more money than the loud ones."
+ },
+ {
+  "id": "proposal-review",
+  "refs": 1,
+  "chapter": "The Chain Does Not Forgive",
+  "step": "A Treasury That Governs Itself: The Masternode Model",
+  "statement": "A DAO treasury's real security control is not the smart contract but the humans who read every proposal before it can spend."
+ },
+ {
+  "id": "ninety-day-entry",
+  "refs": 1,
+  "chapter": "The Chair",
+  "step": "The First Ninety Days That Actually Work",
+  "statement": "Spend the first ninety days buying information and one credible artifact, not shipping wins."
+ },
+ {
+  "id": "risk-map",
+  "refs": 1,
+  "chapter": "The Chair",
+  "step": "The Listening Tour That Surfaces Real Risk",
+  "statement": "Ask questions that only a specific person can answer, and the risk register writes itself."
+ },
+ {
+  "id": "ghost-asset",
+  "refs": 1,
+  "chapter": "The Chair",
+  "step": "Ground Truth: Finding Out What Is Actually There",
+  "statement": "Every inherited program has a stated posture and an actual posture, and the gap lives in the denominator."
+ },
+ {
+  "id": "proof-of-possession",
+  "refs": 1,
+  "chapter": "The Chair",
+  "step": "Day Thirty-One: The Incident You Did Not Build The Program For",
+  "statement": "In your first month you have no credibility to spend, so spend process instead."
+ },
+ {
+  "id": "board-lever",
+  "refs": 1,
+  "chapter": "The Chair",
+  "step": "What A Board Can Actually Do",
+  "statement": "A board has four levers and none of them is technical, so every ask must be shaped to fit one."
+ },
+ {
+  "id": "loss-scenario",
+  "refs": 1,
+  "chapter": "The Chair",
+  "step": "The Three-Slide Standard",
+  "statement": "Risk narrative beats control inventory, because a narrative contains a decision and an inventory does not."
+ }
+]

@@ -1,0 +1,1155 @@
+/* ============================================================================
+   STEPSAFE — THE FORWARD SURFACE
+   An instrument-grade layer over Davara Distinct V3.
+
+   Doctrine held throughout: decoration lives on EDGES, FRAMES and BACKDROPS.
+   Text always sits on a solid panel fill. Nothing here carries legibility, so
+   nothing here can take it away. Every effect has a reduced-motion equivalent.
+   ========================================================================== */
+
+:root {
+  --notch: 18px;               /* the cut corner — the house geometry */
+  --hair: rgba(210, 225, 235, 0.14);
+  --bevel-top: rgba(226, 240, 250, 0.14);
+  --bevel-bot: rgba(0, 3, 6, 0.66);
+  --sheen: rgba(226, 244, 255, 0.1);
+  --grid-ink: rgba(124, 214, 232, 0.05);
+  --plate: linear-gradient(160deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0) 42%);
+}
+
+:root[data-theme='meridian'] {
+  --hair: rgba(16, 25, 21, 0.2);
+  --bevel-top: rgba(255, 255, 255, 0.95);
+  --bevel-bot: rgba(16, 25, 21, 0.24);
+  --sheen: rgba(255, 255, 255, 0.6);
+  --grid-ink: rgba(7, 62, 52, 0.07);
+  --plate: linear-gradient(160deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 46%);
+}
+
+/* ---------------------------------------------------------------------------
+   1 · THE LATTICE — the substrate is a graph, because the subject is a graph.
+   A fixed, masked coordinate field behind everything. Statement: you are always
+   standing inside a structure; the work is learning to see it.
+   ------------------------------------------------------------------------- */
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: -10%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--grid-ink) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-ink) 1px, transparent 1px);
+  background-size: 68px 68px;
+  -webkit-mask-image: radial-gradient(ellipse 78% 62% at 50% 6%, #000 8%, transparent 74%);
+  mask-image: radial-gradient(ellipse 78% 62% at 50% 6%, #000 8%, transparent 74%);
+  animation: latticeDrift 44s linear infinite;
+}
+@keyframes latticeDrift {
+  to { background-position: 68px 68px, 68px 68px; }
+}
+
+/* tactile grain — machined, not plastic */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------------------------------------------------------------------------
+   2 · THE PLATE — panels become machined instrument plates.
+   Notched corner + hairline reticle brackets + top bevel + specular sheen.
+   ------------------------------------------------------------------------- */
+
+/* Bound to the real surfaces, not an opt-in class: every panel and card in the
+   product becomes a machined instrument plate. One rule, whole system. */
+.plate,
+.panel,
+.card {
+  position: relative;
+  border: 1px solid var(--hair);
+  box-shadow:
+    inset 0 1px 0 var(--bevel-top),
+    inset 0 -1px 0 var(--bevel-bot),
+    0 22px 48px -26px var(--relief-shadow),
+    0 3px 10px -5px var(--relief-shadow);
+  isolation: isolate;
+}
+.plate::before,
+.panel::before,
+.card::before {
+  /* the plate's own light — a soft specular wash, never behind text at strength */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--plate);
+  pointer-events: none;
+  z-index: 0;
+}
+.plate > *,
+.panel > *,
+.card > * { position: relative; z-index: 1; }
+
+/* cards lift and take an essence edge on approach */
+.card {
+  transition: transform 460ms var(--ease), box-shadow 460ms var(--ease), border-color 380ms var(--ease);
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--essence, var(--cyan));
+  box-shadow:
+    inset 0 1px 0 var(--bevel-top),
+    0 34px 66px -30px var(--relief-shadow),
+    0 0 34px -12px var(--essence, var(--cyan));
+}
+
+/* the drill itself is an instrument housing */
+.drill {
+  box-shadow: inset 0 1px 0 var(--bevel-top), 0 26px 54px -30px var(--relief-shadow);
+}
+
+/* reticle brackets — the corner marks of an instrument, drawn not decorated */
+.reticle { position: relative; }
+.reticle::before,
+.reticle::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  opacity: 0.66;
+  transition: opacity 420ms var(--ease), width 520ms var(--ease), height 520ms var(--ease);
+}
+.reticle::before {
+  top: 10px; left: 10px;
+  border-top: 2px solid var(--essence, var(--cyan));
+  border-left: 2px solid var(--essence, var(--cyan));
+}
+.reticle::after {
+  bottom: 10px; right: 10px;
+  border-bottom: 2px solid var(--essence, var(--cyan));
+  border-right: 2px solid var(--essence, var(--cyan));
+}
+.reticle:hover::before,
+.reticle:hover::after,
+.reticle:focus-within::before,
+.reticle:focus-within::after { opacity: 1; width: 32px; height: 32px; }
+
+/* ---------------------------------------------------------------------------
+   3 · IRIDESCENCE — the edge is alive. Border-only, so the Contrast Law is safe.
+   ------------------------------------------------------------------------- */
+
+.irid {
+  position: relative;
+}
+.irid::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--ang, 0deg),
+    transparent 0deg,
+    var(--essence, var(--cyan)) 40deg,
+    var(--violet) 96deg,
+    transparent 150deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 520ms var(--ease);
+  pointer-events: none;
+}
+.irid:hover::after,
+.irid:focus-within::after { opacity: 0.95; animation: spinEdge 4.4s linear infinite; }
+
+@property --ang {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes spinEdge { to { --ang: 360deg; } }
+
+/* ---------------------------------------------------------------------------
+   4 · THE SWEEP — a scan of light crossing a surface when it takes the charge.
+   Anticipation, pass, afterglow. Never a linear fade.
+   ------------------------------------------------------------------------- */
+
+.sweep { position: relative; overflow: hidden; }
+.sweep > .sweep-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 42%;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent, var(--sheen), transparent);
+  transform: translateX(-160%) skewX(-14deg);
+  opacity: 0;
+}
+.sweep:hover > .sweep-bar,
+.sweep:focus-within > .sweep-bar {
+  animation: sweepPass 1150ms cubic-bezier(0.3, 0.9, 0.2, 1) both;
+}
+@keyframes sweepPass {
+  0% { transform: translateX(-160%) skewX(-14deg); opacity: 0; }
+  12% { opacity: 1; }
+  78% { opacity: 0.85; }
+  100% { transform: translateX(320%) skewX(-14deg); opacity: 0; }
+}
+
+/* ---------------------------------------------------------------------------
+   5 · THE CHAPTER PLATE — a sealed vault face that opens.
+   ------------------------------------------------------------------------- */
+
+.chapter {
+  --notch: 22px;
+  border: 1px solid var(--hair);
+  box-shadow:
+    inset 0 1px 0 var(--bevel-top),
+    inset 0 -1px 0 var(--bevel-bot),
+    0 26px 56px -30px var(--relief-shadow);
+  transition: transform 520ms var(--ease), box-shadow 520ms var(--ease),
+    border-color 420ms var(--ease);
+}
+.chapter::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--plate);
+  pointer-events: none;
+}
+.chapter:hover:not(:disabled) {
+  transform: translateY(-6px) scale(1.006);
+  box-shadow:
+    inset 0 1px 0 var(--bevel-top),
+    0 40px 78px -34px var(--relief-shadow),
+    0 0 0 1px var(--essence, var(--cyan)),
+    0 0 46px -8px var(--essence, var(--cyan));
+}
+.chapter:disabled { filter: saturate(0.35); }
+
+/* The blurred colour blob is banned. Elegance by subtraction: the card's
+   character comes from its geometry, its edge and its top rail — all crisp,
+   none of it a smear of hue behind the text. */
+.chapter .aura {
+  display: none;
+}
+
+/* edge-lit top rail: the essence reads as a machined light source, not a haze */
+.chapter::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--essence, var(--cyan)), transparent 78%);
+  opacity: 0.7;
+  transition: opacity 420ms var(--ease);
+  pointer-events: none;
+}
+.chapter:hover:not(:disabled)::after { opacity: 1; }
+
+/* the seal on a locked chapter — a real mark, not an opacity trick */
+.chapter .lockmark {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  width: 46px;
+  height: 46px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.chapter .lockmark circle,
+.chapter .lockmark path { stroke: var(--ink-2); fill: none; stroke-width: 1.6; }
+
+/* status rail across the plate top — machine telemetry */
+.chapter .statusrail {
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 3px;
+  background: var(--panel-3);
+  overflow: hidden;
+}
+.chapter .statusrail i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--essence, var(--cyan)), var(--violet));
+  box-shadow: 0 0 16px var(--essence, var(--cyan));
+  transition: width 900ms var(--ease);
+}
+
+/* ---------------------------------------------------------------------------
+   6 · BUTTONS — pressed metal with a live edge.
+   ------------------------------------------------------------------------- */
+
+.btn {
+  --notch: 11px;
+  box-shadow:
+    inset 0 1px 0 var(--bevel-top),
+    inset 0 -2px 0 var(--bevel-bot),
+    0 12px 26px -16px var(--relief-shadow);
+  letter-spacing: 0.005em;
+}
+.btn:hover:not(:disabled) {
+  box-shadow:
+    inset 0 1px 0 var(--bevel-top),
+    inset 0 -2px 0 var(--bevel-bot),
+    0 20px 40px -18px var(--relief-shadow),
+    0 0 30px -8px var(--cyan);
+}
+.btn-key {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 0 rgba(58, 43, 6, 0.4),
+    0 14px 30px -16px rgba(0, 0, 0, 0.7),
+    0 0 34px -12px var(--gold);
+}
+.btn-key:hover:not(:disabled) {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -2px 0 rgba(58, 43, 6, 0.45),
+    0 22px 44px -18px rgba(0, 0, 0, 0.75),
+    0 0 52px -10px var(--gold);
+}
+
+/* ---------------------------------------------------------------------------
+   7 · DECISION BLADES — drill options as angled instrument keys.
+   ------------------------------------------------------------------------- */
+
+.opt {
+  --notch: 13px;
+  box-shadow: inset 0 1px 0 var(--bevel-top), 0 14px 30px -20px var(--relief-shadow);
+  border-left: 3px solid transparent;
+}
+.opt:hover:not(:disabled) {
+  transform: translateX(8px);
+  border-left-color: var(--cyan);
+  box-shadow: inset 0 1px 0 var(--bevel-top), 0 22px 40px -22px var(--relief-shadow),
+    0 0 28px -12px var(--cyan);
+}
+.opt.picked { border-left-color: var(--ink-accent); }
+.opt.best { border-left-color: var(--gold); box-shadow: 0 0 0 1px var(--gold), 0 0 40px -12px var(--gold); }
+.opt.bad { border-left-color: var(--ink-alarm); }
+
+/* ---------------------------------------------------------------------------
+   7b · THE SIMULATION ROOM CARD
+   Readability first. The old card forced a long organisation name and a long
+   sector description into 13px letter-spaced uppercase mono, which wrapped to
+   three cramped low-contrast lines. Real hierarchy instead: the org is a name,
+   the sector is a chip, the brief is prose you can actually read.
+   ------------------------------------------------------------------------- */
+
+.simcard {
+  --notch: 22px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: var(--s5);
+  width: 100%;
+  text-align: left;
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  background: var(--panel);
+  border: 1px solid var(--hair);
+  box-shadow:
+    inset 0 1px 0 var(--bevel-top),
+    inset 0 -1px 0 var(--bevel-bot),
+    0 26px 56px -30px var(--relief-shadow);
+  transition: transform 520ms var(--ease), box-shadow 520ms var(--ease),
+    border-color 420ms var(--ease);
+}
+.simcard::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--essence, var(--ember)), transparent 78%);
+  opacity: 0.75;
+  transition: opacity 420ms var(--ease);
+  pointer-events: none;
+}
+.simcard:hover {
+  transform: translateY(-6px);
+  border-color: var(--essence, var(--ember));
+  box-shadow:
+    inset 0 1px 0 var(--bevel-top),
+    0 40px 78px -34px var(--relief-shadow),
+    0 0 40px -12px var(--essence, var(--ember));
+}
+.simcard:hover::after { opacity: 1; }
+
+/* instrument strip: difficulty, duration, status — compact, scannable */
+.simcard .strip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.simcard .diff {
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+}
+.simcard .diff i {
+  width: 16px;
+  height: 4px;
+  border-radius: 1px;
+  background: var(--panel-3);
+  box-shadow: var(--inset);
+}
+.simcard .diff i.on {
+  background: var(--essence, var(--ember));
+  box-shadow: 0 0 9px var(--essence, var(--ember));
+}
+
+/* the organisation reads as a name, not as a machine label */
+.simcard .org {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.06rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.simcard h3 {
+  margin: 0;
+  font-size: 1.62rem;
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+}
+.simcard .brief {
+  color: var(--ink-2);
+  font-size: 1.02rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* The sector line is a full descriptive sentence, not a tag. A pill with
+   white-space: nowrap made it hundreds of pixels wide and pushed the whole
+   page sideways — so it gets its own wrapping treatment. */
+.sector {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  color: var(--ink-label);
+  white-space: normal;
+  overflow-wrap: anywhere;
+  margin-top: 6px;
+  padding-left: 11px;
+  border-left: 2px solid var(--frame-strong);
+}
+
+/* PROSE IN A PILL IS A BUG.
+   A chip is `white-space: nowrap` by design — correct for "12 min" or a domain
+   tag, catastrophic for a full sentence, which then runs straight off the card
+   and gets clipped. Anywhere the content is a sentence (unit strengths, page
+   competencies) it gets this instead: a bordered line that wraps. */
+.trait {
+  display: block;
+  padding: 9px 13px;
+  border-radius: var(--r);
+  border: 1px solid var(--frame-strong);
+  border-left: 2px solid var(--essence, var(--cyan));
+  background: var(--panel-2);
+  box-shadow: var(--inset);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.55;
+  letter-spacing: 0.03em;
+  color: var(--ink-2);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.traitlist { display: flex; flex-direction: column; gap: 7px; }
+
+/* what the room actually judges — set expectations before the learner enters */
+.simcard .judged {
+  border-top: 1px solid var(--frame);
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.simcard .judged .jrow {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--ink-2);
+}
+.simcard .judged .jw {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-accent);
+  flex: none;
+  min-width: 30px;
+}
+
+/* the seats this exercise puts in the room */
+.simcard .seats { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.simcard .seat {
+  width: 30px; height: 30px;
+  display: grid; place-items: center;
+  border-radius: 9px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  background: var(--panel-2);
+  border: 1px solid var(--frame);
+  box-shadow: var(--inset);
+}
+.simcard .seat.here {
+  color: var(--ink);
+  border-color: var(--essence, var(--ember));
+  box-shadow: var(--inset), 0 0 12px -4px var(--essence, var(--ember));
+}
+
+.simcard .done-flag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--ink-gold);
+}
+
+/* ---------------------------------------------------------------------------
+   7c · INSIDE THE ROOM — briefing furniture and the inject feed
+   ------------------------------------------------------------------------- */
+
+.diff-strip { display: inline-flex; gap: 4px; align-items: center; }
+.diff-strip i {
+  width: 20px; height: 5px; border-radius: 1px;
+  background: var(--panel-3); box-shadow: var(--inset);
+}
+.diff-strip i.on {
+  background: var(--essence, var(--ember));
+  box-shadow: 0 0 10px var(--essence, var(--ember));
+}
+
+.org-line {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.judge-row {
+  padding: 14px 16px;
+  background: var(--panel-2);
+  border: 1px solid var(--frame);
+  border-radius: var(--r);
+  box-shadow: var(--inset);
+}
+.weightbar {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--panel-3);
+  box-shadow: var(--inset);
+  overflow: hidden;
+}
+.weightbar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+  box-shadow: 0 0 12px var(--cyan);
+}
+
+.seat-lg {
+  flex: none;
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-2);
+  background: var(--panel-3);
+  border: 1px solid var(--frame);
+  box-shadow: var(--inset);
+}
+.seat-lg.here {
+  color: var(--ink);
+  border-color: var(--essence, var(--cyan));
+  box-shadow: var(--inset), 0 0 16px -5px var(--essence, var(--cyan));
+}
+
+/* the inject feed: a channel is a voice, so each one is marked distinctly */
+.inject { --chan-ink: var(--ink-accent); }
+.inject .chan {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--chan-ink);
+  padding: 3px 10px;
+  border: 1px solid var(--frame-strong);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.inject .from { font-weight: 650; color: var(--ink); font-size: 1rem; }
+.inject .clock {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--ink-label);
+  flex: none;
+}
+.inject .injecttext {
+  font-size: 1.08rem;
+  line-height: 1.66;
+  color: var(--ink-2);
+}
+.inject.current .injecttext { color: var(--ink); }
+.inject.past { opacity: 0.72; }
+.inject.past:hover { opacity: 1; }
+
+.inject.ch-pager     { --chan-ink: var(--ink-alarm); }
+.inject.ch-exec      { --chan-ink: var(--ink-gold); }
+.inject.ch-legal     { --chan-ink: var(--ink-signal); }
+.inject.ch-press     { --chan-ink: var(--ink-alarm); }
+.inject.ch-board     { --chan-ink: var(--ink-gold); }
+.inject.ch-regulator { --chan-ink: var(--ink-signal); }
+.inject.ch-chain     { --chan-ink: var(--ink-accent); }
+.inject.ch-model     { --chan-ink: var(--ink-signal); }
+.inject.ch-field     { --chan-ink: var(--ink-accent); }
+.inject.ch-community { --chan-ink: var(--ink-accent); }
+
+/* ---------------------------------------------------------------------------
+   7d · THE AFTER-ACTION REVIEW — your own trail, judged honestly.
+   Missed calls open by default; clean ones stay folded. The learner's attention
+   goes where the learning is.
+   ------------------------------------------------------------------------- */
+
+.aar {
+  border: 1px solid var(--frame);
+  border-left: 3px solid var(--ink-alarm);
+  border-radius: var(--r);
+  background: var(--panel-2);
+  box-shadow: var(--inset);
+  overflow: hidden;
+}
+.aar.clean { border-left-color: var(--gold); }
+
+.aar > summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 16px;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.12em;
+  color: var(--ink-2);
+  transition: background 260ms var(--ease);
+}
+.aar > summary::-webkit-details-marker { display: none; }
+.aar > summary:hover { background: var(--panel-3); }
+.aar .aar-n { color: var(--ink-label); }
+.aar .aar-t { color: var(--ink-label); }
+.aar .aar-v { margin-left: auto; }
+.aar.clean .aar-v { color: var(--ink-gold); }
+.aar.missed .aar-v { color: var(--ink-alarm); }
+.aar .aar-s { min-width: 34px; text-align: right; color: var(--ink); }
+
+.aar-body { padding: 4px 16px 18px; }
+.aar-pick {
+  margin-top: 12px;
+  padding: 13px 15px;
+  border-radius: var(--r);
+  background: var(--panel);
+  border: 1px solid var(--frame);
+  border-left: 3px solid var(--ink-alarm);
+}
+.aar.clean .aar-pick { border-left-color: var(--gold); }
+.aar-pick.best { border-left-color: var(--gold); }
+
+/* ---------------------------------------------------------------------------
+   8 · THE COUNSEL — your unit speaking inside a decision.
+   ------------------------------------------------------------------------- */
+
+.counsel { display: flex; flex-direction: column; gap: 12px; margin: var(--s4) 0; }
+.voice {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  background: var(--panel);
+  border: 1px solid var(--hair);
+  border-left: 3px solid var(--essence, var(--azure));
+  border-radius: 0 var(--r) var(--r) 0;
+  box-shadow: inset 0 1px 0 var(--bevel-top), 0 10px 24px -18px var(--relief-shadow);
+  animation: voiceIn 620ms var(--ease) both;
+}
+.voice:nth-child(2) { animation-delay: 130ms; }
+.voice:nth-child(3) { animation-delay: 260ms; }
+.voice:nth-child(4) { animation-delay: 390ms; }
+@keyframes voiceIn {
+  0% { opacity: 0; transform: translateX(-16px); }
+  62% { opacity: 1; transform: translateX(3px); }
+  100% { opacity: 1; transform: none; }
+}
+.voice .vsig {
+  flex: none;
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  border-radius: 11px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.98rem;
+  color: var(--ink);
+  background: var(--panel-2);
+  border: 1px solid var(--hair);
+  box-shadow: var(--inset);
+}
+.voice .vname {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-label);
+}
+.voice .vlean {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 3px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--frame-strong);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-accent);
+}
+.voice p { margin: 6px 0 0; font-size: 1.02rem; color: var(--ink-2); }
+
+/* when two voices disagree, the split is drawn */
+.counsel[data-split='true']::before {
+  content: 'YOUR UNIT IS SPLIT';
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--ink-gold);
+  padding-bottom: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+   9 · THE SEAL & INSIGNIA — generative identity marks.
+   ------------------------------------------------------------------------- */
+
+.seal-wrap { display: grid; place-items: center; padding: var(--s4); }
+.seal-wrap svg { filter: drop-shadow(0 0 22px rgba(232, 196, 107, 0.42)); }
+.seal-spin { animation: sealTurn 68s linear infinite; transform-origin: 50% 50%; }
+@keyframes sealTurn { to { transform: rotate(360deg); } }
+
+/* ---------------------------------------------------------------------------
+   10 · CONSTELLATION — the curriculum drawn as the dependency graph it is.
+   ------------------------------------------------------------------------- */
+
+.constel { width: 100%; height: auto; display: block; overflow: visible; }
+.constel .edge {
+  stroke: var(--frame-strong);
+  stroke-width: 1.6;
+  fill: none;
+  stroke-dasharray: 4 7;
+  animation: edgeFlow 3.2s linear infinite;
+}
+.constel .edge.live { stroke: var(--cyan); stroke-width: 2.4; opacity: 0.85; }
+@keyframes edgeFlow { to { stroke-dashoffset: -22; } }
+.constel .node { cursor: pointer; }
+.constel .node circle.core {
+  transition: r 460ms var(--ease), filter 460ms var(--ease);
+  filter: drop-shadow(0 0 8px currentColor);
+}
+.constel .node:hover circle.core { filter: drop-shadow(0 0 22px currentColor); }
+.constel .node.locked { opacity: 0.42; }
+.constel .node text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  fill: var(--ink-2);
+  pointer-events: none;
+}
+.constel .node.done text { fill: var(--ink); }
+
+/* the leverage web */
+.unitweb {
+  max-width: 760px;
+  margin: 0 auto var(--s4);
+}
+.unitweb .node { outline: none; }
+.unitweb .node:focus-visible circle.core {
+  stroke: var(--gold);
+  stroke-width: 3;
+}
+.webread { min-height: 132px; }
+
+/* the shared, read-only profile page — no nav rail, so it needs its own frame */
+.shared-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--s5) var(--s5) var(--s7);
+  position: relative;
+  z-index: 1;
+}
+.shared-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: var(--s4);
+  border-bottom: 1px solid var(--frame);
+  flex-wrap: wrap;
+}
+
+/* ---------------------------------------------------------------------------
+   11 · STEP-KIND MARKS — every kind of work has its own geometry.
+   ------------------------------------------------------------------------- */
+
+.kindmark { flex: none; }
+.kindmark path,
+.kindmark circle,
+.kindmark rect,
+.kindmark line,
+.kindmark polygon {
+  stroke: var(--essence, var(--cyan));
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.kindmark .fillbit { fill: var(--essence, var(--cyan)); stroke: none; }
+
+/* ---------------------------------------------------------------------------
+   12 · HEADLINE TREATMENT — bigger, braver, with a machined underline.
+   ------------------------------------------------------------------------- */
+
+.view-head h1 {
+  font-size: clamp(2.9rem, 7vw, 4.4rem);
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+.view-head .kicker-rule {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.view-head .kicker-rule .bar {
+  height: 3px;
+  width: 54px;
+  background: linear-gradient(90deg, var(--cyan), transparent);
+  box-shadow: 0 0 14px var(--cyan);
+  flex: none;
+}
+
+/* ---------------------------------------------------------------------------
+   13 · NAV — the instrument column.
+   ------------------------------------------------------------------------- */
+
+.nav { backdrop-filter: blur(14px); background: color-mix(in srgb, var(--panel) 88%, transparent); }
+@supports not (backdrop-filter: blur(2px)) { .nav { background: var(--panel); } }
+
+/* Below the rail breakpoint the nav becomes a horizontal bar, and ten tabs do
+   not fit. Wide content scrolls inside its own container — the page body never
+   scrolls sideways. */
+@media (max-width: 1080px) {
+  .nav .navlist {
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+    /* it scrolls by touch, wheel and keys; a drawn scrollbar (with arrows on Windows) only crowds the tabs */
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: 24px;
+  }
+  .nav .navlist::-webkit-scrollbar { display: none; }
+  /* both edges of the row fade, so a tab passing out of view softens rather than being cut */
+  .nav .navlist {
+    padding-inline: 14px; margin-inline: -14px;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%);
+  }
+  .nav .navlist > li { flex: none; scroll-snap-align: start; }
+  /* fade the right edge so it reads as scrollable rather than clipped */
+  .nav {
+    -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 28px), transparent 100%);
+    mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 28px), transparent 100%);
+  }
+}
+
+.navbtn { --notch: 9px; }
+.navbtn[aria-current='page'] {
+  box-shadow: inset 0 1px 0 var(--bevel-top), var(--inset);
+}
+
+.hud {
+  --notch: 14px;
+}
+
+/* the evolving unit tab deserves its own presence */
+.navbtn.unit-tab span:first-child {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.navbtn.unit-tab.phase-4 span:first-child { color: var(--ink-gold); }
+
+/* ---------------------------------------------------------------------------
+   14 · AWARD PLATES
+   ------------------------------------------------------------------------- */
+
+.award {
+  --notch: 15px;
+  box-shadow: inset 0 1px 0 var(--bevel-top), 0 16px 34px -22px var(--relief-shadow);
+}
+.award .glyph {
+  position: relative;
+}
+.award:not(.locked).t-safe .glyph {
+  box-shadow: var(--inset), 0 0 26px -6px var(--gold);
+}
+.award.locked .glyph { filter: saturate(0.2); }
+
+/* ---------------------------------------------------------------------------
+   15 · REVIEW QUEUE
+   ------------------------------------------------------------------------- */
+
+.review-card {
+  --notch: 16px;
+  border-left: 3px solid var(--ember);
+}
+.due-pip {
+  display: inline-block;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--ember);
+  box-shadow: 0 0 12px var(--ember);
+  animation: duePulse 2.6s var(--ease) infinite;
+}
+@keyframes duePulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.35); opacity: 1; }
+}
+
+/* ---------------------------------------------------------------------------
+   16 · REDUCED MOTION — every performance has a still equivalent.
+   ------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+  .irid:hover::after, .irid:focus-within::after { animation: none; opacity: 0.8; }
+  .sweep > .sweep-bar { display: none; }
+  .seal-spin { animation: none; }
+  .constel .edge { animation: none; stroke-dasharray: none; }
+  .due-pip { animation: none; }
+  .voice { animation: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   17 · NARROW WIDTHS — geometry relaxes so nothing clips content away.
+   ------------------------------------------------------------------------- */
+
+@media (max-width: 780px) {
+  :root { --notch: 12px; }
+  .chapter { --notch: 14px; }
+  .reticle::before, .reticle::after { width: 14px; height: 14px; }
+  .voice { flex-direction: row; }
+  body::before { background-size: 46px 46px; }
+}
+
+
+/* ---------------------------------------------------------------------------
+   DAVA-DARK PASS. Squircles, no cut corners, no corner brackets, no spinning
+   rim, a dot lattice locked in place. These override the rules above.
+   ------------------------------------------------------------------------- */
+.reticle::before, .reticle::after { display: none; }
+.irid::after { display: none; }
+.btn, .opt, .award, .review-card, .simcard, .chapter, .navbtn[aria-current='page'], .hud {
+  corner-shape: superellipse(2.15);
+}
+.chapter, .simcard { border-radius: 22px; border: 0; }
+.award, .review-card { border-radius: 20px; }
+.opt { border-radius: 16px; }
+.hud { border-radius: 20px; }
+.award .glyph { border-radius: 14px; }
+.chapter, .simcard, .opt, .award, .voice, .judge-row, .aar, .aar-pick, .inject {
+  border-color: transparent;
+}
+body::before {
+  background-image: radial-gradient(circle, var(--grid-ink) 1.3px, transparent 1.9px);
+  background-size: 34px 34px;
+  animation: none;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 10%, #000 10%, transparent 76%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 10%, #000 10%, transparent 76%);
+}
+:root { --grid-ink: rgba(156, 195, 239, 0.11); }
+:root[data-theme='meridian'] { --grid-ink: rgba(7, 62, 52, 0.08); }
+
+/* touch targets: the nav row on a phone */
+@media (max-width: 1080px) {
+  .navbtn { min-height: 44px; }
+}
+
+/* block titles are not mono tags */
+.blk-title { font-family: var(--font-display); letter-spacing: 0.02em; text-transform: none; font-weight: 600; }
+.blk-principle .blk-title { font-family: var(--font-display); letter-spacing: 0.02em; text-transform: none; font-size: 0.95rem; }
+
+/* toasts: glass, no border, tap to dismiss. On a phone they sit at the top as one
+   compact line, newest two only, so a verdict or a Step is never buried. */
+.toast { border: 0; cursor: pointer; background: rgba(13, 21, 53, 0.94); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 24px 50px -20px rgba(0, 0, 0, 0.85); }
+.toast.gold { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 0 30px -12px #fcd9a5, 0 24px 50px -20px rgba(0, 0, 0, 0.85); }
+:root[data-theme='meridian'] .toast { background: rgba(244, 248, 245, 0.97); }
+@media (max-width: 600px) {
+  .toasts { top: 66px; bottom: auto; left: 12px; right: 12px; max-width: none; gap: 6px; }
+  .toast { padding: 10px 14px; border-radius: 16px; font-size: 0.92rem; }
+  .toast strong { margin-bottom: 0 !important; }
+  .toast .sec { display: none; }
+  .toast:nth-last-child(n+3) { display: none; }
+}
+
+/* ---------- the rooms: the way in, the room's strip, the way on (sim- and pr- prefixes) ---------- */
+.sim { --sim-bar: 0px; }
+.sim-dock { display: none; }
+.sim-strip {
+  position: sticky; top: calc(var(--sim-bar) + 8px); z-index: 6;
+  display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: 8px 14px;
+  margin: var(--s4) 0; padding: 12px 16px 14px; border-radius: 18px; corner-shape: superellipse(2.15);
+  background: linear-gradient(var(--panel), var(--panel)), var(--ground);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 14px 30px -18px rgba(0, 0, 0, 0.8);
+}
+/* the gap between the bar and the stuck strip shows the ground, not the text scrolling under it */
+.sim-strip::before { content: ''; position: absolute; left: -4px; right: -4px; bottom: 100%; height: 10px; background: var(--ground); }
+.sim-strip-clock { font: 600 1.05rem var(--font-mono); letter-spacing: 0.06em; color: var(--ink-alarm); }
+.sim-strip-step { font: 600 0.92rem var(--font-display); color: var(--ink-2); }
+.sim-strip-score { font: 600 0.92rem var(--font-display); color: var(--ink); }
+.sim-strip-bar { grid-column: 1 / -1; height: 3px; border-radius: 2px; background: rgba(216, 226, 255, 0.14); overflow: hidden; }
+.sim-strip-bar i { display: block; height: 100%; background: var(--ink-accent); transform-origin: left center; transition: transform 500ms var(--ease); }
+.sim .inject.current { scroll-margin-top: calc(var(--sim-bar) + 96px); }
+.pr-cold { margin: 0 0 var(--s4); font-size: 0.95rem; max-width: 70ch; }
+:root[data-theme='meridian'] .sim-strip { box-shadow: inset 0 1px 0 #fff, 0 12px 26px -20px rgba(80, 60, 160, 0.4); }
+:root[data-theme='meridian'] .sim-strip-bar { background: rgba(16, 25, 21, 0.14); }
+html[data-motion='calm'] .sim-strip-bar i { transition: none; }
+@media (prefers-reduced-motion: reduce) { .sim-strip-bar i { transition: none; } }
+
+@media (max-width: 720px) {
+  /* the way in stays in reach through a brief several screens long */
+  .sim-start { display: none; }
+  .sim-dock {
+    position: sticky; bottom: 12px; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    margin-top: 16px; padding: 10px 10px 10px 16px; border-radius: 20px; corner-shape: superellipse(2.15);
+    background: #0d1535; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 18px 40px -16px rgba(0, 0, 0, 0.9), 0 0 30px -14px #a78bff;
+  }
+  :root[data-theme='meridian'] .sim-dock { background: #f4f8f5; box-shadow: inset 0 1px 0 #fff, 0 16px 34px -18px rgba(80, 60, 160, 0.5); }
+  :root[data-theme='mov'] .sim-dock { background: #0b0d16; }
+  .sim-dock-text { font-size: 0.95rem; color: var(--ink-2); }
+  /* the clock and the score share the first line; how far through sits under them */
+  .sim-strip { grid-template-columns: 1fr auto; }
+  .sim-strip-clock { font-size: 0.98rem; }
+  .sim-strip-score { grid-column: 2; grid-row: 1; }
+  .sim-strip-step { grid-column: 1 / -1; grid-row: 2; }
+  .sim-strip-bar { grid-row: 3; }
+  .sim .inject.current { scroll-margin-top: calc(var(--sim-bar) + 116px); }
+  /* a decision sits inside a panel inside the page: on a phone each layer gives back some of its margin to the words */
+  .drill-head { padding: var(--s3) var(--s4); }
+  .drill-body { padding: var(--s4) var(--s3); }
+  .opt { padding: 16px; }
+  .sim-next .btn, .sim-end .btn { flex: 1 1 100%; min-height: 52px; }
+  .sim-from .btn { width: 100%; }
+  /* the rooms come first on a phone; the record of them follows */
+  .pr { display: flex; flex-direction: column; }
+  .pr-stocks { order: 9; margin-top: var(--s5); }
+}
+
+/* ---------- a room left part way; one decision ---------- */
+.sim-resume { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 3px 0 0 var(--gold); }
+.sim-resume-row { gap: 10px; flex-wrap: wrap; }
+.sim-one-note { margin: 0 0 var(--s4); max-width: 60ch; }
+.sim-one-next { gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+.pr-one {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s4);
+  margin-bottom: var(--s5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 3px 0 0 #e879c9;
+}
+.pr-one-text { display: grid; gap: 4px; min-width: 0; }
+.pr-one-title { font: 600 1.15rem/1.3 var(--font-display); color: var(--ink); }
+.pr-one-org { font-size: 0.95rem; }
+.pr-one-go { flex: none; white-space: nowrap; }
+.pr-going { white-space: nowrap; }
+/* on a wide screen the card sits beside the page's heading, so the rooms keep their place on the first screen */
+@media (min-width: 1081px) {
+  .pr { display: grid; grid-template-columns: minmax(0, 1fr) 280px; column-gap: var(--s4); }
+  .pr > * { grid-column: 1 / -1; }
+  .pr > .view-head { grid-column: 1; }
+  .pr > .pr-one { grid-column: 2; align-self: end; flex-direction: column; align-items: stretch; gap: var(--s3); margin-bottom: var(--s6); }
+}
+/* on a phone it is one slim row: what it is, the room, the way in */
+@media (max-width: 720px) {
+  .pr-one { padding: 12px 14px 12px 16px; gap: 12px; margin-bottom: var(--s4); }
+  .pr-one-org { display: none; }
+  .pr-one-title { font-size: 1.05rem; }
+  .pr-one-go { min-height: 44px; padding-inline: 18px; }
+  .sim-resume-row .btn, .sim-one-next .btn { flex: 1 1 auto; }
+}
+
+/* the debrief sets this run beside the one before */
+.sim-before { color: var(--ink-2); }
+.aar-pick.was { opacity: 0.86; }
+
+/* The Practice says its lede in two places and shows one: inside the heading on a wider screen, and under the way
+   in on a phone, where the way in comes first. */
+.pr-lede { display: none; font-size: 1.22rem; color: var(--ink-2); max-width: 62ch; line-height: 1.66; margin: 0 0 var(--s5); }
+.pr-one-going { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 3px 0 0 var(--gold); }
+@media (max-width: 720px) {
+  .pr > .view-head { margin-bottom: var(--s3); }
+  .pr > .view-head .lede { display: none; }
+  .pr > .pr-lede { display: block; }
+  /* on Ground the way in follows the heading closely, as it does on The Practice */
+  .wrap > .view-head:has(+ .pr-one) { margin-bottom: var(--s3); }
+}
+
+/* a room's own link, at the end of its first row */
+.sim-share { margin-left: auto; }
+
+/* one decision out of the middle of a room: what came before it, folded */
+.sim-sofar { margin: 0 0 var(--s4); }
+.sim-sofar > summary {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 8px 16px; cursor: pointer; list-style: none;
+  border-radius: 14px; corner-shape: superellipse(2.15); background: var(--panel-2); color: var(--ink); font-weight: 600;
+}
+.sim-sofar > summary::-webkit-details-marker { display: none; }
+.sim-sofar > summary::after { content: ''; width: 8px; height: 8px; margin-top: -3px; border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor; transform: rotate(45deg); transition: transform 200ms var(--ease); }
+.sim-sofar[open] > summary::after { transform: rotate(-135deg); margin-top: 3px; }
+.sim-sofar-body { margin-top: var(--s3); }
+/* a place's own link, at the end of the row its back link starts */
+.share-link.share-right { float: right; }
+
+/* the live room says its place is kept, beside the way on */
+.sim-kept { margin-right: auto; font-size: 0.92rem; max-width: 34ch; }
+
+/* from a debrief: the chapter, and a test on it */
+.sim-from-row { gap: 10px; flex-wrap: wrap; }
+
+/* a sealed Step leads on. The card takes its edge from the chapter, and when the page moves to it, it stops clear
+   of the tab bar. */
+.st-next { margin-top: var(--s5); scroll-margin-bottom: calc(var(--tab-h, 0px) + 20px); }
+.pr-one.st-next { margin-bottom: 0; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 3px 0 0 var(--essence, var(--cyan)); }
+
+/* a page that has waited eight seconds for its code offers to load again */
+.view-wait { display: flex; flex-direction: column; align-items: center; gap: var(--s4); padding: var(--s6) 0; }
+.view-slow { display: flex; flex-direction: column; align-items: center; gap: var(--s3); text-align: center; animation: fadein 320ms var(--ease) both; }
+.view-slow p { margin: 0; color: var(--ink-2); max-width: 32ch; }
+.view-slow .btn { min-height: 44px; }

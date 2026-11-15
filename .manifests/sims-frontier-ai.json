@@ -1,0 +1,175 @@
+[
+ {
+  "id": "sim-halcyon-custody",
+  "title": "Custody: The Night the Checkpoint Moved",
+  "org": "Halcyon Intelligence",
+  "roles": [
+   "u-vault",
+   "u-lantern",
+   "u-anchor",
+   "u-keeper",
+   "u-compass"
+  ],
+  "decisions": [
+   {
+    "id": "sim-hal-d1",
+    "prompt": "First move. What do you do in the next ninety seconds?",
+    "scene": "London SOC bridge. Three people awake: you, Nadia, and a very junior analyst who has already typed the disable-account command into a terminal and is waiting for permission to press enter."
+   },
+   {
+    "id": "sim-hal-d2",
+    "prompt": "Scope the investigation. What do you authorize?",
+    "scene": "A privileged bridge with four people. The forensic image is mounted read-only and sitting there. Your lead examiner has already built a full-disk keyword sweep and is asking whether to run it."
+   },
+   {
+    "id": "sim-hal-d3",
+    "prompt": "The portal is the vulnerability. What exactly do you turn off?",
+    "scene": "A 01:30 call with the CTO, the head of the safety org, and you. The safety org has a pre-deployment dangerous-capability evaluation running against Halcyon-3.5 with a committed completion date tied to an external partner agreement. That evaluation needs harness tokens."
+   },
+   {
+    "id": "sim-hal-d4",
+    "prompt": "What does Halcyon do to a person you cannot yet prove anything about?",
+    "scene": "The threat management team convenes at 06:45: you, Deputy GC, the People Ops director, the safety org lead as subject-matter reviewer, and — dialing in and audibly furious — the CTO. Nobody in the room has spoken to Tomas. Nobody in the room knows yet whether he did anything wrong."
+   },
+   {
+    "id": "sim-hal-d5",
+    "prompt": "What do you say about the weights?",
+    "scene": "You have a 08:00 slot on the board security committee call. The chair, Estelle Ruiz, will ask you one question: are the weights gone. Three people in your own org have already used three different phrasings in Slack."
+   },
+   {
+    "id": "sim-hal-d6",
+    "prompt": "How do you handle Dana?",
+    "scene": "Comms is on the phone. The CEO's chief of staff is on the phone. It is seven hours into an incident that fewer than twenty people knew about, which means the leak is internal, which means the leaker is reading whatever you send next."
+   },
+   {
+    "id": "sim-hal-d7",
+    "prompt": "The exciting finding was wrong. Two boring findings are right. What do you do with the room?",
+    "scene": "The 11:00 exec sync. The CTO is embarrassed and wants the embarrassment to end. Four of the six people in the room would very much like you to agree with him. You are holding two findings that are still true: a self-service portal that lets any researcher mint a token with full checkpoint read scope"
+   },
+   {
+    "id": "sim-hal-d8",
+    "prompt": "What is your recommendation on regulatory notification?",
+    "scene": "Regulatory affairs, Deputy GC, and you. The facts have moved once already today and may move again. The initial-report window, if it has started, is measured in days rather than weeks — and the window starts from awareness, not from certainty."
+   },
+   {
+    "id": "sim-hal-d9",
+    "prompt": "The incident just changed species. What do you do?",
+    "scene": "22:00. Twenty-two hours in. Your team is on hour twenty-two. The weight story has deflated into a policy violation. A personal data story has just inflated in its place, and the awareness clock on that one started roughly ninety seconds ago."
+   }
+  ]
+ },
+ {
+  "id": "sim-cadence-trifecta",
+  "title": "The Trifecta: The Invoice That Read Itself",
+  "org": "Cadence Research",
+  "roles": [
+   "u-forge",
+   "u-lantern",
+   "u-signal",
+   "u-oracle",
+   "u-anchor"
+  ],
+  "decisions": [
+   {
+    "id": "sim-cad-d1",
+    "prompt": "First containment action. Choose one.",
+    "scene": "06:12. You, Wren, and the platform on-call in a bridge. Desk is live in 2,300 tenants. The two hostnames are still receiving. Nobody knows yet how many tenants are affected because the detector only fires above a volume threshold."
+   },
+   {
+    "id": "sim-cad-d2",
+    "prompt": "What control do you commit to as the condition for restoring egress?",
+    "scene": "A 07:00 product-and-security call. VP Product, two engineering leads, and a research scientist who has an injection classifier already trained and genuinely believes in it. The classifier's evaluation numbers are real."
+   },
+   {
+    "id": "sim-cad-d3",
+    "prompt": "How do you establish blast radius?",
+    "scene": "08:00. Legal needs data classes. Fourteen tenants need answers. Your tool logs record that data left and are silent about what left."
+   },
+   {
+    "id": "sim-cad-d4",
+    "prompt": "How does Cadence respond to Sam?",
+    "scene": "09:30. Comms wants a response in twenty minutes. Your own triage queue confirms the March 3rd report exists, was real, and was closed by a contractor triager against a duplicate ticket that does not describe the same thing. The researcher is right and polite and has receipts."
+   },
+   {
+    "id": "sim-cad-d5",
+    "prompt": "What does the destination control actually become?",
+    "scene": "10:40. Your allowlist plan from three hours ago just became the attack path. The engineering lead who advocated for it is on the call and is visibly deflating."
+   },
+   {
+    "id": "sim-cad-d6",
+    "prompt": "What do you recommend to the CEO?",
+    "scene": "12:00. Egress has been off for five hours. Reads are running. Fourteen tenants know. Two thousand two hundred and eighty-six do not. Sam's thread is at 11,000 reposts."
+   },
+   {
+    "id": "sim-cad-d7",
+    "prompt": "What do you send Meridian?",
+    "scene": "14:00. You have candidate sets for eleven of fourteen tenants. Meridian's is one of them: six documents where retrieval log, byte arithmetic, and injected criteria all agree, plus two where they conflict. Legal is nervous about handing a customer anything that reads like an admission."
+   },
+   {
+    "id": "sim-cad-d8",
+    "prompt": "Do you ship the taint gate tonight?",
+    "scene": "02:00 the following morning. Engineering has been up for twenty hours and has something that works. Ilya has three enterprise accounts asking hourly. The fix is real and the confidence in it is not yet earned."
+   }
+  ]
+ },
+ {
+  "id": "sim-orrery-chair",
+  "title": "The Chair: Day Nineteen at Orrery Labs",
+  "org": "Orrery Labs",
+  "roles": [
+   "u-compass",
+   "u-ledger",
+   "u-signal",
+   "u-oracle",
+   "u-seva",
+   "u-cartographer"
+  ],
+  "decisions": [
+   {
+    "id": "sim-orr-d1",
+    "prompt": "How do you read your own framework?",
+    "scene": "08:10, your office, which is still someone else's office. Yuki, the Head of Model Safety, and you. Nine days to launch. The framework document was written eleven months ago by four people, two of whom have left."
+   },
+   {
+    "id": "sim-orr-d2",
+    "prompt": "The Chief Scientist has ruled. What do you do?",
+    "scene": "A 09:00 leadership meeting. The Chief Scientist is the most respected technical person in the company, has been at Orrery since it was eleven people, and is entirely sincere. The Head of Model Safety reports to her. You report to the President, who is in the room and has not spoken."
+   },
+   {
+    "id": "sim-orr-d3",
+    "prompt": "What is your posture across both?",
+    "scene": "You, the General Counsel, the head of regulatory affairs, and the communications lead. There is an open, unresolved, materially serious evaluation running in the background that neither request explicitly asks about."
+   },
+   {
+    "id": "sim-orr-d4",
+    "prompt": "What does Orrery do about the paper?",
+    "scene": "Your office with Ravi and the head of research communications. The paper is good. The authors are not being reckless — they submitted before this week's result existed, and the harness has legitimate defensive value for other labs and for the safety institutes."
+   },
+   {
+    "id": "sim-orr-d5",
+    "prompt": "What do you propose about the publication veto?",
+    "scene": "The research channel has 900 members and the post has 140 reactions in twenty minutes. The Chief Scientist has replied with a single word: agreed. The President forwards it to you with no comment."
+   },
+   {
+    "id": "sim-orr-d6",
+    "prompt": "What do you recommend?",
+    "scene": "10:00, four days to launch. The CEO's argument is genuinely strong and is the argument you would make if you were in her chair. The Chief Scientist has already publicly conceded the contamination point, which cost her something and earns her a hearing. Gerald Mbeki is dialed in and silent."
+   },
+   {
+    "id": "sim-orr-d7",
+    "prompt": "What do you commit to on weight security, and in what document?",
+    "scene": "17:30. The safety case is signed and it depends on deployment mitigations that only bind if the weights stay put. The S-1 language is drafted and reviewed by three law firms. The launch is in four days."
+   },
+   {
+    "id": "sim-orr-d8",
+    "prompt": "What does Orrery do before the story runs?",
+    "scene": "07:15, three days from launch, with an S-1 in drafting and a quiet period looming. The comms lead wants a denial of the framing. IR wants silence. The CEO has not yet been told."
+   },
+   {
+    "id": "sim-orr-d9",
+    "prompt": "How do you express residual risk to the board?",
+    "scene": "You have thirty-six hours and no quantitative risk function. What you do have: the evaluation numbers, the mitigation residuals, an incident history, and a general counsel with loss estimates from three peer events."
+   }
+  ]
+ }
+]

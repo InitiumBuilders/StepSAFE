@@ -1,0 +1,166 @@
+/* OUTLIER SYSTEMS: the known systems in Map your own system, the systems
+   library on the Modux page, and the hidden chapter's band on the Chapters
+   page. Colours come from the theme tokens, so all three themes carry it. */
+
+/* ---------- Start from ---------- */
+.own-start { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.own-start-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.own-start-row .chip { cursor: pointer; }
+.own .own-start-row select { width: auto; flex: 0 1 260px; }
+.own-grid.own-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 720px) { .own-grid.own-grid-2 { grid-template-columns: 1fr; } .own .own-start-row select { flex: 1 1 100%; } }
+
+/* ---------- the known systems ---------- */
+.own-known { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; padding: 14px; border-radius: 20px; corner-shape: superellipse(2.15); background: rgba(255, 255, 255, 0.035); box-shadow: inset 0 1px 0 rgba(216, 239, 252, 0.09); }
+.own-known .mx-search { width: 100%; }
+.own-known .chip { cursor: pointer; }
+.own-known-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; max-height: 520px; overflow-y: auto; overscroll-behavior: contain; padding-right: 2px; }
+.own-known-card { width: 100%; height: 100%; text-align: left; display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border: 0; border-radius: 16px; corner-shape: superellipse(2.15); background: rgba(255, 255, 255, 0.05); box-shadow: inset 0 1px 0 rgba(216, 239, 252, 0.09); color: var(--ink); font: inherit; cursor: pointer; transition: background 160ms var(--ease), box-shadow 160ms var(--ease); }
+.own-known-card:hover { background: rgba(255, 255, 255, 0.085); }
+.own-known-card:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+.own-known-card.on { background: rgba(167, 139, 255, 0.16); box-shadow: inset 0 1px 0 rgba(216, 239, 252, 0.16), 0 10px 30px -18px rgba(167, 139, 255, 0.8); }
+.own-known-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.own-known-top strong { font: 600 1rem/1.3 var(--font-display); }
+.own-known-top span { font-size: 0.8rem; color: var(--ink-label); }
+.own-known-sector { font-size: 0.86rem; color: var(--ink-2); line-height: 1.4; }
+.own-known-q { font-size: 0.92rem; line-height: 1.45; color: var(--ink); }
+@media (max-width: 720px) { .own-known-grid { grid-template-columns: 1fr; max-height: 440px; } }
+
+.own-known-read { margin-bottom: 16px; padding: 14px 16px; border-radius: 18px; corner-shape: superellipse(2.15); background: rgba(167, 139, 255, 0.07); box-shadow: inset 0 1px 0 rgba(216, 239, 252, 0.12); display: flex; flex-direction: column; gap: 8px; }
+.own-known-read .own-known-q { margin: 0; font: 600 1.02rem/1.45 var(--font-display); }
+.own-known-read dl, .own-kinds dl { margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.own-known-read dt, .own-kinds dt { font: 600 12px var(--font-display); letter-spacing: 0.04em; color: var(--ink-label); }
+.own-known-read dd, .own-kinds dd { margin: 2px 0 0; font-size: 0.92rem; line-height: 1.5; color: var(--ink-2); }
+.own-known-models { color: var(--ink-label); }
+
+/* ---------- guidance ---------- */
+.own-kinds, .own-outlier { margin-top: 12px; padding: 10px 14px; border-radius: 16px; corner-shape: superellipse(2.15); background: rgba(255, 255, 255, 0.035); box-shadow: inset 0 1px 0 rgba(216, 239, 252, 0.09); }
+.own-kinds summary, .own-outlier summary { cursor: pointer; font: 600 0.94rem var(--font-display); color: var(--ink); min-height: 28px; display: flex; align-items: center; }
+.own-kinds dl { margin-top: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; }
+.own-outlier label { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+@media (max-width: 720px) { .own-kinds dl { grid-template-columns: 1fr; } }
+
+/* ---------- the Chapters page: 2.6.7 and 2.6.8 ---------- */
+.ol-band .grid:not(.grid-2) > .chapter { max-width: none; }
+.ol-secret { box-shadow: 0 0 0 1px rgba(167, 139, 255, 0.35), 0 18px 60px -30px rgba(167, 139, 255, 0.65); }
+.ol-soon .cnum { color: var(--ink-2); }
+.ol-soon-cue { display: inline-block; margin-top: 12px; font: 600 0.9rem var(--font-display); color: var(--ink); }
+.ol-preview { margin-top: var(--s4); padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; }
+.ol-preview .label { margin-top: 8px; }
+.ol-preview .big-sec { margin: 0; }
+.ol-questions, .ol-pages { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-2); line-height: 1.5; }
+.ol-pages li { display: flex; flex-direction: column; gap: 2px; }
+.ol-pages strong { color: var(--ink); font-family: var(--font-display); }
+.ol-prompt { margin-top: 8px; }
+.ol-prompt summary { cursor: pointer; font: 600 0.96rem var(--font-display); color: var(--ink); min-height: 44px; display: flex; align-items: center; }
+.ol-prompt-text { white-space: pre-wrap; font-size: 0.9rem; line-height: 1.55; color: var(--ink-2); padding: 14px 16px; border-radius: 16px; corner-shape: superellipse(2.15); background: rgba(255, 255, 255, 0.045); box-shadow: inset 0 1px 0 rgba(216, 239, 252, 0.09); max-height: 420px; overflow-y: auto; }
+@media (max-width: 720px) { .ol-preview { padding: 16px; } }
+
+/* ---------- the Systems tab on the Modux page ---------- */
+.ks-card p { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.ks-detail { display: flex; flex-direction: column; gap: var(--s4); margin-top: var(--s4); }
+.ks-detail > .btn { align-self: flex-start; }
+.ks-head { padding: 22px 24px; display: flex; flex-direction: column; gap: 12px; }
+.ks-tagline { margin: 0; padding: 12px 16px; border-radius: 16px; corner-shape: superellipse(2.15); background: linear-gradient(90deg, rgba(167, 139, 255, 0.16), rgba(167, 139, 255, 0) 80%); display: flex; flex-direction: column; gap: 4px; }
+.ks-tagline p { margin: 0; font: 500 1.08rem/1.45 var(--font-display); color: var(--ink); }
+.ks-tagline a { font-size: 0.84rem; color: var(--ink-label); }
+.ks-key p { margin: 4px 0 0; font: 600 clamp(1.15rem, 2.4vw, 1.45rem)/1.35 var(--font-display); color: var(--ink); }
+.ks-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s4); }
+.ks-panel { padding: 18px 20px; border-radius: 22px; corner-shape: superellipse(2.15); background: rgba(255, 255, 255, 0.035); box-shadow: inset 0 1px 0 rgba(216, 239, 252, 0.09); display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.ks-panel > p { margin: 0 0 6px; color: var(--ink-2); line-height: 1.55; }
+.ks-lesson { color: var(--ink) !important; font-weight: 600; }
+.ks-parts, .ks-threats, .ks-sources ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.ks-parts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; }
+.ks-parts li { display: flex; justify-content: space-between; gap: 8px; font-size: 0.88rem; color: var(--ink-2); }
+.ks-parts strong { color: var(--ink); font-weight: 600; }
+.ks-threats li, .ks-lever li { display: flex; flex-direction: column; gap: 3px; }
+.ks-threats strong, .ks-lever strong { color: var(--ink); font: 600 0.96rem/1.35 var(--font-display); }
+.ks-threats span, .ks-lever span { color: var(--ink-2); font-size: 0.92rem; line-height: 1.5; }
+.ks-lever { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 12px; }
+.ks-models { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.ks-models .mx-chip { cursor: pointer; }
+.ks-sources summary { cursor: pointer; font: 600 0.96rem var(--font-display); color: var(--ink); min-height: 32px; display: flex; align-items: center; }
+.ks-sources li { font-size: 0.9rem; color: var(--ink-2); line-height: 1.45; overflow-wrap: anywhere; }
+.ks-sources li span { color: var(--ink-label); font-size: 0.82rem; }
+.ks-sources .label { margin-top: 10px; }
+.ks-real .ks-lever { margin-bottom: 10px; }
+.ks-reading { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.ks-reading dt { font: 600 12px var(--font-display); letter-spacing: 0.04em; color: var(--ink-label); }
+.ks-reading dd { margin: 2px 0 0; color: var(--ink); line-height: 1.5; }
+@media (max-width: 860px) { .ks-cols { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .ks-head { padding: 18px; } .ks-panel { padding: 16px; } .ks-parts { grid-template-columns: 1fr; } }
+
+/* ---------- a list of sources inside a step: links with their host ---------- */
+.blk-sources li { overflow-wrap: anywhere; }
+.blk-sources a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--frame-strong); text-underline-offset: 3px; }
+.blk-sources a:hover { text-decoration-color: currentColor; }
+.blk-host { color: var(--ink-label); font-size: 0.85em; }
+.blk td, .blk li { overflow-wrap: break-word; }
+
+/* ---------- the Modux hero: six tiles, the sixth opens the Systems tab ---------- */
+.mx-tiles.mx-tiles-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.mx-tile.mx-tile-btn { border: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; transition: box-shadow 160ms var(--ease); }
+.mx-tile.mx-tile-btn:hover { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 0 0 1px rgba(167, 139, 255, 0.45); }
+.mx-tile.mx-tile-btn:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+/* on a phone the six stay three across and sit lower, so the tabs under them are on the first screen */
+@media (max-width: 560px) {
+  .mx-tiles.mx-tiles-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .mx-tiles.mx-tiles-6 .mx-tile:nth-child(5) { grid-column: auto; }
+  .mx-tiles.mx-tiles-6 .mx-tile { padding: 10px 10px 9px; border-radius: 14px; }
+  .mx-tiles.mx-tiles-6 .mx-tile-val { font-size: 1.25rem; }
+  .mx-tiles.mx-tiles-6 .mx-tile-label, .mx-tiles.mx-tiles-6 .mx-tile-of { font-size: 12px; }
+}
+
+/* ---------- Meridian: the daylight skin gives the panels its own white glass ---------- */
+html[data-theme='meridian'] :is(.own-known, .own-kinds, .own-outlier, .ks-panel, .ol-prompt-text, .own-known-card) {
+  background: var(--panel); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 14px 34px -24px rgba(80, 60, 160, 0.35);
+}
+html[data-theme='meridian'] .own-known-card:hover { background: var(--panel-2); }
+html[data-theme='meridian'] .own-known-card.on, html[data-theme='meridian'] .own-known-read { background: rgba(139, 61, 255, 0.1); }
+
+/* ---------- the strongest moves, at the top of the Systems tab ---------- */
+.ks-strongest { margin: 0 0 var(--s4); }
+.ks-strongest summary { cursor: pointer; font: 600 1.02rem var(--font-display); color: var(--ink); min-height: 44px; display: flex; align-items: center; }
+.ks-strongest .ks-lever { margin-top: 8px; }
+.ks-who { color: var(--ink-label) !important; font-size: 0.86rem !important; }
+
+/* the atlas on a known system's page takes the full width */
+.ks-atlas { gap: 12px; }
+/* Two Hundred Days on a known system's page: the read's own top margin is the panel's padding here */
+.ks-days .mdays { margin-top: 0; }
+
+/* a known system's map and ladder at the top of its lesson */
+.ks-step-atlas { display: flex; flex-direction: column; gap: var(--s4); }
+
+/* the verb of a defensive move, as one small light beside its name */
+.ks-verb-dot { display: inline-block; width: 9px; height: 9px; margin-right: 9px; border-radius: 50%; background: var(--vc, #d8effc); box-shadow: 0 0 8px var(--vc, #d8effc); vertical-align: 1px; }
+.ks-holds li { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 'name open' 'what open'; column-gap: 12px; align-items: center; }
+.ks-holds li strong { grid-area: name; }
+.ks-holds li span { grid-area: what; }
+.ks-holds li .mx-chip { grid-area: open; }
+.ks-harden summary { color: var(--ink); }
+
+/* ---------- MOTUS MODE: the door to 2.6.7 at the top of the Chapters page ---------- */
+.motus-door {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 22px; align-items: center;
+  margin: 0 0 var(--s5); padding: 22px 24px; border-radius: 28px; corner-shape: superellipse(2.2);
+  background: linear-gradient(120deg, rgba(167, 139, 255, 0.14), rgba(253, 194, 111, 0.06) 60%, rgba(255, 255, 255, 0.03)), var(--panel);
+  box-shadow: inset 0 1px 0 rgba(216, 239, 252, 0.14), 0 0 0 1px rgba(253, 194, 111, 0.22), 0 24px 60px -36px rgba(167, 139, 255, 0.7);
+}
+.motus-door h2 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); margin: 4px 0 6px; }
+.motus-door .sec { margin: 0 0 10px; }
+.motus-door .label { color: var(--gold); }
+.motus-door-sigil svg { width: 78px; height: 78px; overflow: visible; }
+.motus-door-sigil circle { fill: none; stroke: rgba(253, 194, 111, 0.7); stroke-width: 1.1; }
+.motus-door-sigil circle.core { fill: #fdc26f; stroke: none; filter: drop-shadow(0 0 6px #fdc26f); animation: door-core 5s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes door-core { 0%, 100% { opacity: 0.6; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.15); } }
+.motus-door-go { display: flex; flex-direction: column; gap: 8px; align-items: stretch; }
+html[data-theme='meridian'] .motus-door { background: linear-gradient(120deg, rgba(116, 68, 238, 0.12), rgba(226, 172, 63, 0.12) 60%, rgba(255, 255, 255, 0)), var(--panel); box-shadow: var(--raise-lg), 0 0 0 1px rgba(201, 150, 46, 0.35); }
+html[data-theme='meridian'] .motus-door .label { color: var(--ink-gold); }
+html[data-theme='meridian'] .motus-door-sigil circle { stroke: rgba(122, 80, 0, 0.6); }
+html[data-theme='meridian'] .motus-door-sigil circle.core { fill: #c9962e; filter: none; }
+@media (max-width: 720px) {
+  .motus-door { grid-template-columns: 1fr; gap: 14px; padding: 18px; }
+  .motus-door-sigil svg { width: 56px; height: 56px; }
+}
+@media (prefers-reduced-motion: reduce) { .motus-door-sigil circle.core { animation: none; } }

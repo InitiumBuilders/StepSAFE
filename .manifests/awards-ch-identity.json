@@ -1,0 +1,349 @@
+{
+ "chId": "ch-identity",
+ "chTitle": "THE KEEPER",
+ "missingAwards": [
+  {
+   "id": "aw-perimeter-relocated",
+   "step": "The Perimeter Moved and Nobody Sent a Memo",
+   "kind": "construct",
+   "statement": "The network boundary did not weaken; it stopped being where the decision happens, and identity became the only control plane an attacker has to defeat.",
+   "respect": 60
+  },
+  {
+   "id": "aw-factor-taxonomy",
+   "step": "Factors, and the Exact Way Each One Dies",
+   "kind": "lesson",
+   "statement": "Do not rank factors by how many there are; rank them by whether a live proxy in the middle can relay them to the real service.",
+   "respect": 90
+  },
+  {
+   "id": "aw-origin-bound",
+   "step": "Relay a Code, Fail to Relay a Passkey",
+   "kind": "lab",
+   "statement": "You do not understand origin binding until you have watched a proxy succeed against a one-time code and then hit a wall it cannot proxy around.",
+   "respect": 170
+  },
+  {
+   "id": "aw-lab-honest",
+   "step": "Relay a Code, Fail to Relay a Passkey",
+   "kind": "lab",
+   "statement": "You do not understand origin binding until you have watched a proxy succeed against a one-time code and then hit a wall it cannot proxy around.",
+   "respect": 170
+  },
+  {
+   "id": "aw-recovery-hardened",
+   "step": "The Voice on the Help Desk Line",
+   "kind": "drill",
+   "statement": "Your strongest authenticator is only as strong as the process that replaces it when someone says they lost it.",
+   "respect": 140
+  },
+  {
+   "id": "aw-first-drill",
+   "step": "The Voice on the Help Desk Line",
+   "kind": "drill",
+   "statement": "Your strongest authenticator is only as strong as the process that replaces it when someone says they lost it.",
+   "respect": 140
+  },
+  {
+   "id": "aw-rollout-sequencer",
+   "step": "Rollout Sequencing, and the Hole Underneath It",
+   "kind": "lesson",
+   "statement": "A phishing-resistant rollout that leaves any fallback enabled has not raised the floor; it has only added a step attackers will decline to take.",
+   "respect": 120
+  },
+  {
+   "id": "aw-surface-mapper",
+   "step": "Map Your Own Front Door",
+   "kind": "field",
+   "statement": "You cannot claim an identity posture you have not personally enumerated, application by application, path by path.",
+   "respect": 190
+  },
+  {
+   "id": "aw-first-field",
+   "step": "Map Your Own Front Door",
+   "kind": "field",
+   "statement": "You cannot claim an identity posture you have not personally enumerated, application by application, path by path.",
+   "respect": 190
+  },
+  {
+   "id": "aw-grammar-chosen",
+   "step": "Three Grammars for One Question",
+   "kind": "construct",
+   "statement": "RBAC asks what you are, ABAC asks what is true right now, and ReBAC asks how you are connected — and picking the wrong grammar guarantees a decade of exceptions.",
+   "respect": 70
+  },
+  {
+   "id": "aw-freshness-contract",
+   "step": "Zanzibar, and the Cost of Being Right Everywhere at Once",
+   "kind": "lesson",
+   "statement": "Google's answer to fine-grained authorization was not a clever data model; it was an explicit, per-request contract about how stale an answer may be.",
+   "respect": 130
+  },
+  {
+   "id": "aw-two-grammars",
+   "step": "Model It Twice: Relationships and Conditions",
+   "kind": "lab",
+   "statement": "Write the same access requirement in a relationship schema and in a policy language, and the shape of your real problem stops being a matter of opinion.",
+   "respect": 175
+  },
+  {
+   "id": "aw-policy-author",
+   "step": "Model It Twice: Relationships and Conditions",
+   "kind": "lab",
+   "statement": "Write the same access requirement in a relationship schema and in a policy language, and the shape of your real problem stops being a matter of opinion.",
+   "respect": 175
+  },
+  {
+   "id": "aw-graph-walker",
+   "step": "The Confused Deputy Moved to the Cloud",
+   "kind": "lesson",
+   "statement": "Most cloud privilege escalation is not a flaw in IAM; it is IAM faithfully executing a permission you granted to a component that cannot tell whose behalf it is acting on.",
+   "respect": 150
+  },
+  {
+   "id": "aw-least-privilege",
+   "step": "The Confused Deputy Moved to the Cloud",
+   "kind": "lesson",
+   "statement": "Most cloud privilege escalation is not a flaw in IAM; it is IAM faithfully executing a permission you granted to a component that cannot tell whose behalf it is acting on.",
+   "respect": 150
+  },
+  {
+   "id": "aw-break-glass",
+   "step": "Break Glass at 02:40",
+   "kind": "drill",
+   "statement": "Break-glass access is not an exception to your controls; it is a control with its own design, its own alarm and its own rehearsal schedule.",
+   "respect": 145
+  },
+  {
+   "id": "aw-alarm-trusted",
+   "step": "Break Glass at 02:40",
+   "kind": "drill",
+   "statement": "Break-glass access is not an exception to your controls; it is a control with its own design, its own alarm and its own rehearsal schedule.",
+   "respect": 145
+  },
+  {
+   "id": "aw-council-voice",
+   "step": "Explaining Standing Privilege to People Who Approve Budgets",
+   "kind": "council",
+   "statement": "A board does not fund least privilege; it funds a reduction in the number of people who could end the company on a bad Tuesday.",
+   "respect": 135
+  },
+  {
+   "id": "aw-consequence-frame",
+   "step": "Explaining Standing Privilege to People Who Approve Budgets",
+   "kind": "council",
+   "statement": "A board does not fund least privilege; it funds a reduction in the number of people who could end the company on a bad Tuesday.",
+   "respect": 135
+  },
+  {
+   "id": "aw-zero-trust-honest",
+   "step": "SP 800-207 Without the Costume",
+   "kind": "lesson",
+   "statement": "Zero trust is not a product category and not a network topology; it is the decision to move authorization from the network layer to a policy engine that is consulted for every request.",
+   "respect": 100
+  },
+  {
+   "id": "aw-device-inventory",
+   "step": "BeyondCorp, and Why Device Trust Is an Inventory Problem",
+   "kind": "lesson",
+   "statement": "Google's hardest problem in removing the corporate network was not cryptography or policy; it was knowing, with confidence, which physical machine a request came from.",
+   "respect": 110
+  },
+  {
+   "id": "aw-revocation-budget",
+   "step": "Build a Session That Can Die",
+   "kind": "lab",
+   "statement": "If your only revocation mechanism is waiting for a token to expire, you do not have revocation; you have patience.",
+   "respect": 165
+  },
+  {
+   "id": "aw-continuous-eval",
+   "step": "Build a Session That Can Die",
+   "kind": "lab",
+   "statement": "If your only revocation mechanism is waiting for a token to expire, you do not have revocation; you have patience.",
+   "respect": 165
+  },
+  {
+   "id": "aw-secret-zero-slain",
+   "step": "Kill Secret Zero with Attestation",
+   "kind": "lab",
+   "statement": "Every secrets manager answers the question of how a workload gets its secrets and creates the question of how it authenticates to get them; attestation is the only answer that does not simply move the problem.",
+   "respect": 185
+  },
+  {
+   "id": "aw-workload-identity",
+   "step": "Kill Secret Zero with Attestation",
+   "kind": "lab",
+   "statement": "Every secrets manager answers the question of how a workload gets its secrets and creates the question of how it authenticates to get them; attestation is the only answer that does not simply move the problem.",
+   "respect": 185
+  },
+  {
+   "id": "aw-artefact-revoker",
+   "step": "The Session That Would Not Die",
+   "kind": "drill",
+   "statement": "Disabling an account is a statement of intent; revoking every artefact that account minted is the actual control.",
+   "respect": 150
+  },
+  {
+   "id": "aw-containment-discipline",
+   "step": "The Session That Would Not Die",
+   "kind": "drill",
+   "statement": "Disabling an account is a statement of intent; revoking every artefact that account minted is the actual control.",
+   "respect": 150
+  },
+  {
+   "id": "aw-aead-precise",
+   "step": "What AEAD Promises, and What It Quietly Does Not",
+   "kind": "construct",
+   "statement": "Authenticated encryption gives you confidentiality and integrity of a message; every other property you assumed you were getting is your job.",
+   "respect": 75
+  },
+  {
+   "id": "aw-nonce-discipline",
+   "step": "Nonce Reuse Is Not a Weakening, It Is a Collapse",
+   "kind": "lesson",
+   "statement": "Repeat a nonce under an AES-GCM key once and you have not lowered the security margin; you have given away the authentication key and every plaintext relationship in that pair.",
+   "respect": 155
+  },
+  {
+   "id": "aw-crypto-reviewer",
+   "step": "Nonce Reuse Is Not a Weakening, It Is a Collapse",
+   "kind": "lesson",
+   "statement": "Repeat a nonce under an AES-GCM key once and you have not lowered the security margin; you have given away the authentication key and every plaintext relationship in that pair.",
+   "respect": 155
+  },
+  {
+   "id": "aw-envelope-architect",
+   "step": "A Key Hierarchy That Can Actually Be Rotated",
+   "kind": "lab",
+   "statement": "Design the hierarchy so that rotation is a metadata change for almost everything and a re-encryption job for almost nothing.",
+   "respect": 180
+  },
+  {
+   "id": "aw-rotation-real",
+   "step": "A Key Hierarchy That Can Actually Be Rotated",
+   "kind": "lab",
+   "statement": "Design the hierarchy so that rotation is a metadata change for almost everything and a re-encryption job for almost nothing.",
+   "respect": 180
+  },
+  {
+   "id": "aw-level-rule",
+   "step": "Rotate the Key, or Rotate the Data",
+   "kind": "drill",
+   "statement": "Under pressure, teams reach for the rotation that is easy rather than the one that removes the exposure — and the two are almost never the same.",
+   "respect": 160
+  },
+  {
+   "id": "aw-integrity-honest",
+   "step": "Rotate the Key, or Rotate the Data",
+   "kind": "drill",
+   "statement": "Under pressure, teams reach for the rotation that is easy rather than the one that removes the exposure — and the two are almost never the same.",
+   "respect": 160
+  },
+  {
+   "id": "aw-pq-ready",
+   "step": "Post-Quantum: Reason About It Like an Engineer, Not a Salesperson",
+   "kind": "lesson",
+   "statement": "The decision is not whether a quantum computer will break RSA; it is whether any data you encrypt today still needs to be secret in fifteen years, and whether you could find all of it if the answer is yes.",
+   "respect": 145
+  },
+  {
+   "id": "aw-mosca-frame",
+   "step": "Post-Quantum: Reason About It Like an Engineer, Not a Salesperson",
+   "kind": "lesson",
+   "statement": "The decision is not whether a quantum computer will break RSA; it is whether any data you encrypt today still needs to be secret in fifteen years, and whether you could find all of it if the answer is yes.",
+   "respect": 145
+  },
+  {
+   "id": "aw-cbom-builder",
+   "step": "Build a Cryptographic Bill of Materials",
+   "kind": "field",
+   "statement": "You cannot migrate, rotate or defend cryptography you cannot enumerate, and almost no organisation can enumerate theirs.",
+   "respect": 195
+  },
+  {
+   "id": "aw-inventory-discipline",
+   "step": "Build a Cryptographic Bill of Materials",
+   "kind": "field",
+   "statement": "You cannot migrate, rotate or defend cryptography you cannot enumerate, and almost no organisation can enumerate theirs.",
+   "respect": 195
+  },
+  {
+   "id": "aw-custody-designer",
+   "step": "Custody Is a Systems Problem, Not a Storage Problem",
+   "kind": "lesson",
+   "statement": "The question is never where is the key; it is who can cause it to be used, under what quorum, with what record, and how you would prove afterwards that only intended uses occurred.",
+   "respect": 120
+  },
+  {
+   "id": "aw-threshold-honest",
+   "step": "Threshold Signatures, MPC, and What They Actually Remove",
+   "kind": "lesson",
+   "statement": "Splitting a key removes the single point of compromise and replaces it with a protocol whose bugs are far harder to see than a missing lock.",
+   "respect": 165
+  },
+  {
+   "id": "aw-concentration-found",
+   "step": "Threshold Signatures, MPC, and What They Actually Remove",
+   "kind": "lesson",
+   "statement": "Splitting a key removes the single point of compromise and replaces it with a protocol whose bugs are far harder to see than a missing lock.",
+   "respect": 165
+  },
+  {
+   "id": "aw-seed-custody",
+   "step": "Seeds, Derivation and the Hardware Wallet Threat Model",
+   "kind": "lab",
+   "statement": "A hardware signer protects the key from the host; it does not protect the human from signing the wrong thing, and that gap is where the money goes.",
+   "respect": 180
+  },
+  {
+   "id": "aw-blind-signing-refused",
+   "step": "Seeds, Derivation and the Hardware Wallet Threat Model",
+   "kind": "lab",
+   "statement": "A hardware signer protects the key from the host; it does not protect the human from signing the wrong thing, and that gap is where the money goes.",
+   "respect": 180
+  },
+  {
+   "id": "aw-key-incident-lead",
+   "step": "The Signing Key in the Crash Dump",
+   "kind": "drill",
+   "statement": "When the evidence you need aged out eighteen months ago, the professional move is to reason from consequence rather than to wait for a confirmation that will never arrive.",
+   "respect": 175
+  },
+  {
+   "id": "aw-precision-under-pressure",
+   "step": "The Signing Key in the Crash Dump",
+   "kind": "drill",
+   "statement": "When the evidence you need aged out eighteen months ago, the professional move is to reason from consequence rather than to wait for a confirmation that will never arrive.",
+   "respect": 175
+  },
+  {
+   "id": "aw-custody-ceremony",
+   "step": "Run a Real Ceremony and a Real Custody Drill",
+   "kind": "field",
+   "statement": "A custody design you have never executed under observation is a document, and documents do not survive the night the key is needed.",
+   "respect": 210
+  },
+  {
+   "id": "aw-drill-honest",
+   "step": "Run a Real Ceremony and a Real Custody Drill",
+   "kind": "field",
+   "statement": "A custody design you have never executed under observation is a document, and documents do not survive the night the key is needed.",
+   "respect": 210
+  },
+  {
+   "id": "aw-keeper-seal",
+   "step": "Run a Real Ceremony and a Real Custody Drill",
+   "kind": "field",
+   "statement": "A custody design you have never executed under observation is a document, and documents do not survive the night the key is needed.",
+   "respect": 210
+  },
+  {
+   "id": "aw-non-correction",
+   "step": "The Call: Communicating a Key Compromise",
+   "kind": "council",
+   "statement": "In a cryptographic incident your credibility is spent in the first sentence, and the only currency that holds its value is a precise statement of what you do not know.",
+   "respect": 165
+  }
+ ]
+}

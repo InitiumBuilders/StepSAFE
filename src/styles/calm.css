@@ -1,0 +1,73 @@
+/* THE CALM LAYER, loaded last. Three things, all subtraction or restraint:
+
+   1. The ground. No colour clouds behind content in any theme (August's standing rule: no big soft
+      colour clouds, ever). The drifting orbs, the corner glows, the light beam and the turning ring
+      are gone. What is left is one flat ground per theme, under the one steady dot lattice the field
+      already draws (lib/field), so every page reads as standing inside a structure.
+   2. The page sigils: one small drawn figure beside each page heading, each in its own hue.
+   3. Type. Monospace stays where it means something (clocks, code, numerals). The letter-spaced
+      tags move to the display face. */
+
+/* ---------- 1. the ground ---------- */
+html:not([data-theme='meridian']):not([data-theme='mov']) body::before {
+  inset: 0;
+  background-image: linear-gradient(180deg, #08102b 0%, #050a1e 55%, #03060f 100%);
+  background-size: auto;
+  -webkit-mask-image: none; mask-image: none; animation: none; opacity: 1;
+}
+html[data-theme='mov'] body::before {
+  inset: 0;
+  background-image: linear-gradient(180deg, #050912 0%, #03050a 45%, #020308 100%);
+  background-size: auto;
+  -webkit-mask-image: none; mask-image: none; animation: none; opacity: 1;
+}
+html[data-theme='meridian'] body::before {
+  inset: 0;
+  background-image: linear-gradient(180deg, #faf9ff 0%, #f5f3ff 60%, #f1eeff 100%);
+  background-size: auto;
+  -webkit-mask-image: none; mask-image: none; animation: none; opacity: 1;
+}
+html:not([data-theme='meridian']):not([data-theme='mov']) #root::before,
+html:not([data-theme='meridian']):not([data-theme='mov']) #root::after,
+html[data-theme='mov'] #root::before,
+html[data-theme='mov'] #root::after,
+html[data-theme='meridian'] #root::before,
+html[data-theme='meridian'] #root::after { display: none; }
+
+/* ---------- 2. the page sigils ---------- */
+.view-head.has-sigil { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 20px; align-items: start; }
+.view-head-text { min-width: 0; }
+.page-sigil { width: 64px; height: 64px; margin-top: 2px; overflow: visible; filter: drop-shadow(0 0 10px color-mix(in srgb, var(--pb) 45%, transparent)); }
+.page-sigil .ps-line { stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.page-sigil .ps-faint { stroke-width: 1; opacity: 0.45; }
+.page-sigil .ps-dot { fill: var(--pa); stroke: none; filter: drop-shadow(0 0 4px var(--pb)); }
+.page-sigil .ps-node { fill: var(--pb); stroke: none; opacity: 0.85; }
+.page-sigil .ps-key { fill: color-mix(in srgb, var(--pa) 70%, transparent); stroke: var(--pa); stroke-width: 1.4; filter: drop-shadow(0 0 6px var(--pb)); }
+.page-sigil .ps-glow { animation: ps-breathe 6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes ps-breathe { 0%, 100% { opacity: 0.45; transform: scale(0.92); } 50% { opacity: 1; transform: scale(1.04); } }
+html[data-theme='meridian'] .page-sigil { filter: drop-shadow(0 4px 10px color-mix(in srgb, var(--pb) 35%, transparent)); }
+html[data-theme='meridian'] .page-sigil .ps-line, html[data-theme='meridian'] .page-sigil .ps-faint { stroke: #5b4fd0; }
+html[data-theme='meridian'] .page-sigil .ps-dot, html[data-theme='meridian'] .page-sigil .ps-node { fill: #5b4fd0; filter: none; }
+html[data-theme='meridian'] .page-sigil .ps-key { fill: rgba(201, 138, 18, 0.5); stroke: #a86c05; filter: none; }
+@media (max-width: 640px) {
+  .view-head.has-sigil { grid-template-columns: 1fr; row-gap: 10px; }
+  .page-sigil { width: 46px; height: 46px; }
+}
+@media (prefers-reduced-motion: reduce) { .page-sigil .ps-glow { animation: none; } }
+html[data-motion='calm'] .page-sigil .ps-glow { animation: none; }
+
+/* ---------- 3. type: letter-spaced tags in the display face ---------- */
+.brand-sub, .chip, .blk-principle .blk-title, table.dt th, .compare h5, .chapter .cnum, .reveal > summary,
+.sector, .trait, .simcard .seat, .simcard .done-flag, .inject .chan, .aar > summary, .voice .vname,
+.counsel[data-split='true']::before, .constel .node text {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+}
+.chapter .cnum { font-size: 12px; font-weight: 600; }
+
+/* ---------- 4. rhythm: the dashboard's cards sit one breath apart, not a page apart ---------- */
+section.band.band-tight { padding: 0 0 var(--s5); }
+section.band.band-tight > .sr, section.band.band-tight > .panel:last-child { margin-bottom: 0; }
+
+/* ---------- 5. the welcome page, while its own chunk loads ---------- */
+.lx-boot { min-height: 100vh; }

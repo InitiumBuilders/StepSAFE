@@ -1,0 +1,248 @@
+{
+ "net": "testnet",
+ "read": "2026-11-14",
+ "dc": {
+  "identifier": "8BpBXLiZraBZtQuooH9QSBRNXpMRia9DkMxxY5GhTfs1",
+  "name": null,
+  "owner": {
+   "identifier": "FLKatUDFREGPR11Ton6geSMk6NhDVXGxU2GabPWASE2y",
+   "aliases": []
+  },
+  "schema": "{}",
+  "version": 1,
+  "txHash": "1851345B5ED03AA2281444A3E63C09AF76BFE02F0D271BFD53F646BA59EF8EFC",
+  "timestamp": "2026-11-10T18:25:35.582Z",
+  "isSystem": false,
+  "documentsCount": 0,
+  "tokensCount": 1,
+  "identitiesInteracted": 0,
+  "totalGasUsed": 30153202660,
+  "averageGasUsed": 30153202660,
+  "groups": [],
+  "tokens": [
+   {
+    "identifier": "CfL9PfuQqaBoYaTqQY6sU7NQkbgeN7H3FkiMVmCDine7",
+    "position": 0,
+    "timestamp": null,
+    "description": "A token with owner-controlled advanced actions.",
+    "localizations": {
+     "en": {
+      "pluralForm": "TutorialPoints",
+      "singularForm": "TutorialPoint",
+      "shouldCapitalize": true
+     }
+    },
+    "baseSupply": "100000",
+    "totalSupply": "100000",
+    "maxSupply": "1000000",
+    "owner": {
+     "identifier": "FLKatUDFREGPR11Ton6geSMk6NhDVXGxU2GabPWASE2y",
+     "aliases": []
+    },
+    "mintable": true,
+    "burnable": true,
+    "freezable": true,
+    "unfreezable": true,
+    "destroyable": true,
+    "allowedEmergencyActions": true,
+    "dataContractIdentifier": "8BpBXLiZraBZtQuooH9QSBRNXpMRia9DkMxxY5GhTfs1",
+    "changeMaxSupply": true,
+    "totalGasUsed": null,
+    "mainGroup": null,
+    "totalTransitionsCount": null,
+    "totalFreezeTransitionsCount": null,
+    "totalBurnTransitionsCount": null,
+    "decimals": 2,
+    "perpetualDistribution": null,
+    "preProgrammedDistribution": null,
+    "price": null,
+    "prices": null
+   }
+  ],
+  "description": "A token with owner-controlled advanced actions.",
+  "keywords": [
+   "TutorialPoint"
+  ]
+ },
+ "dec": {
+  "type": 0,
+  "typeString": "DATA_CONTRACT_CREATE",
+  "internalConfig": {
+   "canBeDeleted": false,
+   "readonly": false,
+   "keepsHistory": false,
+   "documentsKeepHistoryContractDefault": false,
+   "documentsMutableContractDefault": true,
+   "documentsCanBeDeletedContractDefault": true,
+   "requiresIdentityDecryptionBoundedKey": null,
+   "requiresIdentityEncryptionBoundedKey": null
+  },
+  "version": 1,
+  "userFeeIncrease": 0,
+  "identityNonce": "3",
+  "dataContractId": "8BpBXLiZraBZtQuooH9QSBRNXpMRia9DkMxxY5GhTfs1",
+  "ownerId": "FLKatUDFREGPR11Ton6geSMk6NhDVXGxU2GabPWASE2y",
+  "schema": {},
+  "tokens": [
+   {
+    "position": 0,
+    "tokenId": "CfL9PfuQqaBoYaTqQY6sU7NQkbgeN7H3FkiMVmCDine7",
+    "conventions": {
+     "decimals": 2,
+     "localizations": {
+      "en": {
+       "pluralForm": "TutorialPoints",
+       "singularForm": "TutorialPoint",
+       "shouldCapitalize": true
+      }
+     }
+    },
+    "conventionsChangeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "baseSupply": "100000",
+    "keepsHistory": {
+     "keepsTransferHistory": true,
+     "keepsFreezingHistory": true,
+     "keepsMintingHistory": true,
+     "keepsBurningHistory": true,
+     "keepsDirectPricingHistory": true,
+     "keepsDirectPurchaseHistory": true
+    },
+    "startAsPaused": false,
+    "isAllowedTransferToFrozenBalance": true,
+    "maxSupply": "1000000",
+    "maxSupplyChangeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "distributionRules": {
+     "perpetualDistribution": null,
+     "preProgrammedDistribution": null,
+     "newTokenDestinationIdentity": "FLKatUDFREGPR11Ton6geSMk6NhDVXGxU2GabPWASE2y",
+     "mintingAllowChoosingDestination": true
+    },
+    "marketplaceRules": {
+     "tradeMode": "NotTradeable",
+     "tradeModeChangeRules": {
+      "authorizedToMakeChange": {
+       "takerType": "ContractOwner",
+       "taker": null
+      },
+      "adminActionTakers": {
+       "takerType": "ContractOwner",
+       "taker": null
+      },
+      "changingAuthorizedActionTakersToNoOneAllowed": false,
+      "changingAdminActionTakersToNoOneAllowed": false,
+      "selfChangingAdminActionTakersAllowed": true
+     }
+    },
+    "manualMintingRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "manualBurningRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "freezeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "unfreezeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "destroyFrozenFundsRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "emergencyActionRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": false,
+     "changingAdminActionTakersToNoOneAllowed": false,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "mainControlGroupCanBeModified": {
+     "takerType": "NoOne",
+     "taker": null
+    },
+    "mainControlGroup": null,
+    "description": "A token with owner-controlled advanced actions."
+   }
+  ],
+  "groups": []
+ }
+}

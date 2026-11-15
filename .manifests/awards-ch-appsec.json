@@ -1,0 +1,279 @@
+{
+ "chId": "ch-appsec",
+ "chTitle": "THE FORGE",
+ "missingAwards": [
+  {
+   "id": "class-over-instance",
+   "step": "The Class, Not The Instance",
+   "kind": "construct",
+   "statement": "Every ticket you close is one instance; every condition you change is every instance, forever.",
+   "respect": 70
+  },
+  {
+   "id": "reads-the-methodology",
+   "step": "The Top Ten Is A Census, Not A Threat Model",
+   "kind": "lesson",
+   "statement": "The OWASP Top 10 tells you what testers found in the applications that agreed to be measured; it does not tell you what will be used against you.",
+   "respect": 95
+  },
+  {
+   "id": "memory-safe-roadmap",
+   "step": "Memory Safety: The Only Class We Know How To Delete",
+   "kind": "lesson",
+   "statement": "Memory unsafety is the one major vulnerability class with a proven industrial cure, and the cure is not a rewrite.",
+   "respect": 145
+  },
+  {
+   "id": "tenancy-breaker",
+   "step": "Lab: The Authorisation Bug No Scanner Will Ever Name",
+   "kind": "lab",
+   "statement": "Broken object level authorisation is invisible to tools because a correct response and a catastrophic one are byte-identical in shape.",
+   "respect": 165
+  },
+  {
+   "id": "metadata-locksmith",
+   "step": "Lab: SSRF Into The Metadata Service",
+   "kind": "lab",
+   "statement": "In cloud environments server-side request forgery is not an information leak, it is a credential handoff.",
+   "respect": 170
+  },
+  {
+   "id": "egress-discipline",
+   "step": "Lab: SSRF Into The Metadata Service",
+   "kind": "lab",
+   "statement": "In cloud environments server-side request forgery is not an information leak, it is a credential handoff.",
+   "respect": 170
+  },
+  {
+   "id": "reachability-realist",
+   "step": "Drill: The Deserialization Finding",
+   "kind": "drill",
+   "statement": "A vulnerability class with a fearsome reputation still has to be reachable by an attacker before it deserves your weekend.",
+   "respect": 150
+  },
+  {
+   "id": "the-ten-minute-split",
+   "step": "Drill: The Deserialization Finding",
+   "kind": "drill",
+   "statement": "A vulnerability class with a fearsome reputation still has to be reachable by an attacker before it deserves your weekend.",
+   "respect": 150
+  },
+  {
+   "id": "guardrail-over-gate",
+   "step": "Guardrails Over Gates",
+   "kind": "construct",
+   "statement": "Every gate you install is a tax on every release forever; charge it only where the loss is unrecoverable.",
+   "respect": 85
+  },
+  {
+   "id": "threat-model-in-the-room",
+   "step": "Threat Modelling Inside The Design Review",
+   "kind": "lesson",
+   "statement": "A threat model is not a document; it is a forty-minute argument held before the code exists, and its only artefact worth keeping is the decisions it changed.",
+   "respect": 140
+  },
+  {
+   "id": "firehose-extinguisher",
+   "step": "Shift Left Was Half An Idea",
+   "kind": "lesson",
+   "statement": "Moving detection earlier without moving remediation capacity earlier just relocates the queue and calls it progress.",
+   "respect": 155
+  },
+  {
+   "id": "unbundler",
+   "step": "Drill: The Gate And The Release Train",
+   "kind": "drill",
+   "statement": "The moment your control blocks revenue is the moment you discover whether you designed it or inherited it.",
+   "respect": 160
+  },
+  {
+   "id": "paved-road-builder",
+   "step": "Field: Build One Segment Of Paved Road",
+   "kind": "field",
+   "statement": "Ship one secure default that a team adopts without being asked, and you have learned more about security programme design than any framework will teach you.",
+   "respect": 200
+  },
+  {
+   "id": "first-voluntary-adopter",
+   "step": "Field: Build One Segment Of Paved Road",
+   "kind": "field",
+   "statement": "Ship one secure default that a team adopts without being asked, and you have learned more about security programme design than any framework will teach you.",
+   "respect": 200
+  },
+  {
+   "id": "champion-network",
+   "step": "Council: A Champions Network That Does Not Decay",
+   "kind": "council",
+   "statement": "A security champions programme is a distribution network for judgement, and every one that fails does so because it distributed tasks instead.",
+   "respect": 150
+  },
+  {
+   "id": "capability-transfer",
+   "step": "Council: A Champions Network That Does Not Decay",
+   "kind": "council",
+   "statement": "A security champions programme is a distribution network for judgement, and every one that fails does so because it distributed tasks instead.",
+   "respect": 150
+  },
+  {
+   "id": "tool-realist",
+   "step": "SAST, DAST, IAST, SCA: The Honest Comparison",
+   "kind": "lesson",
+   "statement": "These are not four grades of the same product; they answer four different questions, and knowing which question you have is the entire purchasing decision.",
+   "respect": 110
+  },
+  {
+   "id": "precision-floor",
+   "step": "The False Positive Is An Economic Instrument",
+   "kind": "lesson",
+   "statement": "A tool's precision is not a technical specification; it is the exchange rate between your programme and your engineers' trust.",
+   "respect": 160
+  },
+  {
+   "id": "fuzz-first-crash",
+   "step": "Lab: Write A Harness That Finds Something",
+   "kind": "lab",
+   "statement": "Coverage-guided fuzzing is the only automated technique that reliably finds bugs nobody anticipated, and its entire effectiveness lives in the harness you write.",
+   "respect": 190
+  },
+  {
+   "id": "harness-writer",
+   "step": "Lab: Write A Harness That Finds Something",
+   "kind": "lab",
+   "statement": "Coverage-guided fuzzing is the only automated technique that reliably finds bugs nobody anticipated, and its entire effectiveness lives in the harness you write.",
+   "respect": 190
+  },
+  {
+   "id": "property-thinker",
+   "step": "Lab: Properties Beat Examples",
+   "kind": "lab",
+   "statement": "An example test asserts what you already thought of; a property test asserts what must always be true, and then goes looking for the counterexample.",
+   "respect": 175
+  },
+  {
+   "id": "verdict-not-conduit",
+   "step": "Drill: The Report Lands Two Days Before Launch",
+   "kind": "drill",
+   "statement": "A penetration test report is an input to a decision, not the decision — and treating it as the decision is how security teams get removed from the process.",
+   "respect": 155
+  },
+  {
+   "id": "oss-contributor",
+   "step": "Field: Continuous Fuzzing With Honest Coverage",
+   "kind": "field",
+   "statement": "Claiming a project is fuzzed without publishing its coverage is the assurance equivalent of a green dashboard nobody validated.",
+   "respect": 210
+  },
+  {
+   "id": "coverage-honesty",
+   "step": "Field: Continuous Fuzzing With Honest Coverage",
+   "kind": "field",
+   "statement": "Claiming a project is fuzzed without publishing its coverage is the assurance equivalent of a green dashboard nobody validated.",
+   "respect": 210
+  },
+  {
+   "id": "chain-taxonomist",
+   "step": "Four Ways A Chain Breaks",
+   "kind": "lesson",
+   "statement": "Almost every open source compromise of the last two years reduces to phishing, a privileged automated trigger, a stolen long-lived credential, or a handover of control — and each has a different defence.",
+   "respect": 120
+  },
+  {
+   "id": "supply-chain-archaeologist",
+   "step": "xz-utils: How To Buy A Maintainer",
+   "kind": "lesson",
+   "statement": "The most sophisticated supply chain attack yet documented did not exploit a single vulnerability; it exploited the fact that critical infrastructure is maintained by exhausted volunteers.",
+   "respect": 165
+  },
+  {
+   "id": "pipeline-locksmith",
+   "step": "Lab: Harden The Pipeline",
+   "kind": "lab",
+   "statement": "Your CI system holds credentials to everything you own, executes arbitrary code by design, and is usually the least monitored production system in the company.",
+   "respect": 195
+  },
+  {
+   "id": "sha-pinner",
+   "step": "Lab: Harden The Pipeline",
+   "kind": "lab",
+   "statement": "Your CI system holds credentials to everything you own, executes arbitrary code by design, and is usually the least monitored production system in the company.",
+   "respect": 195
+  },
+  {
+   "id": "attestation-verified",
+   "step": "Lab: Sign, Attest, Verify",
+   "kind": "lab",
+   "statement": "An artefact you cannot trace back to a specific commit built by a specific workflow is an artefact you are choosing to trust on faith.",
+   "respect": 190
+  },
+  {
+   "id": "signed-and-sealed",
+   "step": "Lab: Sign, Attest, Verify",
+   "kind": "lab",
+   "statement": "An artefact you cannot trace back to a specific commit built by a specific workflow is an artefact you are choosing to trust on faith.",
+   "respect": 190
+  },
+  {
+   "id": "slsa-level-three",
+   "step": "Lab: Sign, Attest, Verify",
+   "kind": "lab",
+   "statement": "An artefact you cannot trace back to a specific commit built by a specific workflow is an artefact you are choosing to trust on faith.",
+   "respect": 190
+  },
+  {
+   "id": "rotation-under-fire",
+   "step": "Drill: The Tag Moved Last Night",
+   "kind": "drill",
+   "statement": "When a dependency you have used for years turns hostile, your first decision is about secrets, not about code.",
+   "respect": 180
+  },
+  {
+   "id": "sbom-truth-teller",
+   "step": "What An SBOM Solves, And What It Does Not",
+   "kind": "lesson",
+   "statement": "An SBOM is an inventory, and an inventory is enormously valuable on exactly one kind of day and largely inert on every other.",
+   "respect": 115
+  },
+  {
+   "id": "priority-not-severity",
+   "step": "Severity Is Not Priority",
+   "kind": "construct",
+   "statement": "CVSS describes the bug in the abstract; priority is a statement about your system, your adversaries and your capacity, and only you can make it.",
+   "respect": 90
+  },
+  {
+   "id": "triage-surgeon",
+   "step": "KEV, EPSS And Reachability: A Working Decision Function",
+   "kind": "lesson",
+   "statement": "Three cheap signals, combined in the right order, will cut your remediation workload by an order of magnitude without increasing your risk.",
+   "respect": 165
+  },
+  {
+   "id": "kev-first",
+   "step": "Drill: The 9.8 And The 6.5",
+   "kind": "drill",
+   "statement": "The moment you have capacity for one of two vulnerabilities is the moment your prioritisation model is either real or decorative.",
+   "respect": 170
+  },
+  {
+   "id": "the-quiet-no",
+   "step": "Council: How To Say No To A Scanner Report",
+   "kind": "council",
+   "statement": "A no you can defend in writing is a security control; a no delivered verbally in a meeting is a liability with your name on it.",
+   "respect": 175
+  },
+  {
+   "id": "standard-bearer",
+   "step": "Field: Publish A Standard With Teeth",
+   "kind": "field",
+   "statement": "A vulnerability management standard that does not specify enforcement, exceptions and evidence is a wish list with a document number.",
+   "respect": 205
+  },
+  {
+   "id": "board-ready",
+   "step": "Council: The Board Asks If We Are Exposed",
+   "kind": "council",
+   "statement": "A board does not want your findings count; it wants to know whether you would recognise the day this goes wrong, and what happens next.",
+   "respect": 200
+  }
+ ]
+}

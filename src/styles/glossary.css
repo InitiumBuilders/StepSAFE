@@ -1,0 +1,212 @@
+/* THE GLOSSARY AND THE GUIDES (components/Glossary.tsx, views/GuidesView.tsx). The terms in a list with the
+   open term held beside it, the guides grouped by the same eleven subjects. Each subject has a hue (content/
+   subjects.ts) that tints its glyph and its marks; text stays in the theme's inks. Squircles throughout. */
+
+/* ---------- a subject's glyph ---------- */
+.subject-glyph { flex: none; fill: none; stroke: var(--hue, var(--ink-2)); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+html[data-theme='meridian'] .subject-glyph { stroke: color-mix(in oklab, var(--hue, #22302a) 42%, #1d1830); }
+
+/* ---------- guides or the glossary ---------- */
+.gs-switch { flex: none; display: inline-flex; gap: 4px; padding: 4px; border-radius: 18px; corner-shape: superellipse(2.15); background: var(--panel); border: 1px solid var(--frame); box-shadow: var(--inset); }
+.gs-tab { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 8px 18px; border: 0; border-radius: 14px; corner-shape: superellipse(2.15); background: transparent; color: var(--ink-2); font: 600 1rem var(--font-display); cursor: pointer; transition: background 200ms var(--ease), color 200ms var(--ease), box-shadow 200ms var(--ease); }
+.gs-tab b { font-weight: 600; font-size: 0.82rem; padding: 2px 8px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 8%, transparent); color: var(--ink-2); }
+.gs-tab:hover { color: var(--ink); }
+.gs-tab.on { color: var(--ink); background: var(--panel-2); box-shadow: inset 0 -2px 0 var(--violet), var(--raise); }
+.gs-tab:focus-visible { outline: 2px solid var(--ink-accent); outline-offset: 2px; }
+
+/* ---------- search, subjects, caption ---------- */
+.gl-tools { display: flex; flex-direction: column; gap: 14px; margin: 0 0 var(--s4); container-type: inline-size; }
+/* the switch and the search share a row; on a phone the search takes its own */
+.gl-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.gl-search { position: relative; display: flex; align-items: center; flex: 1 1 320px; max-width: 640px; }
+.gl-search > svg { position: absolute; left: 16px; width: 20px; height: 20px; fill: none; stroke: var(--ink-2); stroke-width: 1.8; stroke-linecap: round; pointer-events: none; }
+.gl-search input { width: 100%; min-height: 50px; padding: 12px 84px 12px 46px; border-radius: 16px; corner-shape: superellipse(2.15); border: 1px solid var(--frame-strong); background: var(--panel-2); color: var(--ink); font: inherit; font-size: 1rem; box-shadow: var(--inset); -webkit-appearance: none; appearance: none; }
+.gl-search input::-webkit-search-cancel-button { display: none; }
+.gl-search input::placeholder { color: var(--ink-2); opacity: 1; }
+.gl-search input:focus { outline: none; border-color: var(--violet); box-shadow: var(--inset), 0 0 0 3px color-mix(in srgb, var(--violet) 26%, transparent); }
+.gl-clear { position: absolute; right: 6px; min-height: 38px; padding: 6px 12px; border: 0; border-radius: 12px; corner-shape: superellipse(2.15); background: transparent; color: var(--ink); font: 600 0.9rem var(--font-display); cursor: pointer; }
+.gl-clear:hover { background: var(--panel-3); }
+.gl-clear:focus-visible { outline: 2px solid var(--ink-accent); outline-offset: 1px; }
+
+.gl-subjects { display: flex; flex-wrap: wrap; gap: 8px; }
+.gl-subject { display: inline-flex; align-items: center; gap: 7px; min-height: 40px; padding: 7px 13px 7px 11px; border: 1px solid var(--frame); border-radius: 13px; corner-shape: superellipse(2.15); background: var(--panel); color: var(--ink); font: 600 0.9rem var(--font-display); white-space: nowrap; cursor: pointer; transition: border-color 200ms var(--ease), background 200ms var(--ease), transform 200ms var(--ease); }
+.gl-subject b { font-weight: 600; font-size: 0.8rem; color: var(--ink-2); }
+/* with room, the subjects stand in even rows: six across, or four */
+@container (min-width: 1000px) { .gl-subjects { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+@container (min-width: 640px) and (max-width: 999.98px) { .gl-subjects { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@container (min-width: 640px) { .gl-subject { justify-content: flex-start; } .gl-subject b { margin-left: auto; padding-left: 6px; } }
+.gl-subject:hover:not(:disabled) { border-color: color-mix(in srgb, var(--hue, var(--violet)) 55%, var(--frame)); }
+.gl-subject.on { background: var(--panel-2); border-color: color-mix(in srgb, var(--hue, var(--violet)) 70%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hue, var(--violet)) 45%, transparent), 0 0 18px -8px var(--hue, var(--violet)); }
+.gl-subject.on b { color: var(--ink); }
+.gl-subject:disabled { cursor: default; opacity: 0.45; }
+.gl-subject:focus-visible { outline: 2px solid var(--ink-accent); outline-offset: 2px; }
+html[data-theme='meridian'] .gl-subject.on { box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--hue, var(--violet)) 50%, #1d1830); border-color: color-mix(in oklab, var(--hue, var(--violet)) 50%, #1d1830); }
+
+.gl-caption { margin: 0; font-size: 0.95rem; line-height: 1.55; color: var(--ink-2); max-width: 72ch; }
+.gl-caption strong { color: var(--ink); font-weight: 600; }
+
+/* ---------- the letters: a strip that stays under the bar while the list scrolls ---------- */
+.gl { --gl-nav: 0px; --gl-strip: 0px; }
+.gl.has-strip { --gl-strip: 60px; }
+.gl-letters { position: sticky; top: var(--gl-nav); z-index: 6; display: flex; gap: 2px; margin: 0 0 6px; padding: 6px 0; background: var(--ground); box-shadow: 0 12px 16px -14px var(--relief-shadow); }
+.gl-letters button { flex: 0 1 44px; min-width: 30px; height: 44px; padding: 0; border: 0; border-radius: 11px; corner-shape: superellipse(2.15); background: transparent; color: var(--ink-2); font: 600 0.95rem var(--font-display); cursor: pointer; transition: background 160ms var(--ease), color 160ms var(--ease); }
+.gl-letters button:hover { background: var(--panel-2); color: var(--ink); }
+.gl-letters button:focus-visible { outline: 2px solid var(--ink-accent); outline-offset: -2px; }
+
+/* ---------- the list and the term ---------- */
+.gl-body { display: grid; grid-template-columns: minmax(280px, 360px) minmax(0, 1fr); gap: 28px; align-items: start; }
+.gl-list { min-width: 0; }
+.gl-group + .gl-group { margin-top: 6px; }
+.gl-letter { margin: 0; padding: 16px 14px 6px; font: 700 0.95rem/1.2 var(--font-display); letter-spacing: 0.02em; color: var(--ink-label); scroll-margin-top: calc(var(--gl-nav) + var(--gl-strip) + 2px); }
+.gl-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.gl-row { display: flex; flex-direction: column; gap: 2px; width: 100%; min-height: 60px; justify-content: center; padding: 9px 14px; text-align: left; border: 1px solid transparent; border-radius: 14px; corner-shape: superellipse(2.15); background: transparent; color: var(--ink); font: inherit; cursor: pointer; scroll-margin-top: calc(var(--gl-nav) + var(--gl-strip) + 10px); scroll-margin-bottom: 16px; transition: background 160ms var(--ease), border-color 160ms var(--ease); }
+/* a name holds one line and its meaning a set number, so every row is the same height; the open term shows both whole */
+.gl-row strong { font: 600 1rem/1.3 var(--font-display); color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gl-row span { font-size: 0.88rem; line-height: 1.45; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.gl-row:hover { background: var(--panel); }
+.gl-row.on { background: var(--panel-2); border-color: var(--frame); box-shadow: inset 3px 0 0 var(--hue, var(--violet)); }
+.gl-row:focus-visible { outline: 2px solid var(--ink-accent); outline-offset: 1px; }
+html[data-theme='meridian'] .gl-row.on { box-shadow: inset 3px 0 0 color-mix(in oklab, var(--hue, var(--violet)) 55%, #1d1830); }
+
+.gl-detail { position: sticky; top: calc(var(--gl-nav) + var(--gl-strip) + 14px); max-height: calc(100vh - var(--gl-nav) - var(--gl-strip) - 28px); overflow: auto; overscroll-behavior: auto; scrollbar-width: thin;
+  padding: 26px 30px 0; border-radius: 28px; corner-shape: superellipse(2.15); border: 1px solid var(--frame); background: var(--panel);
+  background-image: radial-gradient(110% 70% at 0% 0%, color-mix(in srgb, var(--hue, var(--violet)) 9%, transparent), transparent 62%);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--hue, var(--violet)) 34%, transparent), var(--raise); }
+.gl-in { animation: gl-in 300ms var(--ease) both; }
+@keyframes gl-in { from { opacity: 0; transform: translateY(6px); } }
+.gl-where { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; font: 600 0.86rem/1.3 var(--font-display); }
+.gl-where-subject { color: var(--ink); }
+.gl-where-domain { color: var(--ink-2); }
+.gl-where-subject + .gl-where-domain::before { content: '\00b7'; margin-right: 8px; color: var(--ink-2); }
+.gl-term { margin: 0 0 12px; font: 700 clamp(1.8rem, 2.5vw, 2.35rem)/1.1 var(--font-display); letter-spacing: -0.02em; color: var(--ink); overflow-wrap: anywhere; }
+.gl-short { margin: 0 0 14px; max-width: 60ch; font: 500 1.12rem/1.5 var(--font-display); color: var(--ink); }
+.gl-long { margin: 0 0 20px; max-width: 66ch; font-size: 1rem; line-height: 1.72; color: var(--ink-2); }
+.gl-why { margin: 0 0 22px; max-width: 70ch; padding: 15px 18px 16px; border-radius: 18px; corner-shape: superellipse(2.15); background: var(--panel-2); box-shadow: inset 3px 0 0 color-mix(in srgb, var(--hue, var(--violet)) 75%, transparent); }
+html[data-theme='meridian'] .gl-why { box-shadow: inset 3px 0 0 color-mix(in oklab, var(--hue, var(--violet)) 55%, #1d1830); }
+.gl-why p { margin: 6px 0 0; font-size: 1rem; line-height: 1.66; color: var(--ink); }
+.gl-sec { margin: 0 0 20px; }
+.gl-sec > .label { display: block; margin: 0 0 9px; }
+.gl-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.gl-chip { min-height: 38px; padding: 7px 13px; border: 1px solid var(--frame-strong); border-radius: 12px; corner-shape: superellipse(2.15); background: var(--panel-2); color: var(--ink); font: 500 0.92rem/1.3 var(--font-display); text-align: left; cursor: pointer; transition: border-color 160ms var(--ease), transform 160ms var(--ease); }
+.gl-chip:hover { border-color: var(--violet); }
+.gl-chip.on { border-color: var(--ink-accent); box-shadow: inset 0 0 0 1px var(--ink-accent); }
+.gl-chip:focus-visible { outline: 2px solid var(--ink-accent); outline-offset: 2px; }
+.gl-taught { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.gl-taught button { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 54px; padding: 9px 12px 9px 14px; text-align: left; border: 1px solid var(--frame); border-radius: 14px; corner-shape: superellipse(2.15); background: transparent; color: var(--ink); font: inherit; cursor: pointer; transition: background 160ms var(--ease), border-color 160ms var(--ease); }
+.gl-taught button:hover { background: var(--panel-2); border-color: var(--frame-strong); }
+.gl-taught button:focus-visible { outline: 2px solid var(--ink-accent); outline-offset: 2px; }
+.gl-taught strong { display: block; font: 600 0.95rem/1.35 var(--font-display); color: var(--ink); }
+.gl-taught em { display: block; margin-top: 1px; font-style: normal; font-size: 0.84rem; line-height: 1.4; color: var(--ink-2); }
+.gl-taught svg, .gl-step svg, .gl-back svg { flex: none; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.gl-more { margin-top: 8px; }
+/* the card and the way on stay in reach: pinned to the foot of the open term while it scrolls; the themes' panels
+   are translucent, so the bar lays the panel over the solid ground and nothing reads through it */
+.gl-actions { position: sticky; bottom: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin: 4px -30px 0; padding: 14px 30px 18px; box-shadow: 0 -14px 18px -16px var(--relief-shadow), inset 0 1px 0 var(--frame); background: linear-gradient(var(--panel), var(--panel)), var(--ground); }
+.gl-step { display: inline-flex; gap: 8px; }
+.gl-step .btn { display: inline-flex; align-items: center; gap: 6px; }
+.gl-back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin: -8px 0 12px -8px; padding: 8px 14px 8px 8px; border: 0; border-radius: 12px; corner-shape: superellipse(2.15); background: transparent; color: var(--ink); font: 600 1rem var(--font-display); cursor: pointer; }
+.gl-back:hover { background: var(--panel-2); }
+.gl-back:focus-visible { outline: 2px solid var(--ink-accent); outline-offset: 1px; }
+.gl-unres { margin: 0 0 22px; padding: 14px 16px 16px; border-radius: 18px; corner-shape: superellipse(2.15); background: var(--panel-2); box-shadow: inset 3px 0 0 var(--ink-accent); }
+.gl-unres p { margin: 6px 0 12px; font-size: 0.95rem; line-height: 1.55; color: var(--ink-2); }
+.gl-empty { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 26px 28px; border-radius: 24px; corner-shape: superellipse(2.15); background: var(--panel); }
+.gl-empty p { margin: 0; color: var(--ink); }
+
+/* ---------- other names, sources, and a word with no entry ---------- */
+.gl-aka { margin: -4px 0 14px; max-width: 62ch; font: 400 0.95rem/1.5 var(--font-body); color: var(--ink-2); }
+.gl-sources ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.gl-sources li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; font-size: 0.95rem; line-height: 1.5; }
+.gl-sources a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--frame-strong); text-underline-offset: 3px; }
+.gl-sources a:hover { text-decoration-color: var(--ink-accent); }
+.gl-sources a:focus-visible { outline: 2px solid var(--ink-accent); outline-offset: 2px; border-radius: 3px; }
+.gl-sources span { font-size: 0.84rem; color: var(--ink-2); }
+.gl-noentry { --hue: var(--ink-accent); }
+.gl-says { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.gl-says button { display: flex; flex-direction: column; gap: 3px; width: 100%; padding: 12px 14px 13px; text-align: left; border: 1px solid var(--frame); border-radius: 16px; corner-shape: superellipse(2.15); background: transparent; color: var(--ink); font: inherit; cursor: pointer; transition: background 160ms var(--ease), border-color 160ms var(--ease); }
+.gl-says button:hover { background: var(--panel-2); border-color: var(--frame-strong); }
+.gl-says button:focus-visible { outline: 2px solid var(--ink-accent); outline-offset: 2px; }
+.gl-says strong { font: 600 0.98rem/1.35 var(--font-display); color: var(--ink); }
+.gl-says em { font-style: normal; font-size: 0.84rem; line-height: 1.4; color: var(--ink-2); }
+.gl-says q { margin-top: 4px; quotes: none; font-size: 0.95rem; line-height: 1.6; color: var(--ink-2); }
+.gl-mark { background: color-mix(in srgb, var(--ink-accent) 22%, transparent); color: var(--ink); border-radius: 4px; padding: 0 2px; }
+
+/* ---------- the words of a Step (components/StepWords.tsx) ---------- */
+.sw { display: flex; flex-direction: column; gap: 16px; margin: 0 0 var(--s5); padding: 18px 20px; border-radius: 22px; corner-shape: superellipse(2.15); background: var(--panel); border: 1px solid var(--frame); }
+.sw-row > .label { display: block; margin: 0 0 9px; }
+.sw-terms { display: flex; flex-wrap: wrap; gap: 8px; }
+.sw-term { display: inline-flex; align-items: center; gap: 7px; min-height: 40px; padding: 7px 13px 7px 11px; border: 1px solid var(--frame-strong); border-radius: 13px; corner-shape: superellipse(2.15); background: var(--panel-2); color: var(--ink); font: 500 0.94rem/1.3 var(--font-display); text-align: left; cursor: pointer; transition: border-color 160ms var(--ease), background 160ms var(--ease); }
+.sw-term:hover { border-color: color-mix(in srgb, var(--hue, var(--violet)) 60%, var(--frame)); }
+.sw-term.on { border-color: color-mix(in srgb, var(--hue, var(--violet)) 75%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hue, var(--violet)) 45%, transparent); }
+.sw-term:focus-visible { outline: 2px solid var(--ink-accent); outline-offset: 2px; }
+html[data-theme='meridian'] .sw-term.on { border-color: color-mix(in oklab, var(--hue, var(--violet)) 50%, #1d1830); box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--hue, var(--violet)) 50%, #1d1830); }
+.sw .term-pop { margin: 12px 0 0; }
+.sw-bare { margin: 0; font-size: 0.95rem; line-height: 1.9; color: var(--ink-2); }
+/* an underline that stays with its word when the tap area grows */
+.sw-bare .term-link { color: var(--ink); border-bottom: 0; text-decoration: underline dotted; text-decoration-color: var(--frame-strong); text-underline-offset: 4px; padding: 8px 0; }
+.sw-bare .term-link:hover { color: var(--ink-signal); text-decoration-color: var(--violet); }
+@media (pointer: coarse) { .sw-term { min-height: 44px; } }
+
+/* ---------- the guides, subject by subject ---------- */
+.gs-subject { margin: 0 0 var(--s5); }
+.gs-subject-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: start; gap: 4px 12px; margin: 0 0 16px; }
+.gs-subject-head .subject-glyph { margin-top: 2px; }
+.gs-subject-head h3 { margin: 0; font: 700 1.22rem/1.25 var(--font-display); letter-spacing: -0.01em; }
+.gs-subject-head p { margin: 3px 0 0; font-size: 0.95rem; line-height: 1.5; color: var(--ink-2); }
+.gs-n { padding-top: 3px; font: 600 0.86rem var(--font-display); color: var(--ink-2); white-space: nowrap; }
+.gs-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+/* rows of two; a subject with an odd number of guides gives its last one the whole row */
+.gs-list > li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.gs-guide { display: flex; flex-direction: column; gap: 6px; width: 100%; height: 100%; padding: 16px 18px; text-align: left; border: 1px solid var(--frame); border-radius: 20px; corner-shape: superellipse(2.15); background: var(--panel); color: var(--ink); font: inherit; cursor: pointer; box-shadow: var(--raise); transition: transform 220ms var(--ease), border-color 220ms var(--ease); }
+.gs-guide:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--hue, var(--violet)) 55%, var(--frame)); }
+.gs-guide:focus-visible { outline: 2px solid var(--ink-accent); outline-offset: 2px; }
+.gs-guide strong { font: 650 1.08rem/1.3 var(--font-display); color: var(--ink); }
+.gs-meta { display: flex; flex-wrap: wrap; gap: 8px; font: 600 0.82rem/1.3 var(--font-display); color: var(--ink-label); }
+.gs-meta span + span::before { content: '\00b7'; margin-right: 8px; }
+.gs-meta .gs-read { color: var(--ink-gold); }
+.gs-sum { font-size: 0.95rem; line-height: 1.55; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.gs-domain { margin-top: auto; padding-top: 4px; font-size: 0.84rem; color: var(--ink-2); }
+
+/* ---------- a phone: the list, then the term on its own screen ---------- */
+@media (max-width: 899px) {
+  .gl-body { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  /* reading a term on a phone is its own screen: the page's heading steps aside until Back */
+  .wrap-wide:has(> .gl.is-reading) > .view-head { display: none; }
+  .gl-subjects { flex-wrap: nowrap; overflow-x: auto; margin: 0 -16px; padding: 2px 16px 4px; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .gl-subjects::-webkit-scrollbar { display: none; }
+  .gl-letters { overflow-x: auto; margin: 0 -16px 6px; padding: 6px 16px; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .gl-letters::-webkit-scrollbar { display: none; }
+  .gl-letters button { flex: none; width: 44px; }
+  .gl-row { padding: 10px 12px; }
+  .gl-row span { -webkit-line-clamp: 2; min-height: 2.9em; }
+  .gl-detail { position: static; max-height: none; overflow: visible; padding: 18px 18px 0; border-radius: 24px; scroll-margin-top: calc(var(--gl-nav) + 10px); }
+  .gl-term { font-size: clamp(1.7rem, 7vw, 2.1rem); }
+  /* one row at the foot of the screen: the term before, its card, the term after */
+  .gl-actions { display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; gap: 8px; margin: 4px -18px 0; padding: 10px 18px calc(12px + env(safe-area-inset-bottom)); border-radius: 0 0 24px 24px; }
+  .gl-actions > .btn { grid-column: 2; grid-row: 1; justify-content: center; min-height: 48px; }
+  .gl-step { display: contents; }
+  .gl-step .btn { grid-row: 1; min-height: 48px; padding: 0; justify-content: center; }
+  .gl-step .btn:first-child { grid-column: 1; }
+  .gl-step .btn:last-child { grid-column: 3; }
+  .gl-word { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .gl-bar .gs-switch { flex: 1 1 100%; }
+  .gl-bar .gs-tab { flex: 1 1 0; justify-content: center; }
+  .gl-search { flex-basis: 100%; max-width: none; }
+  .gs-list { grid-template-columns: minmax(0, 1fr); }
+  .gs-subject-head { grid-template-columns: auto minmax(0, 1fr); }
+  .gs-n { grid-column: 2; padding-top: 0; }
+}
+
+/* a touch screen gets a full finger's room */
+@media (pointer: coarse) {
+  .gl-subject, .gl-chip { min-height: 44px; }
+}
+
+html[data-motion='calm'] .gl-in { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  .gl-in { animation: none; }
+  .gs-guide:hover { transform: none; }
+}
+@media print {
+  .gl-tools, .gl-letters, .gl-actions, .gs-switch { display: none; }
+  .gl-detail { position: static; max-height: none; overflow: visible; box-shadow: none; }
+}

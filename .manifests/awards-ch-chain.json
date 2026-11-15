@@ -1,0 +1,223 @@
+{
+ "chId": "ch-chain",
+ "chTitle": "The Chain Does Not Forgive",
+ "missingAwards": [
+  {
+   "id": "ch-chain-ledger-reader",
+   "step": "The Loss Distribution Is Not the Audit Report",
+   "kind": "construct",
+   "statement": "The bug classes that get the most audit attention are not the ones that lose the most money.",
+   "respect": 70
+  },
+  {
+   "id": "ch-chain-archetype-triage",
+   "step": "The Six Archetypes That Explain the Wreckage",
+   "kind": "lesson",
+   "statement": "Most catastrophic on-chain losses are one of six recurring shapes — learn the shapes and you can triage any new incident in minutes.",
+   "respect": 110
+  },
+  {
+   "id": "ch-chain-first-dollar",
+   "step": "First Dollar of Security",
+   "kind": "drill",
+   "statement": "A finite security budget spent on the most interesting risk instead of the largest one is a subsidy to the attacker.",
+   "respect": 170
+  },
+  {
+   "id": "ch-chain-mev-aware",
+   "step": "MEV Is an Adversary, Not a Fee",
+   "kind": "lesson",
+   "statement": "The order of transactions is itself a resource, and someone is extracting value from yours whether or not you modeled them.",
+   "respect": 130
+  },
+  {
+   "id": "ch-chain-threat-cartographer",
+   "step": "Build the Loss-Cause Ledger for a Real Protocol",
+   "kind": "field",
+   "statement": "A threat model you cannot map to real historical losses is a fantasy; ground it in the ledger or discard it.",
+   "respect": 200
+  },
+  {
+   "id": "ch-chain-board-translator",
+   "step": "Say the Number to the Board",
+   "kind": "council",
+   "statement": "A board does not fund fear; it funds a defensible range of probable loss against a defensible cost of control.",
+   "respect": 150
+  },
+  {
+   "id": "ch-chain-four-doors",
+   "step": "Reentrancy Has Four Doors, Not One",
+   "kind": "construct",
+   "statement": "The checks-effects-interactions rule stops the classic attack and none of its three modern relatives.",
+   "respect": 80
+  },
+  {
+   "id": "ch-chain-price-skeptic",
+   "step": "Spot Price Is Not a Price",
+   "kind": "lesson",
+   "statement": "A price you can move within a single transaction is not an oracle; it is an attacker-controlled input.",
+   "respect": 120
+  },
+  {
+   "id": "ch-chain-exploit-author",
+   "step": "Break It, Then Guard It, in Foundry",
+   "kind": "lab",
+   "statement": "You do not understand a vulnerability until you have written the exploit that proves it and the test that proves the fix.",
+   "respect": 180
+  },
+  {
+   "id": "ch-chain-quiet-bugs",
+   "step": "Access Control, Proxy Slots, and the Signature You Can Replay",
+   "kind": "lesson",
+   "statement": "The quiet bugs — a missing modifier, a colliding storage slot, a domain separator left off — move more money than the loud ones.",
+   "respect": 140
+  },
+  {
+   "id": "ch-chain-impact-first",
+   "step": "Two Findings, One Night Left",
+   "kind": "drill",
+   "statement": "The elegant bug that skims dust is a trap when a boring bug can empty the contract.",
+   "respect": 170
+  },
+  {
+   "id": "ch-chain-invariant-author",
+   "step": "Invariants That Break the Contract Before the Attacker Does",
+   "kind": "lab",
+   "statement": "A unit test checks the case you imagined; an invariant test lets the machine imagine the case you missed.",
+   "respect": 190
+  },
+  {
+   "id": "ch-chain-audit-realist",
+   "step": "An Audit Is a Search, Not a Certificate",
+   "kind": "construct",
+   "statement": "The word audited on a landing page has killed more protocols than any single bug.",
+   "respect": 70
+  },
+  {
+   "id": "ch-chain-pipeline-builder",
+   "step": "The Pipeline: Static, Fuzz, Differential",
+   "kind": "lab",
+   "statement": "Each tool sees a different class of bug; running one and calling it coverage is theater.",
+   "respect": 160
+  },
+  {
+   "id": "ch-chain-proof-writer",
+   "step": "When Fuzzing Stops and Proof Begins",
+   "kind": "lesson",
+   "statement": "Fuzzing finds bugs; formal verification proves their absence within a spec — and the spec is where all the difficulty moves.",
+   "respect": 150
+  },
+  {
+   "id": "ch-chain-no-rubber-stamp",
+   "step": "The Sign-Off They Want You to Give",
+   "kind": "drill",
+   "statement": "The most dangerous line in an audit is the clean summary on a system whose real risk you were told not to look at.",
+   "respect": 170
+  },
+  {
+   "id": "ch-chain-live-reviewer",
+   "step": "Run a Real Review on Live Code",
+   "kind": "field",
+   "statement": "The proof you can review is a report on code you did not write, with findings someone could act on.",
+   "respect": 210
+  },
+  {
+   "id": "ch-chain-bounty-architect",
+   "step": "Designing a Bounty That Attracts the Right Hacker",
+   "kind": "council",
+   "statement": "A bug bounty is a market you design; price it wrong and the best researchers sell your Critical to someone else.",
+   "respect": 150
+  },
+  {
+   "id": "ch-chain-key-custodian",
+   "step": "The Key Is the Asset",
+   "kind": "construct",
+   "statement": "On-chain there is no account recovery, no chargeback, and no fraud department — the key is the money.",
+   "respect": 80
+  },
+  {
+   "id": "ch-chain-multisig-architect",
+   "step": "Safe Multisig, MPC, and the Delegatecall Foot-Gun",
+   "kind": "lesson",
+   "statement": "A multisig only protects you if each signer can independently see and refuse what they are signing.",
+   "respect": 150
+  },
+  {
+   "id": "ch-chain-blind-sign-refuser",
+   "step": "The Screen Says It Is Fine",
+   "kind": "drill",
+   "statement": "Every catastrophic multisig loss shares one moment: a competent signer approved a transaction they could not actually read.",
+   "respect": 200
+  },
+  {
+   "id": "ch-chain-verifier",
+   "step": "Verify the Hash Before You Sign It",
+   "kind": "lab",
+   "statement": "If you cannot independently reproduce the hash your device is asking you to sign, you are blind signing no matter how good your hardware is.",
+   "respect": 180
+  },
+  {
+   "id": "ch-chain-custody-designer",
+   "step": "Exchange-Grade Custody and the Insider You Cannot Audit",
+   "kind": "lesson",
+   "statement": "Hot, warm, and cold segmentation stops the outside attacker; only dual control and least privilege stop the one you hired.",
+   "respect": 150
+  },
+  {
+   "id": "ch-chain-control-holder",
+   "step": "The Emergency Withdrawal Outside the Allowlist",
+   "kind": "drill",
+   "statement": "The controls that matter are the ones that hold when a powerful person, under real urgency, asks you to skip them.",
+   "respect": 190
+  },
+  {
+   "id": "ch-chain-no-undo",
+   "step": "Containment When There Is No Undo",
+   "kind": "construct",
+   "statement": "On-chain you cannot reverse the theft, so incident response is entirely about bounding what has not happened yet.",
+   "respect": 90
+  },
+  {
+   "id": "ch-chain-governance-guardian",
+   "step": "Capturing a Protocol Through Its Own Rules",
+   "kind": "lesson",
+   "statement": "Governance is executable code with the highest privileges in the system, and every defense against capturing it trades decentralization for safety.",
+   "respect": 150
+  },
+  {
+   "id": "ch-chain-treasury-steward",
+   "step": "A Treasury That Governs Itself: The Masternode Model",
+   "kind": "lesson",
+   "statement": "A DAO treasury's real security control is not the smart contract but the humans who read every proposal before it can spend.",
+   "respect": 150
+  },
+  {
+   "id": "ch-chain-pause-decider",
+   "step": "The Pause Key While the Funds Drain",
+   "kind": "drill",
+   "statement": "The moment you most need to act decisively is the moment your community's principles most demand you do not.",
+   "respect": 200
+  },
+  {
+   "id": "ch-chain-war-room-lead",
+   "step": "The War Room: Board, Community, and the Attacker",
+   "kind": "council",
+   "statement": "During a live incident you are running three negotiations at once, and silence in any of them is a decision with consequences.",
+   "respect": 170
+  },
+  {
+   "id": "ch-chain-runbook-author",
+   "step": "Write the On-Chain Incident Runbook Before You Need It",
+   "kind": "field",
+   "statement": "The plan you write calmly today is the only thing that will function when the treasury is draining and you have sixty seconds.",
+   "respect": 210
+  },
+  {
+   "id": "ch-chain-incident-commander",
+   "step": "Write the On-Chain Incident Runbook Before You Need It",
+   "kind": "field",
+   "statement": "The plan you write calmly today is the only thing that will function when the treasury is draining and you have sixty seconds.",
+   "respect": 210
+  }
+ ]
+}

@@ -1,0 +1,342 @@
+{
+ "chId": "ch-ai",
+ "chTitle": "The Oracle Problem",
+ "missingAwards": [
+  {
+   "id": "asset-namer",
+   "step": "The Asset Is a File",
+   "kind": "construct",
+   "statement": "The most valuable thing your organisation owns is a set of floating point numbers, and everything about your security programme should be rearranged around that fact.",
+   "respect": 70
+  },
+  {
+   "id": "ladder-reader",
+   "step": "The Security Ladder and the Honest Cost of Each Rung",
+   "kind": "lesson",
+   "statement": "Security levels are only useful if each rung is defined by the attacker it stops, not by the controls it contains.",
+   "respect": 140
+  },
+  {
+   "id": "honest-scope",
+   "step": "The Security Ladder and the Honest Cost of Each Rung",
+   "kind": "lesson",
+   "statement": "Security levels are only useful if each rung is defined by the attacker it stops, not by the controls it contains.",
+   "respect": 140
+  },
+  {
+   "id": "quiet-egress",
+   "step": "Egress Is the Control That Fits the Asset",
+   "kind": "lab",
+   "statement": "You cannot stop a legitimate user from reading the weights, so make it impossible for them to move the weights quietly.",
+   "respect": 175
+  },
+  {
+   "id": "measured-control",
+   "step": "Egress Is the Control That Fits the Asset",
+   "kind": "lab",
+   "statement": "You cannot stop a legitimate user from reading the weights, so make it impossible for them to move the weights quietly.",
+   "respect": 175
+  },
+  {
+   "id": "quiet-hand",
+   "step": "The Engineer Who Resigned On Tuesday",
+   "kind": "drill",
+   "statement": "Insider response is the one discipline where the fastest visible action is almost always the worst one.",
+   "respect": 165
+  },
+  {
+   "id": "protocol-before-panic",
+   "step": "The Engineer Who Resigned On Tuesday",
+   "kind": "drill",
+   "statement": "Insider response is the one discipline where the fastest visible action is almost always the worst one.",
+   "respect": 165
+  },
+  {
+   "id": "supply-chain-cartographer",
+   "step": "Your Perimeter Runs Through Someone Else's Datacentre",
+   "kind": "lesson",
+   "statement": "The weights are decrypted in the memory of hardware you do not own, in a building you have never entered, on a chip whose firmware you did not write.",
+   "respect": 150
+  },
+  {
+   "id": "two-key-turn",
+   "step": "Build Two-Party Control That Survives Friday Afternoon",
+   "kind": "field",
+   "statement": "Two-party control fails not when it is attacked but when it is inconvenient, so design it against inconvenience.",
+   "respect": 210
+  },
+  {
+   "id": "friction-designer",
+   "step": "Build Two-Party Control That Survives Friday Afternoon",
+   "kind": "field",
+   "statement": "Two-party control fails not when it is attacked but when it is inconvenient, so design it against inconvenience.",
+   "respect": 210
+  },
+  {
+   "id": "boundary-thinker",
+   "step": "There Is No Instruction Channel",
+   "kind": "construct",
+   "statement": "Prompt injection is not a bug in a model; it is the absence of a boundary that never existed.",
+   "respect": 80
+  },
+  {
+   "id": "taxonomy-fluent",
+   "step": "The Top Ten as a Coverage Map, Not a Design",
+   "kind": "lesson",
+   "statement": "A shared taxonomy is worth adopting even when it is imperfect, because it makes disagreement specific.",
+   "respect": 120
+  },
+  {
+   "id": "thirty-second-triage",
+   "step": "Safety Failure or Security Failure",
+   "kind": "construct",
+   "statement": "If the harmed party is the user themselves, it is a safety problem; if the harmed party is someone else, it is a security problem, and the difference decides who gets paged.",
+   "respect": 90
+  },
+  {
+   "id": "poison-hunter",
+   "step": "Poisoning Does Not Scale With Your Corpus",
+   "kind": "lesson",
+   "statement": "The intuition that a bigger training set dilutes an attacker's contribution is wrong, and it is the most load-bearing wrong intuition in AI security.",
+   "respect": 145
+  },
+  {
+   "id": "provenance-keeper",
+   "step": "Poisoning Does Not Scale With Your Corpus",
+   "kind": "lesson",
+   "statement": "The intuition that a bigger training set dilutes an attacker's contribution is wrong, and it is the most load-bearing wrong intuition in AI security.",
+   "respect": 145
+  },
+  {
+   "id": "oracle-closer",
+   "step": "Your API Is a Side Channel",
+   "kind": "lab",
+   "statement": "Every convenience you expose in an inference API — logprobs, logit bias, deterministic sampling, verbose errors — is an oracle someone will query systematically.",
+   "respect": 170
+  },
+  {
+   "id": "precision-miser",
+   "step": "Your API Is a Side Channel",
+   "kind": "lab",
+   "statement": "Every convenience you expose in an inference API — logprobs, logit bias, deterministic sampling, verbose errors — is an oracle someone will query systematically.",
+   "respect": 170
+  },
+  {
+   "id": "trifecta-breaker",
+   "step": "The Instruction That Arrived As Pixels",
+   "kind": "drill",
+   "statement": "Any channel the model can perceive is an instruction channel, including the ones your threat model calls attachments.",
+   "respect": 155
+  },
+  {
+   "id": "pixel-reader",
+   "step": "The Instruction That Arrived As Pixels",
+   "kind": "drill",
+   "statement": "Any channel the model can perceive is an instruction channel, including the ones your threat model calls attachments.",
+   "respect": 155
+  },
+  {
+   "id": "trifecta-gate",
+   "step": "The Lethal Trifecta",
+   "kind": "construct",
+   "statement": "Private data, untrusted content, external communication — any two are workable, all three are an exfiltration primitive.",
+   "respect": 85
+  },
+  {
+   "id": "pattern-selector",
+   "step": "Six Patterns, and the Price of Each",
+   "kind": "lesson",
+   "statement": "Every real defence against injection buys security by removing capability, and the engineering skill is choosing which capability you did not need.",
+   "respect": 160
+  },
+  {
+   "id": "manifest-warden",
+   "step": "Reviewing a Connector Ecosystem",
+   "kind": "lab",
+   "statement": "A tool description is executable text that nobody reviews, delivered by a server nobody vetted, running with credentials nobody scoped.",
+   "respect": 175
+  },
+  {
+   "id": "delegation-warden",
+   "step": "Reviewing a Connector Ecosystem",
+   "kind": "lab",
+   "statement": "A tool description is executable text that nobody reviews, delivered by a server nobody vetted, running with credentials nobody scoped.",
+   "respect": 175
+  },
+  {
+   "id": "attenuation-architect",
+   "step": "Delegation That Attenuates",
+   "kind": "lesson",
+   "statement": "Authority must narrow as it passes down a chain of agents, and the default in every system you will inherit is that it widens.",
+   "respect": 155
+  },
+  {
+   "id": "comprehension-designer",
+   "step": "Oversight That Is Not a Reflex",
+   "kind": "drill",
+   "statement": "A human in the loop who approves in three seconds is not oversight; they are a latency cost that legal mistook for a control.",
+   "respect": 160
+  },
+  {
+   "id": "shadow-agent-hunter",
+   "step": "The Agent Inventory Nobody Has",
+   "kind": "field",
+   "statement": "You cannot govern agents you cannot list, and every organisation has more of them than its architecture diagram admits.",
+   "respect": 205
+  },
+  {
+   "id": "coverage-first",
+   "step": "The Agent Inventory Nobody Has",
+   "kind": "field",
+   "statement": "You cannot govern agents you cannot list, and every organisation has more of them than its architecture diagram admits.",
+   "respect": 205
+  },
+  {
+   "id": "honest-augmentation",
+   "step": "Three Places It Works, Three Places It Hurts",
+   "kind": "lesson",
+   "statement": "A language model is excellent at compressing evidence into language and terrible at deciding what is true, so let it write and never let it conclude.",
+   "respect": 130
+  },
+  {
+   "id": "harness-builder",
+   "step": "Detection Authoring With a Test Harness",
+   "kind": "lab",
+   "statement": "A model-drafted detection is a hypothesis; the harness that tests it against real data is the actual deliverable.",
+   "respect": 175
+  },
+  {
+   "id": "replay-proven",
+   "step": "Detection Authoring With a Test Harness",
+   "kind": "lab",
+   "statement": "A model-drafted detection is a hypothesis; the harness that tests it against real data is the actual deliverable.",
+   "respect": 175
+  },
+  {
+   "id": "evidence-gate",
+   "step": "The Alert That Closed Itself",
+   "kind": "drill",
+   "statement": "When an automated conclusion cites evidence that does not exist, the defect is not the model — it is that your pipeline accepted an unverifiable claim.",
+   "respect": 150
+  },
+  {
+   "id": "calibration-sceptic",
+   "step": "The Alert That Closed Itself",
+   "kind": "drill",
+   "statement": "When an automated conclusion cites evidence that does not exist, the defect is not the model — it is that your pipeline accepted an unverifiable claim.",
+   "respect": 150
+  },
+  {
+   "id": "symmetry-reader",
+   "step": "The Same Capability Points Both Ways",
+   "kind": "lesson",
+   "statement": "AI-assisted vulnerability research favours whoever can act on its output fastest, and that is a patching question before it is a research question.",
+   "respect": 155
+  },
+  {
+   "id": "identity-plane-commander",
+   "step": "Containment at Machine Tempo",
+   "kind": "drill",
+   "statement": "A containment plan whose steps assume a human reads a queue is not a plan against an adversary that does not sleep.",
+   "respect": 185
+  },
+  {
+   "id": "pre-authorised",
+   "step": "Containment at Machine Tempo",
+   "kind": "drill",
+   "statement": "A containment plan whose steps assume a human reads a queue is not a plan against an adversary that does not sleep.",
+   "respect": 185
+  },
+  {
+   "id": "eval-architect",
+   "step": "Measure the Tool You Bought",
+   "kind": "field",
+   "statement": "Any AI security capability you cannot measure against labelled ground truth over time is a vendor claim you are storing in production.",
+   "respect": 200
+  },
+  {
+   "id": "drift-watcher",
+   "step": "Measure the Tool You Bought",
+   "kind": "field",
+   "statement": "Any AI security capability you cannot measure against labelled ground truth over time is a vendor claim you are storing in production.",
+   "respect": 200
+  },
+  {
+   "id": "framework-fluent",
+   "step": "The Frameworks You Will Be Held To",
+   "kind": "lesson",
+   "statement": "Map your controls to the frameworks once, properly, and you will spend the next three years answering questions instead of rebuilding evidence.",
+   "respect": 135
+  },
+  {
+   "id": "threshold-keeper",
+   "step": "An Evaluation Is a Control, Not a Report",
+   "kind": "lesson",
+   "statement": "An evaluation only becomes a security control at the moment a result is bound in advance to an action nobody can talk their way out of.",
+   "respect": 150
+  },
+  {
+   "id": "programme-builder",
+   "step": "An Evaluation Is a Control, Not a Report",
+   "kind": "lesson",
+   "statement": "An evaluation only becomes a security control at the moment a result is bound in advance to an action nobody can talk their way out of.",
+   "respect": 150
+  },
+  {
+   "id": "pre-commitment",
+   "step": "Pre-Commitment as a Control",
+   "kind": "construct",
+   "statement": "The purpose of a capability threshold is to make a decision now that your future self, under commercial pressure, will not be able to argue away.",
+   "respect": 140
+  },
+  {
+   "id": "threshold-writer",
+   "step": "Pre-Commitment as a Control",
+   "kind": "construct",
+   "statement": "The purpose of a capability threshold is to make a decision now that your future self, under commercial pressure, will not be able to argue away.",
+   "respect": 140
+  },
+  {
+   "id": "depth-architect",
+   "step": "Alignment and Control Are Different Bets",
+   "kind": "construct",
+   "statement": "Alignment is a bet that the system wants what you want; control is a bet that it does not matter what it wants — a security leader funds the second and hopes for the first.",
+   "respect": 150
+  },
+  {
+   "id": "careful-claimer",
+   "step": "Alignment and Control Are Different Bets",
+   "kind": "construct",
+   "statement": "Alignment is a bet that the system wants what you want; control is a bet that it does not matter what it wants — a security leader funds the second and hopes for the first.",
+   "respect": 150
+  },
+  {
+   "id": "council-of-mind",
+   "step": "The Board Asks How Exposed We Are",
+   "kind": "council",
+   "statement": "A board does not want your risk assessment; it wants to know which decisions are theirs and what happens if they choose wrongly.",
+   "respect": 175
+  },
+  {
+   "id": "decision-asker",
+   "step": "The Board Asks How Exposed We Are",
+   "kind": "council",
+   "statement": "A board does not want your risk assessment; it wants to know which decisions are theirs and what happens if they choose wrongly.",
+   "respect": 175
+  },
+  {
+   "id": "disclosure-diplomat",
+   "step": "The Researcher With a Universal Jailbreak",
+   "kind": "council",
+   "statement": "Disclosure is a relationship under time pressure, and the party that behaves predictably controls the outcome.",
+   "respect": 190
+  },
+  {
+   "id": "safe-harbour",
+   "step": "The Researcher With a Universal Jailbreak",
+   "kind": "council",
+   "statement": "Disclosure is a relationship under time pressure, and the party that behaves predictably controls the outcome.",
+   "respect": 190
+  }
+ ]
+}

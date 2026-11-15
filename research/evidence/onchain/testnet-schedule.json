@@ -1,0 +1,283 @@
+{
+ "net": "testnet",
+ "read": "2026-11-14",
+ "dc": {
+  "identifier": "8vLiDsbJXzJUjHGmgrGMw1VQryLW8Tsc8Mn2PaXq6FBt",
+  "name": null,
+  "owner": {
+   "identifier": "ARJDcyfBJFVvWhVZaX4DhwswABWXjHKDWRnzyNT4CpTa",
+   "aliases": [
+    {
+     "alias": "npeqa-explorer-7294-7864.dash",
+     "status": "ok",
+     "timestamp": "2026-10-26T12:31:22.160Z",
+     "documentId": "2k62yBcYGNrF5STZxSoTuX4hezLc7veGrLoRaJmYEYq5",
+     "contested": false
+    }
+   ]
+  },
+  "schema": "{}",
+  "version": 1,
+  "txHash": "26F26695789791BB0F03614CAA7E7F32BF2B9917ADA3BB3CE0D5C8B76B047484",
+  "timestamp": "2026-10-26T09:21:40.493Z",
+  "isSystem": false,
+  "documentsCount": 0,
+  "tokensCount": 1,
+  "identitiesInteracted": 0,
+  "totalGasUsed": 30104910020,
+  "averageGasUsed": 30104910020,
+  "groups": [
+   {
+    "members": {
+     "7ysNPVoaVZvHWAC7hGn3EmYsbyzizfu8a9Teq3zF6atm": 1,
+     "ARJDcyfBJFVvWhVZaX4DhwswABWXjHKDWRnzyNT4CpTa": 1
+    },
+    "requiredPower": 2
+   }
+  ],
+  "tokens": [
+   {
+    "identifier": "5DunBnakFSFb2y6rSxRvP73xqVNYTDT6fceqzLSL4Ej4",
+    "position": 0,
+    "timestamp": null,
+    "description": "native-platform-explorer token write tests",
+    "localizations": {
+     "en": {
+      "pluralForm": "npetoks",
+      "singularForm": "npetok",
+      "shouldCapitalize": false
+     }
+    },
+    "baseSupply": "100000000000",
+    "totalSupply": "102375000000",
+    "maxSupply": "500000000000000",
+    "owner": {
+     "identifier": "ARJDcyfBJFVvWhVZaX4DhwswABWXjHKDWRnzyNT4CpTa",
+     "aliases": [
+      {
+       "alias": "npeqa-explorer-7294-7864.dash",
+       "status": "ok",
+       "timestamp": "2026-10-26T12:31:22.160Z",
+       "documentId": "2k62yBcYGNrF5STZxSoTuX4hezLc7veGrLoRaJmYEYq5",
+       "contested": false
+      }
+     ]
+    },
+    "mintable": true,
+    "burnable": true,
+    "freezable": true,
+    "unfreezable": true,
+    "destroyable": true,
+    "allowedEmergencyActions": false,
+    "dataContractIdentifier": "8vLiDsbJXzJUjHGmgrGMw1VQryLW8Tsc8Mn2PaXq6FBt",
+    "changeMaxSupply": true,
+    "totalGasUsed": null,
+    "mainGroup": 0,
+    "totalTransitionsCount": null,
+    "totalFreezeTransitionsCount": null,
+    "totalBurnTransitionsCount": null,
+    "decimals": 8,
+    "perpetualDistribution": null,
+    "preProgrammedDistribution": null,
+    "price": null,
+    "prices": null
+   }
+  ],
+  "description": null,
+  "keywords": []
+ },
+ "dec": {
+  "type": 0,
+  "typeString": "DATA_CONTRACT_CREATE",
+  "internalConfig": {
+   "canBeDeleted": false,
+   "readonly": false,
+   "keepsHistory": false,
+   "documentsKeepHistoryContractDefault": false,
+   "documentsMutableContractDefault": true,
+   "documentsCanBeDeletedContractDefault": true,
+   "requiresIdentityDecryptionBoundedKey": null,
+   "requiresIdentityEncryptionBoundedKey": null
+  },
+  "version": 1,
+  "userFeeIncrease": 0,
+  "identityNonce": "3",
+  "dataContractId": "8vLiDsbJXzJUjHGmgrGMw1VQryLW8Tsc8Mn2PaXq6FBt",
+  "ownerId": "ARJDcyfBJFVvWhVZaX4DhwswABWXjHKDWRnzyNT4CpTa",
+  "schema": {},
+  "tokens": [
+   {
+    "position": 0,
+    "tokenId": "5DunBnakFSFb2y6rSxRvP73xqVNYTDT6fceqzLSL4Ej4",
+    "conventions": {
+     "decimals": 8,
+     "localizations": {
+      "en": {
+       "pluralForm": "npetoks",
+       "singularForm": "npetok",
+       "shouldCapitalize": false
+      }
+     }
+    },
+    "conventionsChangeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "baseSupply": "100000000000",
+    "keepsHistory": {
+     "keepsTransferHistory": true,
+     "keepsFreezingHistory": true,
+     "keepsMintingHistory": true,
+     "keepsBurningHistory": true,
+     "keepsDirectPricingHistory": true,
+     "keepsDirectPurchaseHistory": true
+    },
+    "startAsPaused": false,
+    "isAllowedTransferToFrozenBalance": true,
+    "maxSupply": "100000000000000",
+    "maxSupplyChangeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "MainGroup",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "distributionRules": {
+     "perpetualDistribution": {
+      "type": "BlockBasedDistribution",
+      "recipientType": "ContractOwner",
+      "recipientValue": null,
+      "interval": 5,
+      "functionName": "FixedAmount",
+      "functionValue": {
+       "amount": "100000000"
+      }
+     },
+     "preProgrammedDistribution": null,
+     "newTokenDestinationIdentity": "ARJDcyfBJFVvWhVZaX4DhwswABWXjHKDWRnzyNT4CpTa",
+     "mintingAllowChoosingDestination": true
+    },
+    "marketplaceRules": {
+     "tradeMode": "NotTradeable",
+     "tradeModeChangeRules": {
+      "authorizedToMakeChange": {
+       "takerType": "ContractOwner",
+       "taker": null
+      },
+      "adminActionTakers": {
+       "takerType": "ContractOwner",
+       "taker": null
+      },
+      "changingAuthorizedActionTakersToNoOneAllowed": true,
+      "changingAdminActionTakersToNoOneAllowed": true,
+      "selfChangingAdminActionTakersAllowed": true
+     }
+    },
+    "manualMintingRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "manualBurningRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "freezeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "unfreezeRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "destroyFrozenFundsRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "emergencyActionRules": {
+     "authorizedToMakeChange": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "adminActionTakers": {
+      "takerType": "ContractOwner",
+      "taker": null
+     },
+     "changingAuthorizedActionTakersToNoOneAllowed": true,
+     "changingAdminActionTakersToNoOneAllowed": true,
+     "selfChangingAdminActionTakersAllowed": true
+    },
+    "mainControlGroupCanBeModified": {
+     "takerType": "ContractOwner",
+     "taker": null
+    },
+    "mainControlGroup": 0,
+    "description": "native-platform-explorer token write tests"
+   }
+  ],
+  "groups": [
+   {
+    "position": 0
+   }
+  ]
+ }
+}

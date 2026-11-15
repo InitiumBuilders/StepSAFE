@@ -1,0 +1,405 @@
+{
+ "chId": "ch-incident",
+ "chTitle": "THE HOUR THE BUILDING BURNS",
+ "missingAwards": [
+  {
+   "id": "award-first-declaration",
+   "step": "Declaration Is a Decision",
+   "kind": "construct",
+   "statement": "An incident begins when somebody declares it, not when the adversary arrives — and the cost of declaring one you did not need is always lower than the cost of the four-hour hole in your timeline.",
+   "respect": 70
+  },
+  {
+   "id": "award-clock-started",
+   "step": "Declaration Is a Decision",
+   "kind": "construct",
+   "statement": "An incident begins when somebody declares it, not when the adversary arrives — and the cost of declaring one you did not need is always lower than the cost of the four-hour hole in your timeline.",
+   "respect": 70
+  },
+  {
+   "id": "award-command-structure",
+   "step": "Incident Command, Adapted from People Who Run Into Fires",
+   "kind": "lesson",
+   "statement": "The Incident Command System works in cyber for exactly one reason: it separates the person deciding from the person doing, and a crisis destroys anyone who tries to be both.",
+   "respect": 150
+  },
+  {
+   "id": "award-span-of-control",
+   "step": "Incident Command, Adapted from People Who Run Into Fires",
+   "kind": "lesson",
+   "statement": "The Incident Command System works in cyber for exactly one reason: it separates the person deciding from the person doing, and a crisis destroys anyone who tries to be both.",
+   "respect": 150
+  },
+  {
+   "id": "award-first-command",
+   "step": "The Best Engineer Trap",
+   "kind": "drill",
+   "statement": "Putting your deepest expert in command is the most natural and most expensive mistake available to you in the first ten minutes.",
+   "respect": 120
+  },
+  {
+   "id": "award-expert-protected",
+   "step": "The Best Engineer Trap",
+   "kind": "drill",
+   "statement": "Putting your deepest expert in command is the most natural and most expensive mistake available to you in the first ten minutes.",
+   "respect": 120
+  },
+  {
+   "id": "award-single-writer",
+   "step": "One Record, One Writer, One Hand on the System",
+   "kind": "lab",
+   "statement": "Two people editing the truth produces two truths; two people editing production produces an outage inside an incident.",
+   "respect": 165
+  },
+  {
+   "id": "award-tamper-evident-record",
+   "step": "One Record, One Writer, One Hand on the System",
+   "kind": "lab",
+   "statement": "Two people editing the truth produces two truths; two people editing production produces an outage inside an incident.",
+   "respect": 165
+  },
+  {
+   "id": "award-response-opsec",
+   "step": "What the Adversary Learns From You",
+   "kind": "drill",
+   "statement": "Every action you take is telemetry the adversary receives, and the cheapest way to lose an incident is to announce that you have found it.",
+   "respect": 145
+  },
+  {
+   "id": "award-decision-gate",
+   "step": "What the Adversary Learns From You",
+   "kind": "drill",
+   "statement": "Every action you take is telemetry the adversary receives, and the cheapest way to lose an incident is to announce that you have found it.",
+   "respect": 145
+  },
+  {
+   "id": "award-clean-handoff",
+   "step": "The Handoff That Transfers Context, Not Just Credentials",
+   "kind": "lab",
+   "statement": "Most incidents lose more ground at shift change than at any point of adversary action, because context does not fit in a chat message.",
+   "respect": 130
+  },
+  {
+   "id": "award-rotation-discipline",
+   "step": "The Handoff That Transfers Context, Not Just Credentials",
+   "kind": "lab",
+   "statement": "Most incidents lose more ground at shift change than at any point of adversary action, because context does not fit in a chat message.",
+   "respect": 130
+  },
+  {
+   "id": "award-containment-ladder",
+   "step": "The Containment Ladder",
+   "kind": "construct",
+   "statement": "Containment is not one action; it is a ladder of increasingly irreversible options, and you owe the organization the cheapest rung that actually holds.",
+   "respect": 80
+  },
+  {
+   "id": "award-eviction-planner",
+   "step": "Eradicate Now or Watch Longer",
+   "kind": "drill",
+   "statement": "You never find all of the persistence; you decide when your map is good enough, and you decide it with criteria rather than with nerve.",
+   "respect": 160
+  },
+  {
+   "id": "award-tripwire-discipline",
+   "step": "Eradicate Now or Watch Longer",
+   "kind": "drill",
+   "statement": "You never find all of the persistence; you decide when your map is good enough, and you decide it with criteria rather than with nerve.",
+   "respect": 160
+  },
+  {
+   "id": "award-volatile-first",
+   "step": "Volatile First: Acquisition Under a Clock",
+   "kind": "lab",
+   "statement": "Evidence decays in a strict order, and the choices you make in the first twenty minutes determine what you will be able to prove for the next two years.",
+   "respect": 180
+  },
+  {
+   "id": "award-acquisition-runbook",
+   "step": "Volatile First: Acquisition Under a Clock",
+   "kind": "lab",
+   "statement": "Evidence decays in a strict order, and the choices you make in the first twenty minutes determine what you will be able to prove for the next two years.",
+   "respect": 180
+  },
+  {
+   "id": "award-chain-of-custody",
+   "step": "Chain of Custody, and Writing for a Hostile Reader",
+   "kind": "lesson",
+   "statement": "Assume every note you take tonight will be read aloud by someone whose job is to make you look careless, and write accordingly.",
+   "respect": 155
+  },
+  {
+   "id": "award-writes-for-discovery",
+   "step": "Chain of Custody, and Writing for a Hostile Reader",
+   "kind": "lesson",
+   "statement": "Assume every note you take tonight will be read aloud by someone whose job is to make you look careless, and write accordingly.",
+   "respect": 155
+  },
+  {
+   "id": "award-cutover-plan",
+   "step": "Eviction Day: The Coordinated Cutover",
+   "kind": "lesson",
+   "statement": "Eviction succeeds or fails on sequencing, because every action you take removes one capability and warns the adversary about all the others.",
+   "respect": 175
+  },
+  {
+   "id": "award-dependency-mapper",
+   "step": "Eviction Day: The Coordinated Cutover",
+   "kind": "lesson",
+   "statement": "Eviction succeeds or fails on sequencing, because every action you take removes one capability and warns the adversary about all the others.",
+   "respect": 175
+  },
+  {
+   "id": "award-identity-cartographer",
+   "step": "Map Your Identity Blast Radius",
+   "kind": "field",
+   "statement": "You cannot evict from an identity plane you have never enumerated, and almost nobody has enumerated theirs.",
+   "respect": 190
+  },
+  {
+   "id": "award-eviction-runbook",
+   "step": "Map Your Identity Blast Radius",
+   "kind": "field",
+   "statement": "You cannot evict from an identity plane you have never enumerated, and almost nobody has enumerated theirs.",
+   "respect": 190
+  },
+  {
+   "id": "award-extortion-literacy",
+   "step": "The Business on the Other Side",
+   "kind": "lesson",
+   "statement": "You are not negotiating with malware; you are negotiating with a firm that has a pipeline, a margin target and a reputation to protect.",
+   "respect": 110
+  },
+  {
+   "id": "award-parallel-tracks",
+   "step": "The Payment Decision",
+   "kind": "drill",
+   "statement": "The payment question is never answered on its own; it is answered by how well you run the four tracks that make it unnecessary or make it defensible.",
+   "respect": 200
+  },
+  {
+   "id": "award-payment-governance",
+   "step": "The Payment Decision",
+   "kind": "drill",
+   "statement": "The payment question is never answered on its own; it is answered by how well you run the four tracks that make it unnecessary or make it defensible.",
+   "respect": 200
+  },
+  {
+   "id": "award-payment-room",
+   "step": "The Room Where Payment Is Decided",
+   "kind": "council",
+   "statement": "Your job in that room is not to have an opinion about paying; it is to make sure the decision is made by the right people, with the right facts, in a form that survives every later review.",
+   "respect": 185
+  },
+  {
+   "id": "award-sanctions-aware",
+   "step": "The Room Where Payment Is Decided",
+   "kind": "council",
+   "statement": "Your job in that room is not to have an opinion about paying; it is to make sure the decision is made by the right people, with the right facts, in a form that survives every later review.",
+   "respect": 185
+  },
+  {
+   "id": "award-immutability-proven",
+   "step": "Prove the Backups, Do Not Believe Them",
+   "kind": "lab",
+   "statement": "A backup you have not restored is a hypothesis, and immutability you have not attacked is a marketing claim.",
+   "respect": 175
+  },
+  {
+   "id": "award-timed-restore",
+   "step": "Prove the Backups, Do Not Believe Them",
+   "kind": "lab",
+   "statement": "A backup you have not restored is a hypothesis, and immutability you have not attacked is a marketing claim.",
+   "respect": 175
+  },
+  {
+   "id": "award-real-rto",
+   "step": "The Restore-Time Reality Gap",
+   "kind": "lesson",
+   "statement": "Your recovery time objective is a number somebody wrote in a document; your recovery time is a physical property of your data volume, your dependency graph and your staffing.",
+   "respect": 165
+  },
+  {
+   "id": "award-dependency-cycle-breaker",
+   "step": "The Restore-Time Reality Gap",
+   "kind": "lesson",
+   "statement": "Your recovery time objective is a number somebody wrote in a document; your recovery time is a physical property of your data volume, your dependency graph and your staffing.",
+   "respect": 165
+  },
+  {
+   "id": "award-tabletop-designer",
+   "step": "Design a Tabletop That Finds a Real Gap",
+   "kind": "field",
+   "statement": "A tabletop that confirms your plan works was designed to confirm your plan works, and you have spent four hours purchasing reassurance.",
+   "respect": 200
+  },
+  {
+   "id": "award-findings-closed",
+   "step": "Design a Tabletop That Finds a Real Gap",
+   "kind": "field",
+   "statement": "A tabletop that confirms your plan works was designed to confirm your plan works, and you have spent four hours purchasing reassurance.",
+   "respect": 200
+  },
+  {
+   "id": "award-first-hour-briefing",
+   "step": "The First Hour of Executive Communication",
+   "kind": "council",
+   "statement": "In the first hour you have almost no facts and all of your credibility, and how you spend the second determines how much of the first you keep.",
+   "respect": 150
+  },
+  {
+   "id": "award-holds-the-room",
+   "step": "The First Hour of Executive Communication",
+   "kind": "council",
+   "statement": "In the first hour you have almost no facts and all of your credibility, and how you spend the second determines how much of the first you keep.",
+   "respect": 150
+  },
+  {
+   "id": "award-materiality-process",
+   "step": "Four Business Days From When, Exactly",
+   "kind": "drill",
+   "statement": "The clock does not start when you are certain; it starts when a reasonable process would have determined materiality, and a slow process is the violation.",
+   "respect": 190
+  },
+  {
+   "id": "award-disclosure-committee",
+   "step": "Four Business Days From When, Exactly",
+   "kind": "drill",
+   "statement": "The clock does not start when you are certain; it starts when a reasonable process would have determined materiality, and a slow process is the violation.",
+   "respect": 190
+  },
+  {
+   "id": "award-clock-matrix",
+   "step": "Every Clock That Is Running",
+   "kind": "lesson",
+   "statement": "One incident starts many stopwatches at different moments with different definitions of aware, and the shortest one governs your planning.",
+   "respect": 120
+  },
+  {
+   "id": "award-le-relationship",
+   "step": "Calling Law Enforcement, Deliberately",
+   "kind": "lesson",
+   "statement": "Engage law enforcement because you decided the trade is worth it, not because someone in the room said we should probably call the FBI.",
+   "respect": 130
+  },
+  {
+   "id": "award-notification-kit",
+   "step": "Write the Notification Before You Need It",
+   "kind": "field",
+   "statement": "The notification is the only artifact of your incident that most people will ever read, and it will be read as evidence of how you behaved.",
+   "respect": 175
+  },
+  {
+   "id": "award-plain-language",
+   "step": "Write the Notification Before You Need It",
+   "kind": "field",
+   "statement": "The notification is the only artifact of your incident that most people will ever read, and it will be read as evidence of how you behaved.",
+   "respect": 175
+  },
+  {
+   "id": "award-clock-engine",
+   "step": "The Disclosure Clock Engine",
+   "kind": "lab",
+   "statement": "Deadline arithmetic performed by tired humans at three in the morning is a control failure waiting to be discovered by a regulator.",
+   "respect": 160
+  },
+  {
+   "id": "award-obligation-register",
+   "step": "The Disclosure Clock Engine",
+   "kind": "lab",
+   "statement": "Deadline arithmetic performed by tired humans at three in the morning is a control failure waiting to be discovered by a regulator.",
+   "respect": 160
+  },
+  {
+   "id": "award-rotation-modelled",
+   "step": "The Three A.M. Decision",
+   "kind": "drill",
+   "statement": "Fatigue does not announce itself as fatigue; it announces itself as confidence, which is why the tired person cannot be the one deciding whether they are too tired.",
+   "respect": 150
+  },
+  {
+   "id": "award-falsification-test",
+   "step": "The Three A.M. Decision",
+   "kind": "drill",
+   "statement": "Fatigue does not announce itself as fatigue; it announces itself as confidence, which is why the tired person cannot be the one deciding whether they are too tired.",
+   "respect": 150
+  },
+  {
+   "id": "award-causal-analysis",
+   "step": "A Timeline Is Not an Analysis",
+   "kind": "lesson",
+   "statement": "A timeline tells you what happened in what order; a causal analysis tells you which conditions made it possible, and only one of those changes anything.",
+   "respect": 170
+  },
+  {
+   "id": "award-report-people-read",
+   "step": "A Timeline Is Not an Analysis",
+   "kind": "lesson",
+   "statement": "A timeline tells you what happened in what order; a causal analysis tells you which conditions made it possible, and only one of those changes anything.",
+   "respect": 170
+  },
+  {
+   "id": "award-identity-recovery",
+   "step": "Rebuilding an Identity Plane You No Longer Trust",
+   "kind": "lab",
+   "statement": "When the identity provider is compromised, every credential in the organization becomes a claim rather than a fact, including the one you would use to fix it.",
+   "respect": 220
+  },
+  {
+   "id": "award-break-glass-verified",
+   "step": "Rebuilding an Identity Plane You No Longer Trust",
+   "kind": "lab",
+   "statement": "When the identity provider is compromised, every credential in the organization becomes a claim rather than a fact, including the one you would use to fix it.",
+   "respect": 220
+  },
+  {
+   "id": "award-game-day",
+   "step": "Game Days: Breaking Your Own Controls on Purpose",
+   "kind": "lab",
+   "statement": "A control you have never seen fail is a control you have never tested, and the first time it fails should not be the first time it matters.",
+   "respect": 185
+  },
+  {
+   "id": "award-hypothesis-driven",
+   "step": "Game Days: Breaking Your Own Controls on Purpose",
+   "kind": "lab",
+   "statement": "A control you have never seen fail is a control you have never tested, and the first time it fails should not be the first time it matters.",
+   "respect": 185
+  },
+  {
+   "id": "award-trust-rebuilt",
+   "step": "Rebuilding Trust You Cannot Assert",
+   "kind": "council",
+   "statement": "Trust is regained through specificity and demonstrated change, never through reassurance, and the organizations that recover fastest are the ones that said the embarrassing part out loud.",
+   "respect": 180
+  },
+  {
+   "id": "award-board-fluency",
+   "step": "Rebuilding Trust You Cannot Assert",
+   "kind": "council",
+   "statement": "Trust is regained through specificity and demonstrated change, never through reassurance, and the organizations that recover fastest are the ones that said the embarrassing part out loud.",
+   "respect": 180
+  },
+  {
+   "id": "award-incident-command-capstone",
+   "step": "Capstone: Run It, Then Publish It",
+   "kind": "field",
+   "statement": "You do not know whether you can command an incident until you have commanded one under observation and written the document that says how it went.",
+   "respect": 220
+  },
+  {
+   "id": "award-ember-seal",
+   "step": "Capstone: Run It, Then Publish It",
+   "kind": "field",
+   "statement": "You do not know whether you can command an incident until you have commanded one under observation and written the document that says how it went.",
+   "respect": 220
+  },
+  {
+   "id": "award-published-analysis",
+   "step": "Capstone: Run It, Then Publish It",
+   "kind": "field",
+   "statement": "You do not know whether you can command an incident until you have commanded one under observation and written the document that says how it went.",
+   "respect": 220
+  }
+ ]
+}

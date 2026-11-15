@@ -1,0 +1,107 @@
+[
+ {
+  "id": "sim-wash-attestation-ring",
+  "title": "The Weight of a Lie",
+  "org": "Kestrel Commons PBC",
+  "roles": [
+   "u-signal",
+   "u-vault",
+   "u-cartographer",
+   "u-ledger",
+   "u-compass",
+   "u-seva"
+  ],
+  "decisions": [
+   {
+    "id": "drl-wash-01",
+    "prompt": "First move. Where do you spend the next fifteen minutes?",
+    "scene": "You have the alert, a clustering result, and nineteen minutes of context. Nobody outside the integrity team knows yet. The graph is public, so the clock is not yours alone."
+   },
+   {
+    "id": "drl-wash-02",
+    "prompt": "What do you do with the fee-proxy pause, and what do you tell Hollis?",
+    "scene": "The CEO has asked for a pause. Engineering has just established that the pause you can perform is the one that hurts you and not them. The CEO is still on the call."
+   },
+   {
+    "id": "drl-wash-03",
+    "prompt": "Who gets told what, and when?",
+    "scene": "Legal has framed it as a choice between two liabilities. It is not. It is a choice about which facts you are willing to assert and to whom."
+   },
+   {
+    "id": "drl-wash-04",
+    "prompt": "The community wants the list in sixty minutes. What do you publish?",
+    "scene": "The community is right that you know and right that you are slow, and wrong about why. Nine Rivers is still in the cluster and the false-positive review is not finished."
+   },
+   {
+    "id": "drl-wash-05",
+    "prompt": "What happens to Curation Season?",
+    "scene": "Your own growth program subsidised the attack. The person who built it has just told you so honestly and is also going to fight you."
+   },
+   {
+    "id": "drl-wash-06",
+    "prompt": "Where does the funding-concentration heuristic live?",
+    "scene": "You have a working detection heuristic, an honest assessment of its limits, and three very different places to put it."
+   },
+   {
+    "id": "drl-wash-07",
+    "prompt": "The counter-signal is fragmenting across a decoy atom. What do you do?",
+    "scene": "The immune response worked and then hit the wrong target, because atom identity on Intuition is derived from the exact bytes of the atom's data and the ring understood that better than the defenders did."
+   },
+   {
+    "id": "drl-wash-08",
+    "prompt": "What do you send Zuiderveld?",
+    "scene": "A regulated customer is being supervised on the basis of data you provided. The question they are asking is narrower and more sophisticated than the one your comms team is preparing for."
+   },
+   {
+    "id": "drl-wash-09",
+    "prompt": "How do you answer Teodora on treasury signalling?",
+    "scene": "The incident is effectively over. The governance question that outlasts it has just been asked, in a board meeting, by the person the community elected to ask it."
+   }
+  ]
+ },
+ {
+  "id": "sim-permanence-erasure-demand",
+  "title": "Written Forever, By Tuesday",
+  "org": "Solstice Provenance GmbH",
+  "roles": [
+   "u-cartographer",
+   "u-keeper",
+   "u-ledger",
+   "u-anchor",
+   "u-compass",
+   "u-seva"
+  ],
+  "decisions": [
+   {
+    "id": "drl-perm-01",
+    "prompt": "What is your first action?",
+    "scene": "Thirty-four minutes in. You know the shape but not the depth. The public gateway is still serving name-searchable results to anyone on the internet."
+   },
+   {
+    "id": "drl-perm-02",
+    "prompt": "The CMK destruction is staged. What do you do?",
+    "scene": "The plan that formed over two hours has just been invalidated. The CEO has already told the board that cryptographic erasure is the answer. The KMS destruction request is staged and waiting on your approval."
+   },
+   {
+    "id": "drl-perm-03",
+    "prompt": "How do you respond on controller versus processor?",
+    "scene": "The CEO is proposing the position that protects the company, backed by the investor, and it is a defensible reading of the contract. It is also probably wrong, and you are the DPO."
+   },
+   {
+    "id": "drl-perm-04",
+    "prompt": "What do you execute, and how do you characterise it?",
+    "scene": "You now know exactly what the network layer can and cannot do. The CEO wants a sentence for the journalist and the authority that sounds like resolution."
+   },
+   {
+    "id": "drl-perm-05",
+    "prompt": "How do you resolve the collision between erasure and GxP retention?",
+    "scene": "Two legal regimes are now issuing opposite instructions about the same bytes, and both are correct within their own frame."
+   },
+   {
+    "id": "drl-perm-06",
+    "prompt": "How do you handle the DPIA question and ticket 44192 in the filing?",
+    "scene": "The supervisory authority has asked four questions and one of them is about a ticket a tier-one agent closed as a feature request twenty-six days before you knew anything."
+   }
+  ]
+ }
+]

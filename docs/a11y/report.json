@@ -1,0 +1,122 @@
+{
+  "at": "2026-11-15T02:59:45.837Z",
+  "base": "http://localhost:5189",
+  "places": [
+    "Ground",
+    "Chapters",
+    "A chapter",
+    "A step",
+    "The Practice",
+    "A room",
+    "Modux Models",
+    "A model",
+    "StepGuides",
+    "A glossary term",
+    "StudyMode",
+    "Steps",
+    "The unit",
+    "Praxis Profile",
+    "NextSteps",
+    "Seva",
+    "Settings",
+    "The checks",
+    "Read a token",
+    "Own record",
+    "Own record, alone",
+    "Security policy",
+    "Privacy",
+    "Accessibility statement"
+  ],
+  "results": [
+    {
+      "place": "Ground",
+      "criterion": "1.3.1",
+      "what": "heading levels that jump",
+      "count": 1,
+      "examples": [
+        "h3 \"0 of 3 kept\" after h1"
+      ]
+    },
+    {
+      "place": "Chapters",
+      "criterion": "1.3.1",
+      "what": "heading levels that jump",
+      "count": 1,
+      "examples": [
+        "h3 \"Ground\" after h1"
+      ]
+    },
+    {
+      "place": "A step",
+      "criterion": "1.3.1",
+      "what": "heading levels that jump",
+      "count": 1,
+      "examples": [
+        "h4.blk-title \"The one distinction that reorg\" after h1"
+      ]
+    },
+    {
+      "place": "The Practice",
+      "criterion": "1.3.1",
+      "what": "heading levels that jump",
+      "count": 1,
+      "examples": [
+        "h3 \"The Root Is Theirs\" after h1"
+      ]
+    },
+    {
+      "place": "A model",
+      "criterion": "1.3.1",
+      "what": "heading levels that jump",
+      "count": 1,
+      "examples": [
+        "h4.blk-title \"Where it comes from\" after h1"
+      ]
+    },
+    {
+      "place": "StepGuides",
+      "criterion": "1.3.1",
+      "what": "heading levels that jump",
+      "count": 1,
+      "examples": [
+        "h3#gs-systems \"Systems and foundations\" after h1"
+      ]
+    },
+    {
+      "place": "A glossary term",
+      "criterion": "1.3.1",
+      "what": "heading levels that jump",
+      "count": 1,
+      "examples": [
+        "h3#gl-letter-#.gl-letter \"#\" after h1"
+      ]
+    },
+    {
+      "place": "The unit",
+      "criterion": "1.3.1",
+      "what": "heading levels that jump",
+      "count": 1,
+      "examples": [
+        "h4 \"SEVA\" after h1"
+      ]
+    },
+    {
+      "place": "NextSteps",
+      "criterion": "1.3.1",
+      "what": "heading levels that jump",
+      "count": 1,
+      "examples": [
+        "h3 \"Stocks, Flows, and the Bathtub\" after h1"
+      ]
+    },
+    {
+      "place": "Settings",
+      "criterion": "1.3.1",
+      "what": "heading levels that jump",
+      "count": 1,
+      "examples": [
+        "h3 \"Light\" after h1"
+      ]
+    }
+  ]
+}

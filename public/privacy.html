@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy · StepSAFE</title>
+<meta name="description" content="What StepSAFE keeps on your device, what leaves it, and only when you use the feature that needs it." />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0b1030; color: #f4f2ff; font: 18px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 44rem; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+  h1 { font-size: 2.1rem; line-height: 1.2; margin: 0 0 1rem; }
+  h2 { font-size: 1.25rem; margin: 2.25rem 0 0.5rem; color: #d9d2ff; }
+  p, li { color: #e4e0f7; }
+  ul { padding-left: 1.25rem; }
+  li { margin: 0.45rem 0; }
+  b { color: #f4f2ff; }
+  a { color: #b9a6ff; text-underline-offset: 3px; }
+  a:focus-visible { outline: 3px solid #b9a6ff; outline-offset: 3px; border-radius: 4px; }
+  .foot { margin-top: 3rem; font-size: 0.95rem; color: #c9c3e6; }
+  .foot a { display: inline-block; padding: 0.6rem 0; margin-right: 1rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>Privacy</h1>
+<p>StepSAFE has no accounts, no cookies, no analytics and no ads. Nothing about you leaves your device unless you use a feature that needs it, and each of those is listed below.</p>
+
+<h2>What Stays On Your Device</h2>
+<ul>
+  <li>Your record: your steps, pages, chapters, progress and settings, kept in this browser's storage.</li>
+  <li>Keys you paste for Anthropic, ElevenLabs or Davara. By default a key is held in this page's memory for this visit only. If you choose to keep keys on this device, they are sealed with AES-256-GCM under your passphrase. StepSAFE does not keep the passphrase.</li>
+  <li>Field signals you look up, kept for seven days.</li>
+</ul>
+<p>In Settings you can export your record as a file, and reset it to erase your progress on this device. An exported file leaves out your keys and your checks. Your browser's own setting to clear this site's data removes everything the app keeps.</p>
+
+<h2>What Leaves Your Device, And Only When You Use It</h2>
+<ul>
+  <li><b>Seva and Claros, the guides.</b> Your messages and a short summary of your progress go to our server function, which sends them to Anthropic's Claude to write the reply. We do not store them.</li>
+  <li><b>Your own Anthropic key.</b> Your messages go from your browser straight to api.anthropic.com.</li>
+  <li><b>Read aloud with your own ElevenLabs key.</b> The text being read goes from your browser to api.elevenlabs.io.</li>
+  <li><b>Your own Davara instance.</b> If you connect one in Settings, your messages go to that address at davara.dev.</li>
+  <li><b>Dasha.</b> Questions you ask Dasha go to the Dash Support Team's site, www.dashsupport.team, which answers with its own AI.</li>
+  <li><b>Field signals.</b> When you ask for one, the card's public title goes to Wikipedia and Wikimedia, Hacker News search (hn.algolia.com), Stack Exchange and OpenAlex.</li>
+  <li><b>The checks.</b> When you run one, the domain or project you name goes to the domain registries' lookup services (Public Interest Registry, Verisign, Identity Digital, CentralNic and Google Registry), to Google Public DNS (dns.google) and to OpenSSF Scorecard.</li>
+  <li><b>Dash records.</b> Reading a Dash address, a treasury or a token asks Dash Insight (insight.dash.org), the Dash Support Team's site or the Platform Explorer (platform-explorer.pshenmic.dev, and its testnet).</li>
+  <li><b>Known flaws.</b> When you press Ask OSV.dev on <a href="/trust">StepSAFE's own record</a>, the names and versions of the packages StepSAFE ships go to OSV.dev (api.osv.dev), an open database of known flaws in open-source packages. Nothing about you goes with them.</li>
+</ul>
+<p>Each of these services has its own privacy policy.</p>
+
+<h2>Hosting</h2>
+<p>Vercel serves the site, so it sees your IP address when your browser asks for a page, as any web host does. Vercel's own privacy policy covers what it keeps.</p>
+
+<h2>Fonts</h2>
+<p>The app's typefaces are served from this site, so no font request goes to another company. This page and the other policy pages use your device's own fonts.</p>
+
+<h2>Questions</h2>
+<p>Write to <a href="mailto:August@Outlier.Systems">August@Outlier.Systems</a>.</p>
+
+<p class="foot"><a href="/security.html">Report a security problem</a> <a href="/accessibility.html">Accessibility</a> <a href="/">Back to StepSAFE</a></p>
+</main>
+</body>
+</html>

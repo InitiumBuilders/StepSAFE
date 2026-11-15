@@ -1,0 +1,68 @@
+{
+ "_read": "2026-11-10",
+ "_from": "https://dns.google/resolve: github.com CAA, www.github.com A",
+ "github.com CAA": {
+  "Status": 0,
+  "Answer": [
+   {
+    "name": "github.com.",
+    "type": 257,
+    "TTL": 453,
+    "data": "0 issuewild \"sectigo.com\""
+   },
+   {
+    "name": "github.com.",
+    "type": 257,
+    "TTL": 453,
+    "data": "0 issuewild \"digicert.com\""
+   },
+   {
+    "name": "github.com.",
+    "type": 257,
+    "TTL": 453,
+    "data": "0 issuewild \"letsencrypt.org\""
+   },
+   {
+    "name": "github.com.",
+    "type": 257,
+    "TTL": 453,
+    "data": "0 issue \"sectigo.com\""
+   },
+   {
+    "name": "github.com.",
+    "type": 257,
+    "TTL": 453,
+    "data": "0 issue \"letsencrypt.org\""
+   },
+   {
+    "name": "github.com.",
+    "type": 257,
+    "TTL": 453,
+    "data": "0 issue \"digicert.com\""
+   },
+   {
+    "name": "github.com.",
+    "type": 257,
+    "TTL": 453,
+    "data": "0 issue \"globalsign.com\""
+   }
+  ]
+ },
+ "www.github.com A": {
+  "Status": 0,
+  "Answer": [
+   {
+    "name": "www.github.com.",
+    "type": 5,
+    "TTL": 2871,
+    "data": "github.com."
+   },
+   {
+    "name": "github.com.",
+    "type": 1,
+    "TTL": 60,
+    "data": "140.82.113.3"
+   }
+  ]
+ }
+}

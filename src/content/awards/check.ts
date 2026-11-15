@@ -1,0 +1,145 @@
+import type { Award } from "../schema";
+
+/* Dash Defenders: the five checks before launch, two milestones each. The first is measured: every statement
+   answered. The second rests on the project's own answers, which StepSAFE cannot see behind, so it says so
+   and pays no trust; trust here is paid for what the product can measure. Ids follow the engine's pattern,
+   small-<kind>-check and strong-<kind>-held. */
+
+export const AWARDS: Award[] = [
+  {
+    id: "small-treasury-check",
+    tier: "small",
+    name: "The Treasury, Read",
+    glyph: "◇",
+    statement: "You read who can move a treasury, how its keys are held, and how it would come back.",
+    criteria: "Answer all twelve statements of the ten-minute treasury check.",
+    rarity: "common",
+    respect: 20,
+    trust: 1,
+    domain: "Dash Defenders",
+    research: "Chainalysis found that private key compromises were the largest share of crypto stolen in 2024, at 43.8 percent of about 2.2 billion dollars. A treasury loses its funds through its keys more often than through its code, so the keys are where the check begins."
+  },
+  {
+    id: "strong-treasury-held",
+    tier: "strong",
+    name: "Held, By Our Own Account",
+    glyph: "◈",
+    statement: "By the project's own answers, every statement in the treasury check that applies holds for one treasury. It is the project's account until a reviewer has read the record.",
+    criteria: "Finish a treasury check with every statement that applies answered Yes.",
+    rarity: "rare",
+    respect: 60,
+    trust: 0,
+    domain: "Dash Defenders",
+    research: "The FBI attributed the theft of about 1.5 billion dollars from Bybit on or about 21 February 2025 to North Korea. Bybit said its signers approved a transaction from a multisig cold wallet while the signing screen showed the correct address and the transaction underneath had been changed. Multisig kept the keys apart. It could not show the signers what they were really signing."
+  },
+  {
+    id: "small-accounts-check",
+    tier: "small",
+    name: "The Accounts, Read",
+    glyph: "◇",
+    statement: "You read the accounts a project can be taken through: its domain, its sign-ins, and the way back in.",
+    criteria: "Answer all twelve statements of the accounts and access check.",
+    rarity: "common",
+    respect: 20,
+    trust: 1,
+    domain: "Dash Defenders",
+    research: "CISA says the only widely available phishing-resistant authentication is FIDO/WebAuthn, and urges every organization to start planning a move to it, because the FIDO protocol blocks a sign-in to a fake website."
+  },
+  {
+    id: "strong-accounts-held",
+    tier: "strong",
+    name: "Signed In Safely, By Our Own Account",
+    glyph: "◈",
+    statement: "By the project's own answers, every statement in the accounts and access check that applies holds. It is the project's account until a reviewer has read the record.",
+    criteria: "Finish an accounts and access check with every statement that applies answered Yes.",
+    rarity: "rare",
+    respect: 60,
+    trust: 0,
+    domain: "Dash Defenders",
+    research: "In January 2019, CISA's Emergency Directive 19-01 described attackers who took the login of an account that could change DNS records, pointed agency domains at servers they controlled, and obtained valid certificates for them, so visitors saw no warning. The directive's answers were the statements in this check: audit the records, change the passwords, add multi-factor sign-in, and watch Certificate Transparency logs."
+  },
+  {
+    id: "small-code-check",
+    tier: "small",
+    name: "The Code, Read",
+    glyph: "◇",
+    statement: "You read who can change what users run, how a release is signed and taken back, and how a flaw reaches the project.",
+    criteria: "Answer all twelve statements of the code and releases check.",
+    rarity: "common",
+    respect: 20,
+    trust: 1,
+    domain: "Dash Defenders",
+    research: "OpenSSF Scorecard scans more than 1.3 million public repositories every week and publishes the results, so anyone can read how a project's code and releases are protected. Seven of the twelve statements in this check can be read from those results.",
+    researchLinks: [{ label: "OpenSSF Scorecard: README, public data", url: "https://github.com/ossf/scorecard#public-data", checked: "2026-11-05" }]
+  },
+  {
+    id: "strong-code-held",
+    tier: "strong",
+    name: "Shipped Safely, By Our Own Account",
+    glyph: "◈",
+    statement: "By the project's own answers, every statement in the code and releases check that applies holds. It is the project's account until a reviewer has read the record.",
+    criteria: "Finish a code and releases check with every statement that applies answered Yes.",
+    rarity: "rare",
+    respect: 60,
+    trust: 0,
+    domain: "Dash Defenders",
+    research: "GitHub warns that a pull_request_target or workflow_run workflow that checks out an untrusted pull request is privileged: it may have write access to the repository and its secrets, and it can be exploited to take over the repository.",
+    researchLinks: [{ label: "GitHub docs: Secure use reference for Actions", url: "https://docs.github.com/en/actions/reference/security/secure-use", checked: "2026-11-05" }]
+  },
+  {
+    id: "small-people-check",
+    tier: "small",
+    name: "The People, Read",
+    glyph: "◇",
+    statement: "You read how a project's people join and leave, what their devices keep, and what the team does under pressure.",
+    criteria: "Answer all twelve statements of the people and devices check.",
+    rarity: "common",
+    respect: 20,
+    trust: 1,
+    domain: "Dash Defenders",
+    research: "The FBI warned in September 2024 that North Korea runs highly tailored, difficult-to-detect social engineering campaigns against people at crypto companies, and that even those well versed in cybersecurity can be vulnerable.",
+    researchLinks: [{ label: "FBI: North Korea aggressively targeting crypto industry with well-disguised social engineering attacks, September 2024", url: "https://www.ic3.gov/PSA/2024/PSA240903", checked: "2026-11-05" }]
+  },
+  {
+    id: "strong-people-held",
+    tier: "strong",
+    name: "Hard To Fool, By Our Own Account",
+    glyph: "◈",
+    statement: "By the project's own answers, every statement in the people and devices check that applies holds. It is the project's account until a reviewer has read the record.",
+    criteria: "Finish a people and devices check with every statement that applies answered Yes.",
+    rarity: "rare",
+    respect: 60,
+    trust: 0,
+    domain: "Dash Defenders",
+    research: "The FBI reported in July 2025 that U.S.-based facilitators received company laptops on behalf of North Korean IT workers and set up remote access to them, and it advised companies to grant no access to any system until a background check is complete.",
+    researchLinks: [{ label: "FBI: North Korean IT worker threats to U.S. businesses, July 2025", url: "https://www.ic3.gov/PSA/2025/PSA250723-4", checked: "2026-11-05" }]
+  },
+  {
+    id: "small-incident-check",
+    tier: "small",
+    name: "The Worst Day, Read",
+    glyph: "◇",
+    statement: "You read what a project has ready before an incident, what it does in the first hours, and how it comes back.",
+    criteria: "Answer all twelve statements of the worst day check.",
+    rarity: "common",
+    respect: 20,
+    trust: 1,
+    domain: "Dash Defenders",
+    research: "SEAL 911, a volunteer emergency team for crypto hacks, says it has handled more than 3,300 emergencies and protected more than 180 million dollars, with an average response time under 30 minutes. It never asks for a seed phrase, private keys or payment.",
+    researchLinks: [{ label: "SEAL 911: Did you lose crypto?", url: "https://securityalliance.org/sos", checked: "2026-11-05" }]
+  },
+  {
+    id: "strong-incident-held",
+    tier: "strong",
+    name: "Ready For The Worst Day, By Our Own Account",
+    glyph: "◈",
+    statement: "By the project's own answers, every statement in the worst day check that applies holds. It is the project's account until a reviewer has read the record.",
+    criteria: "Finish a worst day check with every statement that applies answered Yes.",
+    rarity: "rare",
+    respect: 60,
+    trust: 0,
+    domain: "Dash Defenders",
+    research: "NIST's incident response guide, SP 800-61 Revision 3 of April 2025, recommends an after-action report that documents the incident, the response and recovery actions taken, and the lessons learned. It treats exercises as a way to prepare staff and outside partners for the next incident.",
+    researchLinks: [{ label: "NIST SP 800-61 Rev. 3, April 2025", url: "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf", checked: "2026-11-05" }]
+  },
+];
