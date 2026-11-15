@@ -25,7 +25,7 @@ The public side of this is StepSAFE's own record at #/trust (views/TrustView.tsx
 
 | Practice | Status | StepSAFE today | Missing |
 | --- | --- | --- | --- |
-| PS.1 Protect All Forms of Code from Unauthorized Access and Tampering | Partly | A private repository under one account. Every push runs the secret scan, and a hit stops it. The public copy's main branch refuses force pushes and deletion, admins included, and GitHub's push protection guards it. | Branch protection on the private repository (GitHub's free plan offers none for private repositories) and signed commits. |
+| PS.1 Protect All Forms of Code from Unauthorized Access and Tampering | Partly | A private repository under one account. Every push runs the secret scan, and a hit stops it. The public copy's main branch refuses force pushes and deletion, admins included (a GitHub ruleset that OpenSSF Scorecard reads), and GitHub's push protection guards it. | Branch protection on the private repository (GitHub's free plan offers none for private repositories) and signed commits. |
 | PS.2 Provide a Mechanism for Verifying Software Release Integrity | Partly | The bill of materials carries a SHA-512 hash for each shipped package. The live site is compared file by file with the gated build after each release. | Published, signed hashes of each release's own files (PS.2.1). |
 | PS.3 Archive and Protect Each Software Release | Partly | Vercel keeps every deployment; each release is a commit. The bill of materials is the provenance for third-party components (PS.3.2). | The integrity data and the gate log archived with each release (PS.3.1). |
 
@@ -62,6 +62,6 @@ In order of what a reviewer weighs most:
    the commit (PO.3.3, PO.4.2, PS.3.1).
 4. **The public copy is live** (github.com/InitiumBuilders/StepSAFE, since 2026-11-14): branch rules, push
    protection, Dependabot alerts, CodeQL and OpenSSF Scorecard run on it, which moved PS.1, PW.7 and RV.1 forward.
-   Scorecard cannot read classic branch protection with its default token. A GitHub ruleset with the same rules
-   would let it, and that switch is August's call.
+   Since 2026-11-15 a GitHub ruleset holds main's rules with no exceptions, and Scorecard reads it: Branch-Protection
+   3 of 10, its first tier. The next tier needs a second person's review on every change.
 5. **Sign releases** (PS.2.1), then an outside design review and penetration test (PW.2, PW.8).

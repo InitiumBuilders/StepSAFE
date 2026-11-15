@@ -616,6 +616,12 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   - CodeQL's other findings: sbom.mjs's author-name regex (output is JSON, no injection; now a split), and three
     false positives on names or test assertions (withoutSecrets() in state.tsx, MIN_PASSPHRASE in probe-keyring, a
     URL in a probe-selfread assertion, rewritten).
+  - On his yes (2026-11-15, after "okay deploy it when you're ready fam", asked which he meant): the public copy's
+    classic branch protection became a GitHub ruleset, "Protect main" (id 27330668): no deletion, no force pushes, no
+    bypass actors, on the default branch. It was created and checked before the classic rule was removed, so main was
+    never unprotected. Scorecard now reads Branch-Protection: 3 of 10, its first tier. The aggregate went from 5.8 to
+    5.5, because a check that could not run is left out of the average and this one now counts. On production
+    /trust's real ask backs 4 answers and settles none of the other 3. The next tier needs a second reviewer.
 - Next: August's choices (the first Dash project, the names, whether Recover grows further, and whether a
   certificate read is worth an SSLMate account and a small server); then the glossary's remaining debt, in this order: entries for the
   words named twice (`npx tsx probe-terms.mts --list` prints them), a decision on the 417 words the corpus names
