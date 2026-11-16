@@ -653,6 +653,16 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     stay at a quarter strength at rest, so the ring of emoji leads. A phone cell gives a name a fourth line. The gate
     caught two of mine: StudyMode's emoji rules belong in study.css (probe-study), and probe-play-walk read a name
     from a strong that now holds the emoji (it reads the name without it now).
+  - Shipped at 16:11 CST on his "deploy it" and "okay ship.sh let's move when you're ready": commit 171d533,
+    deployment unitium-safe-kn9n7sw3y, gate 53 of 53 (15:41 to 16:10), production 101 of 101 files the same.
+  - The first signed release, v2026.11.16 (`mirror.sh --release`, public copy d0190d3): GitHub's Linux build matched
+    the live site, "101 files checked against https://unitium-safe.vercel.app; 0 differ", and the release carries
+    SHA256SUMS, the archive and stepsafe-v2026.11.16.intoto.jsonl. The live index.html, fetched fresh, verifies with
+    `gh attestation verify` against SLSA provenance v1 (103 subjects) signed by release.yml at the tag. Scorecard
+    5.9: Signed-Releases 10, Token-Permissions still 10 (the release job's contents write is a warning only). CodeQL
+    found nothing new.
+  - Then the record caught up: own.ts answers 'signed' Yes and 'provenance' Yes, SSDF PS.2 Met; built and waiting
+    on his word, because the live answer still says releases are not signed.
 - Next: August's choices (the first Dash project, the names, whether Recover grows further, and whether a
   certificate read is worth an SSLMate account and a small server); then the glossary's remaining debt, in this order: entries for the
   words named twice (`npx tsx probe-terms.mts --list` prints them), a decision on the 417 words the corpus names

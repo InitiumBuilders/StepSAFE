@@ -72,7 +72,9 @@ const lit = (p) => p.evaluate(() => ({
   const count = await p.evaluate(() => document.querySelector('.mt-bar-pair')?.textContent || '');
   ok(count === 'Compounds with ' + l1.pairs.length, 'the bar counts what lit: ' + count);
   ok(await p.evaluate(() => document.querySelector('.mt-cell[aria-label^="Leverage points,"]').getAttribute('aria-pressed') === 'true'), 'the chosen cell says it is pressed');
-  ok(await p.evaluate(() => getComputedStyle([...document.querySelectorAll('.mt-cell')].find((b) => !b.classList.contains('on') && !b.classList.contains('pair') && !b.classList.contains('pull'))).opacity) < 0.5, 'the rest go quiet');
+  /* the quiet is a 240ms fade: wait for it to settle (up to three seconds on a loaded machine) instead of reading it once */
+  const quiet = await p.waitForFunction(() => { const b = [...document.querySelectorAll('.mt-cell')].find((x) => !x.classList.contains('on') && !x.classList.contains('pair') && !x.classList.contains('pull')); return b && Number(getComputedStyle(b).opacity) < 0.5; }, null, { timeout: 3000 }).then(() => true, () => false);
+  ok(quiet, 'the rest go quiet');
   await shot(p, 'desk-chosen');
   /* a model that pulls against another marks it */
   const withPull = await p.evaluate(() => {
