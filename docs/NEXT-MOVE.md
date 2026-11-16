@@ -661,8 +661,11 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     `gh attestation verify` against SLSA provenance v1 (103 subjects) signed by release.yml at the tag. Scorecard
     5.9: Signed-Releases 10, Token-Permissions still 10 (the release job's contents write is a warning only). CodeQL
     found nothing new.
-  - Then the record caught up: own.ts answers 'signed' Yes and 'provenance' Yes, SSDF PS.2 Met; built and waiting
-    on his word, because the live answer still says releases are not signed.
+  - Then the record caught up: own.ts answers 'signed' Yes and 'provenance' Yes, SSDF PS.2 Met. Shipped at 16:57 CST
+    on his "okay deploy it crew": commit 84a06df, deployment unitium-safe-o2e39f8gq, gate 53 of 53 (the table walk's
+    quiet check read a 240ms fade mid-way under load; it waits for the fade now and passed alone), production 101 of
+    101 the same. Its signed release v2026.11.16.2 matched the live site again (101 files, 0 differ). On production
+    the Scorecard ask on /trust now backs 6 of the 7 answers it bears on; only the update tool stays open.
 - Next: August's choices (the first Dash project, the names, whether Recover grows further, and whether a
   certificate read is worth an SSLMate account and a small server); then the glossary's remaining debt, in this order: entries for the
   words named twice (`npx tsx probe-terms.mts --list` prints them), a decision on the 417 words the corpus names
