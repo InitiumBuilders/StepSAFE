@@ -44,7 +44,7 @@ for (const width of [390, 1440]) {
     const opens = await p.evaluate(() => [...document.querySelectorAll('.gx-hold-open')].map((b) => Math.round(b.getBoundingClientRect().height)));
     ok(opens.length >= 3 && opens.every((h) => h >= 44), 'each threat opens to what holds it, by a control a finger can press: ' + opens.join(', '));
     await tap(p.locator('.tr-threat').first().locator('.gx-hold-open')); await p.waitForTimeout(500);
-    const list = await p.evaluate(() => [...document.querySelectorAll('.gx-hold-item')].map((r) => ({ name: r.querySelector('strong').textContent, meta: r.querySelector('small').textContent, add: [Math.round(r.querySelector('.tr-add').getBoundingClientRect().width), Math.round(r.querySelector('.tr-add').getBoundingClientRect().height)] })));
+    const list = await p.evaluate(() => [...document.querySelectorAll('.gx-hold-item')].map((r) => ({ name: (() => { const s = r.querySelector('strong').cloneNode(true); s.querySelectorAll('.mt-e').forEach((e) => e.remove()); return s.textContent; })(), meta: r.querySelector('small').textContent, add: [Math.round(r.querySelector('.tr-add').getBoundingClientRect().width), Math.round(r.querySelector('.tr-add').getBoundingClientRect().height)] })));
     ok(list.length >= 1 && list.every((r) => / · costs [1-4]$/.test(r.meta)), 'the structures that hold it are listed, each with what it costs: ' + list.map((r) => r.name + ' (' + r.meta.replace(/^.* · /, '') + ')').join(', '));
     ok(list.every((r) => r.add[0] >= 44 && r.add[1] >= (phone ? 44 : 40)), 'each can be added there');
     const cost = Number(list[0].meta.match(/costs (\d)/)[1]);

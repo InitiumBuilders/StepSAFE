@@ -9,6 +9,7 @@
    The page reads who holds each power. What a token is worth is left to its reader, and the foot of the page says so. */
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { emojiOf } from '../content/modux/emoji';
 import { useS } from '../lib/state';
 import { moduxById } from '../content/registry';
 import { SectionHead, ShareLink } from '../components/bits';
@@ -74,7 +75,7 @@ function Findings({ list }: { list: Finding[] }) {
               <p className="tkr-f-from">Read from <code>{f.field}</code></p>
               {models.length > 0 && (
                 <div className="tkr-f-models">
-                  {models.map(m => <button key={m.id} type="button" className="chip" onClick={() => d({ t: 'route', view: 'modux-model', id: m.id })}>{m.name}</button>)}
+                  {models.map(m => <button key={m.id} type="button" className="chip" onClick={() => d({ t: 'route', view: 'modux-model', id: m.id })}><span className="mt-e gx-e" aria-hidden>{emojiOf(m.id)}</span>{m.name}</button>)}
                 </div>
               )}
             </div>

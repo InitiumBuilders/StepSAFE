@@ -49,6 +49,11 @@ for (const name of PAGES) {
   ok(mail.every((a) => 'mailto:' + a === contact), name + '.html writes to the same address as security.txt');
 }
 
+/* ---- the front door links all three pages and the own record, so a stranger finds them from the first page ---- */
+const lander = read('src/views/Lander.tsx');
+const foot = (lander.match(/<footer className="lx-foot">[\s\S]*?<\/footer>/) || [''])[0];
+for (const href of ['/security.html', '/privacy.html', '/accessibility.html', '/trust']) ok(foot.includes('href="' + href + '"'), 'the front door’s footer links ' + href);
+
 /* ---- the privacy page names every outside service the content security policy allows ---- */
 const vercel = JSON.parse(read('vercel.json') || '{}');
 const csp = String(((vercel.headers || []).flatMap((h: any) => h.headers || []).find((h: any) => /content-security-policy/i.test(h.key)) || {}).value || '');

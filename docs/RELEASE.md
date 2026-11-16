@@ -17,9 +17,12 @@ Written 2026-11-14. StepSAFE's own record (#/trust) says these steps are written
    file for secrets, and pushes to the private repository.
 4. After it: `bash scripts/gate/same-as-dist.sh` (the live site against `dist`, file by file) and
    `bash scripts/gate/live-walks.sh` (the walks and one real read against production).
-5. Then `bash scripts/mirror.sh`: the public copy at github.com/InitiumBuilders/StepSAFE takes the new commit, without
-   research/outlier, after a secret scan and a privacy scan of the copy. Its push runs OpenSSF Scorecard and CodeQL;
-   StepSAFE's own record reads the new Scorecard result once it is published.
+5. Then `bash scripts/mirror.sh --release`: the public copy at github.com/InitiumBuilders/StepSAFE takes the new
+   commit, without research/outlier, after a secret scan and a privacy scan of the copy, and the commit is tagged
+   (v2026.11.16, or v2026.11.16.2 for a second release that day). The push runs OpenSSF Scorecard and CodeQL. The tag
+   runs the Release workflow: it builds the site again from that commit, checks the live site is that build file by
+   file, and only then signs SLSA build provenance through Sigstore and publishes the release. A file that differs
+   stops it, and nothing is signed. After notes or tooling only, `bash scripts/mirror.sh` syncs without a tag.
 
 ## Taking a release back
 

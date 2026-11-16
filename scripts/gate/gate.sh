@@ -29,7 +29,7 @@ for t in nocturne meridian mov; do
   say "probe-wide $t exit $code | $(echo "$out" | tail -2 | tr '\n' ' ' | cut -c1-220)"
   [ $code -ne 0 ] && echo "$out" | tail -25 >> "$LOG.fail"
 done
-for w in probe-tabbar.mjs probe-back.mjs probe-touch.mjs probe-play-walk.mjs probe-check-walk.mjs probe-glossary-walk.mjs probe-glossary-webkit.mjs probe-csp.mjs probe-motrus.mjs probe-dasha.mjs probe-dasha-voice.mjs probe-paxt-walk.mjs probe-read-walk.mjs probe-read-webkit.mjs probe-ownrecord-walk.mjs probe-keys.mjs; do
+for w in probe-tabbar.mjs probe-back.mjs probe-touch.mjs probe-play-walk.mjs probe-check-walk.mjs probe-glossary-walk.mjs probe-glossary-webkit.mjs probe-csp.mjs probe-motrus.mjs probe-dasha.mjs probe-dasha-voice.mjs probe-paxt-walk.mjs probe-read-walk.mjs probe-read-webkit.mjs probe-ownrecord-walk.mjs probe-keys.mjs probe-table-walk.mjs; do
   out=$(node "$w" "$BASE" 2>&1); code=$?
   echo "$out" > "$LOG.out/$w.txt"
   n=$(echo "$out" | grep -c '^ok ')

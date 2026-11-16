@@ -39,7 +39,7 @@ The public side of this is StepSAFE's own record at #/trust (views/TrustView.tsx
 | PW.5 Create Source Code by Adhering to Secure Coding Practices | Partly | TypeScript strict mode; React's escaping for every outside text; no `dangerouslySetInnerHTML`; `innerHTML` only for two fixed templates in the 3D world; the policy refuses inline scripts. | A short written secure coding standard (PW.5.1). |
 | PW.6 Configure the Compilation, Interpreter, and Build Processes | Partly | `npm run build` type-checks before Vite builds; production ships no source maps. | The approved build configuration written down (PW.6.2). |
 | PW.7 Review and/or Analyze Human-Readable Code | Partly | The type check, the secret scan and the content probes run on every build. CodeQL analyzes the public copy on every sync and once a week (scripts/mirror/codeql.yml). | A second person's review. |
-| PW.8 Test Executable Code to Identify Vulnerabilities | Partly | Sixteen walks test the built site in a real browser under its real headers; probe-seva-door attacks the server door; probe-keyring attacks the keyring. | An outside penetration test (PW.8.2). |
+| PW.8 Test Executable Code to Identify Vulnerabilities | Partly | Seventeen walks test the built site in a real browser under its real headers; probe-seva-door attacks the server door; probe-keyring attacks the keyring. | An outside penetration test (PW.8.2). |
 | PW.9 Configure Software to Have Secure Settings by Default | Met | No key is stored by default; sealing needs a passphrase; the headers and policy are strict by default; nothing to sign in to. | |
 
 ## Respond to Vulnerabilities (RV)

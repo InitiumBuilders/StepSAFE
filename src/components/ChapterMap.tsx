@@ -3,17 +3,35 @@
    ring; a sealed one is a faint ring. Along every edge from a chapter that
    has opened its dependents, a signal travels toward them (M6), and the
    chapter you are in the middle of breathes (M8). Click a star to open it.
-   Under reduced motion the map is drawn still. */
+   Under reduced motion the map is drawn still.
+
+   Each act's two chapters stand together, the act named above them, so the map reads as the journey it is: six acts,
+   left to right on a wide screen, and every star carries its chapter's name. */
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { CHAPTERS, ESSENCE_HEX } from '../content/registry';
 import { useS } from '../lib/state';
 import { chapterUnlocked, prereqSatisfied } from '../lib/unlock';
 
-interface Node { id: string; x: number; y: number; hue: string; order: number; title: string; done: boolean; open: boolean; steps: number; total: number }
+interface Node { id: string; x: number; y: number; hue: string; order: number; title: string; lines: string[]; done: boolean; open: boolean; steps: number; total: number }
+interface Act { label: string; x: number; y: number; hue: string }
 interface Edge { from: Node; to: Node; lit: boolean; d: string; len: number }
 
-const PITCH_Y = 112;
+const PITCH_Y = 150;
+/* room above the first row for the acts' names */
+const TOP = 74;
+
+/** a chapter's name in lines short enough for its column, at most three */
+function wrapTitle(t: string, max: number): string[] {
+  const out: string[] = [];
+  let line = '';
+  for (const word of t.split(' ')) {
+    const next = (line + ' ' + word).trim();
+    if (next.length > max && line) { out.push(line); line = word; } else line = next;
+  }
+  if (line) out.push(line);
+  return out.slice(0, 3);
+}
 
 export function ChapterMap() {
   const { s, d } = useS();
@@ -32,17 +50,18 @@ export function ChapterMap() {
     return () => ro.disconnect();
   }, []);
 
-  const { nodes, edges, height, current } = useMemo(() => {
+  const { nodes, edges, acts, height, current } = useMemo(() => {
     const cols = w >= 760 ? 6 : 3;
     const pitchX = (w || 900) / cols;
+    const max = Math.max(10, Math.floor((pitchX - 18) / 7.4));
     const list: Node[] = CHAPTERS.map((c, i) => {
       const pair = Math.floor(i / 2), within = i % 2;
       const col = pair % cols, row = Math.floor(pair / cols) * 2 + within;
       const steps = c.pages.reduce((n, p) => n + p.steps.filter(st => s.completedSteps[st.id]).length, 0);
       const total = c.pages.reduce((n, p) => n + p.steps.length, 0);
       return {
-        id: c.id, order: c.order, title: c.title, hue: ESSENCE_HEX[c.essence] || '#a78bff',
-        x: (col + 0.5) * pitchX + (within ? 16 : -16), y: 44 + row * PITCH_Y,
+        id: c.id, order: c.order, title: c.title, lines: wrapTitle(c.title, max), hue: ESSENCE_HEX[c.essence] || '#a78bff',
+        x: (col + 0.5) * pitchX + (within ? 16 : -16), y: TOP + row * PITCH_Y,
         done: !!s.completedChapters[c.id], open: chapterUnlocked(c, s.completedChapters, s.completedPages),
         steps, total,
       };
@@ -56,10 +75,16 @@ export function ChapterMap() {
       es.push({ from: a, to: b, lit: prereqSatisfied(p, s.completedChapters, s.completedPages), d: `M${a.x},${a.y} Q${mx},${my} ${b.x},${b.y}`, len: Math.hypot(b.x - a.x, b.y - a.y) });
     }
     const rows = Math.ceil(CHAPTERS.length / 2 / cols) * 2;
+    /* an act is a pair of chapters: named once, above its first */
+    const actList: Act[] = [];
+    for (let i = 0; i < CHAPTERS.length; i += 2) {
+      const pair = i / 2, col = pair % cols, block = Math.floor(pair / cols);
+      actList.push({ label: CHAPTERS[i].act, x: (col + 0.5) * pitchX, y: TOP + block * 2 * PITCH_Y - 46, hue: ESSENCE_HEX[CHAPTERS[i].essence] || '#a78bff' });
+    }
     /* the chapter in progress: open, not done, most steps */
     const cur = list.filter(n => n.open && !n.done && n.steps > 0).sort((a, b) => b.steps / b.total - a.steps / a.total)[0]
       || list.find(n => n.open && !n.done) || null;
-    return { nodes: list, edges: es, height: 44 + (rows - 1) * PITCH_Y + 60, current: cur };
+    return { nodes: list, edges: es, acts: actList, height: TOP + (rows - 1) * PITCH_Y + 96, current: cur };
   }, [w, s.completedChapters, s.completedPages, s.completedSteps]);
 
   /* the signals: one light per lit edge whose target is still open, travelling the curve */
@@ -103,6 +128,12 @@ export function ChapterMap() {
             <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
         </defs>
+        {acts.map(a => (
+          <g key={a.label} className="cmap-act" transform={`translate(${a.x},${a.y})`} style={{ ['--hue' as string]: a.hue }}>
+            <text className="cmap-act-name">{a.label}</text>
+            <path d="M-14 9 H14" className="cmap-act-line" />
+          </g>
+        ))}
         {edges.map((e, i) => (
           <path key={i} d={e.d} className={'cmap-edge' + (e.lit ? ' lit' : '')} style={{ ['--hue' as string]: e.to.hue }} />
         ))}
@@ -120,13 +151,16 @@ export function ChapterMap() {
             onMouseEnter={() => setHover(n.id)} onMouseLeave={() => setHover(null)} onFocus={() => setHover(n.id)} onBlur={() => setHover(null)}
             onClick={() => { if (n.open) d({ t: 'route', view: 'chapter', id: n.id }); }}
             onKeyDown={e => { if (n.open && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); d({ t: 'route', view: 'chapter', id: n.id }); } }}>
-            {n.done && <circle r="13" className="cmap-halo" filter="url(#cmap-glow)" />}
-            <circle r="22" className="cmap-hit" />
-            <circle r="9" className="cmap-star" />
+            {n.done && <circle r="16" className="cmap-halo" filter="url(#cmap-glow)" />}
+            <circle r="26" className="cmap-hit" />
+            <circle r="11" className="cmap-star" />
             {n.open && !n.done && n.total > 0 && (
-              <circle r="14" className="cmap-ring" pathLength={100} strokeDasharray={`${Math.round(100 * n.steps / n.total)} 100`} transform="rotate(-90)" />
+              <circle r="17" className="cmap-ring" pathLength={100} strokeDasharray={`${Math.round(100 * n.steps / n.total)} 100`} transform="rotate(-90)" />
             )}
-            <text y="30" className="cmap-num">{String(n.order).padStart(2, '0')}</text>
+            <text y="34" className="cmap-num">{String(n.order).padStart(2, '0')}</text>
+            <text y="52" className="cmap-title">
+              {n.lines.map((l, i) => <tspan key={i} x={0} dy={i ? 15 : 0}>{l}</tspan>)}
+            </text>
           </g>
         ))}
       </svg>

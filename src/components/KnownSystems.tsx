@@ -6,6 +6,7 @@
 
 import React, { useMemo, useState } from 'react';
 import { MODUX_MODELS, moduxById } from '../content/registry';
+import { emojiOf } from '../content/modux/emoji';
 import { NODE_KIND_LABEL } from '../content/modux-schema';
 import { knownGroups, knownById, specFromKnown, buildOwnGauge, systemOf } from '../content/modux/own';
 import { SystemAtlas, LeverageLadder } from './SystemAtlas';
@@ -57,7 +58,7 @@ export function KnownSystems() {
                 <span className="ks-who">{x.systems.join(', ')}</span>
                 {x.models.length > 0 && (
                   <span className="ks-models">
-                    {x.models.map(id => <button key={id} className="mx-chip" onClick={() => d({ t: 'route', view: 'modux-model', id })}>{moduxById(id)?.name || id}</button>)}
+                    {x.models.map(id => <button key={id} className="mx-chip" onClick={() => d({ t: 'route', view: 'modux-model', id })}><span className="mt-e gx-e" aria-hidden>{emojiOf(id)}</span>{moduxById(id)?.name || id}</button>)}
                   </span>
                 )}
               </li>
@@ -77,7 +78,7 @@ export function KnownSystems() {
           <ol className="ks-lever">
             {HARDENING.moves.filter(m => m.first.length > 0 || m.systems.length >= 4).slice(0, 8).map(m => (
               <li key={m.id} className={'v-' + m.verb}>
-                <strong><i className="ks-verb-dot" aria-hidden />{m.name}</strong>
+                <strong><i className="ks-verb-dot" aria-hidden /><span className="mt-e gx-e" aria-hidden>{emojiOf(m.id)}</span>{m.name}</strong>
                 <span>
                   {VERBS.find(v => v.id === m.verb)?.label}. {m.first.length > 0 ? 'The first move in ' + m.first.length + (m.first.length === 1 ? ' system' : ' systems') + ', ' : ''}in the plan for {m.systems.length} of {HARDENING.systems}, adding {m.gain} hours of the stress day on average.
                 </span>
@@ -205,7 +206,7 @@ function KnownDetail({ k }: { k: KnownSystem }) {
               {x.models.length > 0 && (
                 <span className="ks-models">
                   {x.models.map(id => (
-                    <button key={id} className="mx-chip" onClick={() => d({ t: 'route', view: 'modux-model', id })}>{moduxById(id)?.name || id}</button>
+                    <button key={id} className="mx-chip" onClick={() => d({ t: 'route', view: 'modux-model', id })}><span className="mt-e gx-e" aria-hidden>{emojiOf(id)}</span>{moduxById(id)?.name || id}</button>
                   ))}
                 </span>
               )}
@@ -225,7 +226,7 @@ function KnownDetail({ k }: { k: KnownSystem }) {
               const parts = guardsOf([id], gauge.threats).map(p => system.nodes.find(n => n.id === p)?.name || p);
               return (
                 <li key={id} className={'v-' + verb}>
-                  <strong><i className="ks-verb-dot" aria-hidden />{m.name}</strong>
+                  <strong><i className="ks-verb-dot" aria-hidden /><span className="mt-e gx-e" aria-hidden>{emojiOf(m.id)}</span>{m.name}</strong>
                   <span>{VERBS.find(v => v.id === verb)?.label}{parts.length ? '. Holds ' + parts.join(', ') + '.' : '. Cuts a link a failure would travel.'}</span>
                   <button className="mx-chip" onClick={() => d({ t: 'route', view: 'modux-model', id })}>Open</button>
                 </li>

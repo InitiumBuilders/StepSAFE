@@ -384,3 +384,7 @@
   .sg-clock.on i, .sg-map-core .halo, .sg-atlas-key .k-pulse { animation: none; }
   .sg-bar { transition: none; }
 }
+
+/* a structure's card in StudyMode: its emoji above the name, and the reason on the back as a memory hook */
+.sg-emoji { font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif; display: block; font-size: clamp(44px, 9vw, 64px); margin: 4px 0 6px; }
+.sg-emoji-why { margin: 10px 0 0; color: var(--ink-2); font-size: 0.95rem; line-height: 1.5; }

@@ -88,6 +88,38 @@ for (const f of files) {
 }
 
 console.log('models: ' + MODUX_MODELS.length + '/' + CATALOG.length);
+/* the model emoji (content/modux/emoji.ts): one for every model and family, all distinct, each drawn in colour as
+   written, one character with no joined sequence, and nothing newer than Emoji 13, so five-year-old devices draw them */
+{
+  const E = await import('./src/content/modux/emoji');
+  const famKeys = Object.keys(E.FAMILY_EMOJI);
+  for (const m of MODUX_MODELS) if (!E.MODEL_EMOJI[m.id]) p('emoji: ' + m.id + ' has none');
+  for (const id of Object.keys(E.MODEL_EMOJI)) if (!MODUX_MODELS.some(m => m.id === id)) p('emoji: ' + id + ' names no model');
+  for (const f of new Set(MODUX_MODELS.map(m => m.family))) if (!famKeys.includes(f)) p('emoji: the family ' + f + ' has none');
+  const all = [...Object.values(E.MODEL_EMOJI), ...Object.values(E.FAMILY_EMOJI)].map((x: any) => x.e as string);
+  const bare = (x: string) => x.replace(/️/g, '');
+  const seen = new Set<string>();
+  for (const e of all) { if (seen.has(bare(e))) p('emoji: ' + e + ' is used twice'); seen.add(bare(e)); }
+  const NEW = (cp: number) => (cp >= 0x1FA7B && cp <= 0x1FA7F) || (cp >= 0x1FAA9 && cp <= 0x1FAAF) || (cp >= 0x1FAB7 && cp <= 0x1FABF) || (cp >= 0x1FAC3 && cp <= 0x1FACF) || (cp >= 0x1FAD7 && cp <= 0x1FAFF) || (cp >= 0x1F6DD && cp <= 0x1F6DF) || cp === 0x1F7F0;
+  for (const e of all) {
+    const cps = [...e].map(c => c.codePointAt(0)!);
+    if (cps.includes(0x200D)) p('emoji: ' + e + ' is a joined sequence');
+    if (cps.some(NEW)) p('emoji: ' + e + ' is newer than Emoji 13');
+    if (!(/^\p{Emoji_Presentation}$/u.test(e) || /^\p{Extended_Pictographic}️$/u.test(e))) p('emoji: ' + e + ' is not drawn in colour as written (U+' + cps.map(c => c.toString(16)).join(' U+') + ')');
+  }
+  for (const [id, x] of Object.entries(E.MODEL_EMOJI) as [string, any][]) if (!/^[A-Z].{20,110}\.$/.test(x.why)) p('emoji: the reason for ' + id + ' is not one sentence of 20 to 110 characters');
+  if (E.modelByEmoji('🛁') !== 'mm-systems-stock-and-flow' || E.modelByEmoji('⚖') !== 'mm-chain-credible-neutrality' || E.modelByEmoji('⚖️') !== 'mm-chain-credible-neutrality' || E.modelByEmoji('hello') !== null) p('emoji: finding a model by its emoji, with or without the colour selector, is off');
+  /* the structure of the day (Ground): every model once in a cycle of the catalog's length, a new family each day */
+  {
+    const n = MODUX_MODELS.length, days: string[] = [], fams: string[] = [];
+    for (let i = 0; i < n; i++) { const m = E.modelOfTheDay(MODUX_MODELS, new Date(2026, 0, 1 + i)); days.push(m?.id || ''); fams.push(m?.family || ''); }
+    if (new Set(days).size !== n) p('the structure of the day repeats within ' + n + ' days: ' + new Set(days).size + ' distinct');
+    if (fams.some((f, i) => i > 0 && f === fams[i - 1])) p('the structure of the day stays in one family two days running');
+    const a = E.modelOfTheDay(MODUX_MODELS, new Date(2026, 10, 16, 1)), b = E.modelOfTheDay(MODUX_MODELS, new Date(2026, 10, 16, 23));
+    if (!a || a.id !== b?.id) p('the structure of the day changes within one day');
+  }
+  console.log('emoji: ' + Object.keys(E.MODEL_EMOJI).length + ' models, ' + famKeys.length + ' families, ' + seen.size + ' distinct');
+}
 console.log('per family: ' + Object.entries(perFamily).map(([k, v]) => k + '=' + v).join(' '));
 console.log('links: ' + links + ' broken: ' + broken);
 console.log('stacks: ' + STACKS.length + ' courses: ' + COURSES.length + ' pages: ' + COURSES.reduce((n, c) => n + c.pages.length, 0));

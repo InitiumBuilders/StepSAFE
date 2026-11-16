@@ -5,6 +5,7 @@ import './styles/tokens.css';
 import './styles/base.css';
 import './styles/future.css';
 import './styles/modux.css';
+import './styles/modeltable.css';
 import './styles/gauge.css';
 import './styles/world.css';
 import './styles/profile.css';

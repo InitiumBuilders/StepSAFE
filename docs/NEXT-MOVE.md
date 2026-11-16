@@ -622,6 +622,37 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     never unprotected. Scorecard now reads Branch-Protection: 3 of 10, its first tier. The aggregate went from 5.8 to
     5.5, because a check that could not run is left out of the average and this one now counts. On production
     /trust's real ask backs 4 answers and settles none of the other 3. The next tier needs a second reviewer.
+- 2026-11-16, on "and then move" and then "Then move, bigger more significant updates than that. Like visual
+  overhauls and improvements." with "Maybe even using or creating an emoji database of systems models with certain
+  emojis. or like a directory of models within emojis. if you want.":
+  - The front door: its footer links Security, Privacy, Accessibility and StepSAFE's own record (probe-trust holds
+    it). The hero's way in starts rising with the second line (1.25 s in, over 0.9 s): seen at about 1.4 s on the
+    build, where production showed it at 2.6 to 3.9 s.
+  - Same commit, same bytes: offline-manifest.json is sorted and carries no build time. Two builds in a row, and a
+    build from the public copy's files (no research/outlier), match the gated build file for file.
+  - Signed releases, ready and not run yet: scripts/mirror/release.yml and `mirror.sh --release`. A tag rebuilds the
+    site on GitHub, checks every file against the live site, and only then signs SLSA provenance through Sigstore for
+    the archive and every file, and publishes SHA256SUMS, the archive and the .intoto.jsonl. The first run follows
+    the next ship; if GitHub's Linux build differs from this machine's, it stops before signing. The /trust answers
+    on signing and provenance change only after a release exists.
+  - The emoji: content/modux/emoji.ts gives each of the 96 models and 12 families one emoji and a one-line reason
+    drawn from its statement (Emoji 13 or older, no joined sequences, all distinct; probe-modux holds them). The
+    model table (components/ModelTable.tsx) is the Models tab's default: twelve families by eight, bedrock at the
+    base of each column, a choice lighting its partners (either one naming the other) and marking conflicts, a bar
+    that stays in view, Find by name or emoji, arrows, Enter and Escape. Enter in Find had chosen the model and then
+    clicked it off again, through the key's own press on the focused cell; fixed. The emoji also sit on the list
+    cards, the stacks (a row of emoji), the web (emoji discs at full size, with the side families named outside the
+    ring), the model pages (by the title, the reason under the statement), Find, the gauge's stack builder, the
+    stack page, StudyMode's structure cards (emoji on the front, reason on the back), known systems, the checks and
+    the token reader. probe-table-walk.mjs walks the table, in the gate (seventeen walks) and the live walks.
+  - Systems maps: the atlas shows each hardening point's model emoji beside its day, and part names carry a halo in
+    the map's ground where lines pass. The chapter map names each act above its two chapters and each chapter under
+    its star, with the same halo.
+  - On his "keep moving": Ground carries the structure of the day (modelOfTheDay in emoji.ts: a stride of 37 through
+    the catalog, every model once in 96 days, a new family each day; probe-modux holds it). The web's connections
+    stay at a quarter strength at rest, so the ring of emoji leads. A phone cell gives a name a fourth line. The gate
+    caught two of mine: StudyMode's emoji rules belong in study.css (probe-study), and probe-play-walk read a name
+    from a strong that now holds the emoji (it reads the name without it now).
 - Next: August's choices (the first Dash project, the names, whether Recover grows further, and whether a
   certificate read is worth an SSLMate account and a small server); then the glossary's remaining debt, in this order: entries for the
   words named twice (`npx tsx probe-terms.mts --list` prints them), a decision on the 417 words the corpus names

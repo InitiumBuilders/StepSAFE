@@ -9,6 +9,7 @@
    answered by a tap or a key. */
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { emojiOf } from '../content/modux/emoji';
 import type { CheckAnswer, CheckItem, CheckKind } from '../content/check/types';
 import { CHECKS, checkKind, isCheckKind } from '../content/check';
 import { csfName } from '../content/check/csf';
@@ -562,7 +563,7 @@ function CheckRun({ kind }: { kind: CheckKind }) {
                     <span className="label">The move</span>
                     <p>{item.move}</p>
                     <div className="ck-models">
-                      {item.models.map(m => <button key={m} type="button" className="chip" onClick={() => d({ t: 'route', view: 'modux-model', id: m })}>{modelName(m)}</button>)}
+                      {item.models.map(m => <button key={m} type="button" className="chip" onClick={() => d({ t: 'route', view: 'modux-model', id: m })}><span className="mt-e gx-e" aria-hidden>{emojiOf(m)}</span>{modelName(m)}</button>)}
                     </div>
                     {lessons.length > 0 && (
                       <div className="ck-learn">

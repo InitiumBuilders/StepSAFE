@@ -1,0 +1,134 @@
+/* THE MODEL TABLE (components/ModelTable.tsx). Every class carries the mt- prefix. Twelve families as columns, each
+   in its own hue; a cell is a squircle tinted by its family, the emoji large, the name under it, and four marks for
+   how far the structure has been proven. The chosen model lifts; the ones it compounds with take a ring of light in
+   the order its record names them; the ones it pulls against take a broken ring. The panel stays in view above the
+   table. Transform and opacity carry the motion; with reduced motion there is none. */
+
+.mt { --gap: 6px; margin-bottom: var(--s5); }
+.mt-e { font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif; font-style: normal; line-height: 1; }
+.mt-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+
+/* ---------- find, the key, and the bar ---------- */
+.mt-top { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-bottom: 10px; }
+.mt-find { display: block; flex: 0 1 280px; }
+.mt-find input {
+  width: 100%; min-height: 44px; padding: 10px 14px; border: 0; border-radius: 14px; corner-shape: superellipse(2.15);
+  background: rgba(255, 255, 255, 0.07); color: var(--ink); font-size: 15px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.mt-find input::placeholder { color: var(--ink-2); }
+.mt-find input:focus-visible { outline: 2px solid var(--ink-accent, #a78bff); outline-offset: 2px; }
+.mt-find-n { font: 600 13px var(--font-display); color: var(--ink); }
+.mt-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-left: auto; font: 500 12.5px var(--font-display); color: var(--ink-2); }
+.mt-legend > span { display: inline-flex; align-items: center; gap: 7px; }
+
+/* the bar is opaque and stays at the top while the table scrolls under it */
+.mt-bar {
+  --hue: #a78bff;
+  position: sticky; top: 8px; z-index: 3; display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; gap: 16px; align-items: center;
+  min-height: 92px; margin-bottom: 14px; padding: 12px 16px 12px 18px; border-radius: 22px; corner-shape: superellipse(2.15);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--hue) 18%, #0d1230), color-mix(in srgb, var(--hue) 9%, #0a0e26));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 0 1px color-mix(in srgb, var(--hue) 36%, transparent), 0 18px 34px -16px rgba(0, 0, 0, 0.9), 0 0 40px -22px var(--hue);
+  transition: background 240ms var(--ease), box-shadow 240ms var(--ease);
+}
+.mt-bar > .mt-bar-text:only-child { grid-column: 1 / -1; }
+.mt-bar-e { font-size: 46px; width: 54px; text-align: center; filter: drop-shadow(0 6px 16px color-mix(in srgb, var(--hue) 50%, transparent)); }
+.mt-bar-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.mt-bar-meta { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; font: 600 12.5px var(--font-display); color: var(--ink-label); }
+.mt-bar-meta .mt-e { font-size: 14px; }
+.mt-bar-name { font: 600 clamp(1.1rem, 1.6vw, 1.3rem)/1.2 var(--font-display); letter-spacing: -0.01em; color: var(--ink); }
+.mt-bar-why { color: var(--ink); line-height: 1.45; max-width: 60em; }
+.mt-bar-links { display: flex; flex-direction: column; gap: 4px; font: 600 12.5px var(--font-display); white-space: nowrap; }
+.mt-bar-pair { color: var(--ink); }
+.mt-bar-pair::before { content: ''; display: inline-block; width: 10px; height: 10px; margin-right: 7px; border-radius: 4px; box-shadow: inset 0 0 0 2px var(--hue); vertical-align: -1px; }
+.mt-bar-pull { color: var(--ink-alarm, #f6a58f); }
+.mt-bar-pull::before { content: ''; display: inline-block; width: 10px; height: 10px; margin-right: 7px; border-radius: 4px; outline: 2px dashed currentColor; outline-offset: -2px; vertical-align: -1px; }
+.mt-bar-act { display: flex; gap: 8px; }
+.mt-bar-act .btn { min-height: 44px; white-space: nowrap; }
+
+/* ---------- the four marks ---------- */
+.mt-marks { display: inline-flex; gap: 3px; }
+.mt-marks i { display: block; width: 7px; height: 3px; border-radius: 2px; background: color-mix(in srgb, var(--ink) 18%, transparent); }
+.mt-marks i.on { background: var(--hue, var(--ink-accent)); }
+
+/* ---------- the table ---------- */
+.mt-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap); }
+.mt-col { display: grid; grid-template-rows: auto; grid-auto-rows: 1fr; gap: var(--gap); min-width: 0; }
+/* a fixed height for three lines of a family's name, set at the base so every column's first cell starts level */
+.mt-head { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 4px; padding: 6px 2px 6px; height: 92px; text-align: center; }
+.mt-head-e { font-size: 22px; }
+.mt-head-n { font: 600 12px/1.2 var(--font-display); color: var(--ink-label); overflow-wrap: normal; text-wrap: balance; }
+.mt-head::after { content: ''; display: block; width: 26px; height: 3px; margin-top: 4px; border-radius: 2px; background: var(--hue); opacity: 0.85; }
+
+.mt-cell {
+  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  min-height: 106px; padding: 10px 4px 9px; border: 0; border-radius: 16px; corner-shape: superellipse(2.15);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--hue) 13%, rgba(255, 255, 255, 0.03)), color-mix(in srgb, var(--hue) 6%, rgba(255, 255, 255, 0.015)));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  color: var(--ink); cursor: pointer; text-align: center; font: inherit;
+  transition: transform 240ms var(--ease), opacity 240ms var(--ease), box-shadow 240ms var(--ease), background 240ms var(--ease);
+}
+.mt-cell-e { font-size: clamp(22px, 2vw, 30px); transition: transform 240ms var(--ease); }
+.mt-cell-n {
+  font: 600 12px/1.2 var(--font-display); color: var(--ink-2); max-width: 100%; padding: 0 2px;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word;
+}
+.mt-cell:hover { background: linear-gradient(180deg, color-mix(in srgb, var(--hue) 22%, rgba(255, 255, 255, 0.04)), color-mix(in srgb, var(--hue) 10%, transparent)); }
+.mt-cell:hover .mt-cell-e { transform: scale(1.12); }
+.mt-cell:focus-visible { outline: 2px solid var(--hue); outline-offset: 2px; }
+
+/* the chosen model, the ones it compounds with, the ones it pulls against, and the rest going quiet */
+.mt-cell.on { transform: translateY(-3px); z-index: 1; box-shadow: inset 0 0 0 2px var(--hue), 0 14px 30px -14px color-mix(in srgb, var(--hue) 80%, transparent); background: color-mix(in srgb, var(--hue) 30%, rgba(10, 14, 38, 0.9)); }
+.mt-cell.on .mt-cell-e { transform: scale(1.18); }
+.mt-cell.on .mt-cell-n, .mt-cell.pair .mt-cell-n { color: var(--ink); }
+.mt-cell.pair { box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--hue) 85%, white 15%), 0 0 22px -8px var(--hue); background: color-mix(in srgb, var(--hue) 24%, rgba(10, 14, 38, 0.85)); transition-delay: calc(var(--k, 0) * 55ms); }
+.mt-cell.pull { outline: 2px dashed color-mix(in srgb, var(--ink-alarm, #f6a58f) 85%, transparent); outline-offset: -3px; }
+.mt-focused .mt-cell:not(.on):not(.pair):not(.pull) { opacity: 0.34; }
+.mt-finding .mt-cell:not(.hit) { opacity: 0.26; }
+.mt-finding .mt-cell.hit { box-shadow: inset 0 0 0 2px var(--hue); }
+
+/* ---------- Meridian: light glass, the same hues ---------- */
+:root[data-theme='meridian'] .mt-bar { background: linear-gradient(180deg, color-mix(in srgb, var(--hue) 12%, #ffffff), color-mix(in srgb, var(--hue) 5%, #f7f6fb)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px color-mix(in srgb, var(--hue) 30%, transparent), 0 16px 30px -18px rgba(16, 25, 21, 0.35); }
+:root[data-theme='meridian'] .mt-cell { background: linear-gradient(180deg, color-mix(in srgb, var(--hue) 14%, #ffffff), color-mix(in srgb, var(--hue) 7%, #fbfaff)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 1px 2px rgba(16, 25, 21, 0.08); }
+:root[data-theme='meridian'] .mt-cell.on, :root[data-theme='meridian'] .mt-cell.pair { background: color-mix(in srgb, var(--hue) 26%, #ffffff); }
+:root[data-theme='meridian'] .mt-find input { background: var(--panel-2); }
+:root[data-theme='meridian'] .mt-marks i { background: rgba(16, 25, 21, 0.16); }
+:root[data-theme='meridian'] .mt-marks i.on { background: color-mix(in srgb, var(--hue, #7c4dff) 80%, #10191a); }
+
+/* ---------- narrower: the families wrap six, then four, across ---------- */
+@media (max-width: 1180px) {
+  .mt-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); row-gap: 18px; }
+}
+/* ---------- a phone: each family a block, four models across; the panel stays at the top ---------- */
+@media (max-width: 760px) {
+  .mt-legend { margin-left: 0; }
+  .mt-find { flex: 1 1 100%; }
+  .mt-bar { top: 0; grid-template-columns: auto minmax(0, 1fr); gap: 10px 12px; min-height: 0; padding: 12px; margin: 0 -2px 12px; }
+  .mt-bar-e { font-size: 36px; width: 42px; }
+  .mt-bar-why { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 0.95rem; }
+  .mt-bar-idle .mt-bar-why { display: block; overflow: visible; }
+  .mt-bar-links { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; gap: 4px 14px; }
+  .mt-bar-act { grid-column: 1 / -1; }
+  .mt-bar-act .btn { flex: 1; }
+  .mt-grid { grid-template-columns: minmax(0, 1fr); row-gap: 16px; }
+  .mt-col { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: auto; }
+  .mt-head { grid-column: 1 / -1; flex-direction: row; justify-content: flex-start; gap: 8px; height: auto; padding: 4px 2px; text-align: left; }
+  .mt-head::after { margin: 0 0 0 auto; }
+  .mt-cell { min-height: 96px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mt-cell, .mt-cell-e, .mt-bar { transition: none; }
+  .mt-cell.on, .mt-cell:hover .mt-cell-e, .mt-cell.on .mt-cell-e { transform: none; }
+}
+
+/* Find (components/Palette.tsx): a structure's emoji before its name */
+.pal-e { font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif; margin-right: 7px; }
+.gx-e { font-size: 1.05em; margin-right: 7px; }
+/* Ground: the structure of the day, its emoji leading the row */
+.watch-model { flex-wrap: nowrap; }
+.watch-model > span:nth-child(2) { flex: 1; }
+.watch-model-e { font-size: 34px; flex: none; width: 42px; text-align: center; }
+.watch-model em { font-style: normal; }
+@media (max-width: 420px) { .watch-model { flex-wrap: wrap; } }
+/* a phone's narrow cells give a model's name a fourth line before it is cut */
+@media (max-width: 760px) { .mt-cell-n { -webkit-line-clamp: 4; } .mt-cell { min-height: 108px; } }

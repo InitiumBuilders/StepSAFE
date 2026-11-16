@@ -13,6 +13,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { MODUX_MODELS, MODUX_CATALOG, ESSENCE_HEX } from '../content/registry';
 import { FAMILY_LABEL, FAMILY_HUE, type ModuxFamily } from '../content/modux-schema';
 import { useS } from '../lib/state';
+import { emojiOf } from '../content/modux/emoji';
 
 const FULL = 820;
 const FAMILIES = Object.keys(FAMILY_LABEL) as ModuxFamily[];
@@ -27,10 +28,11 @@ export function ModuxWeb({ family }: { family: ModuxFamily | 'all' }) {
 
   const boxRef = useRef<HTMLDivElement | null>(null);
   const [size, setSize] = useState(FULL);
+  const [boxW, setBoxW] = useState(FULL);
   useEffect(() => {
     const el = boxRef.current;
     if (!el) return;
-    const set = () => setSize(Math.round(Math.min(FULL, Math.max(260, el.clientWidth))));
+    const set = () => { setSize(Math.round(Math.min(FULL, Math.max(260, el.clientWidth)))); setBoxW(el.clientWidth); };
     set();
     const ro = new ResizeObserver(set);
     ro.observe(el);
@@ -42,21 +44,28 @@ export function ModuxWeb({ family }: { family: ModuxFamily | 'all' }) {
   const R_NODE = named ? 318 * k : C - 12;
   const R_LABEL = 372 * k;
   const dot = named ? 7 : Math.max(3.4, 7 * k + 1);
+  /* each family's models spread over most of its arc; at full size a model is its emoji (content/modux/emoji.ts) in a
+     disc ringed with its family's hue, sized to the space between neighbours */
+  const SPREAD = 0.84;
+  const pitch = (((Math.PI * 2) / FAMILIES.length) * SPREAD / 7) * R_NODE;
+  const em = Math.min(20, pitch);
+  /* with room beside the ring, the families on its left and right are named outside it, anchored away from the nodes */
+  const side = named && boxW >= size + 220 ? 110 : 0;
 
   const nodes = useMemo(() => {
     const out: { id: string; name: string; family: ModuxFamily; x: number; y: number; a: number }[] = [];
     const span = (Math.PI * 2) / FAMILIES.length;
     FAMILIES.forEach((f, fi) => {
       const members = MODUX_CATALOG.filter(m => m.family === f);
-      const start = fi * span - Math.PI / 2 + span * 0.12;
-      const step = (span * 0.76) / Math.max(1, members.length - 1);
+      const start = fi * span - Math.PI / 2 + span * (1 - SPREAD) / 2;
+      const step = (span * SPREAD) / Math.max(1, members.length - 1);
       members.forEach((m, i) => {
         const a = start + step * i;
         out.push({ id: m.id, name: m.name, family: f, a, x: C + Math.cos(a) * R_NODE, y: C + Math.sin(a) * R_NODE });
       });
     });
     return out;
-  }, [C, R_NODE]);
+  }, [C, R_NODE, SPREAD]);
 
   const pos = useMemo(() => {
     const p: Record<string, { x: number; y: number }> = {};
@@ -101,17 +110,20 @@ export function ModuxWeb({ family }: { family: ModuxFamily | 'all' }) {
 
   return (
     <div className="mx-web-wrap" ref={boxRef}>
-      <svg className="mx-web" viewBox={`0 0 ${size} ${size}`} role="img" onPointerDown={touched}
+      <svg className="mx-web" viewBox={`${-side} 0 ${size + side * 2} ${size}`} style={{ maxWidth: size + side * 2, marginInline: 'auto' }} role="img" onPointerDown={touched}
         aria-label="The Modux web: which security structures compound with which">
         <circle cx={C} cy={C} r={R_NODE} fill="none" stroke="rgba(216,226,255,0.08)" strokeWidth={1} />
 
         {named && FAMILIES.map((f, fi) => {
           const span = (Math.PI * 2) / FAMILIES.length;
           const a = fi * span - Math.PI / 2 + span * 0.5;
-          const x = C + Math.cos(a) * R_LABEL, y = C + Math.sin(a) * R_LABEL;
+          const cos = Math.cos(a);
+          const beside = side > 0 && Math.abs(cos) > 0.35;
+          const r = beside ? R_NODE + em + 14 : R_LABEL;
+          const x = C + cos * r, y = C + Math.sin(a) * r;
           const dim = family !== 'all' && family !== f;
           return (
-            <text key={f} x={x} y={y} textAnchor="middle" className="mx-web-family"
+            <text key={f} x={x} y={y} textAnchor={beside ? (cos > 0 ? 'start' : 'end') : 'middle'} dominantBaseline="central" className="mx-web-family"
               opacity={dim ? 0.35 : 1} style={{ fill: ESSENCE_HEX[FAMILY_HUE[f]] }}>
               {FAMILY_LABEL[f]}
             </text>
@@ -133,7 +145,8 @@ export function ModuxWeb({ family }: { family: ModuxFamily | 'all' }) {
               fill="none"
               stroke={touchesFocus ? hue : 'rgba(216,226,255,0.22)'}
               strokeWidth={touchesFocus ? 2.2 : 1}
-              opacity={focus ? (touchesFocus ? 0.95 : 0.08) : 0.55}
+              /* at rest the connections stay quiet under the ring of models; a model in focus lights its own */
+              opacity={focus ? (touchesFocus ? 0.95 : 0.06) : 0.24}
               style={{ transition: 'opacity 220ms, stroke 220ms' }}
             />
           );
@@ -154,9 +167,19 @@ export function ModuxWeb({ family }: { family: ModuxFamily | 'all' }) {
               onClick={() => { if (!touch.current && has) open(n.id); }}
               onKeyDown={e => { if ((e.key === 'Enter' || e.key === ' ') && has) { e.preventDefault(); open(n.id); } }}
               style={{ cursor: has ? 'pointer' : 'default', transition: 'opacity 220ms' }}>
-              <circle cx={n.x} cy={n.y} r={isFocus ? dot * 1.6 : dot}
-                fill={has ? hue : 'rgba(216,226,255,0.18)'}
-                style={{ filter: isFocus ? `drop-shadow(0 0 14px ${hue})` : has ? `drop-shadow(0 0 5px ${hue})` : 'none', transition: 'r 200ms' }} />
+              {named ? (
+                <>
+                  <circle className="mx-web-disc" cx={n.x} cy={n.y} r={isFocus ? em * 0.98 : em * 0.62}
+                    stroke={has ? hue : 'rgba(216,226,255,0.2)'} strokeWidth={isFocus ? 2.2 : 1.3}
+                    style={{ filter: isFocus ? `drop-shadow(0 0 12px ${hue})` : 'none', transition: 'r 200ms' }} />
+                  <text x={n.x} y={n.y} textAnchor="middle" dominantBaseline="central" className="mx-web-e"
+                    fontSize={isFocus ? em * 1.25 : em * 0.82}>{emojiOf(n.id)}</text>
+                </>
+              ) : (
+                <circle cx={n.x} cy={n.y} r={isFocus ? dot * 1.6 : dot}
+                  fill={has ? hue : 'rgba(216,226,255,0.18)'}
+                  style={{ filter: isFocus ? `drop-shadow(0 0 14px ${hue})` : has ? `drop-shadow(0 0 5px ${hue})` : 'none', transition: 'r 200ms' }} />
+              )}
             </g>
           );
         })}
@@ -173,7 +196,7 @@ export function ModuxWeb({ family }: { family: ModuxFamily | 'all' }) {
               const m = MODUX_MODELS.find(x => x.id === focused.id);
               /* a statement opens with its model's name; where the ring carries no name and the line does not, it is said */
               const line = m ? m.statement : 'This model is still being written.';
-              return <>{!named && !line.startsWith(focused.name) && <strong>{focused.name}. </strong>}{line}</>;
+              return <>{emojiOf(focused.id) && <span className="mt-e mx-web-read-e" aria-hidden>{emojiOf(focused.id)}</span>}{!named && !line.startsWith(focused.name) && <strong>{focused.name}. </strong>}{line}</>;
             })()
           : edges.length + ' connections between ' + MODUX_MODELS.length + ' models. ' + (named ? 'Point at a node to see what it compounds with.' : 'Touch the ring to see what a model compounds with.')}
       </p>

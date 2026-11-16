@@ -2,6 +2,7 @@
    where the stack fits. */
 
 import React, { useEffect } from 'react';
+import { emojiOf } from '../content/modux/emoji';
 import { moduxStackById, moduxById, ESSENCE_HEX } from '../content/registry';
 import { FAMILY_LABEL, FAMILY_HUE, TIER_LABEL } from '../content/modux-schema';
 import { useS } from '../lib/state';
@@ -48,7 +49,7 @@ export function ModuxStackView() {
                   onClick={() => m && d({ t: 'route', view: 'modux-model', id })}>
                   <span className="mx-order-n">{i + 1}</span>
                   <span className="mx-order-body">
-                    <span className="mx-order-name">{m ? m.name : id}</span>
+                    <span className="mx-order-name"><span className="mt-e gx-e" aria-hidden>{emojiOf(id)}</span>{m ? m.name : id}</span>
                     <span className="mx-order-meta">{m ? FAMILY_LABEL[m.family] + ' · ' + TIER_LABEL[m.tier] : 'still being written'}</span>
                     {m && <span className="mx-order-stmt">{m.statement}</span>}
                   </span>

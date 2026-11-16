@@ -30,6 +30,7 @@ import { STATES, BEAT, buildState, runState, type StateId } from '../lib/systemS
 import { hardeningWeek, planMarkdown, VERBS, type PlanFor, type Verb, type Week } from '../lib/hardening';
 import { Sound } from '../lib/sound';
 import { localDay } from '../lib/day';
+import { emojiOf } from '../content/modux/emoji';
 
 export interface Guard { move: string; parts: string[] }
 
@@ -288,7 +289,9 @@ export function SystemAtlas({ system, threats, gauge, byId, state = {}, fallen =
     return [...byPart.entries()].map(([part, list]) => {
       const p = L.pos[part];
       const text = list.map(l => l.day).join(' \u00b7 ');
-      const cw = 12 + text.length * 7;
+      /* each move's day, then its model's emoji (content/modux/emoji.ts): where the structure enters the system */
+      const marks = list.map(l => ({ day: l.day, e: emojiOf(l.id) }));
+      const cw = 12 + marks.reduce((w, m, i) => w + String(m.day).length * 7 + (m.e ? 20 : 0) + (i ? 12 : 0), 0);
       const sides = p.x <= width / 2 ? [-1, 1] : [1, -1];
       const spots: { x: number; y: number; dir: number }[] = [];
       for (const dist of [p.r + 40, p.r + 58, p.r + 26, p.r + 84])
@@ -310,7 +313,7 @@ export function SystemAtlas({ system, threats, gauge, byId, state = {}, fallen =
       const x1 = p.x - Math.cos(ang) * (p.r + 7), y1 = p.y - Math.sin(ang) * (p.r + 7);
       const sx = x0 + Math.cos(ang) * (cw / 2 + 2), sy = y0 + Math.sin(ang) * 10;
       const d = 'M' + sx + ' ' + sy + ' Q' + ((sx + x1) / 2) + ' ' + ((sy + y1) / 2 - 6) + ' ' + x1 + ' ' + y1;
-      return { part, list, d, x0, y0, verb: list[0].verb, text, cw, first: list[0].day };
+      return { part, list, d, x0, y0, verb: list[0].verb, text, marks, cw, first: list[0].day };
     });
   }, [week, L, width]);
 
@@ -649,7 +652,11 @@ export function SystemAtlas({ system, threats, gauge, byId, state = {}, fallen =
                 )}
                 <g transform={'translate(' + pt.x0 + ' ' + pt.y0 + ')'}>
                   <rect x={-pt.cw / 2} y={-10} width={pt.cw} height={20} rx={8} className="sa-hp-chip" />
-                  <text x={0} y={4.5} textAnchor="middle" className="sa-hp-n">{pt.text}</text>
+                  <text x={0} y={4.5} textAnchor="middle" className="sa-hp-n">
+                    {pt.marks.map((m, i) => (
+                      <React.Fragment key={i}>{i > 0 && <tspan dx={4}>{'\u00b7'}</tspan>}<tspan dx={i ? 4 : 0}>{m.day}</tspan>{m.e && <tspan className="sa-hp-e" dx={3}>{m.e}</tspan>}</React.Fragment>
+                    ))}
+                  </text>
                 </g>
                 <title>{pt.list.map(l => l.day + '. ' + l.name + ' (' + verbLabel(l.verb) + ') adds ' + h1(l.gain) + ' hours').join('\n')}</title>
               </g>

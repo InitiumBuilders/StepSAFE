@@ -213,7 +213,8 @@ export default function Lander({ onBegin, entered }: { onBegin: (go?: Go) => voi
             <article className={'lxs-step lxs-hero' + (reading === 0 ? ' on' : '')} data-ch="0">
               <Statement as="h1" className="lx-st-hero" lines={['Secure By Systems Design']} start={0.35} beat={0.16} />
               <Statement as="p" className="lx-st-sound" lines={['Sound System.', 'Sound Mind.']} start={1.25} beat={0.14} rest={0.2} />
-              <div className="lx-ctas lx-in" style={{ ['--d' as string]: '2.2s' }}>
+              {/* the way in rises with the second line, so it is on the first screen within about a second and a half */}
+              <div className="lx-ctas lx-in" style={{ ['--d' as string]: '1.25s' }}>
                 <button className="lx-btn key" onClick={() => onBegin()}>{begin}</button>
                 <button className="lx-btn ghost lx-cue" onClick={watch} aria-label="Watch the system"><i className="lx-down" aria-hidden /></button>
               </div>
@@ -373,6 +374,14 @@ export default function Lander({ onBegin, entered }: { onBegin: (go?: Go) => voi
 
       <footer className="lx-foot">
         <span>StepSAFE :: The Praxis</span>
+        {/* the public promises, one tap from the front door: the policy, the notice, the statement, and the page that
+            reads them from this site */}
+        <nav className="lx-foot-links" aria-label="Security, privacy and access">
+          <a href="/security.html">Security</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/accessibility.html">Accessibility</a>
+          <a href="/trust">StepSAFE’s own record</a>
+        </nav>
         <a href="https://www.outlier.systems" target="_blank" rel="noopener noreferrer">Outlier.Systems</a>
       </footer>
     </div>

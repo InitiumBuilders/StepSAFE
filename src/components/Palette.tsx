@@ -8,6 +8,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useS, type Act } from '../lib/state';
 import type { ViewKey } from '../lib/state';
+import { emojiOf, modelByEmoji } from '../content/modux/emoji';
 
 interface Entry { id: string; title: string; kind: string; detail: string; go: Act; card?: string; hue?: string; /** a term's other names */ aka?: string[] }
 
@@ -50,6 +51,9 @@ function moves(): Entry[] {
   );
   return out;
 }
+
+/** the Modux model an entry opens, if it opens one */
+const modelOf = (e: Entry): string | null => (e.go.t === 'route' && e.go.view === 'modux-model' && e.go.id ? e.go.id : null);
 
 const KIND_WORD: Record<string, string> = { term: 'Term', model: 'Structure', guide: 'Guide', step: 'Step', threat: 'Threat', stack: 'Stack', room: 'Room', incident: 'In the world' };
 
@@ -101,6 +105,9 @@ export function Palette({ open, onClose }: { open: boolean; onClose: () => void 
   const results = useMemo(() => {
     const ql = q.trim().toLowerCase();
     if (!ql) return all.filter(e => e.kind === 'Page').slice(0, 8);
+    /* a model's emoji (content/modux/emoji.ts) finds that model */
+    const byEmoji = modelByEmoji(q);
+    if (byEmoji) { const hit = all.find(e => modelOf(e) === byEmoji); if (hit) return [hit]; }
     const tokens = ql.split(/\s+/).filter(Boolean);
     return all.map(e => ({ e, s: score(e, ql, tokens) })).filter(x => x.s > 0).sort((a, b) => b.s - a.s || a.e.title.length - b.e.title.length).slice(0, 12).map(x => x.e);
   }, [q, all]);
@@ -134,7 +141,7 @@ export function Palette({ open, onClose }: { open: boolean; onClose: () => void 
             <li key={e.id} role="option" aria-selected={i === at} className={'pal-row' + (i === at ? ' on' : '')} style={{ ['--hue' as string]: e.hue || 'var(--cyan)' }} onMouseEnter={() => setAt(i)}>
               <button className="pal-main" onClick={() => go(e)}>
                 <span className="pal-kind">{e.kind}</span>
-                <span className="pal-text"><strong>{e.title}</strong><em>{(() => { const via = viaName(e, q.trim().toLowerCase()); return via ? 'Also called ' + via : e.detail; })()}</em></span>
+                <span className="pal-text"><strong>{modelOf(e) && emojiOf(modelOf(e)!) && <span className="pal-e" aria-hidden>{emojiOf(modelOf(e)!)}</span>}{e.title}</strong><em>{(() => { const via = viaName(e, q.trim().toLowerCase()); return via ? 'Also called ' + via : e.detail; })()}</em></span>
               </button>
               {e.card && <button className="pal-card" onClick={() => go(e, true)} title="Open it as a card in StudyMode">Card</button>}
             </li>

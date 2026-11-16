@@ -2,7 +2,8 @@
    Statement: you do not receive a unit. You build one, step by step. */
 
 import React, { useEffect } from 'react';
-import { CHAPTERS, SIMS } from '../content/registry';
+import { CHAPTERS, SIMS, MODUX_MODELS } from '../content/registry';
+import { MODEL_EMOJI, modelOfTheDay } from '../content/modux/emoji';
 import { useS, unitPhase, PHASE_NAMES, PHASE_MEANING, rankOf, nextRank } from '../lib/state';
 import { useEngine } from '../lib/engine';
 import { Vessel, SectionHead } from '../components/bits';
@@ -127,6 +128,23 @@ export function HomeView() {
                 </span>
                 <button className="btn btn-sm" onClick={() => { if (!dueNow.length || !studyRoute(d, dueNow, 'Due now', s.unitiaC)) d({ t: 'route', view: 'study' }); }}>{dueNow.length ? 'Review them' : 'Open StudyMode'}</button>
               </div>
+              {(() => {
+                /* one structure a day, the same for everyone, carried by its emoji (content/modux/emoji.ts) */
+                const m = modelOfTheDay(MODUX_MODELS);
+                const x = m ? MODEL_EMOJI[m.id] : undefined;
+                if (!m || !x) return null;
+                return (
+                  <div className="watch-study watch-model">
+                    <span className="mt-e watch-model-e" aria-hidden>{x.e}</span>
+                    <span>
+                      <small>THE STRUCTURE OF THE DAY</small>
+                      <strong>{m.name}</strong>
+                      <em>{x.why}</em>
+                    </span>
+                    <button className="btn btn-sm" onClick={() => d({ t: 'route', view: 'modux-model', id: m.id })}>Open it</button>
+                  </div>
+                );
+              })()}
               {(() => {
                 /* the latest run of any check, drawn as its ring; an unfinished one opens straight to its statement */
                 const ck = treasury.checks[0];

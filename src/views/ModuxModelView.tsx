@@ -13,6 +13,7 @@ import { GAUGES } from '../content/modux/gauges';
 import { KNOWN_SYSTEMS } from '../content/outlier/systems';
 import { RiseHead } from '../components/RiseHead';
 import { ShareLink } from '../components/bits';
+import { emojiOf, MODEL_EMOJI } from '../content/modux/emoji';
 
 export function ModuxModelView() {
   const { s, d } = useS();
@@ -45,8 +46,12 @@ export function ModuxModelView() {
       <section className="mx-hero mx-glass mx-lit" style={{ ['--hue' as string]: hue }} data-keystone data-essence={hue}>
         <div className="mx-hero-text">
           <span className="mx-kicker">{FAMILY_LABEL[m.family]} · {TIER_LABEL[m.tier]}</span>
-          <RiseHead text={m.name} />
+          <div className="mx-title-row">
+            {emojiOf(m.id) && <span className="mt-e mx-emoji-big" aria-hidden>{emojiOf(m.id)}</span>}
+            <RiseHead text={m.name} />
+          </div>
           <p className="lede">{m.statement}</p>
+          {emojiOf(m.id) && <p className="mx-emoji-why"><span className="mt-e" aria-hidden>{emojiOf(m.id)}</span> {MODEL_EMOJI[m.id].why}</p>}
           {m.tier === 'frontier' && (
             <p className="mx-frontier">Frontier structure. Few or no public deployments yet; the evidence below shows what exists.</p>
           )}
@@ -114,7 +119,7 @@ export function ModuxModelView() {
                   <li key={l.model.id}>
                     <button className="mx-link" style={{ ['--hue' as string]: ESSENCE_HEX[FAMILY_HUE[l.model.family]] }}
                       onClick={() => d({ t: 'route', view: 'modux-model', id: l.model.id })}>
-                      <span className="mx-link-name">{l.model.name}</span>
+                      <span className="mx-link-name"><span className="mt-e mx-link-e" aria-hidden>{emojiOf(l.model.id)}</span>{l.model.name}</span>
                       <span className="mx-link-how">{l.how}</span>
                     </button>
                   </li>

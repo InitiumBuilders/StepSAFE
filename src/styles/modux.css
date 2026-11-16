@@ -289,7 +289,7 @@ button.mx-chip:hover { background: rgba(255, 255, 255, 0.1); color: var(--ink); 
 
 /* the web */
 .mx-web-panel { padding: 16px; }
-.mx-web-wrap { max-width: 820px; margin: 0 auto; }
+.mx-web-wrap { max-width: 1060px; margin: 0 auto; }
 .mx-web { width: 100%; height: auto; display: block; overflow: visible; }
 .mx-web-family { font: 600 12.5px var(--font-display); letter-spacing: 0.01em; }
 .mx-web-name { font: 600 13.5px var(--font-display); fill: var(--ink); paint-order: stroke; stroke: rgba(5, 11, 32, 0.9); stroke-width: 5px; stroke-linejoin: round; }
@@ -499,3 +499,20 @@ button.mx-chip:hover { background: rgba(255, 255, 255, 0.1); color: var(--ink); 
 .mx-web-legend li { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .mx-web-legend i { flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--hue); box-shadow: 0 0 8px -1px var(--hue); }
 .mx-web-go { margin: 10px 0 0; text-align: center; }
+
+/* the model emoji (content/modux/emoji.ts) on a card's name, and a stack's models as a row of emoji */
+.mx-shape { margin-bottom: 14px; }
+.mx-card-e { font-size: 1.15em; margin-right: 8px; vertical-align: -0.08em; }
+.mx-stack-e { font-size: 22px; letter-spacing: 0.06em; line-height: 1.2; }
+/* a model page's emoji, large, with the reason it was chosen beside it */
+.mx-title-row { display: flex; align-items: center; gap: clamp(12px, 2vw, 22px); }
+.mx-title-row h1 { margin-bottom: 14px; }
+.mx-emoji-big { font-size: clamp(44px, 5.4vw, 64px); flex: none; margin-bottom: 14px; filter: drop-shadow(0 8px 20px color-mix(in srgb, var(--hue) 45%, transparent)); }
+.mx-emoji-why { margin: 0 0 14px; color: var(--ink-2); font-size: 0.98rem; line-height: 1.5; max-width: 46em; }
+.mx-link-e { font-size: 1.1em; margin-right: 7px; }
+/* the web at full size: each model its emoji in a disc ringed with its family's hue */
+.mx-web-disc { fill: #0b1030; transition: r 200ms var(--ease); }
+:root[data-theme='meridian'] .mx-web-disc { fill: #ffffff; }
+:root[data-theme='mov'] .mx-web-disc { fill: #05060c; }
+.mx-web-e { font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif; pointer-events: none; transition: font-size 200ms var(--ease); }
+.mx-web-read-e { font-size: 1.25em; margin-right: 8px; vertical-align: -0.12em; }

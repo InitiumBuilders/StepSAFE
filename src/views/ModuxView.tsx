@@ -26,6 +26,8 @@ import { useEngine } from '../lib/engine';
 import { chargeKeystone } from '../lib/swarm';
 import { serviceRecord, type ServiceLine } from '../lib/service';
 import { OwnSystem } from '../components/OwnSystem';
+import { ModelTable } from '../components/ModelTable';
+import { emojiOf } from '../content/modux/emoji';
 import { KnownSystems } from '../components/KnownSystems';
 import { KNOWN_SYSTEMS } from '../content/outlier/systems';
 import { specFromGauge, specFromKnown } from '../content/modux/own';
@@ -46,6 +48,8 @@ export function ModuxView() {
   const [family, setFamily] = useState<ModuxFamily | 'all'>('all');
   const [tier, setTier] = useState<ModuxTier | 'all'>('all');
   const [q, setQ] = useState((s.route.id || '').startsWith('q:') ? (s.route.id || '').slice(2) : '');
+  /* the models as the table of emoji (the default), or as the list of cards; a search arriving from Find opens the list */
+  const [shape, setShape] = useState<'table' | 'list'>(q ? 'list' : 'table');
   useEffect(() => { chargeKeystone(); }, [tab]);
 
   const byIdMap = useMemo(() => new Map(MODUX_MODELS.map(m => [m.id, m])), []);
@@ -98,6 +102,16 @@ export function ModuxView() {
 
       {tab === 'models' && (
         <>
+          <div className="mx-chips mx-shape" role="group" aria-label="Show the models as">
+            <button type="button" className={'mx-chip' + (shape === 'table' ? ' on' : '')} aria-pressed={shape === 'table'} onClick={() => setShape('table')}>The table</button>
+            <button type="button" className={'mx-chip' + (shape === 'list' ? ' on' : '')} aria-pressed={shape === 'list'} onClick={() => setShape('list')}>The list</button>
+          </div>
+          {shape === 'table' && <ModelTable />}
+        </>
+      )}
+
+      {tab === 'models' && shape === 'list' && (
+        <>
           <div className="mx-filters">
             <PhoneSelect<ModuxFamily | 'all'> label="Family" value={family} options={[{ value: 'all', label: 'All families' }, ...FAMILIES.map(f => ({ value: f, label: FAMILY_LABEL[f] }))]} onChange={setFamily} />
             <div className="mx-chips row-scroll">
@@ -127,7 +141,7 @@ export function ModuxView() {
                   <span className="mx-fam">{FAMILY_LABEL[m.family]}</span>
                   <span className={'mx-tier t-' + m.tier}>{TIER_LABEL[m.tier]}</span>
                 </span>
-                <h3>{m.name}</h3>
+                <h3><span className="mt-e mx-card-e" aria-hidden>{emojiOf(m.id)}</span>{m.name}</h3>
                 <p>{m.statement}</p>
                 <span className="mx-card-foot">{m.combines.length} connections · {m.minutes} min</span>
               </button>
@@ -159,6 +173,7 @@ export function ModuxView() {
             <button key={st.id} className="mx-card mx-card-stack" style={{ ['--hue' as string]: ESSENCE_HEX[st.essence] }}
               onClick={() => d({ t: 'route', view: 'modux-stack', id: st.id })}>
               <span className="mx-card-top"><span className="mx-fam">Stack</span><span className="mx-tier">{st.models.length} models</span></span>
+              <span className="mt-e mx-stack-e" aria-hidden>{st.models.map(id => emojiOf(id)).filter(Boolean).join(' ')}</span>
               <h3>{st.name}</h3>
               <p>{st.statement}</p>
               <span className="mx-card-foot">{st.fits}</span>

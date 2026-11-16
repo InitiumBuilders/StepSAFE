@@ -49,6 +49,7 @@ import { ManyDays } from '../components/ManyDays';
 import type { Shield } from '../world/GaugeWorld';
 import { knownById } from '../content/modux/own';
 import { RiseHead } from '../components/RiseHead';
+import { emojiOf } from '../content/modux/emoji';
 import { PhoneSelect } from '../components/bits';
 
 /* three.js loads only when a learner enters the world */
@@ -708,7 +709,7 @@ export function ModuxGaugeView() {
                               <li key={id} className={'gx-hold-item' + (inStack ? ' in' : '') + (dead ? ' gx-deadm' : '')}
                                 style={{ ['--hue' as string]: ESSENCE_HEX[FAMILY_HUE[m.family]] }}>
                                 <span className="gx-hold-name">
-                                  <strong>{m.name}</strong>
+                                  <strong><span className="mt-e gx-e" aria-hidden>{emojiOf(m.id)}</span>{m.name}</strong>
                                   <small>{dead ? 'No longer holds at this notch' : FAMILY_LABEL[m.family] + ' · costs ' + cost}</small>
                                 </span>
                                 <button className={'tr-add' + (inStack ? ' in' : '')} disabled={tooDear || (dead && !inStack)}
@@ -888,7 +889,7 @@ export function ModuxGaugeView() {
                       style={{ ['--hue' as string]: ESSENCE_HEX[FAMILY_HUE[m.family]] }}>
                       <span className="tr-ref-mark" aria-hidden>{had ? '✓' : '+'}</span>
                       <span className="tr-ref-body">
-                        <span className="tr-ref-name">{m.name}</span>
+                        <span className="tr-ref-name"><span className="mt-e gx-e" aria-hidden>{emojiOf(m.id)}</span>{m.name}</span>
                         <span className="tr-ref-meta">{had ? 'In your stack' : 'Stops: ' + answers.join(', ')}</span>
                       </span>
                     </button>
@@ -1010,7 +1011,7 @@ export function ModuxGaugeView() {
                         <li key={m.id} className={'gx-mt-item' + (inStack ? ' in' : '')}>
                           <div className="gx-mt-head">
                             <span>
-                              <strong>{m.name}</strong>
+                              <strong><span className="mt-e gx-e" aria-hidden>{emojiOf(m.id)}</span>{m.name}</strong>
                               <span className="gx-mt-meta">{m.kept ? 'Kept in your vault' : 'This gauge only'}{rv ? ' · ' : ''}
                                 {rv && <span className={'gx-verdict v-' + rv.verdict}>{rv.verdict}</span>}
                               </span>
@@ -1072,7 +1073,7 @@ export function ModuxGaugeView() {
                     style={{ ['--hue' as string]: ESSENCE_HEX[FAMILY_HUE[m.family]] }}>
                     <div className="tr-pool-row">
                       <button className="tr-pool-open" aria-expanded={isOpen} onClick={() => setOpen(isOpen ? null : m.id)}>
-                        <span className="tr-pool-name">{m.name}</span>
+                        <span className="tr-pool-name"><span className="mt-e gx-e" aria-hidden>{emojiOf(m.id)}</span>{m.name}</span>
                         <span className="tr-pool-meta">{dead ? 'No longer holds at this notch' : FAMILY_LABEL[m.family] + ' · ' + TIER_LABEL[m.tier]}{!dead && <span className="tr-cost-word"> · costs {cost}</span>}</span>
                       </button>
                       <span className="tr-cost" aria-label={'Cost ' + cost}>
@@ -1109,7 +1110,7 @@ export function ModuxGaugeView() {
                 <ul>
                   {day.lev.moves.map(m => (
                     <li key={m.id}>
-                      <span><strong>{m.name}</strong><small>{moveLine(m)} · {m.cost} budget · keeps {hoursFmt(m.kept)} h</small></span>
+                      <span><strong><span className="mt-e gx-e" aria-hidden>{emojiOf(m.id)}</span>{m.name}</strong><small>{moveLine(m)} · {m.cost} budget · keeps {hoursFmt(m.kept)} h</small></span>
                       <button className="btn btn-sm" disabled={m.cost > left || stack.includes(m.id)} onClick={() => toggle(m.id)}
                         title={m.cost > left ? 'Over budget by ' + (m.cost - left) : 'Add it to the stack'}>Add</button>
                     </li>
@@ -1125,7 +1126,7 @@ export function ModuxGaugeView() {
                   const m = byId.get(id)!;
                   return (
                     <li key={id} className={weakened.has(id) ? 'gx-deadm' : undefined} style={{ ['--hue' as string]: ESSENCE_HEX[FAMILY_HUE[m.family]] }}>
-                      <span className="tr-tray-name">{m.name}{weakened.has(id) ? ' · no longer holds' : ''}</span>
+                      <span className="tr-tray-name"><span className="mt-e gx-e" aria-hidden>{emojiOf(id)}</span>{m.name}{weakened.has(id) ? ' · no longer holds' : ''}</span>
                       <button className="tr-x" onClick={() => toggle(id)} aria-label={'Remove ' + m.name}>×</button>
                     </li>
                   );

@@ -5,6 +5,7 @@
    device with the card. The clock earns UNITIA only while they are here. */
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { emojiOf, MODEL_EMOJI } from '../../content/modux/emoji';
 import { useS, STUDY_DAILY_CARD_SECONDS, UNITIA_C_PER_SECOND, type CardPatch } from '../../lib/state';
 import { cardById, pathTo, degree, degreeRank, KIND_HUE, KIND_LABEL, type StudyCard } from '../../lib/study/cards';
 import { masteryOf, MASTERY_LABEL, questionFor, calibrationOf, heldCards, fmtTime, fmtUnitia, dayKey, signed, isDue, type Question } from '../../lib/study/engine';
@@ -175,6 +176,7 @@ export function StudyCardView({ id, queue, onOpen, onClose, onFinish, onEvent, l
           style={{ transform: drag ? 'translateX(' + drag + 'px) rotate(' + drag / 24 + 'deg)' : undefined }}>
           <div className="sg-face front">
             <span className="sg-face-kind"><KindGlyph kind={card.kind} /> {KIND_LABEL[card.kind]} {'·'} {card.domain}</span>
+            {card.kind === 'model' && emojiOf(card.ref) && <span className="mt-e sg-emoji" aria-hidden>{emojiOf(card.ref)}</span>}
             <h2>{card.title}</h2>
             <p className="sg-cue">{card.cue}</p>
             <span className="sg-turn">Tap, swipe or press space to turn</span>
@@ -182,6 +184,7 @@ export function StudyCardView({ id, queue, onOpen, onClose, onFinish, onEvent, l
           <div className="sg-face back">
             <span className="sg-face-kind"><KindGlyph kind={card.kind} /> {card.title}</span>
             <p className="sg-answer">{card.answer}</p>
+            {card.kind === 'model' && MODEL_EMOJI[card.ref] && <p className="sg-emoji-why"><span className="mt-e" aria-hidden>{emojiOf(card.ref)}</span> {MODEL_EMOJI[card.ref].why}</p>}
             <span className="sg-turn">{MASTERY_LABEL[mastery]} {'·'} {untilWords(st?.due, now)}</span>
           </div>
         </div>

@@ -4,17 +4,22 @@
 # sites among them, which its own brief says never ship. The app already ships their public cut.
 #
 # It takes the files this repository holds at HEAD (commit first: run it after scripts/keep.sh), leaves out
-# research/outlier, adds the Scorecard and CodeQL workflows (scripts/mirror/), scans the copy for secrets and for
-# private details, and pushes one commit. A hit in a scan stops it before anything leaves this machine.
-#   bash scripts/mirror.sh
+# research/outlier, adds the workflows in scripts/mirror/ (Scorecard, CodeQL and Release), scans the copy for secrets
+# and for private details, and pushes one commit. A hit in a scan stops it before anything leaves this machine.
+#   bash scripts/mirror.sh             after notes or tooling
+#   bash scripts/mirror.sh --release   after a ship: it also tags the commit (v2026.11.16, then v2026.11.16.2 the same
+#                                      day), and the Release workflow builds the site from it, checks the live site is
+#                                      that build file for file, signs the provenance and publishes the release
 # The copy is kept in C:\Users\Initi\outputs\stepsafe-public between runs. The push runs in WSL, where gh holds the
 # GitHub sign-in.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+RELEASE=0; [ "${1:-}" = --release ] && RELEASE=1
 SRC=$(pwd)
 OUT=/c/Users/Initi/outputs/stepsafe-public
 WSL_OUT=/mnt/c/Users/Initi/outputs/stepsafe-public
 REPO=https://github.com/InitiumBuilders/StepSAFE.git
+GIT_GH="git -c credential.helper= -c credential.helper='!gh auth git-credential' -c core.fileMode=false"
 git diff --quiet && git diff --cached --quiet || { echo "REFUSED: commit first (scripts/keep.sh); the copy is made from HEAD" >&2; exit 2; }
 HEAD_SHA=$(git rev-parse --short HEAD); SUBJECT=$(git log -1 --format=%s)
 
@@ -27,13 +32,13 @@ git -C "$OUT" config user.name "Initium Builders"
 git -C "$OUT" config user.email "207097273+InitiumBuilders@users.noreply.github.com"
 git -C "$OUT" config core.autocrlf false
 # the last published state, so the new commit follows it (nothing to fetch on the very first run)
-wsl.exe -e bash -lc "cd $WSL_OUT && git -c credential.helper= -c credential.helper='!gh auth git-credential' fetch -q origin main 2>/dev/null && git reset -q --soft origin/main || true"
+wsl.exe -e bash -lc "cd $WSL_OUT && $GIT_GH fetch -q origin main 2>/dev/null && git reset -q --soft origin/main || true"
 
-# the copy: everything at HEAD but research/outlier, plus the two workflows
+# the copy: everything at HEAD but research/outlier, plus the workflows
 find "$OUT" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 git archive --format=tar HEAD | tar -x -C "$OUT"
 rm -rf "$OUT/research/outlier"
-mkdir -p "$OUT/.github/workflows" && cp scripts/mirror/scorecard.yml scripts/mirror/codeql.yml "$OUT/.github/workflows/"
+mkdir -p "$OUT/.github/workflows" && cp scripts/mirror/scorecard.yml scripts/mirror/codeql.yml scripts/mirror/release.yml "$OUT/.github/workflows/"
 
 cd "$OUT"
 git add -A
@@ -45,10 +50,23 @@ PRIVATE='august''decentral|@g''mail[.]com|imagine''change|DEV_''MNEMONIC|IDENTIT
 if git grep -I -i -l -E "$PRIVATE" >/dev/null; then
   echo "REFUSED: the copy holds a private detail:" >&2; git grep -I -i -l -E "$PRIVATE" >&2; exit 1
 fi
-if git diff --cached --quiet; then echo "mirror: the public copy already matches $HEAD_SHA"; exit 0; fi
-git commit -q -m "Sync from $HEAD_SHA: $SUBJECT" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
-git log --oneline -1
-# pipefail inside, so a refused push (main's ruleset refuses force pushes) fails here instead of reading as pushed
-wsl.exe -e bash -lc "set -o pipefail; cd $WSL_OUT && git -c credential.helper= -c credential.helper='!gh auth git-credential' -c core.fileMode=false push -q origin main 2>&1 | tail -2" \
-  || { echo "REFUSED: the push to $REPO failed (see above). The commit stays in $OUT." >&2; exit 1; }
-echo "mirror: pushed $(git rev-parse --short HEAD) to $REPO"
+if git diff --cached --quiet; then
+  echo "mirror: the public copy already matches $HEAD_SHA"
+else
+  git commit -q -m "Sync from $HEAD_SHA: $SUBJECT" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
+  git log --oneline -1
+  # pipefail inside, so a refused push (main's ruleset refuses force pushes) fails here instead of reading as pushed
+  wsl.exe -e bash -lc "set -o pipefail; cd $WSL_OUT && $GIT_GH push -q origin main 2>&1 | tail -2" \
+    || { echo "REFUSED: the push to $REPO failed (see above). The commit stays in $OUT." >&2; exit 1; }
+  echo "mirror: pushed $(git rev-parse --short HEAD) to $REPO"
+fi
+
+[ "$RELEASE" = 1 ] || exit 0
+# the release tag: the day, and a count when there is more than one release that day
+DAY="v$(date +%Y.%m.%d)"; TAG="$DAY"; n=1
+while [ -n "$(git ls-remote --tags origin "refs/tags/$TAG" 2>/dev/null)" ]; do n=$((n + 1)); TAG="$DAY.$n"; done
+git tag -a "$TAG" -m "StepSAFE $TAG: the build live at https://unitium-safe.vercel.app, from $HEAD_SHA"
+wsl.exe -e bash -lc "set -o pipefail; cd $WSL_OUT && $GIT_GH push -q origin refs/tags/$TAG 2>&1 | tail -2" \
+  || { echo "REFUSED: the tag $TAG did not reach $REPO (see above)." >&2; exit 1; }
+echo "mirror: tagged $TAG. The Release workflow now builds it, checks the live site file by file, signs and publishes:"
+echo "  https://github.com/InitiumBuilders/StepSAFE/actions/workflows/release.yml"

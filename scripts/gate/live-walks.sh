@@ -10,7 +10,7 @@ P=https://unitium-safe.vercel.app
 LOG="${1:?give a log file}"; OUT="${2:?give a folder for the outputs}"; mkdir -p "$OUT"; : > "$LOG"
 say() { echo "$@" | tee -a "$LOG"; }
 say "live walks started $(date '+%H:%M:%S') against $P"
-for w in probe-read-walk.mjs probe-read-webkit.mjs probe-csp.mjs probe-touch.mjs probe-tabbar.mjs probe-back.mjs probe-check-walk.mjs probe-dasha.mjs; do
+for w in probe-read-walk.mjs probe-read-webkit.mjs probe-csp.mjs probe-touch.mjs probe-tabbar.mjs probe-back.mjs probe-check-walk.mjs probe-dasha.mjs probe-table-walk.mjs; do
   line=$(bash "$G/quiet-walk.sh" "$w" "$OUT/$w.out" "$P" 20); code=$?
   say "$line"
   if [ $code -ne 0 ] && ! grep -q '^PROBLEMS' "$OUT/$w.out"; then
