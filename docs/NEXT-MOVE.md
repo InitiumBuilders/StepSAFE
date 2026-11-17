@@ -666,12 +666,46 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     quiet check read a 240ms fade mid-way under load; it waits for the fade now and passed alone), production 101 of
     101 the same. Its signed release v2026.11.16.2 matched the live site again (101 files, 0 differ). On production
     the Scorecard ask on /trust now backs 6 of the 7 answers it bears on; only the update tool stays open.
-- Next: August's choices (the first Dash project, the names, whether Recover grows further, and whether a
-  certificate read is worth an SSLMate account and a small server); then the glossary's remaining debt, in this order: entries for the
-  words named twice (`npx tsx probe-terms.mts --list` prints them), a decision on the 417 words the corpus names
-  and does not use (write the entry or drop the word from the Step), and a use in a lesson for the 71 entries
-  nothing reaches. Two other names are looser than the rest and are his to confirm: "Safe multisig" for Multisig
-  and "Summiting the Pyramid" for Analytic Robustness.
+- 2026-11-17, on his "keep it moving": Dependabot on the public copy, and each release carries the gate its build
+  passed.
+  - Dependabot version updates (scripts/mirror/dependabot.yml, copied to .github/ by mirror.sh): npm and the pinned
+    actions, weekly on Monday, after a seven-day cooldown, npm minor and patch updates in one group. An update is made
+    in the private repository and reaches the public copy with the next sync; Dependabot then closes its own request.
+    own.ts says so under 'dep-alerts', still Partly, since no time to fix is set.
+  - mirror.sh --release refuses without --gate <log>. It checks that the log's first line names dist/index.html by
+    MD5, that it reached "gate finished", that the last line of every check says exit 0 (a walk run again alone with
+    quiet-walk.sh adds a later line), and that the live index.html is that build. Then it keeps the log as
+    releases/gate-<md5>.txt and commits it before the copy is made. release.yml finds the gate of the build it made,
+    checks it the same way and signs it with the files, and the notes count its checks. The check was tried on old
+    logs first: the clean gate of 2026-11-16 passes with 53 checks, the one with the table walk's failure is refused
+    with the walk named, and an empty log is refused, under mawk and gawk both.
+  - /trust: the tests list is still StepSAFE's word, and it now points at the releases, which carry the log from
+    v2026.11.17. SSDF PO.3, PO.4 and PS.3 Met. RELEASE.md has the re-run rule and the new step 5.
+  - The first gate run found no server on port 5189 (every walk refused to connect; every probe passed). A second
+    run was stopped to reword two lines. Gate 53 of 53 on 0126916762f3, 12:53 to 13:21.
+  - Shipped at 13:24 CST on his "deploy it when the gate's green" and "okay ship it": commit 52e6550, deployment
+    unitium-safe-kdixyirnx, production 101 of 101 files the same, nine live walks clean and the live read.
+  - Release v2026.11.17 (gate kept as 9b59b18, public copy 2f8a02d): "101 files checked against
+    https://unitium-safe.vercel.app; 0 differ", and the release carries stepsafe-v2026.11.17-gate.txt ("53 checks and
+    browser walks"), byte for byte the local log, which `gh attestation verify` accepts (SLSA provenance v1, 104
+    subjects, release.yml at the tag). Scorecard 6.6 (was 5.9): Dependency-Update-Tool 10, Signed-Releases 10. On
+    production the Scorecard ask on /trust backs 7 of 7.
+  - Vulnerabilities fell from 10 to 9 the same day: GHSA-fc5q-39xc-vjpf (CVE-2026-112366), a ReDoS in picomatch,
+    reviewed by GitHub at 15:56 UTC on 2026-11-17. picomatch 4.0.7 comes only through Vite (fdir, tinyglobby), so it
+    is not in the shipped site and vulns.mjs is right to pass. Every version up to 4.0.7 is affected and npm's latest
+    is 4.0.7, so there is nothing to update to yet. Dependabot security updates are off on the public copy (his
+    setting).
+  - Dependabot's first run opened five requests: #1 three and @types/three 0.169.0 to 0.187.0 (the minor-and-patch
+    group), #2 react-dom 18.3.1 to 19.3.1, #3 vite 6.4.6 to 8.3.7, #4 typescript 5.9.3 to 7.0.2, #5 react 18.3.1 to
+    19.3.1. #2 and #5 belong together.
+- Next: Dependabot's five requests, each made here, gated alone and shipped on his word (three.js first, then React 19
+  with React DOM, then Vite 8 and TypeScript 7, which change the build itself). Then August's choices (the first Dash
+  project, the names, whether Recover grows further, and whether a certificate read is worth an SSLMate account and a
+  small server); then the glossary's remaining debt, in this order: entries for the words named twice (`npx tsx
+  probe-terms.mts --list` prints them), a decision on the 417 words the corpus names and does not use (write the entry
+  or drop the word from the Step), and a use in a lesson for the 71 entries nothing reaches. Two other names are
+  looser than the rest and are his to confirm: "Safe multisig" for Multisig and "Summiting the Pyramid" for Analytic
+  Robustness.
 
 ## The move
 
