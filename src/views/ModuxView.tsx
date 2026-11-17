@@ -11,7 +11,7 @@ import {
   FAMILY_LABEL, FAMILY_HUE, TIER_LABEL, type ModuxFamily, type ModuxTier,
 } from '../content/modux-schema';
 import { useS, type S } from '../lib/state';
-import { keepInView } from '../lib/barOffset';
+import { keepInView, centerInRow } from '../lib/barOffset';
 import { ModuxWeb } from '../components/ModuxWeb';
 import { GAUGES, gaugeOfTheDay } from '../content/modux/gauges';
 import { scoreGauge } from '../content/modux/score';
@@ -62,6 +62,8 @@ export function ModuxView() {
     picked.current = false;
     if (tabsRef.current) keepInView(tabsRef.current);
   }, [tab]);
+  /* on a phone the tabs are one row that scrolls: the chosen one is brought to the middle of it */
+  useEffect(() => { centerInRow(tabsRef.current?.querySelector<HTMLElement>('.mx-tab.on') || null); }, [tab]);
 
   const byIdMap = useMemo(() => new Map(MODUX_MODELS.map(m => [m.id, m])), []);
   const ql = q.trim().toLowerCase();
@@ -74,7 +76,13 @@ export function ModuxView() {
   const pagesTotal = MODUX_CHAPTERS.reduce((n, c) => n + c.pages.length, 0);
   const pagesDone = MODUX_CHAPTERS.reduce((n, c) => n + c.pages.filter(p => s.completedPages[p.id]).length, 0);
   const stepsDone = MODUX_CHAPTERS.reduce((n, c) => n + c.pages.reduce((k, p) => k + p.steps.filter(st => s.completedSteps[st.id]).length, 0), 0);
-  const connections = MODUX_MODELS.reduce((n, m) => n + m.combines.length, 0);
+  /* each pair of models that compound counted once, as The Web draws them: two models that name each other are one
+     connection, and a name outside the 96 is not a connection here */
+  const connections = useMemo(() => {
+    const seen = new Set<string>();
+    for (const m of MODUX_MODELS) for (const c of m.combines) if (byIdMap.has(c.model)) seen.add([m.id, c.model].sort().join('|'));
+    return seen.size;
+  }, [byIdMap]);
 
   return (
     <div className="wrap-wide mx">
@@ -87,7 +95,7 @@ export function ModuxView() {
             A database of security structures: what each one is, what it defeats, where it fails,
             and what it compounds with. Bedrock patterns, proven ones, the emerging, and the frontier.
           </p>
-          <p className="mx-hero-line">{MODUX_MODELS.length} models {'·'} {FAMILIES.length} families {'·'} {connections} connections {'·'} {MODUX_STACKS.length} stacks {'·'} {pagesDone} of {pagesTotal} pages earned {'·'} {KNOWN_SYSTEMS.length} real systems</p>
+          <p className="mx-hero-line"><span>{MODUX_MODELS.length} models</span><span>{FAMILIES.length} families</span><span>{connections} connections</span><span>{MODUX_STACKS.length} stacks</span><span>{pagesDone} of {pagesTotal} pages earned</span><span>{KNOWN_SYSTEMS.length} real systems</span></p>
         </div>
         <div className="mx-tiles mx-tiles-6">
           <div className="mx-tile"><span className="mx-tile-val">{MODUX_MODELS.length}<span className="mx-tile-of">/{MODUX_CATALOG.length}</span></span><span className="mx-tile-label">models</span></div>

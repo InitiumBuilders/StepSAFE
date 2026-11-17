@@ -7,7 +7,7 @@
 
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useS, type CardState } from '../lib/state';
-import { keepInView } from '../lib/barOffset';
+import { keepInView, centerInRow } from '../lib/barOffset';
 import { useEngine } from '../lib/engine';
 import { Sound } from '../lib/sound';
 import { readSession, writeSession, newSession, applyEvent, SESSION_CAP, takeExamRequest, type StudySession, type SessionEvent } from '../lib/study/session';
@@ -80,6 +80,8 @@ export function StudyView() {
     tabTapped = false;
     if (tabsRef.current) keepInView(tabsRef.current);
   }, [tab]);
+  /* the tabs are one row that scrolls on a phone: the chosen one is brought to the middle of it */
+  useEffect(() => { centerInRow(tabsRef.current?.querySelector<HTMLElement>('.sg-tab.on') || null); }, [tab]);
   /* the study awards land on the record as it stands */
   useEffect(() => { eng.evaluateHooks(s); }, [s.study, s.unitiaC, s.exams]); // eslint-disable-line react-hooks/exhaustive-deps
   /* the test in progress, or one asked for from a chapter or a link */

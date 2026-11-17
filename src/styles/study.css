@@ -406,3 +406,6 @@
   .sg-hero.sg-hero-slim .hero-sigil { position: absolute; top: 12px; right: 12px; width: 40px; height: 40px; margin: 0; }
   .sg-hero.sg-hero-slim .sg-balance-stats span:nth-child(n+4) { display: none; }
 }
+
+/* the slim title keeps its words in balanced lines */
+.sg-hero.sg-hero-slim h1 { text-wrap: balance; }

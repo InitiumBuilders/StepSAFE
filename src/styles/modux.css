@@ -529,3 +529,16 @@ button.mx-chip:hover { background: rgba(255, 255, 255, 0.1); color: var(--ink); 
   .mx-hero.mx-hero-slim { padding: 14px 62px 14px 16px; }
   .mx-hero.mx-hero-slim .hero-sigil { position: absolute; top: 14px; right: 14px; width: 40px; height: 40px; margin: 0; }
 }
+
+/* the slim title keeps its words in balanced lines, and the line's numbers carry their own separators */
+.mx-hero.mx-hero-slim h1 { text-wrap: balance; }
+.mx-hero-line span + span::before { content: '\00B7'; content: '\00B7' / ''; margin: 0 6px; color: var(--ink-label); }
+@media (max-width: 760px) {
+  .mx-hero-line span:nth-child(n+4) { display: none; }
+}
+/* seven tabs on a phone: one row that scrolls, as StudyMode's do, never three rows with one tab alone */
+@media (max-width: 480px) {
+  .mx > .mx-tabs { display: flex; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 6px; margin: 0 -16px var(--s4); padding: 0 16px; }
+  .mx > .mx-tabs::-webkit-scrollbar { display: none; }
+  .mx > .mx-tabs .mx-tab { flex: none; padding: 10px 14px; font-size: 14px; }
+}

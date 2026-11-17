@@ -98,7 +98,7 @@ export function HomeView() {
         const fudNow = fudIds(s.study);
         const reviewedToday = Object.values(s.study).filter(c => c.reviewDay === localDay).length;
         const unitiaToday = s.unitiaDays[localDay] || 0;
-        const weekMove = { on: weekHeld, kicker: 'THE WEEK · ' + fmtD(w.monday) + ' TO ' + fmtD(w.sunday).toUpperCase(), title: w.pressure.name + ' on ' + w.gauge.title, sub: weekHeld ? 'Held this week' : 'Hold it at notch one. The same day for everyone this week.', go: () => d({ t: 'route', view: 'modux-gauge', id: w.gauge.id, sub: 'week:' + w.pressure.id }) };
+        const weekMove = { on: weekHeld, kicker: 'THE WEEK · ' + fmtD(w.monday).toUpperCase() + ' TO ' + fmtD(w.sunday).toUpperCase(), title: w.pressure.name + ' on ' + w.gauge.title, sub: weekHeld ? 'Held this week' : 'Hold it at notch one. The same day for everyone this week.', go: () => d({ t: 'route', view: 'modux-gauge', id: w.gauge.id, sub: 'week:' + w.pressure.id }) };
         return (
           <section className="band" style={{ paddingTop: 0 }} data-keystone data-essence="#a78bff">
             <div className="panel">

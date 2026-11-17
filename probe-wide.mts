@@ -21,8 +21,9 @@ const THEME = ['meridian', 'mov'].find(t => args.includes('--theme=' + t)) || 'n
 const problems: string[] = [];
 
 /* the few places that scroll sideways on purpose: the glossary's A to Z index, StudyMode's six tabs (a third of a
-   screen past the edge), and StudyMode's heading, whose drawn light is clipped at its edge (no words are) */
-const ALLOWED = ['gl-letters', 'sg-tabs', 'sg-hero'];
+   screen past the edge), Modux's seven tabs on a phone (one row since 2026-11-17, never three rows with one tab
+   alone), and StudyMode's heading, whose drawn light is clipped at its edge (no words are) */
+const ALLOWED = ['gl-letters', 'sg-tabs', 'mx-tabs', 'sg-hero'];
 
 type Route = { view: string; id?: string; sub?: string };
 const routes: { kind: string; name: string; route: Route }[] = [];

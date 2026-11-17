@@ -38,3 +38,11 @@ export function keepInView(el: HTMLElement): void {
   const top = barTop();
   if (y < window.scrollY + top) window.scrollTo(0, Math.max(0, y - top - 12));
 }
+
+/** Centres an element in the row that scrolls it sideways, when the row does scroll. The page itself does not move. */
+export function centerInRow(el: HTMLElement | null): void {
+  const row = el?.parentElement;
+  if (!el || !row || row.scrollWidth <= row.clientWidth + 1) return;
+  const a = el.getBoundingClientRect(), b = row.getBoundingClientRect();
+  row.scrollTo({ left: row.scrollLeft + a.left - b.left - b.width / 2 + a.width / 2 });
+}

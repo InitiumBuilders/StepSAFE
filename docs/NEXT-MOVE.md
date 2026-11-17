@@ -720,6 +720,35 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     byte added to sbom.cdx.json moves the digest and not the MD5; an old-format log and a log naming a build whose
     public file changed after the gate are both refused, and the new format passes. Commit cf82874, public 38155e4.
     The next release needs a gate run after cf82874.
+- 2026-11-17, on his "keep moving on visuals": a survey of every screen, then two rounds.
+  - The survey (scratchpad survey/survey.mjs): 30 routes at their first view, Nocturne at 1280 and 390, Meridian
+    and Mov at 1280, the front door from a fresh visit, read as contact sheets. The weakest first views: every
+    Modux tab and every StudyMode tab opened on the same full hero, and on a phone a tab's own work started a whole
+    screen down.
+  - Round 1: the hero steps aside on every tab but the front one (Gauges, For you): the title on one line and one
+    line of numbers; the lede, the tiles and the orb stay on the front tab. A tap that shrinks the hero while the
+    page is scrolled brings the tab row back under the bar (keepInView in lib/barOffset.ts, read from offsetTop so
+    the arriving view's slide does not throw it off). StudyMode's tabs are routes, and App keys each view by view,
+    id and sub, so a tap remounts the view: the tap leaves a module-level note that the new view reads.
+  - Found on the way: the model table's columns were one-column grids that sized themselves, so each track grew to
+    its longest word (94.8px in a 74px column) and every cell and family name ran under the next column; Frontier
+    control ran into Organisation. The track is minmax(0, 1fr) now. Desktop Chrome on this machine does not
+    hyphenate, so twelve across starts at 1437px, where every column holds Interpretability (83px at 12px) whole;
+    below, two bands of six. Phones at 360 and 390 still lean on the browser's own hyphenation for six long words.
+  - Round 1 shipped at 15:46 CST on his "deploy it when the gate's green fam": commit b802686, deployment
+    unitium-safe-jnrq6jxkc, gate 53 of 53, live 101 of 101, nine live walks clean. Release v2026.11.17.3 was the
+    first with the build digest: GitHub's run printed "this build: index.html 9f5e961b0389, build c5cdd03a711443b7",
+    the digest the gate wrote on Windows.
+  - Round 2: Modux's seven tabs on a phone were a 3-column grid written for six (The Web alone on a third row);
+    they are one scrolling row like StudyMode's, and both centre the chosen tab (centerInRow). Slim titles balance
+    their lines; the phone's slim Modux line shows three numbers; Ground's watch cards are level (the button fills
+    its stretched li); the week's label had the Monday date in lower case. The Modux hero said 476 connections
+    while The Web said 339: the hero summed every model's list, counting a pair that names each other twice. Both
+    count each pair once now, and pitch-gen.mts too (pitch.ts regenerated).
+  - For August (the award system is his): hooks.ts grants small-first-testnet, "Broke It on Testnet" (criteria:
+    deploy a contract to a test network and exploit your own bug), on the trigger motus-mode, which fires when the
+    learner's mode is Motus (engine.tsx:70). It has been there since the first commit (9f1fa84). Recommended:
+    remove the hook, or map Motus mode to an award that fits; learners who hold it keep it.
 - Next: on his word, visuals across the screens; Dependabot's remaining requests, each made here, gated alone and
   shipped on his word (three.js done, then React 19 with React DOM, then Vite 8 and TypeScript 7, which change the
   build itself). Then August's choices (the first Dash project, the names, whether Recover grows further, and whether

@@ -309,7 +309,7 @@ export const PITCH = {
    "Chain, Treasury And The Honest Graph",
    "AI Systems And Frontier Control"
   ],
-  "connections": 476
+  "connections": 339
  },
  "gauges": {
   "authored": 15,

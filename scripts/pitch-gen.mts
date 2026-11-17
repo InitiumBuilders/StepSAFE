@@ -79,7 +79,8 @@ export async function buildPitch() {
       models: CATALOG.length, families, tiers, tierCost: TIER_COST,
       stacks: STACKS.length, stackExamples: STACKS.slice(0, 4).map(s => s.name),
       courses: COURSES.length, courseNames: COURSES.map(c => c.title),
-      connections: C.MODUX_MODELS.reduce((n, m) => n + m.combines.length, 0),
+      /* each pair of models that compound counted once, as The Web draws them */
+      connections: new Set(C.MODUX_MODELS.flatMap(m => m.combines.filter(c => C.MODUX_MODELS.some(x => x.id === c.model)).map(c => [m.id, c.model].sort().join('|')))).size,
     },
     gauges: { authored: GAUGES.length, pressures: PRESSURES.length },
     famLinks,
