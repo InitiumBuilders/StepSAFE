@@ -698,14 +698,36 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   - Dependabot's first run opened five requests: #1 three and @types/three 0.169.0 to 0.187.0 (the minor-and-patch
     group), #2 react-dom 18.3.1 to 19.3.1, #3 vite 6.4.6 to 8.3.7, #4 typescript 5.9.3 to 7.0.2, #5 react 18.3.1 to
     19.3.1. #2 and #5 belong together.
-- Next: Dependabot's five requests, each made here, gated alone and shipped on his word (three.js first, then React 19
-  with React DOM, then Vite 8 and TypeScript 7, which change the build itself). Then August's choices (the first Dash
-  project, the names, whether Recover grows further, and whether a certificate read is worth an SSLMate account and a
-  small server); then the glossary's remaining debt, in this order: entries for the words named twice (`npx tsx
-  probe-terms.mts --list` prints them), a decision on the 417 words the corpus names and does not use (write the entry
-  or drop the word from the Step), and a use in a lesson for the 71 entries nothing reaches. Two other names are
-  looser than the rest and are his to confirm: "Safe multisig" for Multisig and "Summiting the Pyramid" for Analytic
-  Robustness.
+- 2026-11-17, on his "keep it moving": three.js 0.187 (Dependabot's #1), and gate logs that name every file.
+  - three and @types/three 0.169.0 to 0.187.0, as the request proposed. The migration guide for r170 to r187 touches
+    none of the add-ons the world imports (EffectComposer, RenderPass, UnrealBloomPass, ShaderPass, OutputPass,
+    BokehPass, Reflector, OrbitControls, RoundedBoxGeometry). r182 retired PCFSoftShadowMap for the WebGL renderer
+    (r187 warns and falls back), so both tiers use PCFShadowMap, which now softens by the key light's shadow radius
+    (3). r187's environment maps end the "sigmaRadians, 0.05, is too large" warning the world logged on every visit.
+  - The world was compared before and after with a headless script (scratchpad world-shot.mjs: the Signing Screen
+    gauge, its whole view and The keystone), on this machine's Intel Arc (tier 1) and in SwiftShader (tier 0). The
+    look holds; the console is clean on 0.187. The three.js chunk is 614 KB (152 KB compressed), up from 555 KB,
+    loaded only with the world. sbom.cdx.json names 0.187.0.
+  - Gate 53 of 53 on a5f63f017b12 (13:58 to 14:27). Shipped at 14:28 CST on his "deploy it when the gate's green":
+    commit aec3bf8, deployment unitium-safe-l439lnhrq, production 101 of 101 the same, nine live walks clean.
+    Release v2026.11.17.2 (gate kept as a558d3f, public copy bc8d017) matched the live site, 101 files, 0 differ.
+  - Regenerating sbom.cdx.json changed a shipped file and left index.html's MD5 as it was, so a gate log named by
+    that MD5 could match a build whose public files changed after the gate. scripts/gate/build-digest.sh names every
+    file: the SHA-256 of the sorted list "<sha256>  <path>", the list release.yml publishes as SHA256SUMS (sorted
+    in the C locale on both sides; Git Bash's sha256sum writes "*" where Linux writes a second space, so the script
+    writes its own lines). gate.sh's first line carries "build <digest>"; mirror.sh --release and release.yml refuse
+    a log without the digest of the build. Tested: one build gives 33b861bca66cf917 in Git Bash and on Linux; one
+    byte added to sbom.cdx.json moves the digest and not the MD5; an old-format log and a log naming a build whose
+    public file changed after the gate are both refused, and the new format passes. Commit cf82874, public 38155e4.
+    The next release needs a gate run after cf82874.
+- Next: on his word, visuals across the screens; Dependabot's remaining requests, each made here, gated alone and
+  shipped on his word (three.js done, then React 19 with React DOM, then Vite 8 and TypeScript 7, which change the
+  build itself). Then August's choices (the first Dash project, the names, whether Recover grows further, and whether
+  a certificate read is worth an SSLMate account and a small server); then the glossary's remaining debt, in this
+  order: entries for the words named twice (`npx tsx probe-terms.mts --list` prints them), a decision on the 417 words
+  the corpus names and does not use (write the entry or drop the word from the Step), and a use in a lesson for the 71
+  entries nothing reaches. Two other names are looser than the rest and are his to confirm: "Safe multisig" for
+  Multisig and "Summiting the Pyramid" for Analytic Robustness.
 
 ## The move
 

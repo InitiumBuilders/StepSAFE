@@ -3,7 +3,7 @@
    courses, and the web that joins them. Every number on this page is counted
    from the data at render time. */
 
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import {
   MODUX_MODELS, MODUX_CATALOG, MODUX_STACKS, MODUX_CHAPTERS, ESSENCE_HEX,
 } from '../content/registry';
@@ -11,6 +11,7 @@ import {
   FAMILY_LABEL, FAMILY_HUE, TIER_LABEL, type ModuxFamily, type ModuxTier,
 } from '../content/modux-schema';
 import { useS, type S } from '../lib/state';
+import { keepInView } from '../lib/barOffset';
 import { ModuxWeb } from '../components/ModuxWeb';
 import { GAUGES, gaugeOfTheDay } from '../content/modux/gauges';
 import { scoreGauge } from '../content/modux/score';
@@ -51,6 +52,16 @@ export function ModuxView() {
   /* the models as the table of emoji (the default), or as the list of cards; a search arriving from Find opens the list */
   const [shape, setShape] = useState<'table' | 'list'>(q ? 'list' : 'table');
   useEffect(() => { chargeKeystone(); }, [tab]);
+  /* The hero steps aside on every tab but the front one. When a tap shrinks it, the tab row would rise past the top
+     of the screen; it is brought back into view. Only a tap moves it: an arrival or Back keeps its own place. */
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const picked = useRef(false);
+  const pick = (k: Tab) => { picked.current = true; setTab(k); };
+  useLayoutEffect(() => {
+    if (!picked.current) return;
+    picked.current = false;
+    if (tabsRef.current) keepInView(tabsRef.current);
+  }, [tab]);
 
   const byIdMap = useMemo(() => new Map(MODUX_MODELS.map(m => [m.id, m])), []);
   const ql = q.trim().toLowerCase();
@@ -67,7 +78,7 @@ export function ModuxView() {
 
   return (
     <div className="wrap-wide mx">
-      <section className="mx-hero mx-glass mx-lit" data-keystone data-essence="#a78bff">
+      <section className={'mx-hero mx-glass mx-lit' + (tab === 'gauges' ? '' : ' mx-hero-slim')} data-keystone data-essence="#a78bff">
         <span className="hero-sigil" aria-hidden><PageSigil kind="web" /></span>
         <div className="mx-hero-text">
           <span className="mx-kicker">Modux Models</span>
@@ -76,6 +87,7 @@ export function ModuxView() {
             A database of security structures: what each one is, what it defeats, where it fails,
             and what it compounds with. Bedrock patterns, proven ones, the emerging, and the frontier.
           </p>
+          <p className="mx-hero-line">{MODUX_MODELS.length} models {'·'} {FAMILIES.length} families {'·'} {connections} connections {'·'} {MODUX_STACKS.length} stacks {'·'} {pagesDone} of {pagesTotal} pages earned {'·'} {KNOWN_SYSTEMS.length} real systems</p>
         </div>
         <div className="mx-tiles mx-tiles-6">
           <div className="mx-tile"><span className="mx-tile-val">{MODUX_MODELS.length}<span className="mx-tile-of">/{MODUX_CATALOG.length}</span></span><span className="mx-tile-label">models</span></div>
@@ -83,14 +95,14 @@ export function ModuxView() {
           <div className="mx-tile"><span className="mx-tile-val lilac">{connections}</span><span className="mx-tile-label">connections</span></div>
           <div className="mx-tile"><span className="mx-tile-val">{MODUX_STACKS.length}</span><span className="mx-tile-label">stacks</span></div>
           <div className="mx-tile"><span className="mx-tile-val warm">{pagesDone}<span className="mx-tile-of">/{pagesTotal}</span></span><span className="mx-tile-label">pages earned</span></div>
-          <button className="mx-tile mx-tile-btn" onClick={() => setTab('systems')}><span className="mx-tile-val">{KNOWN_SYSTEMS.length}</span><span className="mx-tile-label">real systems</span></button>
+          <button className="mx-tile mx-tile-btn" onClick={() => pick('systems')}><span className="mx-tile-val">{KNOWN_SYSTEMS.length}</span><span className="mx-tile-label">real systems</span></button>
         </div>
       </section>
 
-      <div className="mx-tabs" role="tablist" aria-label="Modux sections">
+      <div className="mx-tabs" role="tablist" aria-label="Modux sections" ref={tabsRef}>
         {([['gauges', 'Gauges'], ['systems', 'Systems'], ['models', 'Models'], ['motrus', 'MoTRUS'], ['stacks', 'Stacks'], ['courses', 'Courses'], ['web', 'The Web']] as [Tab, string][]).map(([k, label]) => (
           <button key={k} role="tab" aria-selected={tab === k} className={'mx-tab' + (tab === k ? ' on' : '')}
-            onClick={() => setTab(k)}>{label}</button>
+            onClick={() => pick(k)}>{label}</button>
         ))}
       </div>
 

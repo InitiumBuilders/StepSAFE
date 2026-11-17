@@ -5,8 +5,9 @@
    learner marked and wrote; and the progress page reads their record back,
    including where confidence and recall disagree. */
 
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useS, type CardState } from '../lib/state';
+import { keepInView } from '../lib/barOffset';
 import { useEngine } from '../lib/engine';
 import { Sound } from '../lib/sound';
 import { readSession, writeSession, newSession, applyEvent, SESSION_CAP, takeExamRequest, type StudySession, type SessionEvent } from '../lib/study/session';
@@ -53,6 +54,9 @@ function matches(f: StateFilter, c: CardState | undefined, now: number): boolean
   }
 }
 
+/** a tab was tapped, and the view mounting for its route should keep the tab row in view */
+let tabTapped = false;
+
 export function StudyView() {
   const { s, d } = useS();
   const eng = useEngine();
@@ -67,6 +71,15 @@ export function StudyView() {
   /* the session as another page left it: ids that are not cards (a forged gauge's own threat) drop out here */
   const [session, setSession] = useState<StudySession>(() => { const x = readSession(); return { ...x, ids: x.ids.filter(id => cardById(id)) }; });
   useEffect(() => { chargeKeystone(); }, [tab]);
+  /* The hero steps aside on every tab but For you. When a tap shrinks it, the tab row would rise past the top of the
+     screen; it is brought back into view. A tab is a route, so the tap remounts this view: the tap leaves its note
+     in tabTapped, and the view that mounts reads it. An arrival or Back keeps its own place. */
+  const tabsRef = useRef<HTMLElement>(null);
+  useLayoutEffect(() => {
+    if (!tabTapped) return;
+    tabTapped = false;
+    if (tabsRef.current) keepInView(tabsRef.current);
+  }, [tab]);
   /* the study awards land on the record as it stands */
   useEffect(() => { eng.evaluateHooks(s); }, [s.study, s.unitiaC, s.exams]); // eslint-disable-line react-hooks/exhaustive-deps
   /* the test in progress, or one asked for from a chapter or a link */
@@ -144,7 +157,7 @@ export function StudyView() {
   const p = progressOf(s);
   return (
     <div className="wrap-wide sg">
-      <header className="sg-hero" data-keystone data-essence="#d8effc">
+      <header className={'sg-hero' + (tab === 'foryou' ? '' : ' sg-hero-slim')} data-keystone data-essence="#d8effc">
         <span className="hero-sigil" aria-hidden><PageSigil kind="deck" /></span>
         <span className="label">STUDYMODE</span>
         <RiseHead text="Every concept, one deck." />
@@ -164,9 +177,9 @@ export function StudyView() {
 
       {closed && session.at > 0 && <SessionClose session={session} onAgain={ids => startSession(ids, 'Another round')} onBack={() => d({ t: 'route', view: 'study', sub: 'foryou' })} />}
 
-      <nav className="sg-tabs" aria-label="StudyMode">
+      <nav className="sg-tabs" aria-label="StudyMode" ref={tabsRef}>
         {([['foryou', 'For you'], ['deck', 'Deck'], ['test', 'Test'], ['atlas', 'Atlas'], ['shelf', 'Shelf'], ['progress', 'Progress']] as [Tab, string][]).map(([k, l]) => (
-          <button key={k} className={'sg-tab' + (tab === k ? ' on' : '')} aria-pressed={tab === k} onClick={() => { setTab(k); d({ t: 'route', view: 'study', sub: k }); }}>{l}</button>
+          <button key={k} className={'sg-tab' + (tab === k ? ' on' : '')} aria-pressed={tab === k} onClick={() => { if (k !== tab) tabTapped = true; setTab(k); d({ t: 'route', view: 'study', sub: k }); }}>{l}</button>
         ))}
       </nav>
 

@@ -21,3 +21,20 @@ export function useBarOffset(ref: RefObject<HTMLElement | null>, name: string, k
     return () => { ro?.disconnect(); window.removeEventListener('resize', set); };
   }, [ref, name, key]);
 }
+
+/** the height of the app's bar where it sits on top, else 0 */
+function barTop(): number {
+  const nav = document.querySelector<HTMLElement>('.nav');
+  if (!nav) return 0;
+  const cs = getComputedStyle(nav);
+  return cs.position === 'sticky' && cs.flexDirection === 'row' ? nav.getBoundingClientRect().height : 0;
+}
+
+/** Brings an element back just under the bar (or the top of the screen) when it sits above it. Read from the layout
+    (offsetTop), not the screen, so a view still sliding in as it arrives does not throw the measure off. */
+export function keepInView(el: HTMLElement): void {
+  let y = 0;
+  for (let n: HTMLElement | null = el; n; n = n.offsetParent as HTMLElement | null) y += n.offsetTop;
+  const top = barTop();
+  if (y < window.scrollY + top) window.scrollTo(0, Math.max(0, y - top - 12));
+}

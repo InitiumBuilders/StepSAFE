@@ -388,3 +388,21 @@
 /* a structure's card in StudyMode: its emoji above the name, and the reason on the back as a memory hook */
 .sg-emoji { font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif; display: block; font-size: clamp(44px, 9vw, 64px); margin: 4px 0 6px; }
 .sg-emoji-why { margin: 10px 0 0; color: var(--ink-2); font-size: 0.95rem; line-height: 1.5; }
+
+/* The slim hero, on every tab but For you: the title and the balance, so the tab's own work is in the first view.
+   The lede and the orb belong to the front tab. */
+.sg-hero.sg-hero-slim { padding: 14px 96px 14px 20px; margin-bottom: var(--s4); }
+.sg-hero.sg-hero-slim::before, .sg-hero.sg-hero-slim::after { display: none; }
+.sg-hero.sg-hero-slim h1 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); margin: 4px 0 8px; }
+.sg-hero.sg-hero-slim .lede { display: none; }
+.sg-hero.sg-hero-slim .sg-balance { gap: 4px 18px; align-items: baseline; }
+.sg-hero.sg-hero-slim .sg-unitia { flex-direction: row; align-items: baseline; gap: 8px; }
+.sg-hero.sg-hero-slim .sg-unitia strong { font-size: 1.3rem; }
+.sg-hero.sg-hero-slim .sg-unitia em { display: none; }
+.sg-hero.sg-hero-slim .sg-balance-stats { font-size: 0.85rem; gap: 4px 14px; }
+.sg-hero.sg-hero-slim .hero-sigil { top: calc(50% - 28px); right: 24px; width: 56px; height: 56px; }
+@media (max-width: 760px) {
+  .sg-hero.sg-hero-slim { padding: 12px 60px 12px 16px; }
+  .sg-hero.sg-hero-slim .hero-sigil { position: absolute; top: 12px; right: 12px; width: 40px; height: 40px; margin: 0; }
+  .sg-hero.sg-hero-slim .sg-balance-stats span:nth-child(n+4) { display: none; }
+}

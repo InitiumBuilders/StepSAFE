@@ -516,3 +516,16 @@ button.mx-chip:hover { background: rgba(255, 255, 255, 0.1); color: var(--ink); 
 :root[data-theme='mov'] .mx-web-disc { fill: #05060c; }
 .mx-web-e { font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif; pointer-events: none; transition: font-size 200ms var(--ease); }
 .mx-web-read-e { font-size: 1.25em; margin-right: 8px; vertical-align: -0.12em; }
+
+/* The slim hero, on every tab but Gauges: the kicker, the title on one line and one line of numbers, so the tab's
+   own work is in the first view. The lede and the tiles belong to the front tab. */
+.mx-hero-line { display: none; }
+.mx-hero.mx-hero-slim { padding: 16px 96px 16px 24px; margin-bottom: var(--s4); gap: 0; }
+.mx-hero.mx-hero-slim h1 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); margin: 4px 0 6px; }
+.mx-hero.mx-hero-slim .lede, .mx-hero.mx-hero-slim .mx-tiles { display: none; }
+.mx-hero.mx-hero-slim .mx-hero-line { display: block; margin: 0; font-size: 0.88rem; line-height: 1.5; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.mx-hero.mx-hero-slim .hero-sigil { top: calc(50% - 28px); right: 24px; width: 56px; height: 56px; }
+@media (max-width: 760px) {
+  .mx-hero.mx-hero-slim { padding: 14px 62px 14px 16px; }
+  .mx-hero.mx-hero-slim .hero-sigil { position: absolute; top: 14px; right: 14px; width: 40px; height: 40px; margin: 0; }
+}
