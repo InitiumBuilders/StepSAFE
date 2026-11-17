@@ -17,8 +17,8 @@ The public side of this is StepSAFE's own record at #/trust (views/TrustView.tsx
 | --- | --- | --- | --- |
 | PO.1 Define Security Requirements for Software Development | Partly | docs/SECURITY-REQUIREMENTS.md lists each requirement for the software with the test that holds it (PO.1.2). PO.1.3 does not apply: StepSAFE takes no commercial components. | The development infrastructure's own requirements, written the same way (PO.1.1). |
 | PO.2 Implement Roles and Responsibilities | Partly | One maintainer holds every role. A production release waits for his own go-ahead for that build. | The roles written down: who builds, reviews, approves, publishes and answers reports. |
-| PO.3 Implement Supporting Toolchains | Partly | TypeScript in strict mode, Vite, the gate (scripts/gate/gate.sh), the secret scan, scripts/sbom.mjs, scripts/vulns.mjs, prebuilt deploys to Vercel. | The gate's log kept with each release as its artifact (PO.3.3). |
-| PO.4 Define and Use Criteria for Software Security Checks | Partly | Every line of the gate must say exit 0. ship.sh refuses on a placeholder contact, a stale bill of materials or a known flaw. | The gate's results kept and safeguarded per release (PO.4.2). |
+| PO.3 Implement Supporting Toolchains | Met | TypeScript in strict mode, Vite, the gate (scripts/gate/gate.sh), the secret scan, scripts/sbom.mjs, scripts/vulns.mjs, prebuilt deploys to Vercel. Each signed release publishes the gate log of its build as an artifact, signed with the build (PO.3.3). | |
+| PO.4 Define and Use Criteria for Software Security Checks | Met | Every line of the gate must say exit 0. ship.sh refuses on a placeholder contact, a stale bill of materials or a known flaw. The gate's results are kept in the repository (releases/gate-<md5>.txt) and published, signed, with each release (PO.4.2). | |
 | PO.5 Implement and Maintain Secure Environments for Software Development | For August to confirm | Production runs on Vercel; previews are separate deployments; the repository is private. | Two-factor sign-in on GitHub and Vercel, and disk encryption and updates on the build machine (PO.5.2). |
 
 ## Protect the Software (PS)
@@ -27,7 +27,7 @@ The public side of this is StepSAFE's own record at #/trust (views/TrustView.tsx
 | --- | --- | --- | --- |
 | PS.1 Protect All Forms of Code from Unauthorized Access and Tampering | Partly | A private repository under one account. Every push runs the secret scan, and a hit stops it. The public copy's main branch refuses force pushes and deletion, admins included (a GitHub ruleset that OpenSSF Scorecard reads), and GitHub's push protection guards it. | Branch protection on the private repository (GitHub's free plan offers none for private repositories) and signed commits. |
 | PS.2 Provide a Mechanism for Verifying Software Release Integrity | Met | The bill of materials carries a SHA-512 hash for each shipped package. Each release on the public copy publishes SHA256SUMS for every file the site serves and SLSA provenance signed through Sigstore for each of them, after the Release workflow checks the live site is that build file by file; `gh attestation verify` checks any file (PS.2.1). | |
-| PS.3 Archive and Protect Each Software Release | Partly | Vercel keeps every deployment. Each release is a tagged commit on the public copy with its archive, its file hashes and its signed provenance (PS.3.1). The bill of materials is the provenance for third-party components (PS.3.2). | The gate's log kept with each release. |
+| PS.3 Archive and Protect Each Software Release | Met | Vercel keeps every deployment. Each release is a tagged commit on the public copy with its archive, its file hashes, the gate its build passed and its signed provenance (PS.3.1). The bill of materials is the provenance for third-party components (PS.3.2). | |
 
 ## Produce Well-Secured Software (PW)
 
@@ -58,8 +58,8 @@ In order of what a reviewer weighs most:
    build machine.
 2. **Write the two short documents still missing**: the roles (PO.2), and the triage steps with fix times (RV.2),
    whose times are August's to set. The security requirements with their tests (PO.1) are written.
-3. **Keep each release's evidence**: the gate log and the list of the release's file hashes in the repository, with
-   the commit (PO.3.3, PO.4.2, PS.3.1).
+3. **Each release's evidence is kept** since v2026.11.17: the gate log and the file hashes, signed with the build
+   (PO.3.3, PO.4.2, PS.3.1).
 4. **The public copy is live** (github.com/InitiumBuilders/StepSAFE, since 2026-11-14): branch rules, push
    protection, Dependabot alerts, CodeQL and OpenSSF Scorecard run on it, which moved PS.1, PW.7 and RV.1 forward.
    Since 2026-11-15 a GitHub ruleset holds main's rules with no exceptions, and Scorecard reads it: Branch-Protection

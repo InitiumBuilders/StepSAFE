@@ -1,0 +1,25 @@
+# Dependabot on the public copy of StepSAFE. Once a week it opens a request for each dependency and each pinned action
+# with a newer release, after a seven day cooldown (StepSAFE's own Dependency cooldown model: compromised releases are
+# usually pulled within days). The public copy is made from the private repository, so an update is made there and
+# arrives with the next sync, and Dependabot then closes its own request. Copied in by scripts/mirror.sh.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types: ['minor', 'patch']
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5

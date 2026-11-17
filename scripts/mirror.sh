@@ -4,23 +4,55 @@
 # sites among them, which its own brief says never ship. The app already ships their public cut.
 #
 # It takes the files this repository holds at HEAD (commit first: run it after scripts/keep.sh), leaves out
-# research/outlier, adds the workflows in scripts/mirror/ (Scorecard, CodeQL and Release), scans the copy for secrets
-# and for private details, and pushes one commit. A hit in a scan stops it before anything leaves this machine.
-#   bash scripts/mirror.sh             after notes or tooling
-#   bash scripts/mirror.sh --release   after a ship: it also tags the commit (v2026.11.16, then v2026.11.16.2 the same
-#                                      day), and the Release workflow builds the site from it, checks the live site is
-#                                      that build file for file, signs the provenance and publishes the release
+# research/outlier, adds the workflows and Dependabot's settings from scripts/mirror/, scans the copy for secrets and
+# for private details, and pushes one commit. A hit in a scan stops it before anything leaves this machine.
+#   bash scripts/mirror.sh                            after notes or tooling
+#   bash scripts/mirror.sh --release --gate <log>     after a ship. The gate log must be the one the shipped build
+#       passed: its first line names dist/index.html by MD5, it reached "gate finished", and the last line of every
+#       check says exit 0 (a walk run again alone with scripts/gate/quiet-walk.sh adds a later line of its own). The
+#       live site must be that build. The log is kept as releases/gate-<md5>.txt and committed here first. Then the
+#       commit is tagged (v2026.11.17, then v2026.11.17.2 the same day), and the Release workflow builds the site from
+#       it, checks the live site is that build file for file, finds the gate of that same build, signs the provenance
+#       for both and publishes the release
 # The copy is kept in C:\Users\Initi\outputs\stepsafe-public between runs. The push runs in WSL, where gh holds the
 # GitHub sign-in.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-RELEASE=0; [ "${1:-}" = --release ] && RELEASE=1
+RELEASE=0; GATE=''
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --release) RELEASE=1 ;;
+    --gate) GATE="${2:-}"; shift ;;
+    *) echo "unknown argument: $1" >&2; exit 2 ;;
+  esac
+  shift
+done
+[ "$RELEASE" = 1 ] && [ -z "$GATE" ] && { echo "REFUSED: a release publishes the gate it passed: --release --gate <gate log>" >&2; exit 2; }
 SRC=$(pwd)
 OUT=/c/Users/Initi/outputs/stepsafe-public
 WSL_OUT=/mnt/c/Users/Initi/outputs/stepsafe-public
 REPO=https://github.com/InitiumBuilders/StepSAFE.git
 GIT_GH="git -c credential.helper= -c credential.helper='!gh auth git-credential' -c core.fileMode=false"
 git diff --quiet && git diff --cached --quiet || { echo "REFUSED: commit first (scripts/keep.sh); the copy is made from HEAD" >&2; exit 2; }
+# the gate of the build that shipped, kept with the code before the copy is made
+if [ -n "$GATE" ]; then
+  [ -f "$GATE" ] || { echo "REFUSED: no gate log at $GATE" >&2; exit 2; }
+  MD5=$(md5sum dist/index.html | cut -c1-12)
+  head -1 "$GATE" | grep -q "on $MD5" || { echo "REFUSED: $GATE is not the gate of the build in dist (index.html $MD5)" >&2; exit 2; }
+  grep -q '^gate finished' "$GATE" || { echo "REFUSED: $GATE did not finish" >&2; exit 2; }
+  awk -F' exit ' 'NF > 1 { c = $2; sub(/[^0-9].*$/, "", c); last[$1] = c }
+    END { for (k in last) { n++; if (last[k] != "0") { print "  " k " ended with exit " last[k]; bad = 1 } } exit (bad || !n) }' "$GATE" >&2 ||
+    { echo "REFUSED: in $GATE, not every check ends with exit 0" >&2; exit 2; }
+  LIVE=$(curl -fsS --compressed -m 60 https://unitium-safe.vercel.app/ | md5sum | cut -c1-12) || LIVE=none
+  [ "$LIVE" = "$MD5" ] || { echo "REFUSED: the live index.html ($LIVE) is not the build in dist ($MD5); ship it first" >&2; exit 2; }
+  mkdir -p releases
+  if [ ! -f "releases/gate-$MD5.txt" ]; then
+    cp "$GATE" "releases/gate-$MD5.txt"
+    bash scripts/keep.sh "Release evidence: the gate that build $MD5 passed
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
+  fi
+fi
 HEAD_SHA=$(git rev-parse --short HEAD); SUBJECT=$(git log -1 --format=%s)
 
 mkdir -p "$OUT"
@@ -39,6 +71,7 @@ find "$OUT" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 git archive --format=tar HEAD | tar -x -C "$OUT"
 rm -rf "$OUT/research/outlier"
 mkdir -p "$OUT/.github/workflows" && cp scripts/mirror/scorecard.yml scripts/mirror/codeql.yml scripts/mirror/release.yml "$OUT/.github/workflows/"
+cp scripts/mirror/dependabot.yml "$OUT/.github/dependabot.yml"
 
 cd "$OUT"
 git add -A

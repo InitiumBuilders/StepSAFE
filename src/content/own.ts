@@ -89,7 +89,7 @@ export const CODE_ANSWERS: Record<string, OwnAnswer> = {
   'release-two': { answer: 'partly', how: 'said', note: 'A production release waits for the maintainer’s own go-ahead for that build. The maintainer can still publish alone.' },
   'rollback': { answer: 'partly', how: 'said', note: 'Vercel keeps every release, so the last good one can be restored in one step, and the steps are written in the repository. A rollback has not been practiced.' },
   'new-deps': { answer: 'yes', how: 'said', read: 'parts', note: 'StepSAFE has three direct dependencies, React, React DOM and three.js, and ships six packages in all. The lockfile is committed.' },
-  'dep-alerts': { answer: 'partly', how: 'said', read: 'flaws', note: 'Dependabot alerts are on for the public copy. Every release asks OSV.dev about each package that ships, and so does this page when you press the button. A time to fix is not set yet.' },
+  'dep-alerts': { answer: 'partly', how: 'said', read: 'flaws', note: 'Dependabot alerts are on for the public copy, and once a week Dependabot proposes updates there after a seven-day cooldown. An update is made in the private repository and reaches the public copy with the next sync. Every release asks OSV.dev about each package that ships, and so does this page when you press the button. A time to fix is not set yet.' },
   'disclosure': { answer: 'yes', how: 'shown', read: 'disclosure', note: 'security.txt, the policy page and the public copy’s SECURITY.md say where to send a report and when to expect a reply.' },
   'sbom': { answer: 'yes', how: 'shown', read: 'parts', note: 'The bill of materials is published with every release, at /sbom.cdx.json.' },
 };

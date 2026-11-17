@@ -242,7 +242,7 @@ export function TrustView({ alone = false }: { alone?: boolean }) {
       <section className="ownr-block" aria-labelledby="ownr-tests-h">
         <header className="ownr-result-head">
           <h2 id="ownr-tests-h" className="ownr-h">Tested before every release</h2>
-          <p className="sec">A browser cannot run these, so this is StepSAFE’s word. Each test is named, so a reviewer can ask to see it run.</p>
+          <p className="sec">A browser cannot run these, so the list is StepSAFE’s word. From v2026.11.17, each signed release also carries the log of the tests its build passed before it shipped. Every check is listed with its result, and the log is signed with the build: <a href="https://github.com/InitiumBuilders/StepSAFE/releases" target="_blank" rel="noopener noreferrer">the releases</a>.</p>
         </header>
         <ul className="ownr-tests">
           {RELEASE_TESTS.map((x) => <li key={x.name}><code>{x.name}</code><span>{x.line}</span></li>)}

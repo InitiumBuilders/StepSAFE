@@ -1,9 +1,12 @@
 # Signed releases of StepSAFE, on the public copy. A tag (v2026.11.16 and so on, pushed by scripts/mirror.sh --release
 # after a ship) starts it. It builds the site again from that commit, lists every file with its SHA-256, and checks
-# each one against the live site: if any file differs, nothing is signed or published. Then it signs SLSA build
-# provenance through Sigstore (GitHub's OIDC, so there is no key to keep) for the archive and for every file, and
-# publishes the release with the provenance attached. Copied in by scripts/mirror.sh; the private repository does not
-# run it. Every action is pinned to a commit, with its version beside it.
+# each one against the live site: if any file differs, nothing is signed or published. It finds the gate this same
+# build passed before it shipped (releases/gate-<md5 of index.html>.txt, kept by mirror.sh), and the last line of
+# every check in it must say exit 0: no gate, no release. Then
+# it signs SLSA build provenance through Sigstore (GitHub's OIDC, so there is no key to keep) for the archive, the gate
+# and every file, and publishes the release with the provenance and the gate attached. Copied in by
+# scripts/mirror.sh; the private repository does not run it. Every action is pinned to a commit, with its version
+# beside it.
 name: Release
 
 on:
@@ -51,10 +54,22 @@ jobs:
           done < SHA256SUMS
           echo "$(wc -l < SHA256SUMS) files checked against $SITE; $bad differ"
           [ "$bad" = 0 ]
+      - name: Find the gate this same build passed
+        run: |
+          md5=$(md5sum dist/index.html | cut -c1-12)
+          f="releases/gate-$md5.txt"
+          [ -f "$f" ] || { echo "No gate log for this build ($f). A release publishes the gate it passed."; exit 1; }
+          head -1 "$f" | grep -q "on $md5" || { echo "$f does not name this build"; exit 1; }
+          grep -q '^gate finished' "$f" || { echo "$f did not finish"; exit 1; }
+          checks=$(awk -F' exit ' 'NF > 1 { c = $2; sub(/[^0-9].*$/, "", c); last[$1] = c }
+            END { for (k in last) { n++; if (last[k] != "0") { print k " ended with exit " last[k] > "/dev/stderr"; bad = 1 } } print n + 0; exit (bad || !n) }' "$f") ||
+            { echo "In $f, not every check ends with exit 0"; exit 1; }
+          cp "$f" "stepsafe-$TAG-gate.txt"
+          echo "GATE_CHECKS=$checks" >> "$GITHUB_ENV"
       - name: Pack the build
         run: |
           tar -C dist --sort=name --mtime=@0 --owner=0 --group=0 --numeric-owner -cf - . | gzip -n > "stepsafe-$TAG.tar.gz"
-          { cat SHA256SUMS; sha256sum "stepsafe-$TAG.tar.gz" SHA256SUMS; } > subjects.txt
+          { cat SHA256SUMS; sha256sum "stepsafe-$TAG.tar.gz" SHA256SUMS "stepsafe-$TAG-gate.txt"; } > subjects.txt
       - name: Sign the build provenance for the archive and every file
         id: attest
         uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
@@ -71,10 +86,11 @@ jobs:
 
           - SHA256SUMS lists every file the site serves, with its SHA-256.
           - stepsafe-$TAG.tar.gz holds those files.
-          - stepsafe-$TAG.intoto.jsonl is the signed build provenance (SLSA, signed through Sigstore). It names this repository, this workflow and this commit, and covers the archive and each file in SHA256SUMS.
+          - stepsafe-$TAG-gate.txt is the gate this same build passed before it shipped: $GATE_CHECKS checks and browser walks run on this build (its index.html, by MD5), each line with its exit code. A walk run again alone has a later line of its own, and the last line of every check says exit 0.
+          - stepsafe-$TAG.intoto.jsonl is the signed build provenance (SLSA, signed through Sigstore). It names this repository, this workflow and this commit, and covers the archive, the gate and each file in SHA256SUMS.
 
           To check the archive, or any file you download from the site:
 
               gh attestation verify <file> --repo $GITHUB_REPOSITORY
           EOF
-          gh release create "$TAG" "stepsafe-$TAG.tar.gz" SHA256SUMS "stepsafe-$TAG.intoto.jsonl" --title "StepSAFE $TAG" --notes-file notes.md --verify-tag
+          gh release create "$TAG" "stepsafe-$TAG.tar.gz" SHA256SUMS "stepsafe-$TAG-gate.txt" "stepsafe-$TAG.intoto.jsonl" --title "StepSAFE $TAG" --notes-file notes.md --verify-tag
