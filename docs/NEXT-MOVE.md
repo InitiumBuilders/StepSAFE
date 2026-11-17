@@ -745,6 +745,14 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     its stretched li); the week's label had the Monday date in lower case. The Modux hero said 476 connections
     while The Web said 339: the hero summed every model's list, counting a pair that names each other twice. Both
     count each pair once now, and pitch-gen.mts too (pitch.ts regenerated).
+  - The first gate on round 2 caught the new phone tab row: probe-wide flags any box that runs past its edge, and
+    the row was not on its list of boxes that scroll sideways on purpose. It is now (ALLOWED in probe-wide.mts),
+    and the whole gate ran again: 53 of 53 on 9075bdc4de1f, build 25492643b031371a (16:39 to 17:08). Shipped at
+    17:10 CST on his "deploy it when the gate's green fam": commit e9eef9c, deployment unitium-safe-hf0ppwy6o, live
+    101 of 101, nine live walks clean. Release v2026.11.17.4 (gate kept as bc222b4, public copy 94063f5).
+  - Dependabot closed its three.js request (#1) on its own at 14:46 CST, "no longer updatable", once the update
+    reached the public copy: the loop own.ts describes, seen working. Open: #2 and #5 (React and React DOM 19.3.1),
+    #3 (Vite 8.3.7), #4 (TypeScript 7.0.2).
   - For August (the award system is his): hooks.ts grants small-first-testnet, "Broke It on Testnet" (criteria:
     deploy a contract to a test network and exploit your own bug), on the trigger motus-mode, which fires when the
     learner's mode is Motus (engine.tsx:70). It has been there since the first commit (9f1fa84). Recommended:
