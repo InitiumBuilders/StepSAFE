@@ -312,8 +312,8 @@ interface NodeView {
 
 const TIER_KEY = 'stepsafe-world-tier';
 
-/** The starting tier, from the device: 2 draws the mirror floor, the lens and the soft shadows;
-    1 draws a plain floor, hard shadows a few times a second, and bloom at a quarter size;
+/** The starting tier, from the device: 2 draws the mirror floor, the lens, and shadows five times a second;
+    1 draws a plain floor, shadows a few times a second, and bloom at a quarter size;
     0 draws no shadows and no bloom, thirty frames a second. A tier the governor stepped down
     to on this device before is where the next visit starts. */
 function startTier(r: THREE.WebGLRenderer): 0 | 1 | 2 {
@@ -453,7 +453,8 @@ export class GaugeWorld {
     /* the shadows are drawn a few times a second, not every frame, and not at all on the lightest tier */
     this.renderer.shadowMap.enabled = this.quality > 0;
     this.renderer.shadowMap.autoUpdate = false;
-    this.renderer.shadowMap.type = this.quality === 2 ? THREE.PCFSoftShadowMap : THREE.PCFShadowMap;
+    /* PCF softens its edges by the key light's shadow radius; three.js r182 retired PCFSoftShadowMap for it */
+    this.renderer.shadowMap.type = THREE.PCFShadowMap;
     this.renderer.domElement.className = 'gw-gl';
     host.appendChild(this.renderer.domElement);
     host.classList.add('gw-warming');
