@@ -8,12 +8,13 @@
 # for private details, and pushes one commit. A hit in a scan stops it before anything leaves this machine.
 #   bash scripts/mirror.sh                            after notes or tooling
 #   bash scripts/mirror.sh --release --gate <log>     after a ship. The gate log must be the one the shipped build
-#       passed: its first line names dist/index.html by MD5, it reached "gate finished", and the last line of every
-#       check says exit 0 (a walk run again alone with scripts/gate/quiet-walk.sh adds a later line of its own). The
-#       live site must be that build. The log is kept as releases/gate-<md5>.txt and committed here first. Then the
-#       commit is tagged (v2026.11.17, then v2026.11.17.2 the same day), and the Release workflow builds the site from
-#       it, checks the live site is that build file for file, finds the gate of that same build, signs the provenance
-#       for both and publishes the release
+#       passed: its first line names the build in dist (index.html by MD5, every file by
+#       scripts/gate/build-digest.sh), it reached "gate finished", and the last line of every check says exit 0 (a
+#       walk run again alone with scripts/gate/quiet-walk.sh adds a later line of its own). The live site must be that
+#       build. The log is kept as releases/gate-<md5>.txt and committed here first. Then the commit is tagged
+#       (v2026.11.17, then v2026.11.17.2 the same day), and the Release workflow builds the site from it, checks the
+#       live site is that build file for file, finds the gate of that same build, signs the provenance for both and
+#       publishes the release
 # The copy is kept in C:\Users\Initi\outputs\stepsafe-public between runs. The push runs in WSL, where gh holds the
 # GitHub sign-in.
 set -euo pipefail
@@ -37,8 +38,9 @@ git diff --quiet && git diff --cached --quiet || { echo "REFUSED: commit first (
 # the gate of the build that shipped, kept with the code before the copy is made
 if [ -n "$GATE" ]; then
   [ -f "$GATE" ] || { echo "REFUSED: no gate log at $GATE" >&2; exit 2; }
-  MD5=$(md5sum dist/index.html | cut -c1-12)
-  head -1 "$GATE" | grep -q "on $MD5" || { echo "REFUSED: $GATE is not the gate of the build in dist (index.html $MD5)" >&2; exit 2; }
+  MD5=$(md5sum dist/index.html | cut -c1-12); DIGEST=$(bash scripts/gate/build-digest.sh dist)
+  head -1 "$GATE" | grep -q "on $MD5 build $DIGEST" ||
+    { echo "REFUSED: $GATE is not the gate of the build in dist (index.html $MD5, build $DIGEST)" >&2; exit 2; }
   grep -q '^gate finished' "$GATE" || { echo "REFUSED: $GATE did not finish" >&2; exit 2; }
   awk -F' exit ' 'NF > 1 { c = $2; sub(/[^0-9].*$/, "", c); last[$1] = c }
     END { for (k in last) { n++; if (last[k] != "0") { print "  " k " ended with exit " last[k]; bad = 1 } } exit (bad || !n) }' "$GATE" >&2 ||

@@ -4,6 +4,8 @@
 #   bash scripts/gate/gate.sh <log file> [base address, default http://localhost:5189]
 # It runs: the type check, the outline check, every probe-*.mts, the wide crawl in three themes, then sixteen
 # walks. Every line of the log must say exit 0. The whole output of each walk is kept in <log file>.out/.
+# Its first line names the build: index.html by MD5, and every file by scripts/gate/build-digest.sh. A release finds
+# the gate of its build by both (scripts/mirror.sh, scripts/mirror/release.yml).
 # Kept here from 14 Nov 2026, when it had run five times in one day from a session's scratch folder.
 #
 # Two things that day taught:
@@ -15,7 +17,7 @@
 cd "$(dirname "$0")/../.." || exit 1
 LOG="${1:?give a log file}"; BASE="${2:-http://localhost:5189}"; : > "$LOG"; mkdir -p "$LOG.out"; rm -f "$LOG.fail"
 say() { echo "$@" | tee -a "$LOG"; }
-say "gate started $(date '+%H:%M:%S') on $(md5sum dist/index.html 2>/dev/null | cut -c1-12)"
+say "gate started $(date '+%H:%M:%S') on $(md5sum dist/index.html 2>/dev/null | cut -c1-12) build $(bash scripts/gate/build-digest.sh dist 2>/dev/null)"
 npx tsc --noEmit > "$LOG.tsc" 2>&1; say "tsc exit $?"
 npx tsx scripts/content-outline.mts --check > "$LOG.outline" 2>&1; say "outline exit $? $(tail -1 "$LOG.outline")"
 for f in probe-*.mts; do

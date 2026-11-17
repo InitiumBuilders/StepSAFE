@@ -5,7 +5,8 @@ Written 2026-11-14. StepSAFE's own record (#/trust) says these steps are written
 ## A release
 
 1. Build and run the gate on the build: `bash scripts/gate/gate.sh <log>`, with the built site served on port 5189
-   (the `stepsafe-serve` preview). The last line of every check must say exit 0. A walk that stops under load is run
+   (the `stepsafe-serve` preview). The log's first line names the build: index.html by MD5, and every file by
+   `scripts/gate/build-digest.sh`. The last line of every check must say exit 0. A walk that stops under load is run
    again alone, and its line is added to the log: `bash scripts/gate/quiet-walk.sh <walk> <output file> >> <log>`.
 2. Production needs August's own go-ahead for that build in the session that built it.
 3. `bash scripts/ship.sh "what changed"`. Before it builds, it refuses when:
