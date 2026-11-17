@@ -757,14 +757,54 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     deploy a contract to a test network and exploit your own bug), on the trigger motus-mode, which fires when the
     learner's mode is Motus (engine.tsx:70). It has been there since the first commit (9f1fa84). Recommended:
     remove the hook, or map Motus mode to an award that fits; learners who hold it keep it.
-- Next: on his word, visuals across the screens; Dependabot's remaining requests, each made here, gated alone and
-  shipped on his word (three.js done, then React 19 with React DOM, then Vite 8 and TypeScript 7, which change the
-  build itself). Then August's choices (the first Dash project, the names, whether Recover grows further, and whether
-  a certificate read is worth an SSLMate account and a small server); then the glossary's remaining debt, in this
-  order: entries for the words named twice (`npx tsx probe-terms.mts --list` prints them), a decision on the 417 words
-  the corpus names and does not use (write the entry or drop the word from the Step), and a use in a lesson for the 71
-  entries nothing reaches. Two other names are looser than the rest and are his to confirm: "Safe multisig" for
-  Multisig and "Summiting the Pyramid" for Analytic Robustness.
+- Next, strongest first (written 2026-11-17, at the end of that day's session):
+  1. React 19 (Dependabot #2 and #5, together). A read of the code found none of the removed APIs: createRoot is
+     already used, and there are no defaultProps, string refs, findDOMNode or useRef calls without an argument; every
+     callback ref has a block body. One type to rename: React.MutableRefObject in components/MindLedger.tsx. Install
+     react, react-dom, @types/react and @types/react-dom at the requested versions, then tsc, the build, the gate, and
+     a ship on his word. Dependabot then closes both requests.
+  2. A walk for what today added, so it cannot slip back: the slim hero on every tab but the front one, the tab row in
+     view after a tap from a scrolled page (Modux keeps its tab in state, StudyMode remounts), the chosen tab centred
+     on a phone, and every word of the model table whole at desktop widths (scripts/look/wordfit.mjs has the measure).
+     Add it to gate.sh and live-walks.sh. Today scratch scripts checked these, and nothing holds them yet.
+  3. His call: hooks.ts grants "Broke It on Testnet" on the trigger motus-mode, which only means the learner's mode is
+     Motus. Recommended: remove the hook, or map Motus mode to an award that fits.
+  4. Phones at 360 and 390: six long words in the table (Interpretability, authentication, Constitutional,
+     normalisation, segmentation, Transparency) lean on the phone's own hyphenation. Ask him to open Models on his
+     phone. If a word breaks with no hyphen, add soft hyphens for those words in ModelTable and make the walks read
+     names without them.
+  5. Vite 8 (#3), then TypeScript 7 (#4), each alone. Vite 8 bundles with Rolldown: check that a build is still the
+     same byte for byte on Linux (the release depends on it), the security policy (no inline script), chunk names, the
+     offline manifest and the bundle sizes. TypeScript 7 is the native compiler: check tsconfig for removed options
+     and that the probes still run under tsx.
+  6. picomatch (GHSA-fc5q-39xc-vjpf): when a fixed version is published, update the lockfile only, and Scorecard's
+     Vulnerabilities returns to 10.
+  7. A third visual round: run scripts/look/survey.mjs, read the sheets, and pick the weakest first views. Seen today:
+     in the six-across table the cells are wide and their emoji small, and on a phone the Modux hero still takes a
+     third of the screen on its front tab.
+  8. His choices, carried from before: the first Dash project, the names, whether Recover grows further, whether a
+     certificate read is worth an SSLMate account and a small server, and the names "Safe multisig" and "Summiting the
+     Pyramid". Then the glossary's debt: entries for the words named twice (`npx tsx probe-terms.mts --list`), a
+     decision on the 417 words the corpus names and does not use, and a use in a lesson for the 71 entries nothing
+     reaches.
+- Reflections from 2026-11-17:
+  - Each fix showed a layer under it. Publishing the gate showed that index.html's MD5 does not name a build, so the
+    digest came next. The slim hero showed that the table's columns had run under each other since the table shipped,
+    and the narrower columns showed that this Chrome does not hyphenate. Measuring each box against its column found
+    what the pictures hid, because the next column painted over the overlap.
+  - The strongest moves turned a said answer into a shown one: the gate's log signed with the build, and the digest
+    checked again on GitHub's Linux machine.
+  - The gate caught the phone tab row I had not put on the scroll list. Every new behaviour should arrive with the
+    check that holds it.
+  - Time went where the order was wrong: a gate started with no server (every walk failed to connect within four
+    minutes, so the gate ran again), and a gate stopped to reword two lines that should have been read before it
+    began. Read every new visible line, start the server, then gate.
+  - What kept the pace: the next round written as a patch while the gate ran, src left alone during a gate (ship.sh
+    builds from source), headless scripts when the Browser pane was hidden, and one script per claim that asserts it.
+  - The trust layer is a closed loop now: the tests, the gate log, the build digest, the signed release, the live site
+    matched file by file, and Scorecard read on /trust. StepSAFE still says four answers without showing them: review
+    (one maintainer), commit signing, a practised rollback and a time to fix. The next leverage is in what a learner
+    sees first.
 
 ## The move
 
