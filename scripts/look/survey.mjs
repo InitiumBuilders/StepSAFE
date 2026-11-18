@@ -22,10 +22,14 @@ const ROUTES = [
   ['glossary', '/glossary/stock-and-flow'], ['study', '/study'], ['deck', '/study/deck'], ['atlas', '/study/atlas'],
   ['progress', '/study/progress'],
 ];
-const RUNS = [
-  { theme: 'nocturne', w: 1280, h: 800 }, { theme: 'nocturne', w: 390, h: 844 },
-  { theme: 'meridian', w: 1280, h: 800 }, { theme: 'mov', w: 1280, h: 800 },
-];
+/* the default runs, or your own as a fourth argument: theme@WIDTHxHEIGHT, comma separated
+   (node scripts/look/survey.mjs <base> <out> nocturne@1920x1080,nocturne@2560x1440) */
+const RUNS = process.argv[4]
+  ? process.argv[4].split(',').map((x) => { const [theme, size] = x.split('@'); const [w, h] = size.split('x').map(Number); return { theme, w, h }; })
+  : [
+    { theme: 'nocturne', w: 1280, h: 800 }, { theme: 'nocturne', w: 390, h: 844 },
+    { theme: 'meridian', w: 1280, h: 800 }, { theme: 'mov', w: 1280, h: 800 },
+  ];
 
 const b = await chromium.launch({ channel: 'chrome', headless: true, args: ['--enable-gpu', '--use-angle=d3d11', '--ignore-gpu-blocklist'] });
 const shots = [];
@@ -50,7 +54,7 @@ for (const run of RUNS) {
   await c.close();
 }
 // the front door, as a first visit sees it
-for (const w of [1280, 390]) {
+for (const w of process.argv[4] ? [] : [1280, 390]) {
   const phone = w < 600;
   const c = await b.newContext({ viewport: { width: w, height: phone ? 844 : 800 }, deviceScaleFactor: 1, isMobile: phone, hasTouch: phone });
   const p = await c.newPage();

@@ -39,6 +39,8 @@ h1 { font-size: clamp(2.6rem, 6.4vw, 3.9rem); }
 h2 { font-size: clamp(2rem, 4.6vw, 2.9rem); }
 h3 { font-size: clamp(1.5rem, 2.9vw, 1.85rem); letter-spacing: -0.016em; }
 h4 { font-size: 1.5rem; font-weight: 700; }
+/* a heading never leaves one word alone on its last line */
+h1, h2, h3 { text-wrap: balance; }
 
 p { margin: 0 0 var(--s4); }
 a { color: var(--ink-accent); text-underline-offset: 3px; }

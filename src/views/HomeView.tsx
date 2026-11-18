@@ -71,13 +71,16 @@ export function HomeView() {
   const openSim = goingSim || SIMS.find(m => !s.completedSims[m.id]);
 
   return (
-    <div className="wrap">
+    <div className="wrap home">
       <SectionHead sigil="seed"
         kicker={PHASE_NAMES[phase] + ' · ' + rank.name.toUpperCase() + ' · DAY STREAK ' + s.streak}
         title={(stepsDone || Object.keys(s.completedSims).length || s.runLog.length ? 'Welcome back, ' : 'Welcome, ') + s.handle + '.'}
         lede={PHASE_MEANING[phase]}
       />
 
+      {/* on a wide screen the day's work and the record sit side by side (home-grid, in wide.css); a phone stacks them */}
+      <div className="home-grid">
+      <div className="home-main">
       {/* the shortest way into practice, one tap from opening the app: the room left part way, or one decision */}
       <WayIn />
 
@@ -169,19 +172,6 @@ export function HomeView() {
         );
       })()}
 
-
-      <section className="band band-tight">
-        <Focus />
-      </section>
-
-      <section className="band band-tight">
-        <Goals compact />
-      </section>
-
-      <section className="band band-tight">
-        <ServiceRecord strip />
-      </section>
-
       <section className="band band-tight">
         <div className="panel">
           <div className="row-between" style={{ marginBottom: 'var(--s4)' }}>
@@ -198,6 +188,23 @@ export function HomeView() {
           </div>
         </div>
       </section>
+      </div>
+
+      <div className="home-side">
+      <section className="band band-tight">
+        <Focus />
+      </section>
+
+      <section className="band band-tight">
+        <Goals compact />
+      </section>
+
+      <section className="band band-tight">
+        <ServiceRecord strip />
+      </section>
+
+      </div>
+      </div>
     </div>
   );
 }

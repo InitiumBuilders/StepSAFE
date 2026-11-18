@@ -1,0 +1,39 @@
+/* WIDE SCREENS. Loaded last. A screen 1920 or 2560 wide opened every page as a narrow column in a field of empty
+   night: reading pages keep their measure, and the room the extra width allows goes to what helps. Ground puts the
+   day's work and the record side by side, the grids of Modux and StudyMode widen, headings scale with the screen,
+   and the room's rail (future.css) grows. Below 1500px nothing here applies. */
+
+/* Ground: the day's work on the left, the record beside it */
+@media (min-width: 1500px) {
+  .wrap.home { max-width: 1320px; }
+  .home-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 400px); gap: 0 32px; align-items: start; }
+  .home-side > .band:first-child { padding-top: 0; }
+}
+
+/* the grids get the room: the model table, the gauges, the deck */
+@media (min-width: 1800px) {
+  .wrap-wide.mx, .wrap-wide.sg { max-width: 1440px; }
+}
+@media (min-width: 2300px) {
+  .wrap-wide.mx, .wrap-wide.sg { max-width: 1600px; }
+  .wrap.home { max-width: 1440px; }
+  .home-grid { grid-template-columns: minmax(0, 1fr) minmax(360px, 440px); }
+}
+
+/* headings scale with a large screen; the slim heroes keep their own size (their rules are more specific) */
+@media (min-width: 1800px) {
+  h1 { font-size: clamp(3.9rem, 2.6vw + 1.6rem, 5rem); }
+  .mx-hero h1 { font-size: clamp(3.6rem, 2.2vw + 1.4rem, 4.4rem); }
+  .sg-hero h1 { font-size: clamp(3rem, 1.8vw + 1.2rem, 3.8rem); }
+}
+
+/* the room's rail grows with the screen */
+@media (min-width: 1800px) {
+  .wrap.sim.sim-is-live { max-width: calc(var(--wrap) + 372px); }
+  .sim-live { grid-template-columns: minmax(0, 1fr) 340px; }
+}
+
+/* what sits in Ground's side column lays out as on a narrow screen: its own grids assume the page's width */
+@media (min-width: 1500px) {
+  .home-side .focus-list { grid-template-columns: 1fr; }
+}

@@ -1153,3 +1153,73 @@ html[data-motion='calm'] .sim-strip-bar i { transition: none; }
 .view-slow { display: flex; flex-direction: column; align-items: center; gap: var(--s3); text-align: center; animation: fadein 320ms var(--ease) both; }
 .view-slow p { margin: 0; color: var(--ink-2); max-width: 32ch; }
 .view-slow .btn { min-height: 44px; }
+
+/* ---------- the room's rail beside the feed on a wide screen, and what a run earned (sim- prefix) ---------- */
+.sim-rail { display: none; }
+.sim .inject { scroll-margin-top: calc(var(--sim-bar) + 96px); }
+@media (min-width: 1180px) {
+  .wrap.sim.sim-is-live { max-width: calc(var(--wrap) + 332px); }
+  .sim-live { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 32px; align-items: start; }
+  .sim-rail {
+    display: block; position: sticky; top: calc(var(--sim-bar) + 8px); margin-top: var(--s4);
+    max-height: calc(100vh - var(--sim-bar) - 24px); overflow-y: auto; scrollbar-width: thin;
+    padding: 16px 12px 16px; border-radius: 22px; corner-shape: superellipse(2.15);
+    background: var(--panel); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 14px 30px -18px rgba(0, 0, 0, 0.8);
+  }
+}
+.sim-rail-head { display: flex; flex-direction: column; gap: 3px; padding: 0 6px 12px; }
+.sim-rail-head strong { font: 600 1.02rem/1.25 var(--font-display); color: var(--ink); }
+.sim-rail-org { font-size: 0.86rem; color: var(--ink-2); }
+/* the thread: one dot for each inject so far, in its channel's colour; a ring where the inject asked for a call */
+.sim-rail-line { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; position: relative; }
+.sim-rail-line::before { content: ''; position: absolute; left: 15px; top: 14px; bottom: 14px; width: 1px; background: color-mix(in srgb, var(--ink) 16%, transparent); }
+.sim-rail-line li { --chan-ink: var(--ink-accent); }
+.sim-rail-line li.ch-pager, .sim-rail-line li.ch-press { --chan-ink: var(--ink-alarm); }
+.sim-rail-line li.ch-exec, .sim-rail-line li.ch-board { --chan-ink: var(--ink-gold); }
+.sim-rail-line li.ch-legal, .sim-rail-line li.ch-regulator, .sim-rail-line li.ch-model { --chan-ink: var(--ink-signal); }
+.sim-rail-line button {
+  position: relative; width: 100%; min-height: 44px; display: grid; grid-template-columns: 20px auto minmax(0, 1fr);
+  grid-template-areas: 'dot t ch' 'dot from from'; column-gap: 8px; row-gap: 1px; align-items: baseline; text-align: left;
+  padding: 7px 8px 7px 6px; border: 0; border-radius: 12px; background: none; color: var(--ink-2); font: inherit; cursor: pointer;
+  transition: background 200ms var(--ease), color 200ms var(--ease);
+}
+.sim-rail-line button::before {
+  content: ''; grid-area: dot; align-self: start; justify-self: center; width: 9px; height: 9px; margin-top: 5px; border-radius: 50%;
+  background: var(--chan-ink); box-shadow: 0 0 0 3px var(--panel);
+}
+.sim-rail-line li.call button::before { background: var(--panel); box-shadow: inset 0 0 0 2px var(--chan-ink), 0 0 0 3px var(--panel); }
+.sim-rail-line li.now button { color: var(--ink); background: color-mix(in srgb, var(--ink) 6%, transparent); }
+.sim-rail-line li.now button::before { width: 11px; height: 11px; margin-top: 4px; box-shadow: 0 0 0 3px var(--panel), 0 0 14px 2px var(--chan-ink); }
+.sim-rail-line li.now.call button::before { box-shadow: inset 0 0 0 2px var(--chan-ink), 0 0 0 3px var(--panel), 0 0 14px 2px var(--chan-ink); }
+.sim-rail-line li.past button:hover { color: var(--ink); background: color-mix(in srgb, var(--ink) 4%, transparent); }
+.sim-rail-line button:focus-visible { outline: 2px solid var(--ink-accent); outline-offset: 1px; }
+.sim-rail-t { grid-area: t; font: 600 12px var(--font-mono); letter-spacing: 0.03em; color: var(--ink-label); white-space: nowrap; }
+.sim-rail-ch { grid-area: ch; font: 700 12px var(--font-display); letter-spacing: 0.08em; color: var(--chan-ink); }
+.sim-rail-from { grid-area: from; font-size: 0.88rem; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sim-rail-more { margin: 8px 6px 0 34px; font-size: 0.86rem; color: var(--ink-label); }
+/* every call so far, with what it scored: gold where it was the strongest move, the alarm's colour where it cost */
+.sim-rail-calls { margin-top: 18px; padding: 0 2px; }
+.sim-rail-calls > .label { display: block; padding: 0 4px; }
+.sim-rail-calls ol { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.sim-rail-calls li {
+  display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; gap: 8px; align-items: start;
+  padding: 9px 10px; border-radius: 12px; background: color-mix(in srgb, var(--ink) 4%, transparent);
+}
+.sim-rail-calls li.best { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink-gold) 45%, transparent); }
+.sim-rail-n { font: 700 12px var(--font-mono); color: var(--ink-label); padding-top: 2px; }
+.sim-rail-call { font-size: 0.86rem; line-height: 1.35; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sim-rail-score { font: 700 0.9rem var(--font-mono); color: var(--ink); }
+.sim-rail-calls li.best .sim-rail-score { color: var(--ink-gold); }
+.sim-rail-calls li.cost .sim-rail-score { color: var(--ink-alarm); }
+html[data-motion='calm'] .sim-rail-line button { transition: none; }
+
+/* what the run earned, in the debrief's first panel: the respect of a first run and every award new since it ended */
+.sim-earned { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+.sim-earned-rt { margin: 0; font: 600 1rem var(--font-display); color: var(--ink-gold); }
+.sim-earned-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+.sim-earned-a { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 10px; align-items: start; padding: 10px 12px; border-radius: 14px; background: color-mix(in srgb, var(--ink) 5%, transparent); }
+.sim-earned-g { font-size: 1.25rem; line-height: 1.2; text-align: center; color: var(--ink-accent); }
+.sim-earned-a.t-strong .sim-earned-g { color: var(--ink-signal); }
+.sim-earned-a.t-safe .sim-earned-g { color: var(--ink-gold); }
+.sim-earned-a strong { display: block; font: 600 0.98rem/1.3 var(--font-display); color: var(--ink); }
+.sim-earned-a em { display: block; font-style: normal; font-size: 0.86rem; line-height: 1.4; color: var(--ink-2); }

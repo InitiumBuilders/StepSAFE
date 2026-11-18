@@ -1,7 +1,7 @@
 /* One simulation — the inject feed. The clock moves when you do. */
 
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { simById, memberById, ESSENCE_HEX, CHAPTERS, SIMS } from '../content/registry';
+import { simById, memberById, awardById, ESSENCE_HEX, CHAPTERS, SIMS } from '../content/registry';
 import { useS } from '../lib/state';
 import { useBarOffset } from '../lib/barOffset';
 import { useEngine } from '../lib/engine';
@@ -13,7 +13,7 @@ import { roomProgress, saveRoom, clearRoom, roomLastRun, saveLastRun, tookOne, t
 import { Haptic } from '../lib/haptic';
 import { nextCall, subOfCall } from '../lib/oneDecision';
 import { requestExam } from '../lib/study/session';
-import { ShareLink } from '../components/bits';
+import { ShareLink, TIER_NAMES, quietToasts } from '../components/bits';
 
 const CHANNEL_LABEL: Record<string, string> = {
   pager: 'PAGER', exec: 'EXEC', legal: 'LEGAL', press: 'PRESS', field: 'FIELD',
@@ -40,6 +40,9 @@ export function SimView() {
   const [before, setBefore] = useState<RoomRun | null>(null);
   /* the last save held: a room runs an hour or more, and a learner should know they can leave it */
   const [keptHere, setKeptHere] = useState(false);
+  /* what the learner held as the run ended, so the debrief can list what this run earned */
+  const [heldAtEnd, setHeldAtEnd] = useState<string[] | null>(null);
+  const [firstRun, setFirstRun] = useState(false);
 
   /* before the first paint, so a room opened by Continue never shows its brief on the way */
   useLayoutEffect(() => {
@@ -76,6 +79,9 @@ export function SimView() {
     return () => window.cancelAnimationFrame(id);
   }, [cursor, phase]);
 
+  /* the debrief lists what the run earned, so notices stay quiet while it shows; leaving it lets them speak again */
+  useEffect(() => (phase === 'debrief' ? () => quietToasts(false) : undefined), [phase]);
+
   const total = useMemo(() => (sim ? sim.injects.length : 0), [sim]);
   if (!sim) return <div className="wrap"><div className="empty">Module not found.</div></div>;
 
@@ -94,6 +100,9 @@ export function SimView() {
       clearRoom(sim!.id); setResume(null);
       setBefore(roomLastRun(sim!));
       saveLastRun(sim!.id, trail);
+      setHeldAtEnd(Object.keys(s.awards));
+      setFirstRun(!s.completedSims[sim!.id]);
+      quietToasts(true);
       eng.finishSim(sim!, score, flawless);
       /* commanding a room flawlessly is a different order of thing from
          surviving it */
@@ -140,7 +149,7 @@ export function SimView() {
   const chapterDone = chapterSteps.filter(st => s.completedSteps[st.id]).length;
 
   return (
-    <div className="wrap sim" ref={rootRef}>
+    <div className={'wrap sim' + (phase === 'live' ? ' sim-is-live' : '')} ref={rootRef}>
       <button className="btn btn-ghost btn-sm" onClick={() => d({ t: 'route', view: 'practice' })}>
         ← The Practice
       </button>
@@ -309,7 +318,8 @@ export function SimView() {
       )}
 
       {phase === 'live' && (
-        <>
+        <div className="sim-live">
+        <div className="sim-feed">
           {/* the room's clock, how far through it is, and the score: in view the whole way */}
           <div className="sim-strip" role="status" aria-label={'Inject ' + (cursor + 1) + ' of ' + total + ', score ' + running}>
             <span className="sim-strip-clock">{current?.t}</span>
@@ -319,7 +329,7 @@ export function SimView() {
           </div>
           <div className="stack">
             {sim.injects.slice(0, cursor + 1).map((inj, i) => (
-              <div key={inj.id} className={'panel inject ch-' + inj.channel + (i === cursor ? ' current' : ' past')}
+              <div key={inj.id} id={'inj-' + inj.id} className={'panel inject ch-' + inj.channel + (i === cursor ? ' current' : ' past')}
                 style={i === cursor ? { borderColor: essence } : undefined}
                 data-keystone={i === cursor ? true : undefined} data-essence={essence}>
                 <div className="row-between" style={{ marginBottom: 12, gap: 12 }}>
@@ -359,7 +369,49 @@ export function SimView() {
               {cursor + 1 >= total ? 'End of exercise → debrief' : 'Continue ▸'}
             </button>
           </div>
-        </>
+        </div>
+          {/* beside the feed on a wide screen: every inject so far, each one a way back to its card, and every call
+              made with what it scored. A phone has the strip and the feed alone. */}
+          <aside className="sim-rail" aria-label="The room so far">
+            <div className="sim-rail-head">
+              <span className="label">The room so far</span>
+              <strong>{sim.title}</strong>
+              <span className="sim-rail-org">{sim.org}</span>
+            </div>
+            <ol className="sim-rail-line">
+              {sim.injects.slice(0, cursor + 1).map((inj, i) => (
+                <li key={inj.id} className={(i === cursor ? 'now' : 'past') + ' ch-' + inj.channel + (inj.decision ? ' call' : '')}>
+                  <button type="button" onClick={() => {
+                    const calm = document.documentElement.dataset.motion === 'calm' || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    document.getElementById('inj-' + inj.id)?.scrollIntoView({ block: 'start', behavior: calm ? 'auto' : 'smooth' });
+                  }}>
+                    <span className="sim-rail-t">{inj.t}</span>
+                    <span className="sim-rail-ch">{CHANNEL_LABEL[inj.channel] || inj.channel.toUpperCase()}</span>
+                    <span className="sim-rail-from">{inj.from}</span>
+                  </button>
+                </li>
+              ))}
+            </ol>
+            {total - cursor - 1 > 0 && <p className="sim-rail-more">{total - cursor - 1} more to come</p>}
+            {trail.length > 0 && (
+              <div className="sim-rail-calls">
+                <span className="label">Your calls</span>
+                <ol>
+                  {trail.map((t, k) => {
+                    const o = sim.injects.find(x => x.id === t.injectId)?.decision?.options.find(x => x.id === t.chosenId);
+                    return (
+                      <li key={t.injectId} className={o?.isBest ? 'best' : t.score < 0 ? 'cost' : ''}>
+                        <span className="sim-rail-n">{k + 1}</span>
+                        <span className="sim-rail-call">{o?.label}</span>
+                        <span className="sim-rail-score">{t.score > 0 ? '+' : ''}{t.score}</span>
+                      </li>
+                    );
+                  })}
+                </ol>
+              </div>
+            )}
+          </aside>
+        </div>
       )}
 
       {phase === 'debrief' && (
@@ -393,6 +445,27 @@ export function SimView() {
                     {before.score > 0 ? '+' : ''}{before.score}, with {before.clean} of {decisionCount} taken cleanly.
                   </p>
                 )}
+                {/* what this run earned, said here in place of notices that would cover the debrief */}
+                {(() => {
+                  const fresh = heldAtEnd ? Object.keys(s.awards).filter(id => !heldAtEnd.includes(id)).map(awardById).filter((a): a is NonNullable<typeof a> => !!a) : [];
+                  if (!fresh.length && !firstRun) return null;
+                  return (
+                    <div className="sim-earned">
+                      <span className="label">Earned in this room</span>
+                      {firstRun && <p className="sim-earned-rt">+{sim.respect.toLocaleString()} respect · +{sim.trust.toLocaleString()} trust</p>}
+                      {fresh.length > 0 && (
+                        <ul className="sim-earned-list">
+                          {fresh.map(a => (
+                            <li key={a.id} className={'sim-earned-a t-' + a.tier}>
+                              <span className="sim-earned-g" aria-hidden>{a.glyph}</span>
+                              <span><strong>{a.name}</strong><em>{TIER_NAMES[a.tier]} · {a.statement}</em></span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  );
+                })()}
               </div>
             );
           })()}

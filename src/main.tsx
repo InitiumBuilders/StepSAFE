@@ -31,6 +31,7 @@ import './styles/rise.css';
 import './styles/reflow.css';
 import './styles/tabbar.css';
 import './styles/touch.css';
+import './styles/wide.css';
 import { registerPwa } from './lib/pwa';
 import { mountWelcome, readRecord } from './welcome';
 

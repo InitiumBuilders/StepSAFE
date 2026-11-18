@@ -11,10 +11,15 @@ import { RiseHead } from './RiseHead';
 interface Toast { id: number; title: string; body?: string; gold?: boolean }
 const ToastCtx = createContext<{ push: (t: Omit<Toast, 'id'>) => void }>({ push: () => {} });
 let toastSeq = 1;
+/* While a page shows its own result (a room's debrief lists what the run earned), notices stay quiet, so none of
+   them covers that moment. A count, so two such pages cannot unquiet each other. */
+let quiet = 0;
+export function quietToasts(on: boolean): void { quiet = Math.max(0, quiet + (on ? 1 : -1)); }
 
 export function ToastHost({ children }: { children: React.ReactNode }) {
   const [list, setList] = useState<Toast[]>([]);
   const push = useCallback((t: Omit<Toast, 'id'>) => {
+    if (quiet) return;
     const id = toastSeq++;
     setList(l => [...l.slice(-3), { ...t, id }]);
     setTimeout(() => setList(l => l.filter(x => x.id !== id)), 5600);
