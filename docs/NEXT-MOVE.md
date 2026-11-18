@@ -833,6 +833,13 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     found two buttons by that text (probe-back, probe-glossary-webkit: a strict-mode violation, 51 of 53). A screen
     reader would have heard two "Seal this Step" buttons doing different things. The outline says "The seal" now.
     Rule: navigation never repeats an action's label.
+- 2026-11-18, end of day: probe-wide-walk.mjs holds the wide layer in the gate and the live walks (71926e9; alone on
+  the live build, PROBLEMS (0)). For his call, carried: "Broke It on Testnet" is granted by choosing Motus mode
+  (hooks.ts, trigger motus-mode), which is not what it claims. Taking the hook out alone fails the gate: probe-ids
+  holds that every award can be earned (UNREACHABLE awards: 1), so the award needs a real home first. No Step teaches
+  deploying to a test network and attacking your own contract; the nearest are the Asset Lock step's testnet
+  rehearsal (ch-dashevo-p2-asset-lock) and appsec's fuzz harness. His choice: a Step to carry it, a new trigger, or
+  retire it. Payments still wait on his two Stripe links and Dash address.
 
 ## The move
 
