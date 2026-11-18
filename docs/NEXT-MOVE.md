@@ -818,6 +818,21 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     survived, but a log rebuilt from them would have been a reconstruction, so the gate ran again on the same build
     (digest 51df69eb070e06ee) and that log went into the release. live-walks.sh now refuses a file that begins as a
     gate log, and a gate's console goes to a file beside its log.
+- 2026-11-18, later: the wide round and the practitioners door (commit 204613f, release v2026.11.18.2). From 1500px
+  The Practice's chapters flow into two columns, three from 1800px. A Step shows its own outline beside it from
+  1500px ("On this step", components/StepRail.tsx): the titled blocks, the drill, the field praxis and the seal, the
+  part being read lit. The first build lit nothing after a jump (an IntersectionObserver fires only when a heading
+  crosses its band, and the End key skips the band) and never lit the last part (the page ends before it reaches the
+  line); a settle after each scroll, the last part on screen at the very end, and a held click fixed both, measured
+  at 1600, 1920 and 2560. From 1180px a room's after-action review sets what you chose beside the stronger move.
+  Practitioners: August chose the Outlier.Systems group on Telegram (t.me/Outlier_Systems); a door on Ground and at
+  the end of every room's debrief (components/Practitioners.tsx) names it and claims nothing about its size.
+  Payments: he chose Stripe Payment Links and a Dash address together, for NOVUS at $23 a month (and Outlier's $40
+  first hour); the values are his to paste, and NOVUS's door waits for them.
+  - The gate's catch: the outline first named the seal "Seal this Step", the seal button's own words, so two walks
+    found two buttons by that text (probe-back, probe-glossary-webkit: a strict-mode violation, 51 of 53). A screen
+    reader would have heard two "Seal this Step" buttons doing different things. The outline says "The seal" now.
+    Rule: navigation never repeats an action's label.
 
 ## The move
 
