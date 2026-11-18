@@ -37,3 +37,51 @@
 @media (min-width: 1500px) {
   .home-side .focus-list { grid-template-columns: 1fr; }
 }
+
+/* The Practice: the chapters flow into columns like a wall of rooms, and inside each chapter its rooms stack, so a
+   chapter with one room leaves no hole beside it */
+@media (min-width: 1500px) {
+  .pr-bands { columns: 2; column-gap: 40px; }
+  .pr-bands > .actband { break-inside: avoid; margin-bottom: var(--s6); }
+  .pr-bands .actband .grid-2 { grid-template-columns: minmax(0, 1fr); }
+}
+@media (min-width: 1800px) {
+  .wrap-wide.pr { max-width: 1440px; }
+  .pr-bands { columns: 3; }
+}
+@media (min-width: 2300px) {
+  .wrap-wide.pr { max-width: 1680px; }
+}
+
+/* a Step's outline beside it ("On this step", components/StepRail.tsx), lit where the reader is */
+.st-rail { display: none; }
+@media (min-width: 1500px) {
+  .wrap.st-page { max-width: calc(var(--wrap) + 300px); display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 40px; align-items: start; }
+  .st-rail { display: block; position: sticky; top: 28px; max-height: calc(100vh - 56px); overflow-y: auto; scrollbar-width: thin; padding: 6px 4px; margin-top: 64px; }
+  .st-rail > .label { display: block; padding: 0 10px 8px; }
+  .st-rail ol { list-style: none; margin: 0; padding: 0; position: relative; }
+  .st-rail ol::before { content: ''; position: absolute; left: 4px; top: 6px; bottom: 6px; width: 1px; background: color-mix(in srgb, var(--ink) 14%, transparent); }
+  .st-rail button {
+    position: relative; display: block; width: 100%; min-height: 44px; padding: 10px 10px 10px 18px; border: 0; border-radius: 12px;
+    background: none; color: var(--ink-2); font: 500 0.9rem/1.35 var(--font-display); text-align: left; cursor: pointer;
+    transition: color 200ms var(--ease), background 200ms var(--ease);
+  }
+  .st-rail button::before {
+    content: ''; position: absolute; left: 1px; top: 17px; width: 7px; height: 7px; border-radius: 50%;
+    background: color-mix(in srgb, var(--ink) 28%, transparent);
+    transition: background 200ms var(--ease), box-shadow 200ms var(--ease);
+  }
+  .st-rail li.read button::before { background: var(--ink-accent); }
+  .st-rail li.on button { color: var(--ink); background: color-mix(in srgb, var(--ink) 6%, transparent); }
+  .st-rail li.on button::before { background: var(--ink-accent); box-shadow: 0 0 12px 1px var(--ink-accent); }
+  .st-rail button:hover { color: var(--ink); }
+  .st-rail button:focus-visible { outline: 2px solid var(--ink-accent); outline-offset: 1px; }
+  html[data-motion='calm'] .st-rail button, html[data-motion='calm'] .st-rail button::before { transition: none; }
+}
+
+/* a room's after-action review: what you chose beside the stronger move (and the run before, when it differs), so
+   the comparison reads at a glance; a phone keeps them one above the other */
+@media (min-width: 1180px) {
+  .aar-picks { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 14px; margin-top: 12px; }
+  .aar-picks > .aar-pick { margin-top: 0; }
+}

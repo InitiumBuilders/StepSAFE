@@ -68,6 +68,8 @@ export function PracticeView() {
         </StockRow>
       </div>
 
+      {/* on a wide screen the chapters flow into columns (pr-bands, in wide.css); a phone reads them in order */}
+      <div className="pr-bands">
       {byChapter.map(({ chapter, sims }, gi) => (
         <div key={chapter.id} className="actband">
           <div className="actlab">
@@ -160,6 +162,7 @@ export function PracticeView() {
           </div>
         </div>
       ))}
+      </div>
 
       {byChapter.length === 0 && <div className="empty">Simulation modules are being prepared.</div>}
     </div>

@@ -17,6 +17,7 @@ import { CommonsMap } from '../components/CommonsMap';
 import { RiseHead } from '../components/RiseHead';
 import { StepWords } from '../components/StepWords';
 import { ShareLink } from '../components/bits';
+import { StepRail } from '../components/StepRail';
 
 export function StepView() {
   const { s, d } = useS();
@@ -25,6 +26,8 @@ export function StepView() {
   const [drillDone, setDrillDone] = useState(false);
   const [drillBest, setDrillBest] = useState(false);
   const nextRef = useRef<HTMLDivElement | null>(null);
+  /* the Step's own column, which the rail beside it reads its outline from */
+  const mainRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setDrillDone(false);
@@ -51,7 +54,8 @@ export function StepView() {
   const next = stepAfter(step.id);
 
   return (
-    <div className="wrap">
+    <div className="wrap st-page">
+      <div className="st-main" ref={mainRef}>
       <button className="btn btn-ghost btn-sm" onClick={() => d({ t: 'route', view: 'chapter', id: chapter.id })}>
         ← {chapter.title}
       </button>
@@ -111,7 +115,7 @@ export function StepView() {
           </section>
 
           {step.drill && (
-            <section className="band" style={{ paddingTop: 0 }}>
+            <section className="band" style={{ paddingTop: 0 }} data-st-part="Decision drill">
               <DrillPlayer
                 drill={step.drill}
                 onResolved={(score, best) => {
@@ -129,7 +133,7 @@ export function StepView() {
           )}
 
           {(step.praxis || step.evidence) && (
-            <section className="band" style={{ paddingTop: 0 }}>
+            <section className="band" style={{ paddingTop: 0 }} data-st-part="Field praxis">
               <div className="panel" style={{ borderColor: 'rgba(232,196,107,0.4)' }}>
                 <span className="label" style={{ display: 'block', marginBottom: 10 }}>FIELD PRAXIS — do it in the world</span>
                 {step.praxis && <p className="big-sec">{step.praxis}</p>}
@@ -143,7 +147,7 @@ export function StepView() {
             </section>
           )}
 
-          <section className="band" style={{ paddingTop: 0 }}>
+          <section className="band" style={{ paddingTop: 0 }} data-st-part="The seal">
             {/* the Step's words: glossary entries open in place; a Modux Step's tags open the models that carry them */}
             {!step.id.includes('--mm-') && <StepWords step={step} />}
             <div className="row-between">
@@ -200,6 +204,8 @@ export function StepView() {
           </section>
         </>
       )}
+      </div>
+      {!motusGated && <StepRail main={mainRef} stepId={step.id} />}
     </div>
   );
 }

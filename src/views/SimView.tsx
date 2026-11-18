@@ -14,6 +14,7 @@ import { Haptic } from '../lib/haptic';
 import { nextCall, subOfCall } from '../lib/oneDecision';
 import { requestExam } from '../lib/study/session';
 import { ShareLink, TIER_NAMES, quietToasts } from '../components/bits';
+import { PractitionersDoor } from '../components/Practitioners';
 
 const CHANNEL_LABEL: Record<string, string> = {
   pager: 'PAGER', exec: 'EXEC', legal: 'LEGAL', press: 'PRESS', field: 'FIELD',
@@ -517,6 +518,8 @@ export function SimView() {
                       </summary>
                       <div className="aar-body">
                         <p className="sec" style={{ marginTop: 0 }}><strong>The call:</strong> {drill.prompt}</p>
+                        {/* what you chose and the stronger move, read side by side on a wide screen (aar-picks, wide.css) */}
+                        <div className="aar-picks">
                         <div className="aar-pick">
                           <span className="label">YOU CHOSE</span>
                           <p style={{ margin: '6px 0 0' }}>{chosen?.label}</p>
@@ -539,6 +542,7 @@ export function SimView() {
                             <p className="sec" style={{ margin: '8px 0 0' }}>{best.outcome}</p>
                           </div>
                         )}
+                        </div>
                         <p className="statement e-gold" style={{ marginTop: 'var(--s3)' }}>{drill.principle}</p>
                       </div>
                     </details>
@@ -570,6 +574,8 @@ export function SimView() {
               </div>
             </div>
           )}
+
+          <PractitionersDoor className="sim-prx" />
 
           <div className="row sim-end" style={{ marginTop: 'var(--s5)' }}>
             <button className="btn" onClick={() => { setCursor(0); setScores([]); setBests([]); setTrail([]); setResume(null); setPhase('brief'); }}>

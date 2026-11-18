@@ -10,6 +10,7 @@ import { Vessel, SectionHead } from '../components/bits';
 import { gaugeOfTheDay } from '../content/modux/gauges';
 import { chargeKeystone } from '../lib/swarm';
 import { ServiceRecord } from '../components/ServiceRecord';
+import { PractitionersDoor } from '../components/Practitioners';
 import { Goals } from '../components/Goals';
 import { Focus } from '../components/Focus';
 import { weekChallenge, heldThisWeek } from '../content/modux/week';
@@ -201,6 +202,10 @@ export function HomeView() {
 
       <section className="band band-tight">
         <ServiceRecord strip />
+      </section>
+
+      <section className="band band-tight">
+        <PractitionersDoor />
       </section>
 
       </div>
