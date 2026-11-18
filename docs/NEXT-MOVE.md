@@ -805,6 +805,19 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     matched file by file, and Scorecard read on /trust. StepSAFE still says four answers without showing them: review
     (one maintainer), commit signing, a practised rollback and a time to fix. The next leverage is in what a learner
     sees first.
+- 2026-11-18: the room round (commit 4bef169, deployment unitium-safe-5j8km57wm, release v2026.11.18). A live room on a
+  screen 1180px or wider keeps a rail beside the feed: the injects so far by channel, each a way back to its place,
+  how many are still to come, and each call with its score. The debrief lists what the run earned: the respect and
+  trust a first run adds, and each new award with its tier. Notices stay off while it is open, since they would
+  announce the same awards over it. Ground reads in two columns from 1500px. styles/wide.css is a layer for 1500, 1800
+  and 2300px: wider Modux and study pages, larger headings, a wider rail. Headings balance their lines.
+  scripts/look/room.mjs plays one room through and photographs each phase. The gate passed 53 of 53, the live walks
+  9 of 9, and the live mainnet read held.
+  - A slip, and the guard it left: live-walks.sh takes its own log as its first argument and empties it, and it was
+    given the gate's log. The gate had run with its console thrown away, so that log was gone. Its per-check outputs
+    survived, but a log rebuilt from them would have been a reconstruction, so the gate ran again on the same build
+    (digest 51df69eb070e06ee) and that log went into the release. live-walks.sh now refuses a file that begins as a
+    gate log, and a gate's console goes to a file beside its log.
 
 ## The move
 
