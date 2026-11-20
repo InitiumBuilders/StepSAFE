@@ -30,7 +30,7 @@ const n = (x: number) => x.toLocaleString('en-US');
 const BEATS = ['It Travels.', 'One Part Carries.', 'Layers Hold.', 'Walls Contain.', 'It Returns.', 'It Holds.'];
 
 /** reveals, the reading bar, and which figures move: one observer each, one scroll handler that only writes */
-function usePageMotion(root: React.RefObject<HTMLDivElement>) {
+function usePageMotion(root: React.RefObject<HTMLDivElement | null>) {
   useEffect(() => {
     const el = root.current;
     if (!el) return;

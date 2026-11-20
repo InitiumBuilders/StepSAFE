@@ -117,7 +117,9 @@ const sbom = S.parseSbom(JSON.parse(readFileSync('public/sbom.cdx.json', 'utf8')
 ok(!!sbom && sbom.parts.length >= 1 && sbom.parts.every((p) => p.supplier && /^pkg:(npm|generic)\//.test(p.purl)), 'the real bill of materials parses, every component with a supplier and a purl');
 ok(!!sbom && sbom.parts.filter((p) => p.purl.startsWith('pkg:generic/')).length === readdirSync('src/styles/fonts').filter((f) => f.endsWith('.woff2')).length, 'every font file that ships is in the bill of materials');
 const parts = S.partsFinding(sbom);
-ok(parts.mark === 'shown' && parts.line.includes('react 18.3.1') && /CycloneDX 1\.5/.test(parts.line) && /\d+ font files \(/.test(parts.line), 'the parts reading holds and lists the packages and the font files: ' + parts.line.slice(0, 160));
+/* the React it names is the one installed (it said 18.3.1 by hand until React 19 shipped, 2026-11-20) */
+const reactV = JSON.parse(readFileSync('node_modules/react/package.json', 'utf8')).version;
+ok(parts.mark === 'shown' && parts.line.includes('react ' + reactV) && /CycloneDX 1\.5/.test(parts.line) && /\d+ font files \(/.test(parts.line), 'the parts reading holds and lists the packages and the font files: ' + parts.line.slice(0, 160));
 const thin = JSON.parse(readFileSync('public/sbom.cdx.json', 'utf8')); delete thin.components[0].supplier;
 ok(S.partsFinding(S.parseSbom(thin)).mark === 'gap', 'a package with no supplier is a gap');
 ok(S.parseSbom({ bomFormat: 'SPDX', components: [] }) === null && S.partsFinding(null).mark === 'gap', 'a file that is not CycloneDX is a gap');

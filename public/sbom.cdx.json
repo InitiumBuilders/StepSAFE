@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c8841158-70b3-5b3a-8484-5ed9b1754c1f",
+  "serialNumber": "urn:uuid:d5c27b79-d480-5f41-878f-56f742e7be88",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-17T19:54:06Z",
+    "timestamp": "2026-11-20T19:19:09Z",
     "authors": [
       {
         "name": "StepSAFE"
@@ -258,88 +258,20 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:npm/js-tokens@4.0.0",
-      "name": "js-tokens",
-      "version": "4.0.0",
-      "purl": "pkg:npm/js-tokens@4.0.0",
-      "supplier": {
-        "name": "Simon Lydell",
-        "url": [
-          "https://github.com/lydell/js-tokens"
-        ]
-      },
-      "hashes": [
-        {
-          "alg": "SHA-512",
-          "content": "45d2547e5704ddc5332a232a420b02bb4e853eef5474824ed1b7986cf84737893a6a9809b627dca02b53f5b7313a9601b690f690233a49bce0e026aeb16fcf29"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "vcs",
-          "url": "https://github.com/lydell/js-tokens"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:npm/loose-envify@1.4.0",
-      "name": "loose-envify",
-      "version": "1.4.0",
-      "purl": "pkg:npm/loose-envify@1.4.0",
-      "supplier": {
-        "name": "Andres Suarez",
-        "url": [
-          "https://github.com/zertosh/loose-envify"
-        ]
-      },
-      "hashes": [
-        {
-          "alg": "SHA-512",
-          "content": "972bb13c6aff59f86b95e9b608bfd472751cd7372a280226043cee918ed8e45ff242235d928ebe7d12debe5c351e03324b0edfeb5d54218e34f04b71452a0add"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "vcs",
-          "url": "https://github.com/zertosh/loose-envify"
-        },
-        {
-          "type": "website",
-          "url": "https://github.com/zertosh/loose-envify"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:npm/react-dom@18.3.1",
+      "bom-ref": "pkg:npm/react-dom@19.3.1",
       "name": "react-dom",
-      "version": "18.3.1",
-      "purl": "pkg:npm/react-dom@18.3.1",
+      "version": "19.3.1",
+      "purl": "pkg:npm/react-dom@19.3.1",
       "supplier": {
-        "name": "facebook",
+        "name": "react",
         "url": [
-          "https://github.com/facebook/react"
+          "https://github.com/react/react"
         ]
       },
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "e66e2740aa7ead945bd3d2cd1f9f463380714e1f76e75ff295b2886e97bb4e91b17c9fbd92fe812e42c15c88e3b296e06e720136a948db7b519d3593d2c9d423"
+          "content": "6346c0473e77961102d4d302012b34fe3f9f681ff3aaddd1f21a6f8357bcfbad59549e142f451d0b87016d77d931c22e86b7e07882d32def9978109abd03ed29"
         }
       ],
       "licenses": [
@@ -352,30 +284,30 @@
       "externalReferences": [
         {
           "type": "vcs",
-          "url": "https://github.com/facebook/react"
+          "url": "https://github.com/react/react"
         },
         {
           "type": "website",
-          "url": "https://reactjs.org/"
+          "url": "https://react.dev/"
         }
       ]
     },
     {
       "type": "library",
-      "bom-ref": "pkg:npm/react@18.3.1",
+      "bom-ref": "pkg:npm/react@19.3.1",
       "name": "react",
-      "version": "18.3.1",
-      "purl": "pkg:npm/react@18.3.1",
+      "version": "19.3.1",
+      "purl": "pkg:npm/react@19.3.1",
       "supplier": {
-        "name": "facebook",
+        "name": "react",
         "url": [
-          "https://github.com/facebook/react"
+          "https://github.com/react/react"
         ]
       },
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "c12fa1020252851d0a844bcf240adfb8f54dd7e1f3d6dd18ea7e632eb1906e46f8bab80f13fd11bdefb590c075bffa16807826e1621c57e8bb176a53563fb689"
+          "content": "40d85676dee7ae05565901b9f10b86b004778efdc76dee266f8bf3ef0d9cb271dabdc89926075ad423cd6a5745e9e571bfdd2e7778d45e92a51cbebd80edfccb"
         }
       ],
       "licenses": [
@@ -388,30 +320,30 @@
       "externalReferences": [
         {
           "type": "vcs",
-          "url": "https://github.com/facebook/react"
+          "url": "https://github.com/react/react"
         },
         {
           "type": "website",
-          "url": "https://reactjs.org/"
+          "url": "https://react.dev/"
         }
       ]
     },
     {
       "type": "library",
-      "bom-ref": "pkg:npm/scheduler@0.23.2",
+      "bom-ref": "pkg:npm/scheduler@0.28.0",
       "name": "scheduler",
-      "version": "0.23.2",
-      "purl": "pkg:npm/scheduler@0.23.2",
+      "version": "0.28.0",
+      "purl": "pkg:npm/scheduler@0.28.0",
       "supplier": {
-        "name": "facebook",
+        "name": "react",
         "url": [
-          "https://github.com/facebook/react"
+          "https://github.com/react/react"
         ]
       },
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "50e4a1b0fc33ecdacc52a851eadd215a315dbaf3b36edbfbb680c7d7f848adf44d2030679c159dd02c094c6bd3a67815966c0609d3fdfd997fb55ac3a9cb98cd"
+          "content": "8eea2b7c2988908c3cb53fa9e415d29ba3c98d017fc9c11898acb3511088b7f45a64884bf8fba56d0f58bb6cf51dd3890dda834e5c40d7ec4a0661d726c73303"
         }
       ],
       "licenses": [
@@ -424,11 +356,11 @@
       "externalReferences": [
         {
           "type": "vcs",
-          "url": "https://github.com/facebook/react"
+          "url": "https://github.com/react/react"
         },
         {
           "type": "website",
-          "url": "https://reactjs.org/"
+          "url": "https://react.dev/"
         }
       ]
     },
@@ -499,33 +431,18 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/js-tokens@4.0.0",
+      "ref": "pkg:npm/react-dom@19.3.1",
+      "dependsOn": [
+        "pkg:npm/scheduler@0.28.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/react@19.3.1",
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/loose-envify@1.4.0",
-      "dependsOn": [
-        "pkg:npm/js-tokens@4.0.0"
-      ]
-    },
-    {
-      "ref": "pkg:npm/react-dom@18.3.1",
-      "dependsOn": [
-        "pkg:npm/loose-envify@1.4.0",
-        "pkg:npm/scheduler@0.23.2"
-      ]
-    },
-    {
-      "ref": "pkg:npm/react@18.3.1",
-      "dependsOn": [
-        "pkg:npm/loose-envify@1.4.0"
-      ]
-    },
-    {
-      "ref": "pkg:npm/scheduler@0.23.2",
-      "dependsOn": [
-        "pkg:npm/loose-envify@1.4.0"
-      ]
+      "ref": "pkg:npm/scheduler@0.28.0",
+      "dependsOn": []
     },
     {
       "ref": "pkg:npm/stepsafe-praxis@1.0.0",
@@ -537,8 +454,8 @@
         "pkg:generic/inter@v20?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Finter%2Fv20%2FUcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
         "pkg:generic/outfit@v15?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Foutfit%2Fv15%2FQGYvz_MVcBeNP4NJtEtq.woff2",
         "pkg:generic/sora@v17?download_url=https%3A%2F%2Ffonts.gstatic.com%2Fs%2Fsora%2Fv17%2FxMQ9uFFYT72X5wkB_18qmnndmSdSnh2BAfO5mnuyOo1lfiQwV6-x.woff2",
-        "pkg:npm/react-dom@18.3.1",
-        "pkg:npm/react@18.3.1",
+        "pkg:npm/react-dom@19.3.1",
+        "pkg:npm/react@19.3.1",
         "pkg:npm/three@0.187.0"
       ]
     },
