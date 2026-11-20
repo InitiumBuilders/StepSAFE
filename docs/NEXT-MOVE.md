@@ -840,6 +840,17 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   deploying to a test network and attacking your own contract; the nearest are the Asset Lock step's testnet
   rehearsal (ch-dashevo-p2-asset-lock) and appsec's fuzz harness. His choice: a Step to carry it, a new trigger, or
   retire it. Payments still wait on his two Stripe links and Dash address.
+- 2026-11-20: React 19 (commit bf47287, release v2026.11.20). React and React DOM 19.3.1 with their types, Dependabot's
+  #2 and #5 together; one type followed (useRef(null) carries null, so the Lander's motion hook takes
+  RefObject<HTMLDivElement | null>); no removed API was in use. Installed with --ignore-scripts.
+  - Two lessons from its first gate. The SBOM is regenerated after every lockfile change (`node scripts/sbom.mjs`),
+    before the gate: probe-trust caught the stale one. And the gate's third failure was mine: the SBOM was rewritten in
+    public/ while the gate served the old build, so probe-ownrecord-walk expected one count and the page showed
+    another. Nothing under public/ or src/ changes while a gate runs, generated files included.
+  - probe-motrus missed one walk-through frame once (10111111) on a machine running nine sessions, and passed alone
+    and in the full gate after. A timing miss, not React.
+  - The second gate's last miss was a test, not the app: probe-selfread named "react 18.3.1" by hand. It reads the
+    installed version now. The third gate passed 54 of 54; the release rebuilt it on Linux byte for byte.
 
 ## The move
 
