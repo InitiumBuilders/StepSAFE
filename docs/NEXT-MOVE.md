@@ -776,7 +776,8 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   5. Vite 8 (#3), then TypeScript 7 (#4), each alone. Vite 8 bundles with Rolldown: check that a build is still the
      same byte for byte on Linux (the release depends on it), the security policy (no inline script), chunk names, the
      offline manifest and the bundle sizes. TypeScript 7 is the native compiler: check tsconfig for removed options
-     and that the probes still run under tsx.
+     and that the probes still run under tsx. Vite 8 was tried on 2026-11-21 and held, because the first screen grew
+     (that day's entry below); TypeScript 7 does not depend on it and can go first.
   6. picomatch (GHSA-fc5q-39xc-vjpf): when a fixed version is published, update the lockfile only, and Scorecard's
      Vulnerabilities returns to 10.
   7. A third visual round: run scripts/look/survey.mjs, read the sheets, and pick the weakest first views. Seen today:
@@ -882,6 +883,24 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     row's centring each made a no-op, the table's names at 20px. Every break made its own lines fail. With keepInView
     off, the one case still passing was Modux at 1440 with anchoring on, and its anchoring-off twin failed.
   - 45 of 45 on this build (32423510cdb1) and on production, each run alone, about four minutes under load.
+- 2026-11-21, later: Vite 8 tried in a worktree and held (move 5; local branch vite8, commit c5bf240, not pushed or
+  merged). vite 8.3.8 and @vitejs/plugin-react 6.3.0 install and build, in 758 ms. Vite no longer brings esbuild,
+  which scripts/sync-seva.mjs imports, so esbuild becomes a dev dependency of its own; Vite 8 accepts only ^0.27 or
+  ^0.28, and 0.28.2 writes api/_seva-data.js byte for byte the same. index.html has no inline script, so the
+  security policy holds.
+  - What holds it back is the first screen. Rolldown makes 134 files where Rollup made 101. On Fast 3G
+    (scripts/look/first-screen.mjs, the shipped build against the trial), the Lander takes 12 requests instead of 5
+    and Ground 48 instead of 15, for about the same bytes, and both paint about 240 ms later. Ground also loads
+    glossary-aliases and a piece named outlier, which probe-tabbar's first-screen check forbids.
+  - The cause: Rolldown gives a module that two chunks import a common chunk of its own, even when one of the two is
+    already loaded; Rollup left such modules in the chunk that loads first. Rolldown's own merge
+    (experimental.chunkOptimization, on by default and off only under top-level await, which nothing here uses) did
+    not fold them back. With no manual chunks at all the shape is the same, so the rules in vite.config.ts are not
+    the cause. One group for all shared app code made it worse: 865 KB on the Lander instead of 205, and first paint
+    at 3.6 s.
+  - Next time: find why the merge does not apply to this import graph, or wait for a Rolldown release that merges
+    more, and measure with first-screen.mjs before any gate. Also check the build is byte for byte the same on Linux,
+    which this trial did not reach.
 
 ## The move
 
