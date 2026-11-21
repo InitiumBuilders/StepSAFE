@@ -54,7 +54,9 @@ async function explorer(route) {
   return json(404, {});
 }
 
-const ctx = await browser.newContext({ ...devices['iPhone 15'] });
+/* service workers are blocked: once the app's worker controls the page, WebKit sends the explorer request where
+   ctx.route cannot see it, and the walk would read the live explorer instead of the saved records */
+const ctx = await browser.newContext({ ...devices['iPhone 15'], serviceWorkers: 'block' });
 await ctx.addInitScript(() => {
   window.__csp = [];
   document.addEventListener('securitypolicyviolation', (e) => window.__csp.push(e.violatedDirective + ' ' + e.blockedURI));

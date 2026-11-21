@@ -1,8 +1,8 @@
 /* PROBE: the people count. peopleOf and peopleCount read the people an
-   organisation serves from its sector line. The first eight cases are the
+   organisation serves from its sector line. The first eleven cases are
    known systems' serves lines as scripts/outlier-gen.mts passes them on:
-   the first 120 characters of research/outlier/final/<id>.json, copied on
-   2026-10-18. The rest test one rule each. The final entries on disk are
+   the first 120 characters of research/outlier/final/<id>.json, eight copied
+   on 2026-10-18 and three on 2026-11-20. The rest test one rule each. The final entries on disk are
    printed at the end for reading and are not checked, since they change as
    the research is written. Run: npx tsx probe-people.mts */
 
@@ -19,6 +19,9 @@ const CASES: [string, string, string | null, number][] = [
   ['youtube', "Viewers, creators, rights holders and advertisers in over 100 countries. YouTube's press page counts over 20 million upl", null, 0],
   ['reddit', "People who read and post in interest-based communities: 130.3 million daily and 514.6 million weekly active uniques in Q", '514.6 million people', 514600000],
   ['farcaster', "People who post and read on Farcaster apps, and developers who build clients and mini apps on its open data. Dan Romero ", null, 0],
+  ['web-pki', "Everyone who opens a secure website or app. Let's Encrypt alone served 762 million websites at the end of 2025 by ISRG's", null, 0],
+  ['allstate', "About 16 million households, by an undated allstate.com figure read in October 2026. Allstate counted 211 million polici", '16 million households', 16000000],
+  ['package-registries', "Developers and the software they build, which installs code from npm and PyPI. pypi.org counted 918,959 projects and 1,1", null, 0],
   ['no noun', 'Municipal water for a town of 30,000', '30,000 people', 30000],
   ['million', 'Regional carrier, 2 million subscribers', '2 million subscribers', 2000000],
   ['billion with decimals', 'Up to 1.5 billion users in March 2025', '1.5 billion users', 1500000000],

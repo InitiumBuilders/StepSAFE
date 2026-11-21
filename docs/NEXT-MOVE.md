@@ -851,6 +851,16 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     and in the full gate after. A timing miss, not React.
   - The second gate's last miss was a test, not the app: probe-selfread named "react 18.3.1" by hand. It reads the
     installed version now. The third gate passed 54 of 54; the release rebuilt it on Linux byte for byte.
+- 2026-11-20, later: three known systems read the wrong number of people. Web PKI read 762 million from "762 million
+  websites", Allstate 211 million from "211 million polici" (its line is cut at 120 characters), and the package
+  registries 918,959 from "918,959 projects". src/lib/people.ts now counts websites, policies and projects as things:
+  Web PKI and the registries read no count, Allstate reads 16 million households, and probe-people pins the three
+  lines. outlier-gen copied the 38 entries into the app first and changed no file. Committed as 2460ff2; not shipped.
+  - Gated that evening on build 32423510cdb1 (digest 6090d0b590ace2ce): 54 of 54 end on exit 0, five walks re-run
+    alone while other sessions' browsers left about 500 MB free. probe-read-webkit had been reading the live testnet
+    explorer, because once the app's service worker controls the page, WebKit sends the request where ctx.route cannot
+    see it. It passed while the explorer answered and failed when the explorer gave 500 for the group-mints contract,
+    on this build and on production alike. Its context now blocks service workers (17 of 17).
 
 ## The move
 

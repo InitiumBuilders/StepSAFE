@@ -9,7 +9,7 @@
 const NOUN_WORDS = ['people', 'residents', 'members', 'subscribers', 'customers', 'accounts', 'staff', 'patients', 'households', 'homes', 'citizens', 'voters', 'users', 'installs', 'businesses', 'developers'];
 const NOUNS = new RegExp('(' + NOUN_WORDS.join('|') + ')', 'i');
 /* a number followed by one of these counts things */
-const THINGS = ['uploads', 'videos', 'posts', 'messages', 'searches', 'queries', 'requests', 'downloads', 'transactions', 'payments', 'repositories', 'packages', 'products', 'apps', 'sites', 'pages', 'files', 'countries', 'cities', 'languages', 'miles', 'kilometres', 'kilometers', 'acres', 'beds', 'tons', 'hours', 'dollars', 'euros', 'pounds', 'revenue', 'sales'];
+const THINGS = ['uploads', 'videos', 'posts', 'messages', 'searches', 'queries', 'requests', 'downloads', 'transactions', 'payments', 'policies', 'repositories', 'packages', 'projects', 'products', 'apps', 'sites', 'websites', 'pages', 'files', 'countries', 'cities', 'languages', 'miles', 'kilometres', 'kilometers', 'acres', 'beds', 'tons', 'hours', 'dollars', 'euros', 'pounds', 'revenue', 'sales'];
 /* a number with or without comma groups, then million or billion if one follows */
 const NUMBER = /(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)(?:\s*(million|billion)\b)?/gi;
 /* written right before a four-digit number, one of these makes it a year */
