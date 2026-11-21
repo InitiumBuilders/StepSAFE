@@ -861,6 +861,27 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     explorer, because once the app's service worker controls the page, WebKit sends the request where ctx.route cannot
     see it. It passed while the explorer answered and failed when the explorer gave 500 for the group-mints contract,
     on this build and on production alike. Its context now blocks service workers (17 of 17).
+  - Shipped at 23:39 CST on his "deploy it": production unitium-safe-ppdxmc3n5, 101 of 101 files the same as dist,
+    release v2026.11.20.2 (gate kept as 3bf082d, public copy d436708, release.yml green). Live walks 10 of 10, and
+    the mainnet read came back clean. The first run stopped at the 15-minute cap I gave it, six walks in; the other
+    four ran after. He had said "deploy it" in two chats at once: one shipped and the other stood down. Before a ship,
+    check `vercel ls unitium-safe --prod` and git for another session's deploy.
+- 2026-11-21: probe-tabrow-walk.mjs holds the visual rounds of 17 November (move 2 of the list above), in 45 checks.
+  In Modux and StudyMode, at 1440 and 390, the front tab keeps the whole hero. Every other tab has the slim one, at
+  most 60% of the whole one's height, and its own work starts in the top half of the screen; an address naming a
+  later tab opens slim too. A tap with the page scrolled until the tab row sits just under the bar keeps the row in
+  view at 390, at 900 (the bar on top) and at 1440. On a phone the chosen tab comes to the middle of its row, on
+  arrival and after each tap, or the row stops at its end with the tab in view. Every word of the model table is
+  whole at ten widths from 761 to 1920 (wordfit's measure). It runs in gate.sh (nineteen walks now) and
+  live-walks.sh (eleven); the app did not change.
+  - Two things could hide a broken keepInView. Chrome's scroll anchoring held the Modux row by itself at 1440 (it
+    stayed at 10px; keepInView puts it at 12), and StudyMode's Test page is short (908px at 1440), so the page's end
+    held the row at 900 and 1440. Each scrolled tap now runs twice, as Chrome is and with anchoring off, taps Deck
+    (over 5,000px at every width), and fails if the new page is too short to keep the scroll where it was.
+  - Each part was then broken on purpose inside the page: the slim hero showing its lede, keepInView's scroll and the
+    row's centring each made a no-op, the table's names at 20px. Every break made its own lines fail. With keepInView
+    off, the one case still passing was Modux at 1440 with anchoring on, and its anchoring-off twin failed.
+  - 45 of 45 on this build (32423510cdb1) and on production, each run alone, about four minutes under load.
 
 ## The move
 
