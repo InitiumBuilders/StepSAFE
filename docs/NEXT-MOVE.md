@@ -901,6 +901,13 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   - Next time: find why the merge does not apply to this import graph, or wait for a Rolldown release that merges
     more, and measure with first-screen.mjs before any gate. Also check the build is byte for byte the same on Linux,
     which this trial did not reach.
+- 2026-11-21, later: TypeScript 7 (commit d9228bb; Dependabot's #4). typescript 7.0.2, the native compiler:
+  `tsc --noEmit` passes with no change to the code, in 4.5 s. No script imports TypeScript's JavaScript API, which
+  version 7 no longer offers in the old form, and the outline check and all 31 probe-*.mts pass under it. Nothing in
+  the build uses TypeScript, so the built site is byte for byte the one in production (index 32423510cdb1, digest
+  6090d0b590ace2ce), on Windows and on Linux (WSL with Node 22 and `npm ci --ignore-scripts`, as release.yml installs;
+  the release itself builds with Node 24). The SBOM lists only what reaches a browser, so it did not change. It ships
+  nothing, so it needs no deploy; the next release builds with it.
 
 ## The move
 
