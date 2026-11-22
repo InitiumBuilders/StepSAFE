@@ -69,7 +69,10 @@
   color: var(--ink); cursor: pointer; text-align: center; font: inherit;
   transition: transform 240ms var(--ease), opacity 240ms var(--ease), box-shadow 240ms var(--ease), background 240ms var(--ease);
 }
-.mt-cell-e { font-size: clamp(22px, 2vw, 30px); transition: transform 240ms var(--ease); }
+/* The emoji grows with its cell. Sized to the window alone, it stayed about 25px in the 150px cells of the two bands
+   of six; now it takes a quarter of the cell, up to 40px. Twelve across and the phone keep the size they had. */
+.mt-cell { container-type: inline-size; }
+.mt-cell-e { font-size: max(clamp(22px, 2vw, 30px), min(25cqi, 40px)); transition: transform 240ms var(--ease); }
 .mt-cell-n {
   font: 600 12px/1.2 var(--font-display); color: var(--ink-2); max-width: 100%; padding: 0;
   display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word;

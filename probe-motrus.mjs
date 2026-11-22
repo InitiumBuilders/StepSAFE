@@ -69,7 +69,15 @@ for (const [key, P] of Object.entries(PAGES)) {
     }
     ok(!head.praxis, `${key} ${w}: it draws on its own, without the Praxis`);
     ok(P.sections.every((id) => head.ids.includes(id)), `${key} ${w}: every section is there (${head.ids.join(' ')})`);
-    /* the walk-through shows the frame of the step being read */
+    /* the walk-through shows the frame of the step being read. Its steps light on an IntersectionObserver, which runs
+       with the frames, and a cold browser draws almost none at first: on 21 Nov 2026, one frame in the first second
+       and 61 a second later, and the check failed on the shipped build and on a new one alike (10111111, 10011111).
+       So it waits for twenty steady frames first, up to ten seconds. */
+    await p.evaluate(() => new Promise((res) => {
+      const t0 = performance.now(); let last = t0, run = 0;
+      const f = (t) => { run = t - last < 50 ? run + 1 : 0; last = t; if (run >= 20 || t - t0 > 10000) res(run); else requestAnimationFrame(f); };
+      requestAnimationFrame(f);
+    }));
     const frames = await p.evaluate(async (id) => {
       const steps = [...document.querySelectorAll('#' + id + ' .wk-step')];
       const seen = [];

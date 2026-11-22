@@ -15,9 +15,13 @@
 }
 .rise.in .rise-wi { opacity: 1; transform: none; }
 .rise-g .rise-wi {
-  background-image: var(--hg); background-size: var(--gw) var(--gh); background-repeat: no-repeat;
+  background-image: var(--hg); background-size: var(--gw) calc(var(--gh) + 0.3em); background-repeat: no-repeat;
   background-position: calc(var(--gx, 0px) * -1) calc(var(--gy, 0px) * -1);
   -webkit-background-clip: text; background-clip: text;
+  /* a gradient word paints only inside its box, and the tails of g, y and p hung below it ("right" lost 5px at
+     1280): the box reaches down for them, the margin gives the room back, and the gradient runs 0.3em past the
+     heading's box so the last line's tails have colour under them */
+  padding-bottom: 0.26em; margin-bottom: -0.26em;
 }
 
 html[data-motion='calm'] .rise-wi, .rise.rise-still .rise-wi { opacity: 1; transform: none; transition: none; }

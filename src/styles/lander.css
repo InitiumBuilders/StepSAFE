@@ -352,6 +352,10 @@ html[data-theme='meridian'] .lx.lx .lx-claros-title { background: linear-gradien
 .lx-st-line.l1 .lx-st-wi, .lx-st-hero .lx-st-wi {
   background: linear-gradient(100deg, #f8f1fb 0%, #e2c8ff 30%, #c084fc 66%, #9cc3ef 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
   background-size: var(--gw, 100%) 100%; background-position: calc(var(--gx, 0px) * -1) 0; background-repeat: no-repeat;
+  /* background-clip: text paints only inside the word's box, and at a line height under 1 the tails of g, y and p
+     hung below it: "Design" lost 10.7px of its g at 1280. The box reaches down for them; the margin gives the room
+     back, so no line moves. */
+  padding-bottom: 0.26em; margin-bottom: -0.26em;
 }
 html[data-theme='meridian'] .lx-st-line.l1 .lx-st-wi, html[data-theme='meridian'] .lx-st-hero .lx-st-wi {
   background: linear-gradient(100deg, #15122b 0%, #3f2a9e 60%, #8a2f86 100%); -webkit-background-clip: text; background-clip: text;

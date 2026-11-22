@@ -2,7 +2,7 @@
 # The StepSAFE gate, one step after another, each result on one line. It needs the built site served locally
 # (the stepsafe-serve preview, port 5189) and takes about 27 minutes on a quiet machine.
 #   bash scripts/gate/gate.sh <log file> [base address, default http://localhost:5189]
-# It runs: the type check, the outline check, every probe-*.mts, the wide crawl in three themes, then nineteen
+# It runs: the type check, the outline check, every probe-*.mts, the wide crawl in three themes, then twenty
 # walks. Every line of the log must say exit 0. The whole output of each walk is kept in <log file>.out/.
 # Its first line names the build: index.html by MD5, and every file by scripts/gate/build-digest.sh. A release finds
 # the gate of its build by both (scripts/mirror.sh, scripts/mirror/release.yml).
@@ -31,7 +31,7 @@ for t in nocturne meridian mov; do
   say "probe-wide $t exit $code | $(echo "$out" | tail -2 | tr '\n' ' ' | cut -c1-220)"
   [ $code -ne 0 ] && echo "$out" | tail -25 >> "$LOG.fail"
 done
-for w in probe-tabbar.mjs probe-back.mjs probe-touch.mjs probe-play-walk.mjs probe-check-walk.mjs probe-glossary-walk.mjs probe-glossary-webkit.mjs probe-csp.mjs probe-motrus.mjs probe-dasha.mjs probe-dasha-voice.mjs probe-paxt-walk.mjs probe-read-walk.mjs probe-read-webkit.mjs probe-ownrecord-walk.mjs probe-keys.mjs probe-table-walk.mjs probe-tabrow-walk.mjs probe-wide-walk.mjs; do
+for w in probe-tabbar.mjs probe-back.mjs probe-touch.mjs probe-play-walk.mjs probe-check-walk.mjs probe-glossary-walk.mjs probe-glossary-webkit.mjs probe-csp.mjs probe-motrus.mjs probe-dasha.mjs probe-dasha-voice.mjs probe-paxt-walk.mjs probe-read-walk.mjs probe-read-webkit.mjs probe-ownrecord-walk.mjs probe-keys.mjs probe-table-walk.mjs probe-tabrow-walk.mjs probe-glyph-walk.mjs probe-wide-walk.mjs; do
   out=$(node "$w" "$BASE" 2>&1); code=$?
   echo "$out" > "$LOG.out/$w.txt"
   n=$(echo "$out" | grep -c '^ok ')

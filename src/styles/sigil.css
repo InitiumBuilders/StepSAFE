@@ -5,11 +5,19 @@
 .view-head .page-sigil { width: 84px; height: 84px; margin-top: -4px; }
 @media (max-width: 720px) { .view-head .page-sigil { width: 58px; height: 58px; } }
 
-/* a sigil inside a page's own hero, top right; on a phone it sits above the heading */
+/* a sigil inside a page's own hero, top right. On a phone it stays in that corner, smaller, as it does in the slim
+   hero: in a row of its own above the heading it cost the front tab about 70px, and the tab's own work fell below
+   the first screen. The kicker and the title keep clear of it, only in a hero that holds a sigil: a model's, a
+   gauge's and a stack's hero hold none, and the same room taken from their titles pushed long words such as
+   "Interpretability" past a phone's edge in the bolder themes. */
 .mx-hero, .sg-hero { position: relative; }
 .hero-sigil { position: absolute; z-index: 1; top: 22px; right: 26px; width: 108px; height: 108px; pointer-events: none; }
 .hero-sigil .page-sigil { width: 100%; height: 100%; margin: 0; }
-@media (max-width: 760px) { .hero-sigil { position: static; display: block; width: 62px; height: 62px; margin: 0 0 8px; } }
+@media (max-width: 760px) {
+  .hero-sigil { top: 16px; right: 16px; width: 52px; height: 52px; }
+  .mx-hero:not(.mx-hero-slim):has(> .hero-sigil) .mx-kicker, .mx-hero:not(.mx-hero-slim):has(> .hero-sigil) h1,
+  .sg-hero:not(.sg-hero-slim):has(> .hero-sigil) > .label, .sg-hero:not(.sg-hero-slim):has(> .hero-sigil) h1 { padding-right: 56px; }
+}
 
 .page-sigil .ps-beat { animation: ps-beat 4.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
 @keyframes ps-beat { 0%, 100% { transform: scale(0.86); } 50% { transform: scale(1.18); } }
