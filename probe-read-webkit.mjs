@@ -79,7 +79,15 @@ const measure = () => p.evaluate(() => ({
 
 ok((await p.locator('.tkr h1').innerText()).trim() === 'Read a token', 'the page opens by its address');
 ok((await p.locator('.tkr-f-title').count()) === 5, 'the first made-up token shows its five findings');
-const level = await p.evaluate(() => { const r = document.querySelector('.tkr-vessel g[clip-path] rect'); return r ? [+r.getAttribute('y'), +r.getAttribute('height')] : [0, 0]; });
+/* The fill rises over 1.2 s once the vessel is a quarter in view, or after a 1.5 s failsafe: it reached its level
+   about 2.1 s after the heading on two builds (measured 21 Nov 2026), and the fixed pause read it mid-rise when
+   WebKit's frames came late under load (145.1, then 242.0). It now waits for the level, up to eight seconds. */
+let level = [0, 0];
+for (let t = 0; t < 80; t++) {
+  level = await p.evaluate(() => { const r = document.querySelector('.tkr-vessel g[clip-path] rect'); return r ? [+r.getAttribute('y'), +r.getAttribute('height')] : [0, 0]; });
+  if (Math.abs(level[0] - (242 - 180 * 0.56)) < 2) break;
+  await p.waitForTimeout(100);
+}
 ok(Math.abs(level[0] - (242 - 180 * 0.56)) < 2 && level[1] > 90, 'its vessel is drawn at its level: ' + level.map(n => n.toFixed(1)).join(' / '));
 ok(await p.evaluate(() => { const v = document.querySelector('.tkr-vessel').getBoundingClientRect(); return v.width > 180 && v.height > 180; }), 'and the drawing has its size');
 let m = await measure();

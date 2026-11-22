@@ -50,8 +50,16 @@ html[data-theme='meridian'] .page-sigil .ps-line, html[data-theme='meridian'] .p
 html[data-theme='meridian'] .page-sigil .ps-dot, html[data-theme='meridian'] .page-sigil .ps-node { fill: #5b4fd0; filter: none; }
 html[data-theme='meridian'] .page-sigil .ps-key { fill: rgba(201, 138, 18, 0.5); stroke: #a86c05; filter: none; }
 @media (max-width: 640px) {
-  .view-head.has-sigil { grid-template-columns: 1fr; row-gap: 10px; }
   .page-sigil { width: 46px; height: 46px; }
+  /* On a phone a page head's sigil sits small in the label's row, like a mark beside a section's name: in a row of
+     its own it took about 60px of every page's first screen. The title and the lede keep the full width, so no
+     title changes its line breaks (August chose this over the corner on 21 Nov 2026). */
+  .view-head.has-sigil { grid-template-columns: 34px minmax(0, 1fr); column-gap: 10px; row-gap: 0; align-items: center; }
+  .view-head.has-sigil > .page-sigil { grid-column: 1; grid-row: 1; width: 34px; height: 34px; margin: 0; }
+  .view-head.has-sigil > .view-head-text { display: contents; }
+  .view-head.has-sigil > .view-head-text > .label { grid-column: 2; grid-row: 1; margin-bottom: 0 !important; }
+  .view-head.has-sigil > .view-head-text > :not(.label) { grid-column: 1 / -1; }
+  .view-head.has-sigil > .view-head-text > :nth-child(2) { margin-top: 12px; }
 }
 @media (prefers-reduced-motion: reduce) { .page-sigil .ps-glow { animation: none; } }
 html[data-motion='calm'] .page-sigil .ps-glow { animation: none; }
