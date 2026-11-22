@@ -940,6 +940,46 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     now waits for twenty steady frames first (7669d97) and passed 4 of 4, twice on each build.
   - The machine slept through the night with the second gate half done; it resumed and finished at 16:59.
   - Next: his choice for the thirteen page heads, B (a small sigil beside the label), as round 4 on its own branch.
+- 2026-11-21, evening: visual round 4 LIVE on his "Deploy it when green" (his choice B for the page heads):
+  production unitium-safe-6ya1fyusc, 101 of 101 files the same as dist, live walks 12 of 12 and the mainnet read,
+  release v2026.11.21.2 (gate kept as 9af3124, public copy 8f6c74b, release.yml passed). Commits d0712f6 and
+  7dfe274. On a phone the thirteen page heads that carry a sigil gave it a row of its own above the label, about 50px
+  of each first screen. The sigil now sits small (34px) in the label's row, and the title and lede keep the full
+  width (calm.css). Measured against round 3 at 360, 390 and 640, on the twelve routes and on a checklist's own page
+  (all five kinds; that page has no address, so the measure opens it from /check): the next section starts about
+  50px higher, every title keeps its line count, no sigil touches a title, and nothing scrolls sideways. Above 640
+  nothing changes.
+  - The gate's one failure was probe-read-webkit's vessel check: the fill reaches its level about 2.1 s after the
+    heading on both builds (2.0 to 2.3 s), and the walk read it at a fixed 3.2 s, twice mid-rise under load. It
+    waits for the level now, up to eight seconds (7dfe274), and passed 4 of 4 across both builds.
+  - The first measure counted twelve heads, because it walked addresses and the checklist page has none. When a
+    count comes from a walk, write down the pages it walked.
+- Start here (next session, written 2026-11-21 at the end of the day). Everything above is live, and main holds it.
+  Next, strongest first:
+  1. His calls: the "Broke It on Testnet" hook (hooks.ts grants it on the trigger
+     motus-mode, which only means the learner's mode is Motus, and its toast covers StudyMode's hero for a Motus-mode
+     learner; recommended: remove the hook, or map Motus mode to an award that fits), then the choices in move 8 of
+     the 2026-11-17 list.
+  2. Faint field rings drift over the model table's cells (seen in rounds 3 and 4). Find what draws them, keep them
+     out of the table, and look again at 1280 and 390.
+  3. TypeScript 7 without breaking the ship. `vercel build` loads the project's TypeScript through the old JavaScript
+     API and failed on 7.0. Try keeping TypeScript 5 as the package Vercel's builder loads while the app's own type
+     check runs the native compiler, and run `vercel build` before it lands.
+  4. picomatch: still 4.0.7 on 2026-11-21, with no fix published. When one is, update the lockfile only.
+  5. Vite 8 stays held until Rolldown folds the common chunks back (the first screen grew). The trial is the local
+     branch vite8 (c5bf240).
+  6. Phones and the six long words in the model table: ask him to open Models on his phone (move 4 of the
+     2026-11-17 list).
+  7. A fifth visual round from a fresh survey (scripts/look/survey.mjs): the weakest first views first.
+  8. The glossary's debt (move 8 of the 2026-11-17 list).
+- Reflections from 2026-11-21:
+  - Two walks failed today because of their own timing (probe-motrus and probe-read-webkit): each read an animated
+    state at a fixed time and caught it mid-way when the machine was busy. They wait for the state now, with a
+    ceiling. Running the same check on the shipped build settled "regression or flake" in one run each time.
+  - A toolchain change has to pass the deploy's own build (`vercel build`), not only the app's. TypeScript 7 passed
+    every local check and failed at the ship.
+  - Every visual fix was measured against the shipped build before the gate (word windows, page heights, title
+    lines, sideways scroll), so each round shipped once.
 
 ## The move
 
