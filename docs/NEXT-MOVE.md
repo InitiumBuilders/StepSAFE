@@ -960,8 +960,8 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
      motus-mode, which only means the learner's mode is Motus, and its toast covers StudyMode's hero for a Motus-mode
      learner; recommended: remove the hook, or map Motus mode to an award that fits), then the choices in move 8 of
      the 2026-11-17 list.
-  2. Faint field rings drift over the model table's cells (seen in rounds 3 and 4). Find what draws them, keep them
-     out of the table, and look again at 1280 and 390.
+  2. ~~Faint field rings drift over the model table's cells (seen in rounds 3 and 4).~~ Done 2026-11-22 as visual
+     round 5 (the entry below these reflections).
   3. TypeScript 7 without breaking the ship. `vercel build` loads the project's TypeScript through the old JavaScript
      API and failed on 7.0. Try keeping TypeScript 5 as the package Vercel's builder loads while the app's own type
      check runs the native compiler, and run `vercel build` before it lands.
@@ -970,7 +970,7 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
      branch vite8 (c5bf240).
   6. Phones and the six long words in the model table: ask him to open Models on his phone (move 4 of the
      2026-11-17 list).
-  7. A fifth visual round from a fresh survey (scripts/look/survey.mjs): the weakest first views first.
+  7. The next visual round from a fresh survey (scripts/look/survey.mjs): the weakest first views first.
   8. The glossary's debt (move 8 of the 2026-11-17 list).
 - Reflections from 2026-11-21:
   - Two walks failed today because of their own timing (probe-motrus and probe-read-webkit): each read an animated
@@ -980,6 +980,18 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     every local check and failed at the ship.
   - Every visual fix was measured against the shipped build before the gate (word windows, page heights, title
     lines, sideways scroll), so each round shipped once.
+- 2026-11-22, night: visual round 5 LIVE on his "Deploy it when green", then "deploy it" (move 2 of the list
+  above): production unitium-safe-pdhnvjreg, 101 of 101 files the same as dist, live walks 12 of 12 and the mainnet
+  read, release v2026.11.22 (gate kept as 77ea0c9, public copy cb3be4c, release.yml passed). Commit dab3308. On a
+  desktop the field's five out-of-focus discs drifted under the model table, and their bright rims showed through
+  its glass cells as stray rings ("Verifiable credentials", "Build integrity levels", "Mutual TLS mesh",
+  "Reproducible builds" at 1280). The field already kept the discs off screens under 900px for the same reason, so
+  phones never saw them. A view can now hold them (Field.holdAir and releaseAir, src/lib/field.ts): the table holds
+  them while it is open and lets go when it closes. Checked on the build and again on production: the table's
+  cells are clean at 1280 in two frames 1.5 s apart, and the field canvas on Ground, reached from the table in the
+  same visit, draws all five discs again. The lattice, the signals and the ripples are unchanged.
+  - The first gate stopped at 41 of 56, with no failures, when the session ended. A release needs one complete
+    log, so the gate ran again from the start and passed 56 of 56.
 
 ## The move
 
