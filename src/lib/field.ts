@@ -81,6 +81,12 @@ class FieldEngine {
 
   setLight(on: boolean) { this.light = on; this.sprite = null; if (this.reduced) this.draw(0); }
 
+  /** the coloured air rests while a view of close-set glass cells is open (the model table), where its rims show
+      through the cells as marks; each hold is released when its view closes */
+  private airHolds = 0;
+  holdAir() { this.airHolds++; if (this.reduced) this.draw(0); }
+  releaseAir() { this.airHolds = Math.max(0, this.airHolds - 1); if (this.reduced) this.draw(0); }
+
   /** the colour of the lattice: the view's essence */
   setHue(hex?: string) { this.rgb = hexToRgb(hex || '#a78bff'); this.sprite = null; if (this.reduced) this.draw(0); }
 
@@ -149,7 +155,7 @@ class FieldEngine {
 
     /* the coloured air: five out-of-focus lights, a faint fill and a brighter rim, drifting slowly. Wide screens
        only: on a phone they sit in the reading space and read as marks on the glass */
-    if (!this.light && this.w >= 900) {
+    if (!this.light && this.w >= 900 && this.airHolds === 0) {
       for (const dsc of this.discs) {
         const x = dsc.x * this.w + Math.sin(t * 0.05 + dsc.ph) * 22, y = dsc.y * this.h + Math.cos(t * 0.04 + dsc.ph) * 16;
         const c = dsc.k === 0 ? [216, 239, 252] : dsc.k === 1 ? this.rgb : [241, 138, 198];

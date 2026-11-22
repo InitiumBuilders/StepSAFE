@@ -16,6 +16,7 @@ import { MODUX_MODELS, ESSENCE_HEX, onContentReady } from '../content/registry';
 import { FAMILY_LABEL, FAMILY_HUE, TIER_LABEL, type ModuxFamily, type ModuxTier, type ModuxModel } from '../content/modux-schema';
 import { MODEL_EMOJI, FAMILY_EMOJI, emojiOf, modelByEmoji } from '../content/modux/emoji';
 import { useS } from '../lib/state';
+import { Field } from '../lib/field';
 
 const FAMILIES = Object.keys(FAMILY_LABEL) as ModuxFamily[];
 /* top of a column to its base */
@@ -35,6 +36,8 @@ export function ModelTable() {
   /* the outline draws the table at once; the full records add each model's statement when they arrive */
   const [, setTick] = useState(0);
   useEffect(() => onContentReady(() => setTick(t => t + 1)), []);
+  /* the field's drifting discs rest while the table is open: through its glass cells their rims read as marks */
+  useEffect(() => { Field.holdAir(); return () => Field.releaseAir(); }, []);
 
   const columns = useMemo(() => FAMILIES.map(f => MODUX_MODELS.filter(m => m.family === f)
     .sort((a, b) => TIER_RANK[a.tier] - TIER_RANK[b.tier] || a.name.localeCompare(b.name))), []);
