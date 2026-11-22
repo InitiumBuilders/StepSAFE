@@ -782,7 +782,8 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
      Vulnerabilities returns to 10.
   7. A third visual round: run scripts/look/survey.mjs, read the sheets, and pick the weakest first views. Seen today:
      in the six-across table the cells are wide and their emoji small, and on a phone the Modux hero still takes a
-     third of the screen on its front tab.
+     third of the screen on its front tab. Done on 2026-11-21 and live as release v2026.11.21 (that evening's entry
+     below).
   8. His choices, carried from before: the first Dash project, the names, whether Recover grows further, whether a
      certificate read is worth an SSLMate account and a small server, and the names "Safe multisig" and "Summiting the
      Pyramid". Then the glossary's debt: entries for the words named twice (`npx tsx probe-terms.mts --list`), a
@@ -908,6 +909,37 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   6090d0b590ace2ce), on Windows and on Linux (WSL with Node 22 and `npm ci --ignore-scripts`, as release.yml installs;
   the release itself builds with Node 24). The SBOM lists only what reaches a browser, so it did not change. It ships
   nothing, so it needs no deploy; the next release builds with it.
+  - REVERTED the same day (2a1a04e). The next ship stopped in `vercel build`: "Using TypeScript 7.0.2 (local
+    user-provided)", then "Cannot read properties of undefined (reading 'readFile')". Vercel's builder for the api/
+    functions loads the project's TypeScript through its JavaScript API, which 7.0 no longer offers. The trial checked
+    our own scripts for that API, not the deploy's build. Nothing reached production. Next time, run `vercel build`
+    before a toolchain change lands, and hold TypeScript 7 until Vercel's builder supports it.
+- 2026-11-21, evening: visual round 3 (move 7) LIVE on his "Deploy it": production unitium-safe-ba88c5b9u, 101 of 101
+  files the same as dist, live walks 12 of 12 and the mainnet read, release v2026.11.21 (gate kept as 1bdff11, public
+  copy eaa79b6). Commits 990ed46, ca5be7f and 7669d97. The survey (122 first views, 13 sheets) and a measure of every
+  gradient word found three things:
+  - The front door's headline cut its own letters. background-clip: text paints only inside a word's box, and at a
+    line height of 0.94 the tails of g, y and p hung below it: "Design" lost 10.7px of its g at 1280 and "Right."
+    12.2px; the rising headings on Chapters, NextSteps, StudyMode, Trust and Steps lost 2 to 5px. Each gradient
+    word's box now reaches 0.26em lower with the same margin given back (lander.css, rise.css), and RiseHead's
+    gradient runs 0.3em past the heading. All 65 word windows on the front door rest where they did and every page
+    keeps its height. probe-glyph-walk.mjs holds it: it failed on the old build in Nocturne and Meridian at 1280 and
+    390, and passes on this one and on production.
+  - On a phone the Modux and StudyMode heroes gave their sigil a row of its own (in Modux a grid row and its gap,
+    102px), so the front tab's own work began under the tab bar. The sigil now stays in the corner, as in the slim
+    hero (sigil.css): Modux's work starts at 600px instead of 702, StudyMode's at 641 instead of 711. The first gate
+    found the room made for it had also come off the titles of the model, gauge and stack heroes, which hold no
+    sigil: eleven model pages scrolled sideways on a phone in Meridian and Mov. The padding applies only to a hero
+    that holds one now (:has(> .hero-sigil)), and all 124 model pages are clear in all three themes.
+  - In the two bands of six the table's emoji stayed about 25px in 150px cells. It grows with its cell now
+    (modeltable.css: max(clamp(22px, 2vw, 30px), min(25cqi, 40px))), 37px at 1280; twelve across and the phone keep
+    their size.
+  - probe-motrus's walk-through check failed about one time in four on the shipped build and on this one alike
+    (10111111, 10011111), with the eight step boxes identical on both. A cold browser draws one frame in its first
+    second and 61 a second later, and the steps light on an IntersectionObserver, which runs with the frames. The walk
+    now waits for twenty steady frames first (7669d97) and passed 4 of 4, twice on each build.
+  - The machine slept through the night with the second gate half done; it resumed and finished at 16:59.
+  - Next: his choice for the thirteen page heads, B (a small sigil beside the label), as round 4 on its own branch.
 
 ## The move
 
