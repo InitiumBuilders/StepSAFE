@@ -962,9 +962,7 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
      the 2026-11-17 list.
   2. ~~Faint field rings drift over the model table's cells (seen in rounds 3 and 4).~~ Done 2026-11-22 as visual
      round 5 (the entry below these reflections).
-  3. TypeScript 7 without breaking the ship. `vercel build` loads the project's TypeScript through the old JavaScript
-     API and failed on 7.0. Try keeping TypeScript 5 as the package Vercel's builder loads while the app's own type
-     check runs the native compiler, and run `vercel build` before it lands.
+  3. ~~TypeScript 7 without breaking the ship.~~ Done 2026-11-23 (45d1e35, the entry below).
   4. picomatch: still 4.0.7 on 2026-11-21, with no fix published. When one is, update the lockfile only.
   5. Vite 8 stays held until Rolldown folds the common chunks back (the first screen grew). The trial is the local
      branch vite8 (c5bf240).
@@ -992,6 +990,18 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   same visit, draws all five discs again. The lattice, the signals and the ripples are unchanged.
   - The first gate stopped at 41 of 56, with no failures, when the session ended. A release needs one complete
     log, so the gate ran again from the start and passed 56 of 56.
+- 2026-11-23: TypeScript 7 is on main beside TypeScript 5 (45d1e35), with no deploy: the build is byte for byte
+  production's. "typescript" stays on 5.9 because Vercel's function builder compiles api/seva.ts through
+  TypeScript's JavaScript API (its log: "Using TypeScript 5.9.3 (local user-provided)"). TypeScript 7.0.2 is
+  installed as "typescript-native" and runs the app's type check by its own path: the build script, the typecheck
+  script and the gate (`npm run typecheck`). It takes about 2 s; 5 took about 10. Checked: the type check, the
+  outline and all 31 probes pass; `vercel build --prod` completes; the build is 0ce5737e6b7b, digest
+  d4291a4a6d4b3fc1, on Windows and on Linux after `npm ci --ignore-scripts`, the way release.yml builds. Dependabot
+  (scripts/mirror/dependabot.yml) no longer offers a major update for "typescript".
+  - Both packages name a binary `tsc`, and npm linked the newer one, which can change with install order. So no
+    script relies on the shared `tsc`; each names the one it wants.
+  - Vercel's team was blocked for an unpaid invoice that day (every site 402 DEPLOYMENT_DISABLED); nothing here
+    needed a deploy.
 
 ## The move
 

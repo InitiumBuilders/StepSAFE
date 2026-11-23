@@ -18,7 +18,7 @@ cd "$(dirname "$0")/../.." || exit 1
 LOG="${1:?give a log file}"; BASE="${2:-http://localhost:5189}"; : > "$LOG"; mkdir -p "$LOG.out"; rm -f "$LOG.fail"
 say() { echo "$@" | tee -a "$LOG"; }
 say "gate started $(date '+%H:%M:%S') on $(md5sum dist/index.html 2>/dev/null | cut -c1-12) build $(bash scripts/gate/build-digest.sh dist 2>/dev/null)"
-npx tsc --noEmit > "$LOG.tsc" 2>&1; say "tsc exit $?"
+npm run --silent typecheck > "$LOG.tsc" 2>&1; say "tsc exit $?"
 npx tsx scripts/content-outline.mts --check > "$LOG.outline" 2>&1; say "outline exit $? $(tail -1 "$LOG.outline")"
 for f in probe-*.mts; do
   [ "$f" = probe-wide.mts ] && continue

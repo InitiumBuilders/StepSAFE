@@ -15,6 +15,11 @@ updates:
     groups:
       minor-and-patch:
         update-types: ['minor', 'patch']
+    ignore:
+      # "typescript" stays on 5: Vercel's function builder compiles api/seva.ts through TypeScript's JavaScript API,
+      # which 7 does not have. The app's own type check already runs 7, installed as "typescript-native".
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
   - package-ecosystem: github-actions
     directory: /
     schedule:
