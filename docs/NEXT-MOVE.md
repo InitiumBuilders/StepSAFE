@@ -1022,6 +1022,17 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   - Round 7 was built and gated in its own worktree (C:\Users\Initi\stepsafe-visual7, served on 5200), so round 6's
     release could run from a clean main folder whose dist was still the shipped build. It was rebased onto main's
     round 6 evidence before the merge, and the main folder's build matched the gated one byte for byte.
+- 2026-11-23, night: the glossary's debt (move 8 of the list), on branch glossary-named-2 and waiting for his
+  review: 65 new entries in src/content/glossary-named.ts. All 41 words that two Steps name now have entries, and 24
+  more come from the 330 words that one Step names and other Steps or guides also use, most used first. Each was
+  written from the Steps that name it. Outside facts carry the source read that day: the SEC's 2023 press release
+  and the Division of Corporation Finance statement of May 2024, the AWS CloudTrail guide, GitHub's advisory on
+  tj-actions/changed-files, the ATT&CK Navigator repository, Russ Cox's xz timeline, Lasse Collin's xz page,
+  Microsoft Learn, and Dash's DIP-0003 and DIP-0028. probe-terms: Step links to an entry 533 to 640, to no entry
+  1111 to 1004, related links to no entry 183 to 178; the type check is clean; no duplicate ids or colliding names. The browser pane could not open threatmodelingmanifesto.org or
+  cisa.gov, so Hero Threat Modeler carries no source and Mutable Tag cites GitHub's advisory.
+  - picomatch (move 4): still 4.0.7 with no newer release, and npm audit reports 0 vulnerabilities on 2026-11-23.
+    Nothing to update.
 
 ## The move
 
