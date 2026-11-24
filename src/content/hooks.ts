@@ -77,10 +77,8 @@ export const HOOKS: Hook[] = [
     trigger: "wallet-linked",
     awards: ["small-first-cold-storage"]
   },
-  {
-    trigger: "motus-mode",
-    awards: ["small-first-testnet"]
-  },
+  /* "Broke It on Testnet" is earned in the reentrancy lab (ch-chain-reentrancy-lab), where the learner writes the
+     exploit against their own vulnerable contract. Choosing Motus mode grants no award. */
   /* Seva becoming able to carry the material without the learner in the room is
      the same proof of transfer the award asks for. */
   {

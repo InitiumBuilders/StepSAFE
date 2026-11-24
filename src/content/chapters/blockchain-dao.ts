@@ -628,7 +628,7 @@ export const chapter: Chapter = {
           praxis: "Reproduce this lab end to end in your own Foundry project, then extend it with a second test that demonstrates the cross-function variant surviving a naive single-function guard.",
           evidence: "Attach the repository with both the passing exploit against the vulnerable version and the reverting exploit against the fixed version, plus the forge test output showing the transition.",
           glossary: ["reentrancy", "checks-effects-interactions", "foundry", "invariant-testing"],
-          awards: ["ch-chain-exploit-author"]
+          awards: ["ch-chain-exploit-author", "small-first-testnet"]
         },
         {
           id: "ch-chain-access-proxy-replay",

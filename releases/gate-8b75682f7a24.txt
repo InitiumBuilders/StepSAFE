@@ -1,0 +1,58 @@
+gate started 19:14:54 on 8b75682f7a24 build dfd1d23a84a269fd
+tsc exit 0
+outline exit 0 outline: up to date
+probe-board.mts exit 0 | PROBLEMS (0) | 
+probe-calibration.mts exit 0 | PROBLEMS (0) | 
+probe-check.mts exit 0 | PROBLEMS (0) | checks 5 | statements 60 | structures 51 | sources 33 | CSF categories 20 | oldest source check 2026-11-04 (two-agree)
+probe-claros.mts exit 0 | PROBLEMS (0) | systems 38 | answers 304 | attack asks 114
+probe-conf.mts exit 0 |  | total conflicts authored: 65
+probe-dynamics.mts exit 0 | PROBLEMS (0) | gauges 15 · checks 30 · moves 144
+probe-ensemble.mts exit 0 | PROBLEMS (0) | time: 200 days 63 ms at most · robust ranking 329 ms on average, 521 ms at most
+probe-gauges.mts exit 0 | PROBLEMS (0) | 
+probe-goals.mts exit 0 | PROBLEMS (0) | 
+probe-ids.mts exit 0 | PROBLEMS (0) | 
+probe-insight.mts exit 0 | PROBLEMS (0) | 
+probe-keyring.mts exit 0 | PROBLEMS (0) | ok   a record restored from a file never brings checks into the record
+probe-mind.mts exit 0 | PROBLEMS (0) | 
+probe-modux.mts exit 0 | PROBLEMS (0) | WARNINGS (0)
+probe-onchain.mts exit 0 | PROBLEMS (0) | records 12 | tokens 11 | findings 51 | document types 15 | checks 410
+probe-outlier.mts exit 0 | PROBLEMS (0) | 
+probe-outline.mts exit 0 | PROBLEMS (0) | outline 446 KB · 12 chapters, 728 awards, 60 guides, 14 rooms, 436 terms, 96 Modux models, 6 Modux courses
+probe-own.mts exit 0 | PROBLEMS (0) | 
+probe-paxt.mts exit 0 | PROBLEMS (0) | ok   none of the stock words
+probe-people.mts exit 0 | PROBLEMS (0) | 
+probe-pitch.mts exit 0 | PROBLEMS (0) | pitch: 352 steps | 728 milestones | 96 models | 38 systems | 1036 cards
+probe-plan.mts exit 0 | PROBLEMS (0) | 
+probe-room.mts exit 0 | PROBLEMS (0) | rooms 14 | places saved and read back 211
+probe-selfread.mts exit 0 | PROBLEMS (0) | selfread: 187 checks | sites named 21 | storage names 13 | answers 12 | federal rows 6
+probe-service.mts exit 0 | PROBLEMS (0) | 
+probe-seva-door.mts exit 0 | PROBLEMS (0) | ok   a client system prompt is ignored
+probe-sources.mts exit 0 | PROBLEMS (0) | 
+probe-study.mts exit 0 | PROBLEMS (0) | 
+probe-subjects.mts exit 0 | PROBLEMS (0) | terms 436 over 76 domains in 11 subjects | cards 1036
+probe-terms.mts exit 0 | PROBLEMS (0) | ratchet held: 533 resolved, 1111 to no entry, 183 related to no entry (2026-11-09)
+probe-trust.mts exit 0 | PROBLEMS (0) | trust: 103 checks | services named on the privacy page 21 | sbom matches the lockfile
+probe-wide nocturne exit 0 | theme nocturne | places opened 767 | tables 581 | code blocks 166 | pages that scroll sideways 0 | kinds of box that run past their edge 0 PROBLEMS (0) 
+probe-wide meridian exit 0 | theme meridian | places opened 767 | tables 581 | code blocks 166 | pages that scroll sideways 0 | kinds of box that run past their edge 0 PROBLEMS (0) 
+probe-wide mov exit 0 | theme mov | places opened 767 | tables 581 | code blocks 166 | pages that scroll sideways 0 | kinds of box that run past their edge 0 PROBLEMS (0) 
+probe-tabbar.mjs exit 0 | ok 53 | PROBLEMS (0) | 19:28:49
+probe-back.mjs exit 0 | ok 95 | PROBLEMS (0) | 19:31:55
+probe-touch.mjs exit 0 | ok 81 | PROBLEMS (0) | 19:32:44
+probe-play-walk.mjs exit 0 | ok 59 | PROBLEMS (0) | 19:34:35
+probe-check-walk.mjs exit 0 | ok 108 | PROBLEMS (0) | 19:37:22
+probe-glossary-walk.mjs exit 0 | ok 100 | PROBLEMS (0) | 19:39:50
+probe-glossary-webkit.mjs exit 0 | ok 27 | PROBLEMS (0) | 19:42:09
+probe-csp.mjs exit 0 | ok 7 | PROBLEMS (0) | 19:43:08
+probe-motrus.mjs exit 0 | ok 78 | PROBLEMS (0) | 19:44:37
+probe-dasha.mjs exit 0 | ok 26 | PROBLEMS (0) | 19:44:53
+probe-dasha-voice.mjs exit 0 | ok 16 | PROBLEMS (0) | 19:45:14
+probe-paxt-walk.mjs exit 0 | ok 32 | PROBLEMS (0) | 19:45:38
+probe-read-walk.mjs exit 0 | ok 79 | PROBLEMS (0) | 19:46:49
+probe-read-webkit.mjs exit 0 | ok 17 | PROBLEMS (0) | 19:47:09
+probe-ownrecord-walk.mjs exit 0 | ok 78 | PROBLEMS (0) | 19:48:11
+probe-keys.mjs exit 0 | ok 10 | PROBLEMS (0) | 19:48:31
+probe-table-walk.mjs exit 0 | ok 41 | PROBLEMS (0) | 19:49:00
+probe-tabrow-walk.mjs exit 0 | ok 45 | PROBLEMS (0) | 19:52:46
+probe-glyph-walk.mjs exit 0 | ok 5 | PROBLEMS (0) | 19:57:00
+probe-wide-walk.mjs exit 0 | ok 36 | PROBLEMS (0) | 19:57:55
+gate finished 19:57:55
