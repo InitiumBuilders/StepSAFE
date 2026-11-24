@@ -69,7 +69,9 @@ export function ReadAloud({ passages, label, onPassage }: { passages: Passage[];
         <em>{playing || at >= 0 ? (at + 1) + ' of ' + passages.length : passages.length + ' passages · about ' + minutes + ' min · ' + voiceLabel()}</em>
         {note && <small>{note}</small>}
       </div>
-      {passages.length > 1 && (
+      {/* the passage arrows come once reading has begun: before it, back could only be disabled and forward
+          skipped the first passage, and on a phone the pair sat alone on a line under the button */}
+      {passages.length > 1 && at >= 0 && (
         <div className="ra-nav">
           <button className="btn btn-ghost btn-sm" onClick={() => step(-1)} disabled={at <= 0} aria-label="The passage before">{'←'}</button>
           <button className="btn btn-ghost btn-sm" onClick={() => step(1)} disabled={at >= passages.length - 1} aria-label="The next passage">{'→'}</button>
