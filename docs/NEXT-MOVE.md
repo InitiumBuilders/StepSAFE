@@ -956,10 +956,8 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     count comes from a walk, write down the pages it walked.
 - Start here (next session, written 2026-11-21 at the end of the day). Everything above is live, and main holds it.
   Next, strongest first:
-  1. His calls: the "Broke It on Testnet" hook (hooks.ts grants it on the trigger
-     motus-mode, which only means the learner's mode is Motus, and its toast covers StudyMode's hero for a Motus-mode
-     learner; recommended: remove the hook, or map Motus mode to an award that fits), then the choices in move 8 of
-     the 2026-11-17 list.
+  1. His calls: ~~the "Broke It on Testnet" hook~~ (done 2026-11-23 as visual round 7, his choice: the reentrancy
+     lab grants it), then the choices in move 8 of the 2026-11-17 list.
   2. ~~Faint field rings drift over the model table's cells (seen in rounds 3 and 4).~~ Done 2026-11-22 as visual
      round 5 (the entry below these reflections).
   3. ~~TypeScript 7 without breaking the ship.~~ Done 2026-11-23 (45d1e35, the entry below).
@@ -1002,6 +1000,28 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     script relies on the shared `tsc`; each names the one it wants.
   - Vercel's team was blocked for an unpaid invoice that day (every site 402 DEPLOYMENT_DISABLED); nothing here
     needed a deploy.
+- 2026-11-23: visual round 6 LIVE on his "deploy round 6 when green": production unitium-safe-gndfo6cpr, 101 of 101
+  files the same as dist, live walks 12 of 12 and the mainnet read, release v2026.11.23 (gate kept as e64a0e3, public
+  copy 96888f5, release.yml passed). Commit ff9c439. From that day's survey (122 screens): on every chapter, Step and
+  guide, the read-aloud card showed its two passage arrows before anything was playing. Back could only be disabled
+  then, forward skipped the first passage (it stepped from the start before reading began), and on a phone the pair
+  sat alone on a line under the button. The arrows now come once reading has begun (ReadAloud.tsx); before it the
+  card is the button and what it will read, 85px tall on a phone. Checked at 390 on a Step and a chapter: no arrows
+  before reading; after "Read aloud" both arrows, back disabled on the first passage, and the button reads "Stop".
+  - The first gate died at 54 of 56, with no failures, when Windows refused new processes as the machine logged off
+    ("fork: Resource temporarily unavailable", 0xC000026B). It ran again from the start and passed 56 of 56.
+- 2026-11-23: visual round 7 LIVE on his "deploy round 7 when green" (his choice of where the award comes from):
+  production unitium-safe-i4fzmhggo, 101 of 101 files the same as dist, live walks 12 of 12 and the mainnet read,
+  release v2026.11.23.2 (gate kept as a222b21, public copy 9a55e1c, release.yml passed). Commit 6d9e497. "Broke It
+  on Testnet" asks the learner to deploy a contract and exploit one of their own bugs, but it was granted for choosing
+  Motus mode, and its toast then covered the StudyMode head for every Motus-mode learner (move 1 of the list). The
+  blockchain chapter's reentrancy lab (ch-chain-reentrancy-lab), where the learner writes the exploit against their
+  own vulnerable contract, grants it now; choosing Motus mode grants no award (hooks.ts). The outline is regenerated
+  for the Step's new award. Checked: probe-ids (every award reachable) passes, and on production a Motus-mode learner
+  opens StudyMode with no award toast and none stored.
+  - Round 7 was built and gated in its own worktree (C:\Users\Initi\stepsafe-visual7, served on 5200), so round 6's
+    release could run from a clean main folder whose dist was still the shipped build. It was rebased onto main's
+    round 6 evidence before the merge, and the main folder's build matched the gated one byte for byte.
 
 ## The move
 
