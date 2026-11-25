@@ -1260,19 +1260,31 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   only in its own meaning, and the voice lint's flags were read (seven rewritten, including two that used "real
   people"). probe-terms: resolved 1169, to no entry 475, related to no entry 140; 1,004 terms, 1,604 cards.
   Production checked: the payment Step's word opens Restore Commander, the glossary lists 1,004, no console errors.
-  - NOT RUN YET: the 56-walk gate on 982c555099ae. The ticket queued for the legal fixes was retargeted twice and
-    now gates this build against localhost:5210, where the worktree C:\Users\Initi\stepsafe-glossary8 serves its
-    dist.
-- Start here (next session, rewritten 2026-11-25 after batch seven part two). Everything above is live, and main
-  holds it. Next, strongest first:
-  1. The gate for 982c555099ae, queued in the browser lock against localhost:5210. On green, while production still
-     serves it: `bash scripts/mirror.sh --release --gate <log>`. If the session that queued it ended first, serve
-     main's dist (`node scripts/serve-dist.mjs <port>`) and run `bash scripts/gate/gate.sh <log>
-     http://localhost:<port>` through the lock. Keep the glossary8 worktree's dist untouched until then.
-  2. Batch seven, the rest: 96 words still used only in their own Step (part three, 32 entries, is drafted in the
-     kit as batch7-partD.ts.txt), 35 near other names, 335 found nowhere, then the 69 entries nothing reaches and the
-     140 related links to no entry. Write each part in a fresh worktree so the gate's build stays frozen; the kit's
-     g8-tiers lists the words, g8-nearest and g8-relcheck check them.
+  - The gate for this build was superseded by part three before it ran (below).
+- 2026-11-25, 12:30 CST: batch seven part three is LIVE ahead of its gate. Production unitium-safe-icc40zab6, build
+  b8d3ef0137c9 (digest 24d516e8a33aed63), main 7900adf, 101 of 101 the same as dist. Thirty-two more own-Step words
+  (detection, the ransom room, application security, AI, identity and keys, foundations), with the same checks: all
+  credited sentences matched, each name links only in its own meaning, six voice rewrites. 1,036 terms, 1,636 cards;
+  resolved 1201, to no entry 443. Production checked: the egress Step links its word, no console errors.
+  - NOT RUN YET: the 56-walk gate on b8d3ef0137c9. The one queued ticket now gates this build against localhost:5211,
+    served from the worktree C:\Users\Initi\stepsafe-glossary9.
+  - Part four (26 entries: decentralized infrastructure, GRC, CISO, model and system cards, two blockchain words, and
+    OWASP's LLM05 and LLM07, checked on OWASP's own pages) is written on branch glossary-named-10 and in the kit as
+    batch7-partE.ts.txt.
+- Start here (next session, rewritten 2026-11-25 after batch seven part three). Everything above is live, and main
+  holds it, except part four on branch glossary-named-10. Next, strongest first:
+  1. The gate for whatever is live, queued in the browser lock (the ticket script names the build and the port).
+     On green, while production still serves that build: `bash scripts/mirror.sh --release --gate <log>`. If the
+     session that queued it ended first, serve main's dist (`node scripts/serve-dist.mjs <port>`) and run `bash
+     scripts/gate/gate.sh <log> http://localhost:<port>` through the lock. Never rebuild the worktree the ticket
+     serves until it has run.
+  2. Batch seven, the rest: part four if it has not shipped, then the own-Step words left (Intuition, Dash, and the
+     GRC and identity words whose facts need reading: AI Act Article 4, DORA's critical ICT providers, Caremark, ISO
+     27001's statement of applicability, PCI DSS v4's customized approach, NIST CSF informative references, the IIA
+     three lines, NIST SP 800-63B restricted authenticators, Entra's temporary access pass, alignment faking), 35
+     near other names, 335 found nowhere, the 69 entries nothing reaches and the 140 related links to no entry.
+     Write each part in a fresh worktree; the kit's g8-tiers lists the words, and its nearest and relcheck copies
+     are repointed per tree.
   3. The voice debt: rewrite the dashes part by part, smallest part first (awards 363, other content 458, glossary
      491), each sentence read and never a blind replace; probe-dashes tightens as they go.
   4. Still open from earlier lists: picomatch (no fix published), Vite 8 held, Models on his phone, a fresh visual
