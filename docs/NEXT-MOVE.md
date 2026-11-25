@@ -1222,18 +1222,43 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     text, the old text is gone, no console errors.
   - NOT RUN YET: the 56-walk gate on 5815cb8a419b. Its browser-lock ticket was retargeted to this build and runs
     against localhost:5208; the release waits for it.
-- Start here (next session, rewritten 2026-11-25 after the law as written shipped). Everything above is live, and
-  main holds it. Next, strongest first:
-  1. The gate for 5815cb8a419b, then `bash scripts/mirror.sh --release --gate <log>` while production still serves
-     it. The worktree C:\Users\Initi\stepsafe-law3 serves its dist on 5208 while the session that queued the ticket
-     lives. If that session ended first, serve main's dist (`node scripts/serve-dist.mjs <port>`) and run `bash
-     scripts/gate/gate.sh <log> http://localhost:<port>` through the browser lock. Then remove the law3 worktree.
-  2. Batch seven, in the order the counts give: the 20 words already explained inside an entry (other names, or
-     short entries), the 136 named only in their own Step (entries written from that Step), the 34 near other names
-     (another name or an entry), then the 337 found nowhere (each one an entry from a source read for it, or the
-     word leaves its Step's list). Then the 69 entries nothing reaches, and the 143 related links to no entry.
-  3. The voice debt: rewrite the dashes part by part, smallest part first, each sentence read and never a blind
-     replace; probe-dashes tightens as they go.
+- 2026-11-25, 11:40 CST, on his word to move on: the seventh batch's first slice, on branch glossary-named-7
+  (worktree C:\Users\Initi\stepsafe-glossary7, build a24472ee09ac, digest 58ece3477c54e3ca, commit f907097). Not live:
+  it waits for its gate, and this time the gate goes first.
+  - Twelve of the twenty words that an entry only mentioned now have entries of their own, written from the Steps
+    that name them: Investigative Half-Life, Duplicated Feed, Attestation Artefact, Host-Side Evidence, Risk Map,
+    Generative AI Profile (from the NIST PDF), Cohort Floor, Bulk Re-encryption, Start Event, Backup Catalogue,
+    Leading Measure and Dark Launch. Eviction Cutover is another name for Coordinated Eviction. Most of the twenty
+    were ideas of their own that an entry happened to mention (the authentication key H is not the forbidden
+    attack), so another name would have been wrong for them.
+  - Every credited sentence beside its course sentence (all matched); the senses check shows each new name links
+    only in its own sense ("risk map" only in the listening tour); the house lint and the stand-alone check are
+    clean; the voice lint raised three flags, one was reworded and two are the Steps' own facts. probe-terms:
+    resolved 1130, to no entry 514; 965 terms, 1565 cards. Checked in the pane on the local build: the drill's
+    word opens its card in the Detection colour, the glossary lists 965, and "eviction cutover" finds Coordinated
+    Eviction with its other name.
+  - Left from that tier: authentication key H, telemetry confidence and constitutional classifier wait for a
+    source read for them; response posture and reputation laundering need more text than their Steps give;
+    privilege boundary stays with Legal Privilege; "supply chain substitution" stays the walks' word with no
+    entry.
+  - Modux's three dashes were number ranges in a code comment; probe-dashes holds 4,310.
+  - The gate ticket queued for the legal fixes now gates this combined build (localhost:5209), so one run of the
+    browser line covers both.
+- Start here (next session, rewritten 2026-11-25 after the seventh batch's first slice). Everything above is live,
+  and main holds it, except branch glossary-named-7. Next, strongest first:
+  1. The gate for a24472ee09ac (the live legal fixes plus the batch seven slice), queued in the browser lock against
+     localhost:5209. On green: rebase glossary-named-7 onto main (notes only, the build stays the same), fast-forward
+     main, build, match the md5 and the digest, `bash scripts/ship.sh`, same-as-dist, a pane check, then `bash
+     scripts/mirror.sh --release --gate <log>`. If the session that queued it ended first, serve the worktree's dist
+     (`node scripts/serve-dist.mjs <port>`) and run `bash scripts/gate/gate.sh <log> http://localhost:<port>`
+     through the lock.
+  2. Batch seven, the rest, in the order the counts give: the 135 words named only in their own Step (entries
+     written from that Step), the 35 near other names (another name or an entry), then the 335 found nowhere (each
+     one an entry from a source read for it, or the word leaves its Step's list). Then the 69 entries nothing
+     reaches, and the 143 related links to no entry. The kit's g7-nearest and g7-relcheck point at the glossary7
+     tree.
+  3. The voice debt: rewrite the dashes part by part, smallest part first (awards 363, other content 458, glossary
+     491), each sentence read and never a blind replace; probe-dashes tightens as they go.
   4. Still open from earlier lists: picomatch (no fix published), Vite 8 held, Models on his phone, a fresh visual
      survey (scripts/look/survey.mjs), and his choices (the first Dash project, the names, Recover, an SSLMate
      account, "Safe multisig" and "Summiting the Pyramid").
