@@ -1280,24 +1280,58 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   (demotion needs a higher bar than promotion) and kept apart from the trap the same Step warns about. 1,089 terms,
   1,689 cards; resolved 1254, to no entry 390. Production checked: the bribery Step's word opens Resolution Point,
   the glossary lists 1,089, no console errors.
-  - NOT RUN YET: the 56-walk gate on f0e9f76c00d5, against localhost:5213 from the worktree
-    C:\Users\Initi\stepsafe-glossary11. The ticket was 2nd in line at 12:47, so nothing more ships until it has run
-    and the release is cut.
+  - Its own gate never ran: at 13:12 the queued ticket was retargeted to part six, which contains this build's
+    changes, and that gate passed (below).
   - Batch seven so far: 136 entries in five parts, 953 to 1,089 terms, links to no entry 527 to 390.
-- Start here (next session, rewritten 2026-11-25 after batch seven part five). Everything above is live, and main
-  holds it. Next, strongest first:
-  1. The gate for whatever is live, queued in the browser lock (the ticket script names the build and the port).
-     On green, while production still serves that build: `bash scripts/mirror.sh --release --gate <log>`. If the
-     session that queued it ended first, serve main's dist (`node scripts/serve-dist.mjs <port>`) and run `bash
-     scripts/gate/gate.sh <log> http://localhost:<port>` through the lock. Never rebuild the worktree the ticket
-     serves until it has run.
-  2. Batch seven, the rest: the own-Step words left (the
-     GRC and identity words whose facts need reading: AI Act Article 4, DORA's critical ICT providers, Caremark, ISO
-     27001's statement of applicability, PCI DSS v4's customized approach, NIST CSF informative references, the IIA
-     three lines, NIST SP 800-63B restricted authenticators, Entra's temporary access pass, alignment faking), 35
-     near other names, 335 found nowhere, the 69 entries nothing reaches and the 140 related links to no entry.
-     Write each part in a fresh worktree; the kit's g8-tiers lists the words, and its nearest and relcheck copies
-     are repointed per tree.
+- 2026-11-25, 13:52 CST: batch seven part six is LIVE, gated and released. Gate 58 of 58 (tsc, outline, every probe,
+  probe-wide in each theme, 20 walks; 13:13 to 13:49) on build 46466f348b3a (digest e6512244c86426a5) before it
+  shipped; production unitium-safe-ctwkxa49f, main a84f204, 101 of 101 the same as dist; release v2026.11.25.4
+  (evidence 06ba6b6, public 8b61f40). The release covers parts one to six and the legal fixes.
+  - Eight words whose ids a Step's glossary list already named: AI Literacy Obligation, Critical ICT Provider,
+    Restricted Authenticator, Temporary Access Pass, Alignment Faking, Informative Reference, Three Lines Model and
+    Statement of Applicability. 1,097 terms, 1,697 cards; resolved 1262, to no entry 382.
+  - Every source read the same day: AI Act Articles 4 and 113 and DORA Articles 31 and 35 on EUR-Lex (rows in
+    LEGAL-READINGS; the Read line now lists AI Act 4 and DORA 31, 35); NIST SP 800-63B-4's restricted
+    authenticators; Microsoft's Temporary Access Pass page; NIST's CSF 2.0 Informative References; Anthropic's
+    alignment faking paper (12%, 97% and 78%, as the page gives them).
+  - The IIA marks its 2020 Three Lines paper superseded: a Statement of Position replaced it on 8 July 2026. The
+    entry cites both. The Modux card "Three lines" tells the 2020 history, which stays true.
+  - Production checked in the pane: the identity Step "Factors, and the Exact Way Each One Dies" links Restricted
+    authenticator and opens the new entry in place; the Three Lines Model page shows its long text and both
+    sources; the glossary reports 1097; no console errors. The GRC Step that links AI literacy obligation is
+    Motus-only, so a Novus profile sees its preview.
+  - probe-ensemble failed once in a private probe loop ("200 days take 416 ms") while a build ran beside it; the
+    gate's run on a quiet machine took 67 ms.
+- 2026-11-25, 13:55 CST: batch seven part seven is WRITTEN, not yet shipped: branch glossary-named-13 in the
+  worktree C:\Users\Initi\stepsafe-glossary13. Five entries (Duty of Oversight, Attribution Caution, Targeted Risk
+  Analysis, Customized Approach, Script Integrity) and seventeen related links that led to no entry (140 to 123).
+  - Duty of Oversight rests on the Delaware opinions read at the source: Caremark (Court of Chancery, 1996), Stone
+    v. Ritter (Supreme Court, 2006) and Marchand v. Barnhill (Supreme Court, 2019); its EU sentence matches NIS2
+    Article 20(1) and DORA Article 5(2), recorded in LEGAL-READINGS. The three PCI DSS entries come from the PCI
+    Security Standards Council's own pages (its targeted risk analysis guidance post and its podcast on
+    Requirements 6.4.3 and 11.6.1), so the standard's PDF was not needed.
+  - Where a related link's nearest entry means the same thing it now opens it (Paved Road, Epsilon Budget, Risk
+    Acceptance Memo, Insider Threat and others); where the entry already linked the idea the dead link is gone.
+  - Its gate ticket was queued at 13:30, 12th in line. The ticket reads scratchpad g13-target.txt ("tree md5
+    port") when it comes up, so it gates whatever part seven's frozen build is by then.
+- Start here (next session, rewritten 2026-11-25 after part six's release). Part six is live, gated and released
+  (v2026.11.25.4); main holds it. Next, strongest first:
+  1. Part seven: rebase glossary-named-13 onto main, build it in its worktree, serve its dist on a free port, write
+     scratchpad g13-target.txt ("C:/Users/Initi/stepsafe-glossary13 <md5> <port>") so the queued ticket gates it,
+     then ff main, build main (same md5), ship, same-as-dist and the pane check. On the gate's green, while
+     production still serves that build: `bash scripts/mirror.sh --release --gate <log>`. If the session that queued
+     the ticket ended, serve main's dist and run `bash scripts/gate/gate.sh <log> http://localhost:<port>` through
+     the lock. Never rebuild a worktree a ticket serves until it has run.
+  2. Part eight, the 69 entries nothing reaches. "Reached" counts only a Step's glossary list, prose and tables in
+     the twelve core chapters, and the guides (src/lib/terms.ts corpus()); the Intuition chapter, awards, Modux and
+     Outlier text do not count, and a single word under seven letters that is not an acronym never links (gVisor,
+     Slack, libp2p). The kit's tools/reach.mts ranks the core Steps closest to each; read the Step before naming an
+     id in its glossary list (RAND Security Level and Model Weights Custody belong to ch-ai-five-security-levels;
+     gVisor to the isolation-tiers Step, which has a gVisor row). An alias only where the meaning is the same: the
+     course says "OAuth" 54 times and the entry is "OAuth 2.0". Any new prose link changes walked Steps, so run
+     senses and measure walked Steps at phone size before the walks.
+  3. Then: 36 near other names, 326 found nowhere, the 123 related links to no entry (the rest need entries, not
+     retargets). Write each part in a fresh worktree; repoint the kit's nearest and relcheck copies per tree.
   3. The voice debt: rewrite the dashes part by part, smallest part first (awards 363, other content 458, glossary
      491), each sentence read and never a blind replace; probe-dashes tightens as they go.
   4. Still open from earlier lists: picomatch (no fix published), Vite 8 held, Models on his phone, a fresh visual
@@ -1316,6 +1350,12 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     gives an entry to a word a walked Step names, measure that Step in the pane at phone size before the walks run.
   - A list made by eye missed five of the articles the course cites, and one of the five was wrong. When the job is
     "every X", count every X with a search first, then read; and leave a probe behind so the count stays true.
+  - A source can be replaced after a Step cites it. The IIA's 2020 paper now says it is superseded. When reading a
+    source for an entry, look on the page for that notice and cite the current document beside the old one.
+  - A timing probe and a build cannot share the machine: probe-ensemble read 416 ms beside a build and 67 ms alone.
+    The gate runs every probe itself, so a private probe loop stops when the gate starts.
+  - Retargeting the one queued ticket to the newest frozen build, before shipping it, turned two gates into one:
+    the ticket came up a minute later and the release covers parts one to six.
 
 ## The move
 
