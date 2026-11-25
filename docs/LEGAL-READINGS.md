@@ -57,8 +57,17 @@ above. With these, every article of GDPR, NIS2, DORA and the AI Act that the tex
 the source: here, or when the glossary entry that cites it was written (GDPR 4(7), 4(21), 15 to 21 and 56, each with
 its checked date). NIST AI 600-1 was read the same day, from the PDF on his word to download it.
 
+Part six of glossary batch seven cites three more articles, read on EUR-Lex the same day:
+
+| Claim in an entry | The article | Verdict |
+|---|---|---|
+| AI Literacy Obligation: Art 4 has providers and deployers take measures for a sufficient level of AI literacy among their staff and others operating AI systems on their behalf, weighing their technical knowledge, experience, education and training, the context of use and the people the systems are used on | Art 4 as written; it sits in Chapter I | HOLDS |
+| The same entry: the duty has applied since 2 February 2025 | 113(a): Chapters I and II apply from 2 February 2025 | HOLDS |
+| Critical ICT Provider: the ESAs designate the critical ICT third-party service providers and appoint a Lead Overseer for each, weighing systemic impact, the importance of the entities that rely on a provider, reliance for critical or important functions, and how hard it is to replace | 31(1)(a) and (b); 31(2)(a) to (d) | HOLDS, SIMPLIFIED (the Joint Committee, the Oversight Forum's recommendation and the parameters under each criterion are left out) |
+| The same entry: after at least 30 days of non-compliance, a periodic penalty payment of up to 1% of average daily worldwide turnover, charged daily for up to six months | 35(6), (7) and (8) | HOLDS |
+
 probe-law.mts holds this. It finds every citation of the four laws by article number in the course and fails on any
 article missing from the line below. Add an article to that line only after reading it at the source and recording
 the claim and the verdict above.
 
-Read: GDPR 4, 5, 6, 9, 12, 15, 16, 17, 18, 19, 20, 21, 25, 28, 32, 33, 34, 35, 36, 56; NIS2 20, 21, 23, 32; DORA 5, 19, 20, 28; AI Act 14, 51, 55, 113
+Read: GDPR 4, 5, 6, 9, 12, 15, 16, 17, 18, 19, 20, 21, 25, 28, 32, 33, 34, 35, 36, 56; NIS2 20, 21, 23, 32; DORA 5, 19, 20, 28, 31, 35; AI Act 4, 14, 51, 55, 113
