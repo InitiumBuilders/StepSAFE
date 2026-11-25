@@ -1249,19 +1249,30 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   one line under "License" (commit e2bc483, public d0925f8). GitHub reads the public repo as MIT. This closes the
   2026-11-14 note that the public copy had no license file. The session that relayed the ask was not running, so
   its hash is recorded here.
-- Start here (next session, rewritten 2026-11-25 after the seventh batch's first slice). Everything above is live,
-  and main holds it, except branch glossary-named-7. Next, strongest first:
-  1. The gate for a24472ee09ac (the live legal fixes plus the batch seven slice), queued in the browser lock against
-     localhost:5209. On green: rebase glossary-named-7 onto main (notes only, the build stays the same), fast-forward
-     main, build, match the md5 and the digest, `bash scripts/ship.sh`, same-as-dist, a pane check, then `bash
-     scripts/mirror.sh --release --gate <log>`. If the session that queued it ended first, serve the worktree's dist
-     (`node scripts/serve-dist.mjs <port>`) and run `bash scripts/gate/gate.sh <log> http://localhost:<port>`
-     through the lock.
-  2. Batch seven, the rest, in the order the counts give: the 135 words named only in their own Step (entries
-     written from that Step), the 35 near other names (another name or an entry), then the 335 found nowhere (each
-     one an entry from a source read for it, or the word leaves its Step's list). Then the 69 entries nothing
-     reaches, and the 143 related links to no entry. The kit's g7-nearest and g7-relcheck point at the glossary7
-     tree.
+- 2026-11-25, 11:55 CST, on his word to move brave: batch seven's first slice is LIVE ahead of its gate (production
+  unitium-safe-60xyyvfrp, build a24472ee09ac, main 8ab0031, 101 of 101 files the same as dist, the drill's word and
+  the glossary's 965 checked on production).
+- 2026-11-25, 12:15 CST: batch seven part two is LIVE ahead of its gate. Production unitium-safe-exfmblknc, build
+  982c555099ae (digest e52d465c762f973b), main 5982ac9, 101 of 101 the same as dist. Thirty-nine words that only
+  their own Step used now have entries written from that Step: the MCP connector classes, the AI evaluation
+  harness, the SOC harms, the pipeline bugs (Script Injection, Build Cache Poisoning, Build Injection), eight
+  incident words, seven CISO words and six from foundations. All matched their course sentences, each name links
+  only in its own meaning, and the voice lint's flags were read (seven rewritten, including two that used "real
+  people"). probe-terms: resolved 1169, to no entry 475, related to no entry 140; 1,004 terms, 1,604 cards.
+  Production checked: the payment Step's word opens Restore Commander, the glossary lists 1,004, no console errors.
+  - NOT RUN YET: the 56-walk gate on 982c555099ae. The ticket queued for the legal fixes was retargeted twice and
+    now gates this build against localhost:5209 (worktree C:\Users\Initi\stepsafe-glossary8 serves its dist on 5210;
+    the ticket script names the port).
+- Start here (next session, rewritten 2026-11-25 after batch seven part two). Everything above is live, and main
+  holds it. Next, strongest first:
+  1. The gate for 982c555099ae, queued in the browser lock against localhost:5210. On green, while production still
+     serves it: `bash scripts/mirror.sh --release --gate <log>`. If the session that queued it ended first, serve
+     main's dist (`node scripts/serve-dist.mjs <port>`) and run `bash scripts/gate/gate.sh <log>
+     http://localhost:<port>` through the lock. Keep the glossary8 worktree's dist untouched until then.
+  2. Batch seven, the rest: 96 words still used only in their own Step (part three, 32 entries, is drafted in the
+     kit as batch7-partD.ts.txt), 35 near other names, 335 found nowhere, then the 69 entries nothing reaches and the
+     140 related links to no entry. Write each part in a fresh worktree so the gate's build stays frozen; the kit's
+     g8-tiers lists the words, g8-nearest and g8-relcheck check them.
   3. The voice debt: rewrite the dashes part by part, smallest part first (awards 363, other content 458, glossary
      491), each sentence read and never a blind replace; probe-dashes tightens as they go.
   4. Still open from earlier lists: picomatch (no fix published), Vite 8 held, Models on his phone, a fresh visual

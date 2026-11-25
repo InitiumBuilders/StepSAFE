@@ -7,11 +7,11 @@
    check that every notch still has a stack that holds.
 
    Bands:
-     Ground      notch 0        the authored scenario
-     Hardened    notches 1–2    one more threat each notch
-     Systemic    notches 3–4    the system map opens; coupling goes live
-     Wicked      notches 5–6    the adversary studies your stack
-     Outlier     notches 7+     open problems only a MoTRUS model can answer */
+     Ground      notch 0           the authored scenario
+     Hardened    notches 1 to 2    one more threat each notch
+     Systemic    notches 3 to 4    the system map opens; coupling goes live
+     Wicked      notches 5 to 6    the adversary studies your stack
+     Outlier     notches 7+        open problems only a MoTRUS model can answer */
 
 import type {
   ModuxGauge, GaugeThreat, GaugeSystem, GaugeNode, Pressure, NodeKind, ModuxModel,

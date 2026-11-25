@@ -1,12 +1,12 @@
 {
   "at": "2026-11-25",
-  "total": 4313,
+  "total": 4310,
   "parts": {
     "awards": 363,
     "chapters": 1505,
     "glossary": 491,
     "guides": 617,
-    "modux": 3,
+    "modux": 0,
     "other": 458,
     "practice": 876
   }
