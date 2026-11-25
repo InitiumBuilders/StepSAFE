@@ -167,7 +167,7 @@ export const PITCH = {
  },
  "guides": {
   "count": 60,
-  "terms": 1036
+  "terms": 1062
  },
  "modux": {
   "models": 96,
@@ -704,9 +704,9 @@ export const PITCH = {
   ]
  },
  "study": {
-  "cards": 1636,
+  "cards": 1662,
   "kinds": {
-   "term": 1036,
+   "term": 1062,
    "model": 96,
    "guide": 60,
    "step": 352,

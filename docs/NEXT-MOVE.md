@@ -1266,19 +1266,26 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   (detection, the ransom room, application security, AI, identity and keys, foundations), with the same checks: all
   credited sentences matched, each name links only in its own meaning, six voice rewrites. 1,036 terms, 1,636 cards;
   resolved 1201, to no entry 443. Production checked: the egress Step links its word, no console errors.
-  - NOT RUN YET: the 56-walk gate on b8d3ef0137c9. The one queued ticket now gates this build against localhost:5211,
-    served from the worktree C:\Users\Initi\stepsafe-glossary9.
-  - Part four (26 entries: decentralized infrastructure, GRC, CISO, model and system cards, two blockchain words, and
-    OWASP's LLM05 and LLM07, checked on OWASP's own pages) is written on branch glossary-named-10 and in the kit as
-    batch7-partE.ts.txt.
-- Start here (next session, rewritten 2026-11-25 after batch seven part three). Everything above is live, and main
-  holds it, except part four on branch glossary-named-10. Next, strongest first:
+  - Superseded by part four before its gate ran.
+- 2026-11-25, 12:40 CST: batch seven part four is LIVE ahead of its gate. Production unitium-safe-7eg741v20, build
+  08dd0c22df8c (digest 00802316903d06cd), main 82f6265, 101 of 101 the same as dist. Twenty-six own-Step words:
+  decentralized infrastructure, GRC, CISO, model and system cards, two blockchain words, and OWASP's LLM05 Improper
+  Output Handling and LLM07 System Prompt Leakage, whose numbers and definitions were read on OWASP's own pages and
+  are cited there. 1,062 terms, 1,662 cards; resolved 1227, to no entry 417. Production checked: the heat-map Step's
+  word opens Range Compression, no console errors.
+  - NOT RUN YET: the 56-walk gate on 08dd0c22df8c. The one queued ticket gates it against localhost:5212, served from
+    the worktree C:\Users\Initi\stepsafe-glossary10.
+  - Part five (27 entries: Intuition's attestor metrics, dispute rules, bribery and false-claim response, and Dash's
+    DKG window, governance object, salted commitment, Tenderdash, disclosure clocks and decision procedure) is written
+    on branch glossary-named-11 and in the kit as batch7-partF.ts.txt.
+- Start here (next session, rewritten 2026-11-25 after batch seven part four). Everything above is live, and main
+  holds it, except part five on branch glossary-named-11. Next, strongest first:
   1. The gate for whatever is live, queued in the browser lock (the ticket script names the build and the port).
      On green, while production still serves that build: `bash scripts/mirror.sh --release --gate <log>`. If the
      session that queued it ended first, serve main's dist (`node scripts/serve-dist.mjs <port>`) and run `bash
      scripts/gate/gate.sh <log> http://localhost:<port>` through the lock. Never rebuild the worktree the ticket
      serves until it has run.
-  2. Batch seven, the rest: part four if it has not shipped, then the own-Step words left (Intuition, Dash, and the
+  2. Batch seven, the rest: part five if it has not shipped, then the own-Step words left (the
      GRC and identity words whose facts need reading: AI Act Article 4, DORA's critical ICT providers, Caremark, ISO
      27001's statement of applicability, PCI DSS v4's customized approach, NIST CSF informative references, the IIA
      three lines, NIST SP 800-63B restricted authenticators, Entra's temporary access pass, alignment faking), 35
