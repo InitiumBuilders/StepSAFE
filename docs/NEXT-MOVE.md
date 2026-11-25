@@ -1273,19 +1273,25 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   Output Handling and LLM07 System Prompt Leakage, whose numbers and definitions were read on OWASP's own pages and
   are cited there. 1,062 terms, 1,662 cards; resolved 1227, to no entry 417. Production checked: the heat-map Step's
   word opens Range Compression, no console errors.
-  - NOT RUN YET: the 56-walk gate on 08dd0c22df8c. The one queued ticket gates it against localhost:5212, served from
-    the worktree C:\Users\Initi\stepsafe-glossary10.
-  - Part five (27 entries: Intuition's attestor metrics, dispute rules, bribery and false-claim response, and Dash's
-    DKG window, governance object, salted commitment, Tenderdash, disclosure clocks and decision procedure) is written
-    on branch glossary-named-11 and in the kit as batch7-partF.ts.txt.
-- Start here (next session, rewritten 2026-11-25 after batch seven part four). Everything above is live, and main
-  holds it, except part five on branch glossary-named-11. Next, strongest first:
+  - Superseded by part five before its gate ran.
+- 2026-11-25, 12:50 CST: batch seven part five is LIVE ahead of its gate. Production unitium-safe-cvc4egc8i, build
+  f0e9f76c00d5 (digest 5664eea6d6eeabed), main 495e8f7, 101 of 101 the same as dist. Twenty-seven own-Step words from
+  the Intuition and Dash chapters, with the same checks. Asymmetric Threshold is written from the Step's control
+  (demotion needs a higher bar than promotion) and kept apart from the trap the same Step warns about. 1,089 terms,
+  1,689 cards; resolved 1254, to no entry 390. Production checked: the bribery Step's word opens Resolution Point,
+  the glossary lists 1,089, no console errors.
+  - NOT RUN YET: the 56-walk gate on f0e9f76c00d5, against localhost:5213 from the worktree
+    C:\Users\Initi\stepsafe-glossary11. The ticket was 2nd in line at 12:47, so nothing more ships until it has run
+    and the release is cut.
+  - Batch seven so far: 136 entries in five parts, 953 to 1,089 terms, links to no entry 527 to 390.
+- Start here (next session, rewritten 2026-11-25 after batch seven part five). Everything above is live, and main
+  holds it. Next, strongest first:
   1. The gate for whatever is live, queued in the browser lock (the ticket script names the build and the port).
      On green, while production still serves that build: `bash scripts/mirror.sh --release --gate <log>`. If the
      session that queued it ended first, serve main's dist (`node scripts/serve-dist.mjs <port>`) and run `bash
      scripts/gate/gate.sh <log> http://localhost:<port>` through the lock. Never rebuild the worktree the ticket
      serves until it has run.
-  2. Batch seven, the rest: part five if it has not shipped, then the own-Step words left (the
+  2. Batch seven, the rest: the own-Step words left (the
      GRC and identity words whose facts need reading: AI Act Article 4, DORA's critical ICT providers, Caremark, ISO
      27001's statement of applicability, PCI DSS v4's customized approach, NIST CSF informative references, the IIA
      three lines, NIST SP 800-63B restricted authenticators, Entra's temporary access pass, alignment faking), 35
