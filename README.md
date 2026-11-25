@@ -35,3 +35,7 @@ npm run build      # production build to dist/
 Built with Vite + React + strict TypeScript. No backend: the learner record
 lives in localStorage. Design language: Davara Distinct V3 (Nocturne/Meridian,
 the swarm, the charge system, the Contrast Law).
+
+## License
+
+MIT. See [LICENSE](LICENSE). Copyright (c) 2026 August James Domanchuk.
