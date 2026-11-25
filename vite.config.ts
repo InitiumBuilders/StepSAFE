@@ -1,13 +1,18 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { FLOOR, LOWER, floor } from './scripts/floor.mjs';
 
 /* The curriculum is large by design. Split it so the browser fetches the
    content chunks in parallel and caches them independently of the app shell —
    a content edit must not invalidate the shell, and vice versa. */
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), floor()],
+  /* class fields as constructor code; scripts/floor.mjs says why */
+  esbuild: { supported: LOWER },
   build: {
     outDir: 'dist',
+    /* Safari 15.4 and later. scripts/floor.mjs says why, and its check runs on every build. */
+    target: FLOOR,
     chunkSizeWarningLimit: 1600,
     rollupOptions: {
       output: {

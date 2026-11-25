@@ -20,7 +20,20 @@ const START = 0.1, BEAT = 0.055, LAST = 0.55;
 
 /** words split at spaces; a long compound also breaks after its hyphens, as it could before */
 function words(text: string): string[][] {
-  return text.split(' ').filter(Boolean).map(w => w.split(/(?<=-)(?=.)/));
+  return text.split(' ').filter(Boolean).map(w => hyphenParts(w));
+}
+
+/** breaks a word after each hyphen that has a character after it. The pieces are the ones w.split(/(?<=-)(?=.)/)
+    gives, a regex Safari before 16.4 cannot run because it has no lookbehind. */
+function hyphenParts(w: string): string[] {
+  const parts: string[] = [];
+  let from = 0;
+  for (let i = 1; i < w.length; i++) {
+    /* /./ matches any character except a line break */
+    if (w[i - 1] === '-' && /./.test(w[i])) { parts.push(w.slice(from, i)); from = i; }
+  }
+  parts.push(w.slice(from));
+  return parts;
 }
 
 /** Separate windows lose the kerning across a gap (a comma before a space, a space before an A), so each word

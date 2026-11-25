@@ -196,7 +196,10 @@ export type KeyState = 'session' | 'open' | 'locked' | 'unavailable';
 export interface StoreScan { items: { key: string; label: string; bytes: number }[]; shaped: string[]; sealed: 'none' | 'sealed' | 'bad'; rounds: number }
 
 /* text that looks like a key for a service StepSAFE connects to. The page says where such text sits, never what it is. */
-const KEY_SHAPED = /sk-ant-[A-Za-z0-9_-]{20,}|(?<![A-Za-z0-9])sk_[a-f0-9]{40,}/;
+/* No letter or digit may come right before sk_. (?:^|[^A-Za-z0-9]) checks that without a lookbehind, which Safari
+   before 16.4 cannot run. The pattern is only used with .test(), where taking that one character into the match
+   changes nothing. */
+const KEY_SHAPED = /sk-ant-[A-Za-z0-9_-]{20,}|(?:^|[^A-Za-z0-9])sk_[a-f0-9]{40,}/;
 const SEALED_FIELDS = ['ct', 'iv', 'kdf', 'rounds', 'salt', 'v'];
 
 export function scanStore(entries: [string, string][]): StoreScan {
