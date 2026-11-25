@@ -1236,7 +1236,7 @@ export const AWARDS: Award[] = [
     respect: 850,
     trust: 130,
     domain: "AI Safety",
-    research: "The NIST AI Risk Management Framework and its Generative AI Profile (AI 600-1, July 2024) structure deployment decisions around measured and documented risk rather than intended use. Frontier safety frameworks published by leading developers make the same commitment operational by defining capability thresholds and required safeguards before further scaling. The mechanism only functions if the threshold is written before the result is known, which is why the pre-commitment is the award condition rather than the outcome."
+    research: "The NIST AI Risk Management Framework and its Generative AI Profile (AI 600-1, July 2024) structure deployment decisions around measured and documented risk, held against the system's intended use. Frontier safety frameworks published by leading developers make the same commitment operational by defining capability thresholds and required safeguards before further scaling. The mechanism only functions if the threshold is written before the result is known, which is why the pre-commitment is the award condition rather than the outcome."
   },
   {
     id: "safe-graph-integrity",

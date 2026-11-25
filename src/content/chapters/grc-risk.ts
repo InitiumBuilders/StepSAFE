@@ -1230,7 +1230,7 @@ export const chapter: Chapter = {
               title: "Proving it, which is the part that counts",
               items: [
                 "Pick one real record. Follow it through every hop personally and record where you find it. Do not delegate this — the first time you do it you will find at least two systems nobody told you about.",
-                "Measure end-to-end deletion latency: from erasure request accepted to last copy gone. Publish the number. If it is longer than thirty days you have a GDPR Article 12 problem as well as a security one.",
+                "Measure end-to-end deletion latency: from erasure request accepted to last copy gone. Publish the number. If it runs past a month, you may have a GDPR Article 12 problem as well as a security one. Article 12(3) allows one month to act on the request, and two more only for complex or numerous requests, with the person told why within the first month.",
                 "Test a filtered restore. Restore a backup to an isolated environment and verify that records deleted after the backup date are excluded from what goes back into production. Almost nobody has ever tested this and it fails the first time.",
                 "Count derived objects automatically. Run a dependency scan on your warehouse and compare the object count against your documented inventory. The delta is your unmanaged copy count.",
                 "Set the metric as a board-visible number: records held beyond retention boundary, trended monthly, with a target. A single trending number does more for minimization than any policy revision.",

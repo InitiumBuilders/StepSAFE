@@ -419,7 +419,7 @@ export const AWARDS: Award[] = [
     glyph: "▨",
     statement: "When an automated conclusion cites evidence that does not exist, the defect is not the model — it is that your pipeline accepted an unverifiable claim.",
     criteria: "Complete the Step The Alert That Closed Itself and demonstrate the capability it argues for rather than only reading it.",
-    research: "A confidence score attached to generated text is not a calibrated probability until somebody has measured it against outcomes, and NIST's AI Risk Management Framework places that burden squarely under Measure. The EU AI Act's Article 14 warning about automation bias applies at full strength here, because a number displayed beside a conclusion increases the reader's trust whether or not it has earned any. The professional move is to withhold the score until you can show its reliability against real outcomes, since an uncalibrated confidence value is worse than none — it manufactures the agreement it was supposed to test.",
+    research: "A confidence score attached to generated text is not a calibrated probability until somebody has measured it against outcomes, and NIST's AI Risk Management Framework places that burden squarely under Measure. The automation bias that the EU AI Act's Article 14 names for high-risk systems is the same risk here, because a number displayed beside a conclusion increases the reader's trust whether or not it has earned any. The professional move is to withhold the score until you can show its reliability against real outcomes, since an uncalibrated confidence value is worse than none: it manufactures the agreement it was supposed to test.",
     rarity: "uncommon",
     respect: 45,
     trust: 4,

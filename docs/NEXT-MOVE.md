@@ -1208,22 +1208,33 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   bef9c4d8a492 and digest 34cb61a67a413f36), and probe-touch passed on production again with the corrected rule (81
   checks). Release v2026.11.25.3: evidence fa322e9, public f25046d, release.yml success at 16:37 UTC with the tarball,
   SHA256SUMS, the gate log and the in-toto provenance. The glossary6 worktree and its branch are removed.
-- Start here (next session, rewritten 2026-11-25 after the release of the sixth batch). Everything above is live, and
-  main holds it, except branch law-readings-3. Next, strongest first:
-  1. Ship law-readings-3 after its gate (worktree C:\Users\Initi\stepsafe-law3, rebased onto the release, build
-     fa186081229d; its ticket waits in the browser lock against localhost:5208). On green: rebase onto main if main
-     moved, fast-forward main, build, match the md5 and the digest, `bash scripts/ship.sh`, same-as-dist, then
-     `bash scripts/mirror.sh --release --gate <log>`. If the session that queued it ended first, serve its dist
-     (`node scripts/serve-dist.mjs <port>`) and run `bash scripts/gate/gate.sh <log> http://localhost:<port>` through
-     the lock.
-  2. NIST AI 600-1, the one source still open; the download waits for his OK.
-  3. Batch seven, in the order the counts give: the 20 words already explained inside an entry (other names, or
+- 2026-11-25, 11:05 CST: the law as written is LIVE, shipped on his word, ahead of its gate. Production
+  unitium-safe-3bk1gspc9, build 5815cb8a419b (digest 70bd5c673571d6b2), main b7c44a6, 101 of 101 files the same as
+  dist. Four EU corrections and the two ratchets from the entry above, and NIST AI 600-1, read in the PDF on his word
+  to download it (July 2024, NIST publication 958388):
+  - The AI RMF Step listed "data provenance" among the profile's twelve risks, with "dangerous or violent content
+    recommendations" and "the risks arising from dual-use capability". None is one of the twelve. The Step names five
+    as the profile does, and says content provenance is one of the four considerations its suggested actions mainly
+    address. An award that said the frameworks weigh risk "rather than intended use" now says the risk is held
+    against the intended use, as the profile's actions do. The other claims about the profile hold, and so does an
+    award's date for the AI Act's duties on general-purpose models (Article 113(b), 2 August 2025).
+  - Production checked in the pane at once: the AI RMF Step, the retention Step and the DORA clock row carry the new
+    text, the old text is gone, no console errors.
+  - NOT RUN YET: the 56-walk gate on 5815cb8a419b. Its browser-lock ticket was retargeted to this build and runs
+    against localhost:5208; the release waits for it.
+- Start here (next session, rewritten 2026-11-25 after the law as written shipped). Everything above is live, and
+  main holds it. Next, strongest first:
+  1. The gate for 5815cb8a419b, then `bash scripts/mirror.sh --release --gate <log>` while production still serves
+     it. The worktree C:\Users\Initi\stepsafe-law3 serves its dist on 5208 while the session that queued the ticket
+     lives. If that session ended first, serve main's dist (`node scripts/serve-dist.mjs <port>`) and run `bash
+     scripts/gate/gate.sh <log> http://localhost:<port>` through the browser lock. Then remove the law3 worktree.
+  2. Batch seven, in the order the counts give: the 20 words already explained inside an entry (other names, or
      short entries), the 136 named only in their own Step (entries written from that Step), the 34 near other names
      (another name or an entry), then the 337 found nowhere (each one an entry from a source read for it, or the
      word leaves its Step's list). Then the 69 entries nothing reaches, and the 143 related links to no entry.
-  4. The voice debt: rewrite the dashes part by part, smallest part first, each sentence read and never a blind
+  3. The voice debt: rewrite the dashes part by part, smallest part first, each sentence read and never a blind
      replace; probe-dashes tightens as they go.
-  5. Still open from earlier lists: picomatch (no fix published), Vite 8 held, Models on his phone, a fresh visual
+  4. Still open from earlier lists: picomatch (no fix published), Vite 8 held, Models on his phone, a fresh visual
      survey (scripts/look/survey.mjs), and his choices (the first Dash project, the names, Recover, an SSLMate
      account, "Safe multisig" and "Summiting the Pyramid").
 - Reflections from 2026-11-25:
