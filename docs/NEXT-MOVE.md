@@ -1244,6 +1244,11 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   - Modux's three dashes were number ranges in a code comment; probe-dashes holds 4,310.
   - The gate ticket queued for the legal fixes now gates this combined build (localhost:5209), so one run of the
     browser line covers both.
+- 2026-11-25, 11:50 CST: StepSAFE is MIT-licensed, on his yes in chat. LICENSE is the file from
+  InitiumBuilders/Votus.One byte for byte (git blob 65e007b5cac544d22c911982b25f7330fbfee9f3), and the README carries
+  one line under "License" (commit e2bc483, public d0925f8). GitHub reads the public repo as MIT. This closes the
+  2026-11-14 note that the public copy had no license file. The session that relayed the ask was not running, so
+  its hash is recorded here.
 - Start here (next session, rewritten 2026-11-25 after the seventh batch's first slice). Everything above is live,
   and main holds it, except branch glossary-named-7. Next, strongest first:
   1. The gate for a24472ee09ac (the live legal fixes plus the batch seven slice), queued in the browser lock against
