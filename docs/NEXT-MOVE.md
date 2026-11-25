@@ -1261,8 +1261,8 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   people"). probe-terms: resolved 1169, to no entry 475, related to no entry 140; 1,004 terms, 1,604 cards.
   Production checked: the payment Step's word opens Restore Commander, the glossary lists 1,004, no console errors.
   - NOT RUN YET: the 56-walk gate on 982c555099ae. The ticket queued for the legal fixes was retargeted twice and
-    now gates this build against localhost:5209 (worktree C:\Users\Initi\stepsafe-glossary8 serves its dist on 5210;
-    the ticket script names the port).
+    now gates this build against localhost:5210, where the worktree C:\Users\Initi\stepsafe-glossary8 serves its
+    dist.
 - Start here (next session, rewritten 2026-11-25 after batch seven part two). Everything above is live, and main
   holds it. Next, strongest first:
   1. The gate for 982c555099ae, queued in the browser lock against localhost:5210. On green, while production still
