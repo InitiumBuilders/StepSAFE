@@ -42,7 +42,7 @@ export function TermPop({ term, onClose }: { term: Term; onClose: () => void }) 
   const { d } = useS();
   const sh = termSubject(term);
   return (
-    <aside className="term-pop" role="note" aria-label={term.term}>
+    <aside className="term-pop" role="note" aria-label={term.term} style={sh ? { ['--hue' as string]: subjectById(sh).hue } : undefined}>
       <span className="term-pop-where">{sh && <SubjectGlyph id={sh} size={15} />}{(sh ? subjectById(sh).name + ' · ' : '') + term.domain}</span>
       <strong>{term.term}</strong>
       <span>{term.short}</span>

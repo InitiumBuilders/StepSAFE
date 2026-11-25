@@ -65,16 +65,16 @@ ok(Math.abs(back.y - y) <= 3 && back.head !== 'none', 'Back returns to the same 
 
 /* a Step's words */
 await p.evaluate(() => window.scrollTo(0, 0));
-await find('Stocks, Flows');
-await p.locator('.pal-main', { hasText: 'Stocks, Flows' }).first().tap(); await p.waitForTimeout(1800);
+await find('Field: Build A CID Provenance Register');
+await p.locator('.pal-main', { hasText: 'Field: Build A CID Provenance Register' }).first().tap(); await p.waitForTimeout(1800);
 await p.locator('.sw').scrollIntoViewIfNeeded(); await p.waitForTimeout(400);
 const sw = await p.evaluate(() => ({ terms: [...document.querySelectorAll('.sw-term')].map((b) => b.textContent.trim()), hs: [...document.querySelectorAll('.sw-term')].map((b) => Math.round(b.getBoundingClientRect().height)) }));
-ok(sw.terms[0] === 'Stock and Flow' && sw.terms.length >= 2 && sw.hs.every((h) => h >= 44), 'the Step lists its terms, each a full finger tall: ' + sw.terms.join(', '));
+ok(sw.terms[0] === 'Provenance Register' && sw.terms.length >= 2 && sw.hs.every((h) => h >= 44), 'the Step lists its terms, each a full finger tall: ' + sw.terms.join(', '));
 await p.locator('.sw-term').first().tap(); await p.waitForTimeout(500);
-ok((await p.locator('.sw .term-pop strong').innerText()) === 'Stock and Flow' && await noSide(), 'a term opens in place');
-await p.locator('.sw-bare .term-link', { hasText: 'inflow rate' }).tap(); await p.waitForTimeout(1600);
+ok((await p.locator('.sw .term-pop strong').innerText()) === 'Provenance Register' && await noSide(), 'a term opens in place');
+await p.locator('.sw-bare .term-link', { hasText: 'supply chain substitution' }).tap(); await p.waitForTimeout(1600);
 const word = await p.evaluate(() => ({ title: document.querySelector('#gl-term')?.textContent, marks: document.querySelectorAll('.gl-noentry mark').length, covered: [...document.querySelectorAll('[data-said="covered"] strong')].map((x) => x.textContent), top: Math.round(document.querySelector('.gl-noentry').getBoundingClientRect().top), nav: Math.round(document.querySelector('.nav').getBoundingClientRect().bottom) }));
-ok(word.title === 'inflow rate' && word.covered.includes('Stock and Flow') && word.marks > 0, 'a word with no entry opens its own page with the sentence marked: ' + word.covered.join(', '));
+ok(word.title === 'supply chain substitution' && word.covered.includes('Provenance Register') && word.marks > 0, 'a word with no entry opens its own page with the sentence marked: ' + word.covered.join(', '));
 ok(word.top >= word.nav - 2 && word.top < word.nav + 70, 'and it starts at the top of the screen: ' + word.top);
 
 /* the words that link in prose, and Find by another name */

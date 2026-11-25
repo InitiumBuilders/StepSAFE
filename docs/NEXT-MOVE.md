@@ -1125,6 +1125,80 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     28(1)(a)), where the Step and the Management Body entry said it "cannot be delegated away".
   - Still to read: the AI RMF Step lists "data provenance" among NIST AI 600-1's twelve risk categories. The PDF is a
     download, so it waits for a way to read it or his OK.
+- 2026-11-25, late morning: the glossary's sixth batch, a visual round and three legal corrections, on branch
+  glossary-named-6 (worktree C:\Users\Initi\stepsafe-glossary6), rebased onto the live main. Built as 17a698600dea
+  (digest b192357bdb59a81c); gate not yet run.
+  - 145 entries in twelve parts: the words a Step names that an entry only mentions (all but two), and the
+    vocabulary the new entries needed beside them (PassRole, Monotonicity Rule, Permission Boundary, Telemetry
+    Tiering, Cost Per Question, Device Trust Tier, Two-Copy Rule and others). Each was written from the Steps that
+    name it, and every credited or numbered sentence was set beside its course sentence first; that check caught an
+    inference that would have contradicted a Step (Coverage Attribution: a source that feeds no alert is not a
+    candidate for a cheaper tier) and a "because" that joined two separate sentences of a Step. NIS2 Article 20 is
+    written from the Directive. Left: the Generative AI Profile (waits on the NIST PDF) and the privilege boundary
+    (Legal Privilege covers it). probe-terms: resolved 970 to 1117, to no entry 674 to 527, related to no entry 153
+    to 143; 953 terms.
+  - The visual round: colour now names the subject wherever a word appears. Each glossary row leads with its
+    subject's mark. The open term, its Why it matters, its row and a Step's word pop-up are lit at the rim in the
+    subject's colour, brightest at the top and left, in place of the corner tint and the 3px stripes. Related terms
+    hang from the open term as a small web (TermWeb in components/Glossary.tsx): a node for the term and one
+    measured curve to each related entry, fading from the term's subject colour to the entry's, so a link into
+    another subject shows as a change of colour. The curves grow out of the node when a term opens (still under calm
+    and reduced motion), the curve to an entry brightens while it has the pointer or the focus, and the first seven
+    entries show at once, the rest behind "Show the other N" with the focus moving to the first that waited. A
+    search found by another name says so on its row ("Also called Four-Eyes Principle"), as Find and the deck do.
+    It was prototyped live in the browser pane before any code, the first build was read at 1440, 390 and 375 in
+    Nocturne and Meridian (953 marks on 953 rows, curves meeting their entries exactly), and the second was measured
+    in the pane (Blast Radius: 7 curves, then 13 meeting 13 entries after "Show the other 6", focus on Trust
+    Boundary; the Step pop-up's rim lit in the Systems colour).
+  - The walks moved their word with no entry from "inflow rate", which now has an entry, to "supply chain
+    substitution" on "Field: Build A CID Provenance Register": chosen because the corpus has both an entry that
+    explains it and a use, and the Step is open to every learner. Two first choices failed that test before any
+    browser ran: "dark launch" has no recorded use, and the custody drill Step is Motus-only.
+  - GDPR 28, GDPR 33 and DORA's management body now say what the law says (52f95a6; docs/LEGAL-READINGS.md holds
+    every article read so far, its source text and the verdict).
+  - The voice check read the 452 new entries of the two rounds: no dashes; of 17 contrasts and stock words, one added
+    weight without a fact and was rewritten (Disposition Depth).
+- 2026-11-25, 08:34 CST: the sixth batch is LIVE, shipped on his word. Production unitium-safe-kgy8ruxdo (inspect
+  9eu3FiCpFECBcCcvbzrKAi5zQCyj), build bef9c4d8a492 (digest 34cb61a67a413f36), main 45d1ef7, 101 of 101 files the
+  same as dist. That is 808 to 953 terms, the visual round and the three legal corrections in the entry above, and
+  one phone fix found while rehearsing the gate in the pane.
+  - The fix: a view slides up 12px as it arrives (view-in), and the phone reveal used scrollIntoView, which aims at
+    the box while it moves. A word's page opened from a Step settled 12px high, 2px past the top, once "supply chain
+    substitution" had a page long enough to scroll; the live build's word page was too short to show it. The reveal
+    now scrolls to the offset chain, which ignores the slide (45d1ef7). In the pane at 390 by 844, locally and on
+    production, the word's page and the term page settle 10px under the top, and Back returns to the row with focus.
+  - Production, checked in the pane right after the deploy: 953 rows and 953 subject marks; "four-eyes" finds Dual
+    Control with "Also called Four-Eyes Principle"; Dual Control's web shows seven entries and "Show the other 2",
+    its rim lit in the identity colour; Management Body cites Article 32 and no longer says entities "must offer"
+    training; no console errors.
+  - NOT RUN YET: the 56-walk gate on this build, and the live walks. Both hold browser-lock tickets: the gate against
+    localhost:5207, the live walks against production. Each ticket refuses to run unless the build it finds is
+    bef9c4d8a492. The release (mirror.sh --release --gate) waits for a green gate log. This ship went ahead of its
+    gate because the lock line held ten tickets, and the gate's place in it was hours away.
+  - A pane lesson: after the rebuild, the pane still held the page it loaded before, so the first test of the fix ran
+    the old code and looked like a failure. Before measuring a fix in the pane, reload and check which index-*.js the
+    page loaded.
+- Start here (next session, written 2026-11-25 after the sixth batch shipped). Everything above is live, and main
+  holds it. Next, strongest first:
+  1. The gate and the live walks for bef9c4d8a492. If the session that queued them ended first, serve main's dist
+     (`node scripts/serve-dist.mjs <port>`) and run, each through the browser lock, `bash scripts/gate/gate.sh <log>
+     http://localhost:<port>`, then `bash scripts/gate/live-walks.sh <log> <folder>`. On green, while production still
+     serves bef9c4d8a492: `bash scripts/mirror.sh --release --gate <log>`.
+  2. NIST AI 600-1: the AI RMF Step lists "data provenance" among its twelve risks. The list is only in the PDF, and
+     downloading it waits for his OK.
+  3. The legal readings still open: GDPR 12, DORA 19 and AI Act 9 (docs/LEGAL-READINGS.md).
+  4. Batch seven: the 527 names probe-terms still finds with no entry, the most used first, with the same tools and
+     the same nearest-sentence check before anything is frozen.
+  5. Still open from the 2026-11-21 list: picomatch (no fix published), Vite 8 held, Models on his phone, and the next
+     visual round from a fresh survey.
+- Reflections from 2026-11-25:
+  - Reading the law at its source found an error in a Step itself (NIS2 Article 20), where an entry had copied it.
+    Before an entry repeats a Step's legal or numbered claim, read the claim at its source.
+  - New content can expose a layout fault the old content hid. On a phone, a page opened from a Step aimed 12px
+    high, and only a word page long enough to scroll showed it. When a walk's example changes, run the walk's
+    checks on the new example before the gate does.
+  - The gate ran 56 of 56 for the fourth and fifth batches before they shipped; this batch shipped first and its gate
+    follows. Queue the gate the moment a build is frozen, because the browser line now runs hours deep.
 
 ## The move
 

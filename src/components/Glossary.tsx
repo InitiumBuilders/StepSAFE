@@ -6,11 +6,15 @@
    A term shows its definition, its other names, why it matters, the source an outside fact was read at, the
    entries related to it, the Steps that teach it and the Steps and guides that use it, and its StudyMode card.
 
+   Colour names the subject. Each row starts with its subject's mark, the open term's edge is lit in its subject's
+   colour, and the related entries hang from the term as a small web (TermWeb), each line ending in its entry's
+   subject colour, so a link into another subject shows as a change of colour.
+
    A link to a word the glossary has no entry for opens a page for that word in the same place. It says there is
    no entry, and shows what the corpus says: the entries that explain the phrase and the Steps and guides that use
    it, each with the sentence (lib/terms.ts). A different term is not shown in its place. */
 
-import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { TERMS, exactTerm } from '../content/registry';
 import type { Term } from '../content/schema';
 import { SUBJECTS, termSubject, subjectById, type SubjectId } from '../content/subjects';
@@ -58,6 +62,83 @@ function search(sorted: Term[], ql: string): Term[] {
     .map(t => ({ t, r: rank(t) }))
     .sort((a, b) => a.r - b.r)
     .map(x => x.t);
+}
+
+/** the other name a search found an entry by, when its own name does not hold the search; its row shows that name,
+    as Find and the StudyMode deck do */
+function viaName(t: Term, ql: string): string | undefined {
+  if (!ql || !t.aliases?.length) return undefined;
+  const name = t.term.toLowerCase();
+  const toks = ql.split(/\s+/).filter(Boolean);
+  if (name.includes(ql) || toks.every(w => name.includes(w))) return undefined;
+  return t.aliases.find(n => n.toLowerCase().includes(ql)) || t.aliases.find(n => toks.every(w => n.toLowerCase().includes(w)));
+}
+
+const subjectOf = (t: Term): SubjectId => termSubject(t) || 'systems';
+
+/** The related entries as a small web: the open term is the node on the left, and a line runs from it to each entry,
+    fading from the term's subject colour to the entry's. The lines grow out of the node when a term opens, and the
+    line to an entry brightens while that entry has the pointer or the focus. The entries are ordinary buttons; the
+    drawing is measured from where they sit, so a name that wraps moves its line with it. The first seven show at once
+    and the rest wait behind a button, as a Step's lists do; the web then redraws to take them in, and the focus moves
+    to the first entry that was waiting. */
+const WEB_FIRST = 7;
+function TermWeb({ hue, terms, onPick }: { hue: string; terms: Term[]; onPick: (id: string) => void }) {
+  /* an id safe inside url(#...) whatever form React gives it */
+  const uid = 'gw' + useId().replace(/[^a-zA-Z0-9]/g, '') + '-';
+  const box = useRef<HTMLDivElement>(null);
+  const [all, setAll] = useState(false);
+  const shown = useMemo(() => (all ? terms : terms.slice(0, WEB_FIRST)), [all, terms]);
+  const [geo, setGeo] = useState<{ h: number; ys: number[] } | null>(null);
+  const [hot, setHot] = useState(-1);
+  const focusWaiting = useRef(false);
+  useLayoutEffect(() => {
+    const el = box.current;
+    if (!el) return;
+    const measure = () => {
+      const ys = [...el.querySelectorAll<HTMLElement>(':scope > .gl-chip')].map(c => Math.round(c.offsetTop + c.offsetHeight / 2));
+      setGeo(g => (g && g.h === el.offsetHeight && g.ys.join() === ys.join() ? g : { h: el.offsetHeight, ys }));
+    };
+    measure();
+    if (focusWaiting.current) { focusWaiting.current = false; el.querySelectorAll<HTMLElement>(':scope > .gl-chip')[WEB_FIRST]?.focus(); }
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [shown]);
+  const ready = geo && geo.ys.length === shown.length;
+  const mid = ready ? (geo.ys[0] + geo.ys[geo.ys.length - 1]) / 2 : 0;
+  return (
+    <>
+      <div ref={box} className="gl-web" style={{ ['--hue' as string]: hue }}>
+        {ready && (
+          <svg className="gl-web-lines" width="58" height={geo.h} viewBox={'0 0 58 ' + geo.h} aria-hidden>
+            <defs>
+              {shown.map((t, i) => (
+                <linearGradient key={t.id} id={uid + i} gradientUnits="userSpaceOnUse" x1="8" y1="0" x2="52" y2="0">
+                  <stop offset="0" style={{ ['--c' as string]: hue }} />
+                  <stop offset="1" style={{ ['--c' as string]: subjectById(subjectOf(t)).hue }} />
+                </linearGradient>
+              ))}
+            </defs>
+            {shown.map((t, i) => <path key={t.id} className={hot === i ? 'lit' : undefined} stroke={'url(#' + uid + i + ')'} d={'M8 ' + mid + 'C30 ' + mid + ' 28 ' + geo.ys[i] + ' 52 ' + geo.ys[i]} />)}
+            <circle className="gl-web-halo" cx="8" cy={mid} r="9" />
+            <circle className="gl-web-node" cx="8" cy={mid} r="4.2" />
+          </svg>
+        )}
+        {shown.map((t, i) => (
+          <button key={t.id} type="button" className="gl-chip" style={{ ['--hue' as string]: subjectById(subjectOf(t)).hue }} onClick={() => onPick(t.id)}
+            onPointerEnter={() => setHot(i)} onPointerLeave={() => setHot(h => (h === i ? -1 : h))} onFocus={() => setHot(i)} onBlur={() => setHot(h => (h === i ? -1 : h))}>
+            <SubjectGlyph id={subjectOf(t)} size={16} />{t.term}
+          </button>
+        ))}
+      </div>
+      {terms.length > shown.length && (
+        <button type="button" className="btn btn-ghost btn-sm gl-more" onClick={() => { focusWaiting.current = true; setAll(true); }}>
+          Show the other {terms.length - shown.length}
+        </button>
+      )}
+    </>
+  );
 }
 
 /** the other names worth showing: one that only shortens the entry's name or a longer other name is left out */
@@ -163,13 +244,21 @@ export function Glossary({ routeSub, lead }: { routeSub?: string; lead?: React.R
   });
   /* What was just opened comes fully into view. On a phone the term starts under the bar. On a wide screen the
      page moves up until the term reaches the place it holds while the list scrolls, so its card and the way on
-     are on screen; it moves only when they are not. */
+     are on screen; it moves only when they are not.
+     A view arrives sliding up 12px (view-in, styles/field.css). scrollIntoView aims at the box while it moves, so on
+     a phone the term landed 12px high once the view settled, past the top of any page long enough to scroll. The
+     phone scroll aims at the offset chain instead, which ignores the slide. */
   useLayoutEffect(() => {
     if (!reveal.current) return;
     reveal.current = false;
     const el = detailRef.current;
     if (!el) return;
-    if (narrow) { el.scrollIntoView({ block: 'start' }); return; }
+    if (narrow) {
+      let y = 0;
+      for (let n: HTMLElement | null = el; n; n = n.offsetParent as HTMLElement | null) y += n.offsetTop;
+      window.scrollTo({ top: Math.max(0, y - (parseFloat(getComputedStyle(el).scrollMarginTop) || 0)) });
+      return;
+    }
     const held = parseFloat(getComputedStyle(el).top) || 0;
     const r = el.getBoundingClientRect();
     const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.motion === 'calm';
@@ -298,9 +387,10 @@ export function Glossary({ routeSub, lead }: { routeSub?: string; lead?: React.R
                         <button type="button" id={'gl-row-' + t.id} className={'gl-row' + (current?.id === t.id ? ' on' : '')}
                           aria-current={current?.id === t.id ? 'true' : undefined} onClick={() => pick(t.id)}
                           tabIndex={t.id === (shown[at] || shown[0])?.id ? 0 : -1}
-                          style={{ ['--hue' as string]: subjectById(termSubject(t) || 'systems').hue }}>
+                          style={{ ['--hue' as string]: subjectById(subjectOf(t)).hue }}>
+                          <SubjectGlyph id={subjectOf(t)} size={16} />
                           <strong>{t.term}</strong>
-                          <span>{t.short}</span>
+                          <span>{(() => { const via = viaName(t, ql); return via ? 'Also called ' + via : t.short; })()}</span>
                         </button>
                       </li>
                     ))}
@@ -426,9 +516,7 @@ export function Glossary({ routeSub, lead }: { routeSub?: string; lead?: React.R
               {related.length > 0 && (
                 <div className="gl-sec" data-related>
                   <span className="label">Related terms</span>
-                  <div className="gl-chips">
-                    {related.map(t => <button key={t.id} type="button" className="gl-chip" onClick={() => pick(t.id)}>{t.term}</button>)}
-                  </div>
+                  <TermWeb hue={subjectById(where || 'systems').hue} terms={related} onPick={id => pick(id)} />
                 </div>
               )}
               {places && placeList('taught', 'Taught in ' + (places.taught.length === 1 ? 'one Step' : places.taught.length + ' Steps'), places.taught)}

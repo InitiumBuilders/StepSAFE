@@ -94,6 +94,8 @@ console.log('-- the glossary, wide');
   ok(total === subjects[0].n, 'the list shows every term, A to Z: ' + total);
   const hs = await heights(p);
   ok(hs.length === 1, 'every row in the list is the same height: ' + hs.join(', ') + 'px');
+  const marks = await p.evaluate(() => ({ rows: document.querySelectorAll('.gl-row').length, marks: document.querySelectorAll('.gl-row > .subject-glyph').length }));
+  ok(marks.rows > 0 && marks.marks === marks.rows, 'every row leads with its subject\'s mark: ' + marks.marks + ' of ' + marks.rows);
   const first = (await rowNames(p))[0];
   ok((await termName(p)) === first, 'the first term is open beside the list: ' + first);
   const grid = await p.evaluate(() => { const l = document.querySelector('.gl-list').getBoundingClientRect(), d = document.querySelector('.gl-detail').getBoundingClientRect(); return { lw: Math.round(l.width), dl: Math.round(d.left), lr: Math.round(l.right) }; });
@@ -141,6 +143,10 @@ console.log('-- the glossary, wide');
   const firstBody = found.findIndex((n) => !n.toLowerCase().includes('key'));
   ok(found.length > 3 && firstBody > 0 && found.slice(firstBody).every((n) => !n.toLowerCase().includes('key')), 'a search lists the names that hold it first: ' + found.slice(0, 3).join(', ') + ' … ' + found.length);
   ok((await p.locator('.gl-letters').count()) === 0 && (await p.locator('.gl-letter').count()) === 0, 'a search shows one ranked list, without letters');
+  /* an entry found by another name says which */
+  await p.fill('.gl-search input', 'four-eyes'); await p.waitForTimeout(450);
+  const via = await p.evaluate(() => { const r = document.querySelector('.gl-row'); return { name: r?.querySelector('strong')?.textContent || '', line: r?.querySelector('span')?.textContent || '' }; });
+  ok(via.name === 'Dual Control' && via.line === 'Also called Four-Eyes Principle', 'a search by another name shows that name on the row: ' + via.name + ' / ' + via.line);
   await p.fill('.gl-search input', 'qqqzzz'); await p.waitForTimeout(350);
   ok((await p.locator('.gl-empty').count()) === 1, 'a search that finds nothing says so and offers every term');
   await p.locator('.gl-empty .btn').click(); await p.waitForTimeout(350);
@@ -149,6 +155,15 @@ console.log('-- the glossary, wide');
   /* related terms stay in the glossary */
   await p.fill('.gl-search input', 'certificate transparency'); await p.waitForTimeout(400);
   ok((await rowNames(p))[0] === 'Certificate Transparency' && (await termName(p)) === 'Certificate Transparency', 'search finds Certificate Transparency first and opens it');
+  await p.waitForTimeout(700);
+  const web = await p.evaluate(() => {
+    const chips = [...document.querySelectorAll('[data-related] .gl-web > .gl-chip')], lines = [...document.querySelectorAll('[data-related] .gl-web-lines path')];
+    const box = document.querySelector('[data-related] .gl-web')?.getBoundingClientRect();
+    /* each line ends at the middle of its entry, within two pixels */
+    const ends = lines.map((l, i) => { const m = /(\d+(?:\.\d+)?)$/.exec(l.getAttribute('d') || ''); const r = chips[i]?.getBoundingClientRect(); return m && r && box ? Math.abs(box.top + Number(m[1]) - (r.top + r.height / 2)) : 99; });
+    return { chips: chips.length, lines: lines.length, worst: Math.max(0, ...ends), marks: chips.filter((c) => c.querySelector('.subject-glyph')).length };
+  });
+  ok(web.chips > 0 && web.lines === web.chips && web.worst <= 2 && web.marks === web.chips, 'the related entries hang from the term, one line to each, meeting it: ' + web.lines + ' lines for ' + web.chips + ' entries, off by ' + web.worst + 'px at most');
   const rel = await p.locator('.gl-sec .gl-chip').first().innerText();
   await p.locator('.gl-sec .gl-chip').first().click(); await p.waitForTimeout(400);
   ok((await termName(p)) === rel, 'a related term opens in place: ' + rel);
@@ -169,27 +184,39 @@ console.log('-- the glossary, wide');
     plain: [...document.querySelectorAll('.sw-bare > span:not([aria-hidden])')].map((x) => x.textContent.trim()),
     chips: document.querySelectorAll('.sw .chip, .band .chiprow .chip:not(.on)').length,
   }));
-  ok(words.terms[0] === 'Stock and Flow' && words.terms.length >= 2, 'the Step lists its glossary entries, the one it names first: ' + words.terms.join(', '));
-  ok(words.links.includes('inflow rate') && words.plain.includes('outflow rate'), 'a word with no entry is a link only when the corpus says something about it: links ' + words.links.join(', ') + ' | plain ' + words.plain.join(', '));
+  /* since the sixth batch, Inflow Rate and Outflow Rate are entries of their own, and only "exposure level" is left
+     without one on this Step */
+  ok(words.terms[0] === 'Stock and Flow' && words.terms.includes('Inflow Rate') && words.terms.includes('Outflow Rate'), 'the Step lists its glossary entries, the one it names first: ' + words.terms.join(', '));
+  ok(words.plain.includes('exposure level') && !words.links.length, 'a word the corpus says nothing more about stays plain: plain ' + words.plain.join(', ') + ' | links ' + words.links.join(', '));
   ok(words.chips === 0, 'the old row of chips that all went to the glossary is gone');
   await p.locator('.sw-term', { hasText: 'Stock and Flow' }).click(); await p.waitForTimeout(400);
-  const pop = await p.evaluate(() => ({ name: document.querySelector('.sw .term-pop strong')?.textContent || '', where: document.querySelector('.sw .term-pop-where')?.textContent || '', buttons: [...document.querySelectorAll('.sw .term-pop button')].map((x) => x.textContent) }));
+  const pop = await p.evaluate(() => ({ name: document.querySelector('.sw .term-pop strong')?.textContent || '', where: document.querySelector('.sw .term-pop-where')?.textContent || '', buttons: [...document.querySelectorAll('.sw .term-pop button')].map((x) => x.textContent), lit: getComputedStyle(document.querySelector('.sw .term-pop')).borderTopColor !== getComputedStyle(document.querySelector('.sw .term-pop')).borderBottomColor }));
   ok(pop.name === 'Stock and Flow' && /Systems/.test(pop.where) && pop.buttons.includes('Study its card'), 'a term opens its definition in place, with its subject and its card: ' + pop.where);
+  ok(pop.lit, 'the definition is lit at its rim in its subject\'s colour');
   ok(/Stocks, Flows/.test(await p.evaluate(() => document.querySelector('h1[aria-label], h2[aria-label]')?.getAttribute('aria-label') || '')), 'and the learner is still on the Step');
-  await p.locator('.sw-bare .term-link', { hasText: 'inflow rate' }).click(); await p.waitForTimeout(1300);
+
+  /* a word with no entry that the corpus does say something about is a link to its own page */
+  const openStep = async (title) => { await p.keyboard.press('Control+k'); await p.waitForTimeout(600); await p.fill('.pal input', title); await p.waitForTimeout(500); await p.locator('.pal-main', { hasText: title }).first().click(); await p.waitForTimeout(1500); };
+  await openStep('Field: Build A CID Provenance Register');
+  const gw = await p.evaluate(() => ({
+    terms: [...document.querySelectorAll('.sw-term')].map((x) => x.textContent.trim()),
+    links: [...document.querySelectorAll('.sw-bare .term-link')].map((x) => x.textContent.trim()),
+    plain: [...document.querySelectorAll('.sw-bare > span:not([aria-hidden])')].map((x) => x.textContent.trim()),
+  }));
+  ok(gw.terms[0] === 'Provenance Register' && gw.links.includes('supply chain substitution') && gw.plain.includes('named accountability'), 'a word with no entry is a link only when the corpus says something about it: links ' + gw.links.join(', ') + ' | plain ' + gw.plain.join(', '));
+  await p.locator('.sw-bare .term-link', { hasText: 'supply chain substitution' }).click(); await p.waitForTimeout(1300);
   const word = await p.evaluate(() => ({
     title: document.querySelector('#gl-term')?.textContent || '', where: document.querySelector('.gl-noentry .gl-where')?.textContent || '',
     covered: [...document.querySelectorAll('[data-said="covered"] strong')].map((x) => x.textContent), marks: [...document.querySelectorAll('.gl-noentry mark')].map((x) => x.textContent.toLowerCase()),
     uses: document.querySelectorAll('[data-said="uses"] li').length, on: document.querySelectorAll('.gl-row.on').length,
   }));
-  ok(word.title === 'inflow rate' && /No entry/.test(word.where), 'a word with no entry opens its own page and says so: ' + word.title + ' · ' + word.where);
+  ok(word.title === 'supply chain substitution' && /No entry/.test(word.where), 'a word with no entry opens its own page and says so: ' + word.title + ' · ' + word.where);
   ok(word.on === 0, 'no term in the list stands in for it');
-  ok(word.covered.includes('Stock and Flow') && word.uses > 0 && word.marks.length > 0 && word.marks.every((m) => m.startsWith('inflow rate')), 'the page shows the entry that explains it and where it is used, each sentence with the phrase marked: ' + word.covered.join(', ') + ' | ' + word.uses + ' uses');
-  await p.locator('[data-said="covered"] button', { hasText: 'Stock and Flow' }).click(); await p.waitForTimeout(500);
-  ok((await termName(p)) === 'Stock and Flow' && (await p.locator('.gl-noentry').count()) === 0, 'the entry that explains it opens from there');
+  ok(word.covered.includes('Provenance Register') && word.uses > 0 && word.marks.length > 0 && word.marks.every((m) => m.replace(/-/g, ' ').startsWith('supply chain substitution')), 'the page shows the entry that explains it and where it is used, each sentence with the phrase marked: ' + word.covered.join(', ') + ' | ' + word.uses + ' uses');
+  await p.locator('[data-said="covered"] button', { hasText: 'Provenance Register' }).click(); await p.waitForTimeout(500);
+  ok((await termName(p)) === 'Provenance Register' && (await p.locator('.gl-noentry').count()) === 0, 'the entry that explains it opens from there');
 
   /* the links that used to open the wrong entry */
-  const openStep = async (title) => { await p.keyboard.press('Control+k'); await p.waitForTimeout(600); await p.fill('.pal input', title); await p.waitForTimeout(500); await p.locator('.pal-main', { hasText: title }).first().click(); await p.waitForTimeout(1500); };
   await openStep('Ground Truth: Finding Out What Is Actually There');
   /* since 2026-11-25 tier zero has its own entry: the Step lists it, and Zero Trust never stands in for it */
   const tz = await p.evaluate(() => ({ terms: [...document.querySelectorAll('.sw-term')].map((x) => x.textContent.trim()), bare: [...document.querySelectorAll('.sw-bare .term-link, .sw-bare > span:not([aria-hidden])')].map((x) => x.textContent.trim()) }));
@@ -284,21 +311,21 @@ console.log('-- the glossary, phone');
 
   /* a Step's words on a phone: a term opens in place, and a word with no entry opens its page under the bar */
   await p.keyboard.press('Control+k'); await p.waitForTimeout(700);
-  await p.fill('.pal input', 'Stocks, Flows'); await p.waitForTimeout(500);
-  await p.locator('.pal-main', { hasText: 'Stocks, Flows' }).first().tap(); await p.waitForTimeout(1500);
+  await p.fill('.pal input', 'Field: Build A CID Provenance Register'); await p.waitForTimeout(500);
+  await p.locator('.pal-main', { hasText: 'Field: Build A CID Provenance Register' }).first().tap(); await p.waitForTimeout(1500);
   await p.locator('.sw').scrollIntoViewIfNeeded(); await p.waitForTimeout(300);
   const sw = await p.evaluate(() => ({ wide: document.documentElement.scrollWidth <= document.documentElement.clientWidth, taps: [...document.querySelectorAll('.sw-term')].map((b) => Math.round(b.getBoundingClientRect().height)), link: (() => { const l = document.querySelector('.sw-bare .term-link'); const r = l.getBoundingClientRect(); const cs = getComputedStyle(l); return { h: Math.round(r.height), line: cs.textDecorationLine, border: cs.borderBottomWidth }; })() }));
   ok(sw.wide && sw.taps.length >= 2 && sw.taps.every((h) => h >= 44), 'the Step\'s terms fit a phone and are a full finger tall: ' + sw.taps.join(', '));
   ok(sw.link.line.includes('underline') && sw.link.border === '0px', 'a linked word keeps its underline with the word');
   await p.locator('.sw-term').first().tap(); await p.waitForTimeout(400);
   ok((await p.locator('.sw .term-pop').count()) === 1 && (await p.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)), 'a term opens in place on a phone, with no sideways scroll');
-  await p.locator('.sw-bare .term-link', { hasText: 'inflow rate' }).tap(); await p.waitForTimeout(1400);
+  await p.locator('.sw-bare .term-link', { hasText: 'supply chain substitution' }).tap(); await p.waitForTimeout(1400);
   const wp = await p.evaluate(() => ({ title: document.querySelector('#gl-term')?.textContent || '', top: Math.round(document.querySelector('.gl-noentry')?.getBoundingClientRect().top ?? -1), nav: Math.round(document.querySelector('.nav').getBoundingClientRect().height), back: !!document.querySelector('.gl-back'), rows: document.querySelectorAll('.gl-row').length, head: getComputedStyle(document.querySelector('.view-head')).display, foot: Math.round(document.querySelector('.gl-noentry')?.getBoundingClientRect().bottom ?? 9999), vh: innerHeight }));
-  ok(wp.title === 'inflow rate' && wp.back && wp.rows === 0, 'a word with no entry opens on its own screen: ' + wp.title);
+  ok(wp.title === 'supply chain substitution' && wp.back && wp.rows === 0, 'a word with no entry opens on its own screen: ' + wp.title);
   ok(wp.head === 'none' && wp.top >= wp.nav - 1 && wp.top < wp.nav + 70, 'the page heading steps aside and the word starts at the top of the screen: ' + wp.top + ' (bar ' + wp.nav + ')');
   await p.locator('[data-said="covered"] button').first().tap(); await p.waitForTimeout(900);
   const tp = await p.evaluate(() => ({ title: document.querySelector('#gl-term')?.textContent || '', top: Math.round(document.querySelector('.gl-detail').getBoundingClientRect().top), nav: Math.round(document.querySelector('.nav').getBoundingClientRect().height) }));
-  ok(tp.title === 'Stock and Flow' && tp.top >= tp.nav - 1 && tp.top < tp.nav + 40, 'the entry that explains it opens under the bar too: ' + tp.title + ' at ' + tp.top);
+  ok(tp.title === 'Provenance Register' && tp.top >= tp.nav - 1 && tp.top < tp.nav + 40, 'the entry that explains it opens under the bar too: ' + tp.title + ' at ' + tp.top);
 
   /* Find on a phone: the palette fills the screen, so its way out is a button; the key hints step aside; its count is the deck's */
   await openFind(p); await p.waitForSelector('.pal input'); await p.fill('.pal input', 'cisa kev'); await p.waitForTimeout(700);
@@ -408,9 +435,9 @@ for (const theme of ['nocturne', 'meridian', 'mov']) {
   await p.locator('.gl-row').first().click(); await p.waitForTimeout(400);
   r.push(...(await contrastOf(p, MORE_INK)));
   /* a Step's words, and a word with no entry */
-  await p.keyboard.press('Control+k'); await p.waitForTimeout(600); await p.fill('.pal input', 'Stocks, Flows'); await p.waitForTimeout(500); await p.locator('.pal-main', { hasText: 'Stocks, Flows' }).first().click(); await p.waitForTimeout(1400);
+  await p.keyboard.press('Control+k'); await p.waitForTimeout(600); await p.fill('.pal input', 'Field: Build A CID Provenance Register'); await p.waitForTimeout(500); await p.locator('.pal-main', { hasText: 'Field: Build A CID Provenance Register' }).first().click(); await p.waitForTimeout(1400);
   r.push(...(await contrastOf(p, STEP_INK)));
-  await p.locator('.sw-bare .term-link', { hasText: 'inflow rate' }).click(); await p.waitForTimeout(1200);
+  await p.locator('.sw-bare .term-link', { hasText: 'supply chain substitution' }).click(); await p.waitForTimeout(1200);
   r.push(...(await contrastOf(p, WORD_INK)));
   /* Find's kind labels and its second lines, every kind, chosen and not: the lowest of each */
   await p.keyboard.press('Control+k'); await p.waitForSelector('.pal input'); await p.waitForTimeout(900);
