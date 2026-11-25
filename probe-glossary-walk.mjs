@@ -4,7 +4,7 @@
    first; the letters jump; the term's related terms, the Steps that teach it and its card all go where they say;
    a link from Find opens the glossary on its term. Every term link is true: a Step lists the entries it names and
    uses, a word with no entry opens that word's own page with the corpus's sentences as proof, and no term stands
-   in for another ("tier zero" is not Zero Trust). An entry answers to its other names, shows its source, and the
+   in for another (tier zero opens its own entry, never Zero Trust). An entry answers to its other names, shows its source, and the
    seven merged entries appear once. On a phone the list opens into the term and Back returns to the same place. The guides are grouped by the same subjects;
    the deck filters by subject, with its domains grouped under each; the systems map keeps every label inside its
    box. Then the contrast of the glossary's ink and of Find's labels in all three themes, the Content-Security-Policy
@@ -191,13 +191,12 @@ console.log('-- the glossary, wide');
   /* the links that used to open the wrong entry */
   const openStep = async (title) => { await p.keyboard.press('Control+k'); await p.waitForTimeout(600); await p.fill('.pal input', title); await p.waitForTimeout(500); await p.locator('.pal-main', { hasText: title }).first().click(); await p.waitForTimeout(1500); };
   await openStep('Ground Truth: Finding Out What Is Actually There');
-  const tz = await p.evaluate(() => ({ terms: [...document.querySelectorAll('.sw-term')].map((x) => x.textContent.trim()), link: [...document.querySelectorAll('.sw-bare .term-link')].some((x) => x.textContent.trim() === 'tier zero'), plain: [...document.querySelectorAll('.sw-bare > span:not([aria-hidden])')].some((x) => x.textContent.trim() === 'tier zero') }));
-  ok((tz.link || tz.plain) && tz.terms.includes('Phishing-Resistant MFA'), 'that Step names tier zero as a word with no entry, and reaches Phishing-Resistant MFA by its other name');
-  if (tz.link) {
-    await p.locator('.sw-bare .term-link', { hasText: /^tier zero$/ }).click(); await p.waitForTimeout(1300);
-    const z = await p.evaluate(() => ({ title: document.querySelector('#gl-term')?.textContent || '', near: [...document.querySelectorAll('[data-said="closest"] .gl-chip')].map((x) => x.textContent) }));
-    ok(z.title === 'tier zero' && !z.near.includes('Zero Trust'), '"tier zero" opens its own page, and Zero Trust is not offered as it: ' + z.title);
-  } else ok(tz.plain, '"tier zero" is plain text there: the corpus says nothing more about it, and it is not Zero Trust');
+  /* since 2026-11-25 tier zero has its own entry: the Step lists it, and Zero Trust never stands in for it */
+  const tz = await p.evaluate(() => ({ terms: [...document.querySelectorAll('.sw-term')].map((x) => x.textContent.trim()), bare: [...document.querySelectorAll('.sw-bare .term-link, .sw-bare > span:not([aria-hidden])')].map((x) => x.textContent.trim()) }));
+  ok(tz.terms.includes('Tier Zero') && !tz.terms.includes('Zero Trust') && !tz.bare.includes('tier zero') && tz.terms.includes('Phishing-Resistant MFA'), 'that Step names tier zero by its own entry, never as Zero Trust, and reaches Phishing-Resistant MFA by its other name: ' + tz.terms.join(', '));
+  await p.locator('.sw-term', { hasText: /^Tier Zero$/ }).click(); await p.waitForTimeout(400);
+  const zp = await p.evaluate(() => document.querySelector('.sw .term-pop strong')?.textContent || '');
+  ok(zp === 'Tier Zero', 'and Tier Zero opens its own definition in place: ' + zp);
   await openStep('Drill: The 9.8');
   const sca = await p.evaluate(() => [...document.querySelectorAll('.sw-term')].map((x) => x.textContent.trim()));
   ok(sca.includes('SCA') && sca.includes('KEV Catalog') && !sca.includes('Business Impact Analysis'), 'software composition analysis reaches SCA, and nothing reaches Business Impact Analysis by accident: ' + sca.join(', '));

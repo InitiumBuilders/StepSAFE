@@ -705,7 +705,8 @@ export const TERMS: Term[] = [
     long: "Reachable from inside an instance at a link-local address, the metadata service supplies instance information and, for instances with an attached role, short-lived credentials for that role. It is the single most valuable target reachable from an application-level SSRF, because it converts a request-forgery bug directly into cloud credentials with whatever permissions the role carries.",
     why: "The finding that always lands is an over-permissive instance role combined with a metadata service that does not require session tokens. Either alone is survivable; together they are a straight line from a web bug to your account.",
     related: ["imdsv2", "ssrf", "standing-credential", "least-privilege", "cloud-metadata"],
-    mode: "both"
+    mode: "both",
+    aliases: ["Instance Metadata Service", "Instance Metadata"]
   },
   {
     id: "caep",

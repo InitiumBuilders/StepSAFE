@@ -937,7 +937,8 @@ export const TERMS: Term[] = [
     long: "Acceptance is legitimate and necessary — you cannot fix everything, and some fixes cost more than the exposure. What makes it legitimate is the record: the specific risk described in business terms, the exposure quantified as best you can, the alternatives considered with their costs, the named accountable individual who is senior enough to own the consequence, an expiry date, and the conditions that would force reconsideration. Two failure modes recur. Acceptance by silence, where a finding sits unremediated for two years without anyone deciding, which is the same exposure with none of the accountability. And acceptance at the wrong level, where an engineering manager accepts a risk whose realization would be material to the enterprise. The security leader's role is to inform and record the decision, not to make it.",
     why: "Documented acceptance converts an audit finding into a business decision and moves accountability to where authority already sits. It also protects the security function from carrying risk it never had the mandate to accept.",
     related: ["risk-appetite", "residual-risk", "exception-management", "compensating-control", "materiality"],
-    mode: "both"
+    mode: "both",
+    aliases: ["Residual Risk Acceptance"]
   },
   {
     id: "residual-risk",

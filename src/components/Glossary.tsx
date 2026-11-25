@@ -35,17 +35,23 @@ function useNarrow() {
   return m;
 }
 
-/* a search ranks the names that start with it, then the names that hold it, then the one-line meanings; an
-   entry's other names count as names */
+/* a search ranks the names that start with it, then the names that hold it, then the entries that answer to it by
+   another name, then the one-line meanings. A row shows only an entry's own name, so a match by another name
+   comes after every row whose name the learner can see holds the search (since 2026-11-25: "Key Revocation" had
+   put Revocation among the names that start with "key"). */
 function search(sorted: Term[], ql: string): Term[] {
   const toks = ql.split(/\s+/).filter(Boolean);
   const rank = (t: Term) => {
-    const names = [t.term, ...(t.aliases || [])].map(n => n.toLowerCase());
-    if (names.some(n => n.startsWith(ql))) return 0;
-    if (names.some(n => n.includes(ql))) return 1;
-    if (names.some(n => toks.every(w => n.includes(w)))) return 2;
-    if (toks.every(w => t.short.toLowerCase().includes(w))) return 3;
-    return 4;
+    const name = t.term.toLowerCase();
+    const others = (t.aliases || []).map(n => n.toLowerCase());
+    if (name.startsWith(ql)) return 0;
+    if (name.includes(ql)) return 1;
+    if (toks.every(w => name.includes(w))) return 2;
+    if (others.some(n => n.startsWith(ql))) return 3;
+    if (others.some(n => n.includes(ql))) return 4;
+    if (others.some(n => toks.every(w => n.includes(w)))) return 5;
+    if (toks.every(w => t.short.toLowerCase().includes(w))) return 6;
+    return 7;
   };
   return sorted
     .filter(t => { const hay = (t.term + ' ' + (t.aliases || []).join(' ') + ' ' + t.id + ' ' + t.short + ' ' + t.long + ' ' + t.domain).toLowerCase(); return toks.every(w => hay.includes(w)); })

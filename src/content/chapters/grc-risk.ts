@@ -1315,7 +1315,7 @@ export const chapter: Chapter = {
             }
           ],
           awards: ["award-disclosure-clock"],
-          glossary: ["materiality", "item-1-05", "disclosure-committee", "reg-sk-item-106", "aggregation-of-incidents"]
+          glossary: ["materiality", "item-1-05", "disclosure-committee", "item-106", "aggregation-of-incidents"]
         },
         {
           id: "ch-grc-s4-02",
@@ -1484,7 +1484,7 @@ export const chapter: Chapter = {
               rows: [
                 ["Who is bound", "Essential and important entities across eighteen sectors, sized by thresholds", "Financial entities plus, indirectly, their ICT providers; designated critical providers supervised directly", "Providers and deployers of AI systems, tiered by risk; GPAI model providers separately"],
                 ["Core obligation", "Article 21 risk-management measures, all-hazards, proportionate to risk and size", "ICT risk management, incident reporting, digital operational resilience testing, third-party risk, information sharing", "Prohibited practices, high-risk system requirements including risk management, data governance, logging, human oversight, conformity assessment"],
-                ["Who is personally on the hook", "Article 20: the management body approves the measures and oversees implementation; member states may hold managers liable, including temporary management bans for essential entities", "The management board holds ultimate responsibility for the ICT risk framework; it cannot be delegated away", "Provider and deployer organizations; obligations run to the legal entity rather than to named individuals"],
+                ["Who is personally on the hook", "Article 20: the management body approves the measures, oversees their implementation and can be held liable; at essential entities, Article 32 also allows a temporary ban from managerial functions when other enforcement fails", "The management board holds ultimate responsibility for the ICT risk framework; it cannot be delegated away", "Provider and deployer organizations; obligations run to the legal entity rather than to named individuals"],
                 ["Timing", "Transposition deadline 17 October 2024; national transposition uneven, with Commission infringement action against many member states through 2025", "Applied from 17 January 2025; Registers of Information first submitted in spring 2025", "Prohibitions and AI literacy from 2 February 2025; GPAI obligations from 2 August 2025 with Commission enforcement powers from 2 August 2026; most remaining obligations from 2 August 2026; Article 6(1) product-embedded high-risk from 2 August 2027"],
                 ["Maximum penalties", "Essential entities at least ten million euro or two percent of worldwide turnover, whichever is higher; important entities seven million or one point four percent", "Supervisory measures and national penalty regimes; periodic penalty payments for designated critical ICT providers", "Up to thirty-five million euro or seven percent of worldwide turnover for prohibited practices; up to fifteen million or three percent for GPAI obligations"],
                 ["The thing that changes your week", "Management training obligation and personal liability makes the board briefing a legal artefact rather than a courtesy", "The Register of Information makes your dependency map a supervised object that a regulator reads", "Classification. Determining whether a system is high risk is now an engineering and legal exercise with a deadline"]
@@ -1493,7 +1493,7 @@ export const chapter: Chapter = {
             {
               kind: "prose",
               title: "NIS2 Article 20, read carefully",
-              body: "Article 20 says two things that most summaries flatten. First, management bodies must approve the cybersecurity risk-management measures and oversee their implementation, and can be held liable for infringements. Second, members of management bodies are required to follow training, and entities must offer similar training to employees on a regular basis. That second clause is unusual: it makes executive cybersecurity education a legal obligation rather than a good practice, which changes how you should design your board programme. And because the liability teeth are set by member state transposition rather than by the directive, the actual exposure varies by jurisdiction — which means a multinational must map its exposure per country, not per group."
+              body: "Article 20 says two things that most summaries flatten. First, management bodies must approve the cybersecurity risk-management measures and oversee their implementation, and can be held liable for infringements. Second, members of management bodies are required to follow training, and member states must encourage entities to offer similar training to their employees on a regular basis. That second clause is unusual: it makes executive cybersecurity education a legal obligation rather than a good practice, which changes how you should design your board programme. And because the liability teeth are set by member state transposition rather than by the directive, the actual exposure varies by jurisdiction — which means a multinational must map its exposure per country, not per group."
             },
             {
               kind: "callout",

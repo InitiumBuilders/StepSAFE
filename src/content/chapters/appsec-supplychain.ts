@@ -476,7 +476,7 @@ export const chapter: Chapter = {
             principle: "Under time pressure, the highest-leverage action is almost never to act on everything. It is to differentiate — because a uniform response to a non-uniform problem is a guess wearing a process."
           },
           awards: ["reachability-realist", "the-ten-minute-split"],
-          glossary: ["deserialization", "gadget-chain", "reachability", "compensating-control", "blast-radius"]
+          glossary: ["deserialization", "gadget-chain", "reachability-analysis", "compensating-control", "blast-radius"]
         }
       ]
     },

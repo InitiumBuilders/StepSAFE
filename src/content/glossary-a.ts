@@ -536,7 +536,8 @@ export const TERMS: Term[] = [
     long: "Once authentication succeeds, the resulting session artefact is a bearer credential, and stealing it skips every control you placed at the front door: no password, no MFA, no phishing-resistant ceremony. The theft routes are numerous — infostealer malware harvesting browser cookie stores, adversary-in-the-middle proxies capturing the cookie at issuance, tokens leaked into logs or error reports, and refresh tokens stored insecurely by native applications. The defences that actually work bind the artefact to something the attacker does not have: hardware-backed proof of possession, mutual TLS client certificates, or DPoP-style sender constraint, backed by continuous evaluation so that anomalous use terminates the session. Everything else — shorter lifetimes, IP checks — narrows the window without closing it.",
     why: "This is where identity attacks moved once MFA became common. If your identity roadmap ends at strong authentication, you have hardened the door and left the key in the lock.",
     related: ["adversary-in-the-middle", "device-bound-session-credentials", "jwt", "continuous-access-evaluation", "mtls"],
-    mode: "both"
+    mode: "both",
+    aliases: ["Session Token Replay"]
   },
   {
     id: "device-bound-session-credentials",

@@ -555,7 +555,8 @@ export const TERMS: Term[] = [
     long: "Sealing is a deliberately slow, sequential encoding that binds three things together: the data, the identity of the provider, and a randomness value drawn from the chain at a known height. Because the randomness is time-anchored, the same provider sealing the same data later produces a different proof, and because sealing is expensive it cannot be faked on demand at challenge time. The provider then compresses the proof with a SNARK and commits it on chain. The property this buys is deduplication resistance: a provider paid for ten copies cannot store one and claim ten, because each replica is a distinct encoding.",
     why: "PoRep is the answer to a problem every enterprise has and rarely solves: proving that your three backup copies are three copies and not three pointers to one array. It also demonstrates using deliberate computational cost as a security primitive, the same idea behind password hashing and proof of work, applied to storage rather than to authentication.",
     related: ["proof-of-spacetime", "slashing", "verifiable-computation", "content-addressing"],
-    mode: "motus"
+    mode: "motus",
+    aliases: ["Proof of Replication"]
   },
   {
     id: "proof-of-spacetime",
@@ -807,7 +808,8 @@ export const TERMS: Term[] = [
     long: "Anthropic's Responsible Scaling Policy defines AI Safety Levels, with each level pairing a set of capability thresholds against required safeguards that must be in place before a model at that level is trained further or deployed. The safeguards split into two halves that are assessed separately: deployment standards, built as defense in depth with access controls, real-time classifiers on prompts and completions, asynchronous monitoring that can look deeper without adding latency, and post-hoc jailbreak detection with a rapid response path; and security standards covering access management, compartmentalization, software supply chain monitoring, endpoint binary authorization, and infrastructure as code. The policy is explicitly a living document, revised as understanding improves.",
     why: "The structural insight worth stealing is the separation of deployment risk from security risk, each with its own bar and its own evidence. Most organizations conflate them and end up with strong external controls and a soft interior, or the reverse. Ask of your own crown-jewel systems: what is our deployment standard, what is our security standard, and what capability level are they calibrated to?",
     related: ["dangerous-capability-evaluation", "model-weights-custody", "rand-security-level", "preparedness-framework"],
-    mode: "motus"
+    mode: "motus",
+    aliases: ["Responsible Scaling Policy"]
   },
   {
     id: "alignment-vs-control",
@@ -949,7 +951,8 @@ export const TERMS: Term[] = [
     long: "The MultiVault is the central protocol contract: it handles atom and triple creation, holds the vault for each term, mints and burns shares on deposit and redemption, applies the fee splits, and routes bonding-curve operations through a registry so multiple curve implementations can coexist. The beta contracts named it EthMultiVault and gave bonding-curve activity its own dedicated methods and routes alongside the original ones; current documentation refers to the MultiVault, and the v2 contracts sit alongside a TrustBonding contract in the deployed set. Because both atoms and triples are terms under the hood, one contract carries the accounting for the entire graph.",
     why: "A single contract holding the accounting for every vault in the system is a concentrated, high-value target, and that is the point worth teaching: know where the value concentrates in any protocol you depend on, regardless of how decentralized the surrounding narrative is. When you evaluate an integration, find the contract that would be catastrophic if wrong, and read its audit history first.",
     related: ["atom", "triple", "bonding-curve-vault", "trust-token"],
-    mode: "motus"
+    mode: "motus",
+    aliases: ["MultiVault"]
   },
   {
     id: "bonding-curve-vault",

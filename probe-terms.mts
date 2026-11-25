@@ -43,7 +43,7 @@ for (const c of R.CHAPTERS) for (const p of c.pages) for (const st of p.steps) {
 }
 
 /* the cases that were wrong before, and the ones that must work */
-for (const [q, want] of [['tier-zero', ''], ['legitimate-interests-balancing', ''], ['high-risk-ai-system', ''], ['verifiable-delay-function', ''], ['static-analysis', ''],
+for (const [q, want] of [['tier-zero', 'tier-zero'], ['legitimate-interests-balancing', ''], ['high-risk-ai-system', ''], ['verifiable-delay-function', 'verifiable-delay-function'], ['static-analysis', ''],
   ['software-composition-analysis', 'sca'], ['two-person-rule', 'dual-control'], ['hardware-security-module', 'hsm'], ['pseudonymization', 'pseudonymisation'],
   ['reorg', 'chain-reorganization'], ['csf', 'nist-csf'], ['csf-govern', 'csf-2-0-govern'], ['safe-multisig', 'multisig'], ['legal-privilege', 'legal-privilege']] as [string, string][]) {
   const got = R.resolveTerm(q).term?.id || '';

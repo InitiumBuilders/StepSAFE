@@ -1044,6 +1044,61 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   - Before committing a glossary batch, read every place its one-word names link in Step text.
   - picomatch (move 4): still 4.0.7 with no newer release, and npm audit reports 0 vulnerabilities on 2026-11-23.
     Nothing to update.
+- 2026-11-24, evening (finished 2026-11-25, 03:00): the glossary's fourth batch is built and checked on branch glossary-named-3 (worktree
+  C:\Users\Initi\stepsafe-glossary3, rebased onto the floor release be9b06b), waiting for its gate and his word.
+  246 new entries in src/content/glossary-named.ts, carrying READ3: every word that one Step names and two or more
+  other places use, the rest of their Steps' sets where entries were missing (the CIA triad and the properties
+  beyond it, the four storage promises, the CSF profiles, differential privacy), fifty-seven named concepts
+  and well-known terms that had no entry (Platform Identity, the zero trust decision and information points, KEK
+  and DEK, Golden SAML, BLS signatures, SPIFFE IDs and attestation, Tier Zero, TTP, the ADS framework, SLH-DSA,
+  among them), and forty-seven more words that one Step names (Access Proxy, Agent Identity and Agent Inventory,
+  Asset Lock Proof and One-Time Key, Causal Analysis and Post-Incident Report, Shift Handoff, Volatile Memory,
+  Token Signing Certificate, Verifier Name Binding, Management Body, Multihash and Sentry (gVisor) among them).
+  Fifteen existing entries take the Steps' other names for them (IMDS takes Instance Metadata; Review Trigger
+  takes Trigger Condition, Invalidation Trigger and Escalation Trigger; Escalation Threshold takes Pre-Agreed
+  Trigger; Egress Control takes Egress Policy; Risk Acceptance takes Residual Risk Acceptance; EthMultiVault takes MultiVault; PoRep takes Proof of
+  Replication; Responsible Scaling, Session Token Theft, Closure Rate, Doctrine, Risk Tolerance, Corpus and
+  Revocation take one each), and two Step slugs now name the entry they meant (reachability to
+  reachability-analysis, reg-sk-item-106 to item-106). probe-terms' fixed cases now expect tier-zero and
+  verifiable-delay-function to open their own entries. probe-terms: Step links to an entry 639 to 906, to no entry
+  1005 to 738, related links to no entry 178 to 156. The pitch figures follow (747 terms, 1347 cards). The type
+  check, the outline and all 31 node probes pass, and no new name links on its own in a list item or paragraph,
+  the case probe-touch holds to 44px. The browser walks wait for the shared queue.
+  - The sense check ran before writing this time (scratchpad glossary/sense-survey.mts: every sentence that uses a
+    candidate word). Words with more than one sense carry a qualifier and link nowhere in prose: Exposure
+    (Vulnerability Priority), Position (Intuition Vault), Share Price (Vault), Durability (Storage), Integrity
+    (Security Property), Composition (Privacy Budget), Sector (Filecoin), Autonomous System
+    (Routing), Security Level (Dash Key), Master Key (Dash Identity), Admission Control
+    (Kubernetes), Safe Harbour (Security Research), Prohibition (Doctrine). Others take a fuller name that still reads naturally: Defensive Capability, Board Oversight, Data
+    Controller, and Review Trigger, which also answers the slug "trigger".
+  - "Availability" links in 72 places, and three of them meant something else: "exploit availability" twice and
+    "availability bias" once. Entries for Exploit Availability, Availability Bias and Availability Attack take those
+    phrases, because the longer name wins, so every link lands on its meaning.
+  - Sources read on 2026-11-24: the GDPR text (Articles 4, 5, 9, 15 to 21, 33, 34, 36 and 56), NIST SP 800-226, NIST SP 800-207, NIST CSWP 29,
+    Meadows' Leverage Points, Team Topologies, RFC 6749, RFC 1930, the SPIFFE concepts page, MITRE ATT&CK TA0001 and
+    Filecoin's storage-proving page.
+  - The last forty-seven were checked claim by claim against their Steps before they went in. One draft had the
+    wrong sense: the curriculum's Escalation of Last Resort is the written plan for when nobody with authority can
+    be reached, and the draft had made it a route over the chief executive's head. Six others carried a detail no
+    Step states, and lost it. The same check then ran over the 199 earlier entries: every sentence that credits
+    the curriculum or states a number, beside the nearest sentence anywhere in the course (scratchpad glossary/
+    support2.mts and nearest.mts). Eight said more than their Steps and now follow them (f7e29d4).
+- 2026-11-25, before dawn: the glossary's fifth batch, on branch glossary-named-5 (worktree
+  C:\Users\Initi\stepsafe-glossary5, on top of the fourth batch's 34abbf6), and the two travel together through one
+  gate. Sixty-one entries give every word the Steps use in more than one place an entry (probe-terms' "used in
+  another Step or guide" is now 0): Tuning Debt, Paging Budget, Auto-Demotion, Enrichment Tier, Coverage Confidence,
+  Coverage Decay, Counter-Metric, Exception Route, Risk Narrative, Exposure Statement, Proof of Decryption, Release
+  Tarball and Voting Cutoff among them. Security Failure (AI) and Stated Position (Takedown) carry qualifiers because
+  each word has a second sense elsewhere. Named Accepter, Initial Access Broker and Delegated Authority take the
+  other names Accepting Authority, Access Broker and Authority Basis. Every credited or numbered sentence was set
+  beside the nearest course sentence before it went in, which also found a slip in the AI security Step (an agent
+  leaking one user's data "to that same user" while the breach was called one of tenancy; now "to another user").
+  probe-terms: resolved 906 to 970, to no entry 738 to 674; pitch 808 terms, 1408 cards. Before the gate, the walks
+  were read against the content: probe-glossary-walk expected "tier zero" to have no entry (now it opens its own),
+  and its "key" search check would have failed because Revocation's other name Key Revocation ranked it among names
+  starting with "key". Glossary.tsx now ranks an entry's own name before its other names (34abbf6), checked by
+  running the search function itself over every term for each query the walks type (scratchpad glossary/
+  search-real.mts).
 
 ## The move
 
