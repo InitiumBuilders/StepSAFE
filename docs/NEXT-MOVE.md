@@ -1204,24 +1204,26 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     practice 876, guides 617, glossary 491, other 458, awards 363, Modux 3). docs/VOICE-RATCHET.json holds each
     part's count; it may fall and never rise, so new text cannot add one while the old are rewritten.
   - NIST AI 600-1 stays open: the twelve risks are only in the PDF, 1.2 MB at tsapps.nist.gov (publication 958388).
-- Start here (next session, rewritten 2026-11-25 after the legal round). Everything above is live, and main holds it,
-  except branch law-readings-3. Next, strongest first:
-  1. The release of the sixth batch, if it has not happened: the gate for bef9c4d8a492 and probe-touch on production
-     again, then `bash scripts/mirror.sh --release --gate <log>` while production still serves bef9c4d8a492. If the
-     session that queued them ended first, serve main's dist (`node scripts/serve-dist.mjs <port>`) and run `bash
-     scripts/gate/gate.sh <log> http://localhost:<port>` and `bash scripts/gate/quiet-walk.sh probe-touch.mjs <out>
-     https://unitium-safe.vercel.app`, each through the browser lock.
-  2. Ship law-readings-3 after its gate: rebase it onto main (the release adds a commit), fast-forward main, build,
-     match the md5 (fa186081229d) and the digest, `bash scripts/ship.sh`, same-as-dist, then the release with that
-     gate's log.
-  3. NIST AI 600-1, the one source still open; the download waits for his OK.
-  4. Batch seven, in the order the counts give: the 20 words already explained inside an entry (other names, or
+- 2026-11-25, 10:34 CST: the sixth batch passed its gate, 56 of 56 (10:00 to 10:34, under the browser lock, on
+  bef9c4d8a492 and digest 34cb61a67a413f36), and probe-touch passed on production again with the corrected rule (81
+  checks). Release v2026.11.25.3: evidence fa322e9, public f25046d, release.yml success at 16:37 UTC with the tarball,
+  SHA256SUMS, the gate log and the in-toto provenance. The glossary6 worktree and its branch are removed.
+- Start here (next session, rewritten 2026-11-25 after the release of the sixth batch). Everything above is live, and
+  main holds it, except branch law-readings-3. Next, strongest first:
+  1. Ship law-readings-3 after its gate (worktree C:\Users\Initi\stepsafe-law3, rebased onto the release, build
+     fa186081229d; its ticket waits in the browser lock against localhost:5208). On green: rebase onto main if main
+     moved, fast-forward main, build, match the md5 and the digest, `bash scripts/ship.sh`, same-as-dist, then
+     `bash scripts/mirror.sh --release --gate <log>`. If the session that queued it ended first, serve its dist
+     (`node scripts/serve-dist.mjs <port>`) and run `bash scripts/gate/gate.sh <log> http://localhost:<port>` through
+     the lock.
+  2. NIST AI 600-1, the one source still open; the download waits for his OK.
+  3. Batch seven, in the order the counts give: the 20 words already explained inside an entry (other names, or
      short entries), the 136 named only in their own Step (entries written from that Step), the 34 near other names
      (another name or an entry), then the 337 found nowhere (each one an entry from a source read for it, or the
      word leaves its Step's list). Then the 69 entries nothing reaches, and the 143 related links to no entry.
-  5. The voice debt: rewrite the dashes part by part, smallest part first, each sentence read and never a blind
+  4. The voice debt: rewrite the dashes part by part, smallest part first, each sentence read and never a blind
      replace; probe-dashes tightens as they go.
-  6. Still open from earlier lists: picomatch (no fix published), Vite 8 held, Models on his phone, a fresh visual
+  5. Still open from earlier lists: picomatch (no fix published), Vite 8 held, Models on his phone, a fresh visual
      survey (scripts/look/survey.mjs), and his choices (the first Dash project, the names, Recover, an SSLMate
      account, "Safe multisig" and "Summiting the Pyramid").
 - Reflections from 2026-11-25:
