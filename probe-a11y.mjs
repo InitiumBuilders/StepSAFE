@@ -65,7 +65,8 @@ async function audit(name, path) {
     for (const el of document.querySelectorAll('button, a[href], [role=button], [role=tab], [role=radio], [role=checkbox], input:not([type=hidden]), select, summary, textarea')) {
       if (!vis(el)) continue;
       const r = el.getBoundingClientRect();
-      const inline = el.tagName === 'A' && getComputedStyle(el).display.startsWith('inline') && el.parentElement && el.parentElement.innerText.trim().length > (el.innerText || '').trim().length + 12;
+      /* a glossary word in a Step's sentence is a button that opens its card in place: it sits in the sentence too */
+      const inline = (el.tagName === 'A' || el.classList.contains('term-link')) && getComputedStyle(el).display.startsWith('inline') && el.parentElement && el.parentElement.innerText.trim().length > (el.innerText || '').trim().length + 12;
       if (!inline && (r.width < 23.5 || r.height < 23.5)) out.small.push(say(el) + ' ' + Math.round(r.width) + 'x' + Math.round(r.height));
     }
     /* 2.1.1: something that acts as a button but cannot take the keyboard's focus */

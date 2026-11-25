@@ -34,8 +34,10 @@ const measure = () => p.evaluate(() => {
   for (const el of document.querySelectorAll('button, a[href], [role=button], [role=tab], [role=radio], input:not([type=hidden]), select, summary, textarea')) {
     if (!vis(el)) continue;
     const r = el.getBoundingClientRect();
-    /* a link inside a sentence is as tall as its line; only a control that stands by itself is held to a finger */
-    const inline = el.tagName === 'A' && getComputedStyle(el).display.startsWith('inline') && el.parentElement && el.parentElement.innerText.trim().length > (el.innerText || '').trim().length + 12;
+    /* a link inside a sentence is as tall as its line; only a control that stands by itself is held to a finger.
+       A glossary word in a Step's sentence is a button, because it opens its card in place, so it counts as such a
+       link. Other inline buttons, such as a tag's remove button, stay held to a finger. */
+    const inline = (el.tagName === 'A' || el.classList.contains('term-link')) && getComputedStyle(el).display.startsWith('inline') && el.parentElement && el.parentElement.innerText.trim().length > (el.innerText || '').trim().length + 12;
     if (!inline && (r.height < 43.5 || r.width < 43.5)) small.push(say(el) + ' ' + Math.round(r.width) + 'x' + Math.round(r.height));
   }
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);

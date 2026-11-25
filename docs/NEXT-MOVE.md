@@ -1171,19 +1171,27 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     Control with "Also called Four-Eyes Principle"; Dual Control's web shows seven entries and "Show the other 2",
     its rim lit in the identity colour; Management Body cites Article 32 and no longer says entities "must offer"
     training; no console errors.
-  - NOT RUN YET: the 56-walk gate on this build, and the live walks. Both hold browser-lock tickets: the gate against
-    localhost:5207, the live walks against production. Each ticket refuses to run unless the build it finds is
-    bef9c4d8a492. The release (mirror.sh --release --gate) waits for a green gate log. This ship went ahead of its
-    gate because the lock line held ten tickets, and the gate's place in it was hours away.
+  - NOT RUN YET: the 56-walk gate on this build. It holds a browser-lock ticket against localhost:5207 and refuses to
+    run unless the build it finds is bef9c4d8a492. The release (mirror.sh --release --gate) waits for a green gate
+    log. This ship went ahead of its gate because the lock line held ten tickets, and the gate's place in it was
+    hours away.
+  - The live walks ran on production from 09:22 to 09:41: 11 of 12 passed. probe-touch failed on one control, "inflow
+    rate" in the Stocks and Flows Step, 80 by 28 on a phone. The word gained an entry in this batch, so it now links
+    inside its sentence. probe-touch and probe-a11y already excuse a link inside a sentence from the size rule, but
+    they only knew `<a>` tags, and a glossary word is a button because it opens its card in place. Both now treat
+    `.term-link` the same way (b243772); other inline buttons stay held to the size rule. Rehearsed in the pane on
+    production: the old rule flags the word, the new rule flags nothing on that Step. The gate's ticket runs
+    probe-touch on production again after the gate.
   - A pane lesson: after the rebuild, the pane still held the page it loaded before, so the first test of the fix ran
     the old code and looked like a failure. Before measuring a fix in the pane, reload and check which index-*.js the
     page loaded.
 - Start here (next session, written 2026-11-25 after the sixth batch shipped). Everything above is live, and main
   holds it. Next, strongest first:
-  1. The gate and the live walks for bef9c4d8a492. If the session that queued them ended first, serve main's dist
-     (`node scripts/serve-dist.mjs <port>`) and run, each through the browser lock, `bash scripts/gate/gate.sh <log>
-     http://localhost:<port>`, then `bash scripts/gate/live-walks.sh <log> <folder>`. On green, while production still
-     serves bef9c4d8a492: `bash scripts/mirror.sh --release --gate <log>`.
+  1. The gate for bef9c4d8a492, and probe-touch on production again. If the session that queued them ended first,
+     serve main's dist (`node scripts/serve-dist.mjs <port>`) and run, each through the browser lock, `bash
+     scripts/gate/gate.sh <log> http://localhost:<port>`, then `bash scripts/gate/quiet-walk.sh probe-touch.mjs <out>
+     https://unitium-safe.vercel.app`. On green, while production still serves bef9c4d8a492: `bash scripts/mirror.sh
+     --release --gate <log>`.
   2. NIST AI 600-1: the AI RMF Step lists "data provenance" among its twelve risks. The list is only in the PDF, and
      downloading it waits for his OK.
   3. The legal readings still open: GDPR 12, DORA 19 and AI Act 9 (docs/LEGAL-READINGS.md).
@@ -1199,6 +1207,9 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     checks on the new example before the gate does.
   - The gate ran 56 of 56 for the fourth and fifth batches before they shipped; this batch shipped first and its gate
     follows. Queue the gate the moment a build is frozen, because the browser line now runs hours deep.
+  - A word that gains an entry changes form on every Step that names it: it leaves the padded list of bare words and
+    becomes a button inside a sentence. The touch probe had never met that form on the Step it walks. When a batch
+    gives an entry to a word a walked Step names, measure that Step in the pane at phone size before the walks run.
 
 ## The move
 
