@@ -66,6 +66,17 @@ Part six of glossary batch seven cites three more articles, read on EUR-Lex the 
 | Critical ICT Provider: the ESAs designate the critical ICT third-party service providers and appoint a Lead Overseer for each, weighing systemic impact, the importance of the entities that rely on a provider, reliance for critical or important functions, and how hard it is to replace | 31(1)(a) and (b); 31(2)(a) to (d) | HOLDS, SIMPLIFIED (the Joint Committee, the Oversight Forum's recommendation and the parameters under each criterion are left out) |
 | The same entry: after at least 30 days of non-compliance, a periodic penalty payment of up to 1% of average daily worldwide turnover, charged daily for up to six months | 35(6), (7) and (8) | HOLDS |
 
+Part seven makes two new claims about articles already read, checked again on EUR-Lex the same day:
+
+| Claim in an entry | The article | Verdict |
+|---|---|---|
+| Duty of Oversight: NIS2 Art 20 requires Member States to ensure that management bodies approve and oversee their entity's cybersecurity risk-management measures and can be held liable for infringements | 20(1): approve the measures taken to comply with Article 21, oversee their implementation, and can be held liable for infringements of that Article (without prejudice to national rules on public institutions and officials) | HOLDS |
+| The same entry: DORA Art 5 makes a financial entity's management body responsible for its ICT risk framework | 5(2): defines, approves, oversees and is responsible for the implementation of all arrangements related to the ICT risk management framework | HOLDS |
+
+The same entry's Delaware cases are court opinions, not one of these four laws. The passages each sentence rests on were
+read in the opinions themselves the same day: Caremark (Court of Chancery, 25 September 1996), Stone v. Ritter (Supreme Court, 6 November 2006) and Marchand v.
+Barnhill (Supreme Court, 18 June 2019). Their sources sit on the entry.
+
 probe-law.mts holds this. It finds every citation of the four laws by article number in the course and fails on any
 article missing from the line below. Add an article to that line only after reading it at the source and recording
 the claim and the verdict above.

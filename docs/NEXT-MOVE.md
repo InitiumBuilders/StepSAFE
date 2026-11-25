@@ -1283,7 +1283,7 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   - Its own gate never ran: at 13:12 the queued ticket was retargeted to part six, which contains this build's
     changes, and that gate passed (below).
   - Batch seven so far: 136 entries in five parts, 953 to 1,089 terms, links to no entry 527 to 390.
-- 2026-11-25, 13:52 CST: batch seven part six is LIVE, gated and released. Gate 58 of 58 (tsc, outline, every probe,
+- 2026-11-25, 13:51 CST: batch seven part six is LIVE, gated and released. Gate 58 of 58 (tsc, outline, every probe,
   probe-wide in each theme, 20 walks; 13:13 to 13:49) on build 46466f348b3a (digest e6512244c86426a5) before it
   shipped; production unitium-safe-ctwkxa49f, main a84f204, 101 of 101 the same as dist; release v2026.11.25.4
   (evidence 06ba6b6, public 8b61f40). The release covers parts one to six and the legal fixes.
@@ -1302,9 +1302,15 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     Motus-only, so a Novus profile sees its preview.
   - probe-ensemble failed once in a private probe loop ("200 days take 416 ms") while a build ran beside it; the
     gate's run on a quiet machine took 67 ms.
-- 2026-11-25, 13:55 CST: batch seven part seven is WRITTEN, not yet shipped: branch glossary-named-13 in the
-  worktree C:\Users\Initi\stepsafe-glossary13. Five entries (Duty of Oversight, Attribution Caution, Targeted Risk
-  Analysis, Customized Approach, Script Integrity) and seventeen related links that led to no entry (140 to 123).
+- 2026-11-25, 14:02 CST: batch seven part seven is LIVE ahead of its gate. Production unitium-safe-c6vesaehz, build
+  9939da39a7f5 (digest bb18a8314cfef2f5), main 9fd1b3f, 101 of 101 the same as dist, all 33 probes clean before it
+  shipped. Five entries (Duty of Oversight, Attribution Caution, Targeted Risk Analysis, Customized Approach, Script
+  Integrity) and seventeen related links that led to no entry (140 to 123). 1,102 terms, 1,702 cards; resolved
+  1267, to no entry 377; no word is left that only its own Step names.
+  - Production checked in the pane after a forced reload (the page still held part six's script until then): Duty
+    of Oversight shows its long text and the three Delaware sources; Partnership Squad's related row opens Paved
+    Road, a link that led nowhere this morning; no console errors. Both of part seven's Steps are Motus-only, so a
+    Novus profile sees their previews.
   - Duty of Oversight rests on the Delaware opinions read at the source: Caremark (Court of Chancery, 1996), Stone
     v. Ritter (Supreme Court, 2006) and Marchand v. Barnhill (Supreme Court, 2019); its EU sentence matches NIS2
     Article 20(1) and DORA Article 5(2), recorded in LEGAL-READINGS. The three PCI DSS entries come from the PCI
@@ -1312,16 +1318,15 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     Requirements 6.4.3 and 11.6.1), so the standard's PDF was not needed.
   - Where a related link's nearest entry means the same thing it now opens it (Paved Road, Epsilon Budget, Risk
     Acceptance Memo, Insider Threat and others); where the entry already linked the idea the dead link is gone.
-  - Its gate ticket was queued at 13:30, 12th in line. The ticket reads scratchpad g13-target.txt ("tree md5
-    port") when it comes up, so it gates whatever part seven's frozen build is by then.
-- Start here (next session, rewritten 2026-11-25 after part six's release). Part six is live, gated and released
-  (v2026.11.25.4); main holds it. Next, strongest first:
-  1. Part seven: rebase glossary-named-13 onto main, build it in its worktree, serve its dist on a free port, write
-     scratchpad g13-target.txt ("C:/Users/Initi/stepsafe-glossary13 <md5> <port>") so the queued ticket gates it,
-     then ff main, build main (same md5), ship, same-as-dist and the pane check. On the gate's green, while
-     production still serves that build: `bash scripts/mirror.sh --release --gate <log>`. If the session that queued
-     the ticket ended, serve main's dist and run `bash scripts/gate/gate.sh <log> http://localhost:<port>` through
-     the lock. Never rebuild a worktree a ticket serves until it has run.
+  - NOT RUN YET: its gate. The ticket queued at 13:30 (11th of 12 at 14:00) reads scratchpad g13-target.txt,
+    which names /c/Users/Initi/stepsafe-glossary13, 9939da39a7f5 and port 5215; the worktree serves its dist there.
+- Start here (next session, rewritten 2026-11-25 after part seven shipped). Part six is released (v2026.11.25.4);
+  part seven is live and main holds it. Next, strongest first:
+  1. Part seven's gate, queued in the browser lock. On green, while production still serves 9939da39a7f5: `bash
+     scripts/mirror.sh --release --gate <log>` from main. If the session that queued it ended, serve main's dist
+     (`node scripts/serve-dist.mjs <port>`) and run `bash scripts/gate/gate.sh <log> http://localhost:<port>`
+     through the lock. Never rebuild the worktree a ticket serves until it has run; a newer build ships only after
+     the ticket is pointed at it.
   2. Part eight, the 69 entries nothing reaches. "Reached" counts only a Step's glossary list, prose and tables in
      the twelve core chapters, and the guides (src/lib/terms.ts corpus()); the Intuition chapter, awards, Modux and
      Outlier text do not count, and a single word under seven letters that is not an acronym never links (gVisor,

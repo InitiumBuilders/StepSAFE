@@ -26,7 +26,7 @@ export const TERMS: Term[] = [
     short: "Warning a subject that they are under investigation, usually by accident.",
     long: "Tipping is any action that reveals to a person under investigation that they have been noticed — a sudden permission revocation, an unexplained meeting invite, a manager's changed behaviour, a legal hold notification routed to the wrong inbox. In insider-risk work the investigative sequence is deliberately quiet precisely because a tipped subject destroys evidence, accelerates exfiltration, or moves to channels nobody is watching. The tension is real and permanent: the controls that most reduce ongoing risk are exactly the ones most likely to tip.",
     why: "Insider investigations are the case where good security instincts — revoke fast, contain now — are actively wrong. Knowing when to hold an action, and having a pre-agreed protocol with legal and HR for who decides, is what separates a handled case from one that ends in litigation with no usable evidence.",
-    related: ["insider-risk", "evidence-preservation", "legal-hold", "conviction-insider", "quiet-reduction"],
+    related: ["insider-threat", "evidence-preservation", "legal-hold", "conviction-insider", "quiet-reduction"],
     mode: "motus"
   },
 
@@ -162,7 +162,7 @@ export const TERMS: Term[] = [
     short: "A security platform model where engineers embed with product teams instead of reviewing them from outside.",
     long: "Rather than operating as a review gate that product teams must pass, a partnership model assigns security engineers to work inside product groups — building paved paths, writing the secure default, and carrying some of the delivery burden themselves. Its health is measured by adoption of the paved path, time to unblock, defect escape rate and partner satisfaction, not by counts of findings raised. The failure mode is capture: an embedded engineer who stops representing the security function and becomes an extra pair of product hands.",
     why: "A security team that only says no accumulates exactly the political capital it deserves. Structuring the team so its default output is a usable path rather than a finding is the single highest-leverage organisational change most programs can make.",
-    related: ["paved-path", "friction-designer", "toil", "security-champion", "adoption-metric"],
+    related: ["paved-road", "friction-designer", "toil", "security-champion", "adoption-metric"],
     mode: "motus"
   },
   {
@@ -244,7 +244,7 @@ export const TERMS: Term[] = [
     short: "The smallest number of independent entities that could collude to compromise a subsystem.",
     long: "The coefficient counts the minimum entities needed to control a threshold of some critical resource — validator stake, hash rate, client implementations, hosting providers, geographic jurisdictions. It is computed per subsystem, and the honest reading is the minimum across all of them, because an adversary attacks the weakest dimension. A network with thousands of validators concentrated in two hosting providers has a hosting coefficient of two regardless of validator count.",
     why: "Decentralized means nothing until you name what all the parts still share. The coefficient forces that naming, and it very often reveals that the real concentration is in infrastructure, tooling or client software rather than in the token distribution everyone reports.",
-    related: ["decentralization-metric", "correlated-failure", "client-diversity", "quorum", "shared-dependency"],
+    related: ["decentralization-metric", "correlated-loss", "client-diversity", "quorum"],
     mode: "both"
   },
   {
@@ -274,7 +274,7 @@ export const TERMS: Term[] = [
     short: "The provider registration transaction that enrols a masternode and declares its key roles.",
     long: "A registration transaction records the collateral, the operator's BLS public key, the voting key and the payout address, establishing distinct roles that can be held by different parties. Separating owner, operator and voting authority is the mechanism that lets an operator run infrastructure without the ability to move collateral, which is the security-relevant property.",
     why: "Role separation encoded in the protocol is stronger than role separation encoded in a policy document. Reading a registration transaction tells you who can actually do what, regardless of what the organisation chart claims.",
-    related: ["proupregtx", "role-separation", "bls-key", "collateral", "masternode"],
+    related: ["proupregtx", "role-separation", "bls-signature", "collateral", "masternode"],
     mode: "motus"
   },
   {
@@ -314,7 +314,7 @@ export const TERMS: Term[] = [
     short: "An agreed period during which a known vulnerability is withheld from public disclosure.",
     long: "During coordinated disclosure, affected parties agree to hold details private while a fix is developed and deployed, with a defined end date. Embargoes fail in characteristic ways: too many participants, no agreed clock, unequal notification giving some operators advance advantage, or a leak that forces disclosure before anyone is ready. In decentralized networks the problem is sharper because there is no single operator to patch and the fix requires voluntary adoption.",
     why: "Deciding who to tell, in what order, and on what clock is one of the genuinely hard judgment calls in this work. Getting it wrong in either direction — telling too many or too few — has produced real harm, and there is no formula that removes the judgment.",
-    related: ["coordinated-disclosure", "safe-harbour", "recusal", "responsible-disclosure", "patch-adoption"],
+    related: ["coordinated-disclosure", "safe-harbour", "recusal", "patch-adoption"],
     mode: "motus"
   },
   {
@@ -386,7 +386,7 @@ export const TERMS: Term[] = [
     short: "The reference Go implementation of an IPFS node.",
     long: "Kubo provides the daemon most self-hosted IPFS deployments run: content storage, DHT participation, Bitswap exchange, pinning and a gateway. Operationally the two settings that matter most for security are which APIs are bound to which interfaces, and what the node is pinning — because a pinned set is a statement about what this operator is committed to keep serving.",
     why: "The failure mode you should induce on purpose is unpinning content and confirming what remains retrievable. Most teams discover only during an incident that their gateway was never the sole source, or that it was.",
-    related: ["reprovide", "bitswap", "content-addressing", "pinning", "gateway"],
+    related: ["reprovide", "bitswap", "content-addressing", "pinning", "gateway-trust"],
     mode: "both"
   },
   {
@@ -466,7 +466,7 @@ export const TERMS: Term[] = [
     short: "Repeatedly retrying a computation to bias an outcome that is supposed to be unpredictable.",
     long: "Where a protocol derives selection, ordering or randomness from values a participant can influence — a nonce, a timestamp, a submitted input — that participant can iterate cheaply until the derived result favours them. Defences bind the source to something the participant cannot cheaply vary or cannot know in advance, such as a commit-reveal scheme or a verifiable delay.",
     why: "The organisational failure this produces is subtle: a system that is manipulable but not obviously broken looks fine on every dashboard, and the advantage accrues quietly to whoever noticed first. Randomness sources deserve the same scrutiny as key material.",
-    related: ["randomness-source", "commit-reveal", "mev", "selection-bias", "verifiable-delay"],
+    related: ["randomness-source", "commit-reveal", "mev", "selection-bias", "verifiable-delay-function"],
     mode: "motus"
   },
 
@@ -508,7 +508,7 @@ export const TERMS: Term[] = [
     short: "Stating a hypothesis so that a specific observation could prove it wrong.",
     long: "A falsifiable hunt hypothesis names what you expect to find, in which data, and what result would count as disconfirmation. Without that, a hunt returns nothing and the analyst concludes the environment is clean, when the honest conclusion is that this query, over this data, in this window, found nothing — a much weaker and much more useful statement.",
     why: "Write the hunt down before you run it. A pre-registered hypothesis converts hunting from an unfalsifiable activity into evidence, and it is the only way a negative result carries information.",
-    related: ["threat-hunting", "hypothesis", "coverage-claim", "answerability-briefing", "coefficient-of-variation"],
+    related: ["threat-hunting-hypothesis", "coverage-claim", "answerability-briefing", "coefficient-of-variation"],
     mode: "both"
   },
   {
@@ -612,7 +612,7 @@ export const TERMS: Term[] = [
     short: "How much one individual's data can change a released result — the quantity that sets privacy noise.",
     long: "In differential privacy, sensitivity measures the maximum change to a query's output caused by adding or removing a single individual's record. It determines how much calibrated noise must be added to achieve a given privacy guarantee: high-sensitivity queries such as maximums or unbounded sums require far more noise than bounded counts, which is why some queries cannot be answered usefully under a strict privacy budget at all.",
     why: "The de-identification honesty rule is that privacy protection has a measurable cost in utility, and any scheme claiming both perfect privacy and perfect utility is misdescribing itself.",
-    related: ["differential-privacy", "k-anonymity", "privacy-budget", "re-identification", "noise-calibration"],
+    related: ["differential-privacy", "k-anonymity", "epsilon-budget", "re-identification", "noise-calibration"],
     mode: "motus"
   },
   {
@@ -632,7 +632,7 @@ export const TERMS: Term[] = [
     short: "The likelihood that a document will be obtainable by an opposing party in litigation.",
     long: "Internal messages, tickets, risk registers and draft assessments are generally discoverable in litigation and regulatory proceedings. This is not an argument for writing less — under-documenting is itself a serious failure — but for writing accurately and without editorialising: state the finding, the decision, the reasoning and the owner, and leave out speculation and sarcasm that will read very differently to a hostile reader years later.",
     why: "The personal discipline is to write every risk record as though it will be read aloud by someone trying to make you look negligent. Records written that way are both better evidence and better engineering documents.",
-    related: ["spoliation", "legal-hold", "puffery", "candour", "risk-acceptance-expiry"],
+    related: ["spoliation", "legal-hold", "puffery", "candour", "risk-acceptance-memo"],
     mode: "motus"
   },
   {
@@ -662,7 +662,7 @@ export const TERMS: Term[] = [
     short: "A third party engaged by your processor to handle personal data on your behalf, further down the chain.",
     long: "When a vendor processing your data engages their own vendors, those parties are subprocessors, and the data protection obligations flow down the chain contractually. In practice the chain is longer and more dynamic than most organisations track: subprocessors change, sub-subprocessors are rarely enumerated, and notification obligations are often satisfied by a webpage nobody monitors.",
     why: "The uncomfortable strategic truth is that your data protection posture is bounded by the weakest link in a chain you do not control and probably cannot fully enumerate. Knowing that changes what you are willing to collect in the first place.",
-    related: ["vendor-risk", "data-minimisation", "warranty", "supply-chain", "third-party-risk"],
+    related: ["data-minimisation", "warranty", "third-party-risk"],
     mode: "both"
   },
 
@@ -747,7 +747,7 @@ export const TERMS: Term[] = [
     short: "A pre-agreed condition that automatically triggers a defined action, decided before the pressure arrives.",
     long: "A tripwire binds an observable condition to a committed response — if this credential is used from outside the approved range, it is disabled; if this threshold is crossed, an incident is declared. Its value is that the decision is made calmly in advance by people with authority, so that under pressure the action does not require assembling a judgment call from tired people with partial information.",
     why: "The rule that makes rotation possible is deciding in advance what would make you rotate, because in the moment there is always a reason to wait for more information. Pre-commitment is how organisations act at the speed their own telemetry allows.",
-    related: ["pre-authorised-containment", "escalation-criteria", "playbook", "break-glass", "reversibility"],
+    related: ["pre-authorised-containment", "escalation-threshold", "playbook", "break-glass", "reversibility"],
     mode: "both"
   },
   {
@@ -809,7 +809,7 @@ export const TERMS: Term[] = [
     short: "An indexed, queryable view over on-chain events, and a trusted component in most applications.",
     long: "Because reading raw chain state is impractical for application queries, indexers ingest events and expose them through an API. The result is that most applications' view of the chain comes from an indexer rather than from consensus — so indexer bugs, lag, or manipulation become application-level correctness and security issues, invisible to anyone auditing only the contracts.",
     why: "Lab completion for any on-chain application should include the question of what happens when the indexer is wrong or behind. Almost every team has an answer for contract risk and almost none has one for this.",
-    related: ["indexer", "data-availability", "trust-assumption", "orbit-l3", "staleness"],
+    related: ["indexer-lag", "data-availability", "trust-assumption", "orbit-l3", "staleness"],
     mode: "motus"
   },
   {
@@ -859,7 +859,7 @@ export const TERMS: Term[] = [
     short: "A periodic count of distinct participants behind a signal, as opposed to its total weight.",
     long: "A census asks how many independent parties contributed to a signal and how concentrated their contributions are, rather than reporting the aggregate. Distinguishing distinct funding provenance is what makes the count meaningful: many addresses funded from one source are one participant wearing many hats, which the aggregate cannot show.",
     why: "The discipline that makes it work is running the census on a schedule and publishing it, so that concentration trends are visible before they matter rather than after an incident makes them obvious.",
-    related: ["whale-dominance", "sybil-resistance", "funding-provenance", "staleness", "falsifier"],
+    related: ["whale-dominance", "sybil-resistance", "funding-ancestry", "staleness", "falsifier"],
     mode: "motus"
   },
   {
