@@ -1805,7 +1805,7 @@ export const chapter: Chapter = {
             }
           ],
           awards: ["award-concentration-map"],
-          glossary: ["concentration-risk", "fourth-party", "subprocessor", "failure-domain", "correlated-loss", "sbom"]
+          glossary: ["concentration-risk", "fourth-party", "subprocessor", "failure-domain", "correlated-loss", "sbom", "graceful-degradation"]
         },
         {
           id: "ch-grc-s5-03",

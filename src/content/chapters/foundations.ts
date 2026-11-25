@@ -297,7 +297,7 @@ export const chapter: Chapter = {
             }
           ],
           awards: ["delay-hunter"],
-          glossary: ["mean-time-to-remediate", "time-to-know", "measurement-delay", "standard-change"]
+          glossary: ["mean-time-to-remediate", "time-to-know", "measurement-delay", "standard-change", "system-delay"]
         },
         {
           id: "ch-foundations-leverage-points",

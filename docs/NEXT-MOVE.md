@@ -1318,23 +1318,33 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
     Requirements 6.4.3 and 11.6.1), so the standard's PDF was not needed.
   - Where a related link's nearest entry means the same thing it now opens it (Paved Road, Epsilon Budget, Risk
     Acceptance Memo, Insider Threat and others); where the entry already linked the idea the dead link is gone.
-  - NOT RUN YET: its gate. The ticket queued at 13:30 (11th of 12 at 14:00) reads scratchpad g13-target.txt,
-    which names /c/Users/Initi/stepsafe-glossary13, 9939da39a7f5 and port 5215; the worktree serves its dist there.
-- Start here (next session, rewritten 2026-11-25 after part seven shipped). Part six is released (v2026.11.25.4);
-  part seven is live and main holds it. Next, strongest first:
-  1. Part seven's gate, queued in the browser lock. On green, while production still serves 9939da39a7f5: `bash
-     scripts/mirror.sh --release --gate <log>` from main. If the session that queued it ended, serve main's dist
+  - Its own gate will not run: at 14:16 the ticket was pointed at part eight's build, which contains part seven.
+- 2026-11-25, 14:17 CST: batch seven part eight is LIVE ahead of its gate. Production unitium-safe-p52949xk8, build
+  923c43cc12fb (digest b91d850eb17ae1fb), main 524ec1f, 101 of 101 the same as dist, all 33 probes clean first.
+  Twenty-eight entries that nothing reached are now named in the glossary list of a core Step that teaches them
+  (unreached 69 to 41; Steps that name an entry 962 to 990; resolved Step links 1,267 to 1,296). Each was read in
+  its Step before the id went in; an entry whose nearest Step does not teach it stays unreached.
+  - Production checked in the pane after a forced reload: Isolation Tiers shows a gVisor chip beside Sentry
+    (gVisor), and the chip opens the gVisor card in place; no console errors. The longest new name (Device Bound
+    Session Credentials, 32 letters) is shorter than one already shown and gated (33).
+  - NOT RUN YET: the gate for parts seven and eight. The ticket queued at 13:30 (10th of 11 at 14:15) reads
+    scratchpad g13-target.txt, which names /c/Users/Initi/stepsafe-glossary14, 923c43cc12fb and port 5216; the
+    worktree serves its dist there.
+- Start here (next session, rewritten 2026-11-25 after part eight shipped). Part six is released (v2026.11.25.4);
+  parts seven and eight are live and main holds them. Next, strongest first:
+  1. The gate for parts seven and eight, queued in the browser lock. On green, while production still serves
+     923c43cc12fb: `bash scripts/mirror.sh --release --gate <log>` from main. If the session that queued it ended, serve main's dist
      (`node scripts/serve-dist.mjs <port>`) and run `bash scripts/gate/gate.sh <log> http://localhost:<port>`
      through the lock. Never rebuild the worktree a ticket serves until it has run; a newer build ships only after
      the ticket is pointed at it.
-  2. Part eight, the 69 entries nothing reaches. "Reached" counts only a Step's glossary list, prose and tables in
-     the twelve core chapters, and the guides (src/lib/terms.ts corpus()); the Intuition chapter, awards, Modux and
-     Outlier text do not count, and a single word under seven letters that is not an acronym never links (gVisor,
-     Slack, libp2p). The kit's tools/reach.mts ranks the core Steps closest to each; read the Step before naming an
-     id in its glossary list (RAND Security Level and Model Weights Custody belong to ch-ai-five-security-levels;
-     gVisor to the isolation-tiers Step, which has a gVisor row). An alias only where the meaning is the same: the
-     course says "OAuth" 54 times and the entry is "OAuth 2.0". Any new prose link changes walked Steps, so run
-     senses and measure walked Steps at phone size before the walks.
+  2. The 41 entries still unreached. Part eight placed the 28 whose Steps teach them; for the rest the nearest core
+     Step does not (3-2-1-1-0, Address Poisoning, Assume Breach, Base Rate Fallacy, Forward Secrecy, PKCE, SSVC,
+     TOCTOU, VEX and others). Each needs a Step or guide that teaches it, or stays reachable only from the glossary
+     and related links. "Reached" counts a Step's glossary list, prose and tables in the core chapters, and the
+     guides (src/lib/terms.ts corpus()); a single word under seven letters that is not an acronym never links. The
+     kit's tools/reach-evidence.mts prints each entry beside the best sentence of its two nearest Steps, and
+     stepgrep.mts checks a Step for a phrase. An alias only where the meaning is the same; any new prose link changes
+     walked Steps, so run senses and measure walked Steps at phone size before the walks.
   3. Then: 36 near other names, 326 found nowhere, the 123 related links to no entry (the rest need entries, not
      retargets). Write each part in a fresh worktree; repoint the kit's nearest and relcheck copies per tree.
   3. The voice debt: rewrite the dashes part by part, smallest part first (awards 363, other content 458, glossary

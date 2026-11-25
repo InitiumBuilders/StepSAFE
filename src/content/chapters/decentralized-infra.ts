@@ -980,7 +980,7 @@ export const chapter: Chapter = {
               body: "Ask: assume the workload achieves arbitrary code execution as root inside the sandbox on its first instruction — that is the design assumption, not the worst case — now what can it reach. If the answer includes the host kernel, the wallet, the instance metadata service, another tenant, or the open Internet, the design is not finished. Every serious sandbox review starts from the assumption that the inside is already lost, because for a marketplace that accepts anonymous payloads, it eventually is."
             }
           ],
-          glossary: ["seccomp", "sentry", "microvm", "wasm-sandbox", "egress-policy", "gvmi"],
+          glossary: ["seccomp", "sentry", "microvm", "wasm-sandbox", "egress-policy", "gvmi", "gvisor"],
           awards: ["isolation-economist", "egress-first"]
         },
         {
@@ -1172,7 +1172,7 @@ export const chapter: Chapter = {
               body: "None of these detect a provider who does the work correctly and also keeps a copy of your data. Verification is a correctness control. It contributes nothing to confidentiality. Teams routinely present a redundancy and attestation design as an answer to a data protection question, and the two are unrelated. If confidentiality is the requirement, the answers are encryption with the provider never holding the key, a trusted execution environment with all of its own trust assumptions, or not sending the data. Verification is not on that list."
             }
           ],
-          glossary: ["redundant-execution", "remote-attestation", "trusted-execution-environment", "canary-task", "verifier-asymmetry"],
+          glossary: ["redundant-execution", "remote-attestation", "trusted-execution-environment", "canary-task", "verifier-asymmetry", "validity-proof"],
           awards: ["verification-realist", "asymmetry-exploiter"]
         },
         {
@@ -1740,7 +1740,7 @@ export const chapter: Chapter = {
               body: "Incentive attacks land in an accountability gap. They are not vulnerabilities, so the security team says it is a protocol design issue. They are not bugs, so engineering says it is working as intended. They are not fraud in the legal sense, so risk says it is an engineering matter. Meanwhile the losses are real and recurring. Someone must own the question of whether the economic design is being exploited, and in every organisation that handles this well, that owner sits in security and has learned enough mechanism design to argue with the protocol team on their own terms. That is a career-defining specialisation and it is currently very scarce."
             }
           ],
-          glossary: ["griefing-ratio", "free-option", "grinding", "slashing", "mechanism-design"],
+          glossary: ["griefing-ratio", "free-option", "grinding", "slashing", "mechanism-design", "free-rider"],
           awards: ["incentive-modeler", "priced-the-attack"]
         },
         {

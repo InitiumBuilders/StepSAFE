@@ -476,7 +476,7 @@ export const chapter: Chapter = {
             principle: "Under time pressure, the highest-leverage action is almost never to act on everything. It is to differentiate — because a uniform response to a non-uniform problem is a guess wearing a process."
           },
           awards: ["reachability-realist", "the-ten-minute-split"],
-          glossary: ["deserialization", "gadget-chain", "reachability-analysis", "compensating-control", "blast-radius"]
+          glossary: ["deserialization", "gadget-chain", "reachability-analysis", "compensating-control", "blast-radius", "insecure-deserialization"]
         }
       ]
     },
@@ -535,7 +535,7 @@ export const chapter: Chapter = {
             }
           ],
           awards: ["guardrail-over-gate"],
-          glossary: ["paved-road", "guardrail", "hard-gate", "exception-register", "secure-default"]
+          glossary: ["paved-road", "guardrail", "hard-gate", "exception-register", "secure-default", "guardrail-vs-gate"]
         },
         {
           id: "ch-appsec-step-threat-model-design",
@@ -962,7 +962,7 @@ export const chapter: Chapter = {
             }
           ],
           awards: ["precision-floor", "firehose-extinguisher"],
-          glossary: ["precision", "recall", "shadow-mode", "suppression-by-construct", "alert-fatigue"]
+          glossary: ["precision", "recall", "shadow-mode", "suppression-by-construct", "alert-fatigue", "false-positive-economics"]
         },
         {
           id: "ch-appsec-step-fuzz-lab",
@@ -1975,7 +1975,7 @@ export const chapter: Chapter = {
           praxis: "Draft, negotiate and get formally adopted a vulnerability management standard with a decision function, service levels, enforcement, exceptions and evidence requirements.",
           evidence: "The ratified standard with the approver named and dated, a summary of what changed during negotiation and why, and the back-test showing how last quarter's findings would have been tiered under it.",
           awards: ["standard-bearer", "triage-surgeon"],
-          glossary: ["service-level-objective", "exception-register", "emergency-path", "back-test", "clock-definition"]
+          glossary: ["service-level-objective", "exception-register", "emergency-path", "back-test", "clock-definition", "exception-management"]
         },
         {
           id: "ch-appsec-step-board-council",

@@ -334,7 +334,7 @@ export const chapter: Chapter = {
               ]
             }
           ],
-          glossary: ["multivault", "bonding-curve", "share-price", "slippage-guard", "curve-id"],
+          glossary: ["multivault", "bonding-curve", "share-price", "slippage-guard", "curve-id", "bonding-curve-vault", "trust-token"],
           awards: ["vault-reader"]
         },
         {
@@ -1313,7 +1313,7 @@ export const chapter: Chapter = {
           ],
           praxis: "Run one complete Validator Session, all nine movements, against a real region of the Intuition graph on mainnet or testnet — a predicate family or subject set your organisation would plausibly depend on. Keep to the ninety-minute clock.",
           evidence: "The completed finding set in the six-field format, with the scope sentence, the queries used, a cluster map with stated confidence, the measured indexer lag, and at least one finding whose falsifier you wrote before you knew whether it would hold. Attach the session date and the term ids of any attestations you published.",
-          glossary: ["validator-session", "census", "concentration-ratio", "staleness", "falsifier"],
+          glossary: ["validator-session", "census", "concentration-ratio", "staleness", "falsifier", "knowledge-graph-integrity"],
           awards: ["the-validator", "seal-of-the-commons"]
         },
         {

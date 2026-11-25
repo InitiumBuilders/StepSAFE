@@ -145,7 +145,7 @@ export const chapter: Chapter = {
               body: "The most dangerous rule in any environment is the one that has not fired in six months. It reads as coverage on every dashboard and it is indistinguishable, from the outside, from a rule that is broken. Build the quarantine rule now, before you have three hundred of them: any detection with zero matches and zero synthetic validations in the last 30 days moves to a suspect state and blocks the coverage report until someone proves it still works."
             }
           ],
-          glossary: ["detection-funnel", "signal-loss", "silent-rule", "disposition-rate"],
+          glossary: ["detection-funnel", "signal-loss", "silent-rule", "disposition-rate", "detection-drift"],
           awards: ["award-funnel-sight"]
         },
         {
@@ -432,7 +432,7 @@ export const chapter: Chapter = {
               body: "When you finally cut alert volume by 70 percent, the SOC's measured mean time to respond often gets worse, not better. This is not a regression. You removed the flood of trivially-closable alerts that were dragging the mean down, so what remains is the genuinely hard work. If you have not pre-briefed your executive on this effect, your successful cleanup will read as a performance collapse on the very dashboard you are judged by. Brief it before you start, in writing, with the predicted direction of each metric. This is the difference between an engineering win and a political loss."
             }
           ],
-          glossary: ["tuning-debt", "alert-fatigue", "paging-budget", "auto-demotion", "disposition-rate"],
+          glossary: ["tuning-debt", "alert-fatigue", "paging-budget", "auto-demotion", "disposition-rate", "false-positive-economics"],
           awards: ["award-debt-register"]
         },
         {
@@ -1034,7 +1034,7 @@ export const chapter: Chapter = {
               body: "The valuable artefact is not the layer, it is the diff between layers over time. A map that only ever gets greener is a map that has stopped being measured."
             }
           ],
-          glossary: ["attack-navigator", "coverage-layer", "validation-ledger", "coverage-decay"],
+          glossary: ["attack-navigator", "coverage-layer", "validation-ledger", "coverage-decay", "detection-coverage-map"],
           awards: ["award-coverage-auditor"]
         },
         {
@@ -1963,7 +1963,7 @@ export const chapter: Chapter = {
           ],
           praxis: "In a cloud account you control, verify trail configuration and coverage with the audit commands, deliberately create the blind spot by disabling a data event selector, then build and validate three detections: logging tampering, first-time privileged API use by a principal, and role assumption from an unusual source. Trigger each one for real and measure end-to-end latency from action to alert.",
           evidence: "The audit command output before and after, the three detections in the repository with ADS documents, and a latency table showing measured action-to-alert time for each, including the stage where most of the delay occurred.",
-          glossary: ["control-plane-telemetry", "data-plane-telemetry", "cloudtrail-data-events", "guardduty-finding", "suppression-filter", "identity-centric-detection"],
+          glossary: ["control-plane-telemetry", "data-plane-telemetry", "cloudtrail-data-events", "guardduty-finding", "suppression-filter", "identity-centric-detection", "log-source-fidelity"],
           awards: ["award-cloud-eyes", "award-atomic-validator"]
         },
         {

@@ -282,7 +282,7 @@ export const chapter: Chapter = {
             }
           ],
           awards: ["aw-origin-bound", "aw-lab-honest"],
-          glossary: ["rp-id", "client-data-json", "signature-counter", "user-verification"]
+          glossary: ["rp-id", "client-data-json", "signature-counter", "user-verification", "device-bound-session-credentials"]
         },
         {
           id: "ch-identity-p1-s4",
@@ -428,7 +428,7 @@ export const chapter: Chapter = {
             }
           ],
           awards: ["aw-rollout-sequencer"],
-          glossary: ["temporary-access-pass", "legacy-authentication", "federation-trust", "aal2", "aal3"]
+          glossary: ["temporary-access-pass", "legacy-authentication", "federation-trust", "aal2", "aal3", "oauth"]
         },
         {
           id: "ch-identity-p1-s6",
@@ -1375,7 +1375,7 @@ export const chapter: Chapter = {
             }
           ],
           awards: ["aw-nonce-discipline", "aw-crypto-reviewer"],
-          glossary: ["forbidden-attack", "keystream-reuse", "authentication-key-h", "birthday-bound", "per-object-key"]
+          glossary: ["forbidden-attack", "keystream-reuse", "authentication-key-h", "birthday-bound", "per-object-key", "csprng"]
         },
         {
           id: "ch-identity-p4-s3",
@@ -1839,7 +1839,7 @@ export const chapter: Chapter = {
             }
           ],
           awards: ["aw-seed-custody", "aw-blind-signing-refused"],
-          glossary: ["bip32", "bip39-passphrase", "hardened-derivation", "extended-public-key", "blind-signing", "secure-element"]
+          glossary: ["bip32", "bip39-passphrase", "hardened-derivation", "extended-public-key", "blind-signing", "secure-element", "hd-wallet"]
         },
         {
           id: "ch-identity-p5-s4",
@@ -2039,7 +2039,7 @@ export const chapter: Chapter = {
           praxis: "Write the full communication set for a realistic key compromise in your own environment: the executive briefing in five sentences with a decision request, the customer notification, the regulator chronology, and the internal incident authority statement. Then have a colleague play a hostile journalist and a sceptical regulator against it.",
           evidence: "Attach all four documents, the list of questions your colleague asked that you could not answer well, and the revised versions. Include an explicit statement of which sentences in your draft would have required correction if the investigation later found evidence of key use, and how you rewrote them so they would not.",
           awards: ["aw-non-correction", "aw-council-voice", "aw-keeper-seal"],
-          glossary: ["incident-commander", "regulator-chronology", "disclosure-precision", "notification-threshold"]
+          glossary: ["incident-commander", "regulator-chronology", "disclosure-precision", "notification-threshold", "crisis-communication"]
         }
       ]
     }

@@ -308,7 +308,7 @@ export const chapter: Chapter = {
             }
           ],
           awards: ["award-bft-operator"],
-          glossary: ["tenderdash", "apphash", "same-block-execution", "validator-rotation", "byzantine-fault-tolerance"]
+          glossary: ["tenderdash", "apphash", "same-block-execution", "validator-rotation", "byzantine-fault-tolerance", "threshold-bft"]
         },
         {
           id: "ch-dashevo-p1-dapi-trust",

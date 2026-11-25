@@ -219,7 +219,7 @@ export const chapter: Chapter = {
             }
           ],
           awards: ["ladder-reader", "honest-scope"],
-          glossary: ["security-level-3", "attacker-capacity-class", "compartmentalisation", "scope-exclusion", "two-party-authorization"]
+          glossary: ["security-level-3", "attacker-capacity-class", "compartmentalisation", "scope-exclusion", "two-party-authorization", "rand-security-level", "model-weights-custody"]
         },
         {
           id: "ch-ai-egress-and-exfil",
@@ -746,7 +746,7 @@ export const chapter: Chapter = {
             }
           ],
           awards: ["poison-hunter", "provenance-keeper"],
-          glossary: ["data-poisoning", "backdoor-trigger", "provenance-tracking", "retrieval-corpus-trust", "artifact-pinning"]
+          glossary: ["data-poisoning", "backdoor-trigger", "provenance-tracking", "retrieval-corpus-trust", "artifact-pinning", "rag-poisoning"]
         },
         {
           id: "ch-ai-extraction-defense-lab",
@@ -1097,7 +1097,7 @@ export const chapter: Chapter = {
           praxis: "Run the full connector review gate against a real agent deployment — your own, your employer's, or a personal setup with at least three servers installed — and remediate at least two findings.",
           evidence: "The pinned manifest set with digests, the CI job that fails on drift, and a written finding record for each issue with its remediation and residual risk.",
           awards: ["manifest-warden", "delegation-warden"],
-          glossary: ["tool-poisoning", "token-passthrough", "manifest-pinning", "token-exchange", "connector-ssrf"]
+          glossary: ["tool-poisoning", "token-passthrough", "manifest-pinning", "token-exchange", "connector-ssrf", "mcp-security", "tool-authorization"]
         },
         {
           id: "ch-ai-agent-identity-delegation",

@@ -2012,7 +2012,7 @@ export const chapter: Chapter = {
           praxis: "Map a real security programme you work in or advise against the twelve leverage points. For each level, write down what your programme currently does there, honestly, including the levels where the answer is nothing. Then estimate what share of your programme's total effort and budget sits at levels twelve through nine. Select exactly one intervention at level six or five — an information-flow change or a rules change — that you can actually attempt within a quarter. Define in advance what you expect to change and how you will measure it, run the intervention, and measure it at ninety days, including the case where nothing changed.",
           evidence: "Attach to your Praxis Profile: the completed twelve-level map with your programme's current state at each level; a stated estimate of effort concentration at the parameter levels with the reasoning behind the estimate; a one-page pre-registration of the chosen intervention naming the predicted effect, the measure, and the ninety-day threshold that would count as failure; and the ninety-day result with an honest account of what happened, what you got wrong in the prediction, and what the resistance to the change taught you about where the real system boundary is. A null result with a good post-mortem is stronger evidence than a success with no prediction recorded in advance.",
           awards: ["award-leverage-map", "award-level-six-intervention", "award-the-chair-complete"],
-          glossary: ["leverage-point", "information-flow", "system-goal", "paradigm", "pre-registration"]
+          glossary: ["leverage-point", "information-flow", "system-goal", "paradigm", "pre-registration", "slack"]
         }
       ]
     }

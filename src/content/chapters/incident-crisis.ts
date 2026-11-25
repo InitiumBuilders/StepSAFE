@@ -897,7 +897,7 @@ export const chapter: Chapter = {
           evidence:
             "The manifest with hashes, the triage output, and a written record of elapsed time from decision to acquisition complete on each platform.",
           awards: ["award-volatile-first", "award-acquisition-runbook"],
-          glossary: ["order-of-volatility", "memory-acquisition", "triage-collection", "control-plane-forensics", "anti-forensics"]
+          glossary: ["order-of-volatility", "memory-acquisition", "triage-collection", "control-plane-forensics", "anti-forensics", "forensic-timeline"]
         },
         {
           id: "ch-incident-evidence-chain",
