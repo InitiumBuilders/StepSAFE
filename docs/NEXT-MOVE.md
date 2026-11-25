@@ -1099,6 +1099,32 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   starting with "key". Glossary.tsx now ranks an entry's own name before its other names (34abbf6), checked by
   running the search function itself over every term for each query the walks type (scratchpad glossary/
   search-real.mts).
+- 2026-11-25, morning: the glossary's fourth and fifth batches LIVE, on his word to deploy when green and his standing
+  word on deploys: production unitium-safe-g0tkhghn7, 101 of 101 files the same as dist, release v2026.11.25.2 (gate
+  kept as 837a6c3, public copy 3c8f6f6, release.yml passed in 43 s). The gate passed 56 of 56 on d0e12f3b85ae
+  (06:38 to 07:15). 307 new entries take the glossary from 501 to 808 terms and the deck to 1408 cards: the fourth
+  batch's 246 and the fifth batch's 61, both described in the two entries above. One more fix rode with them, found
+  while writing the sixth batch: NIS2 Article 20, read on EUR-Lex on 2026-11-25, has Member States encourage entities
+  to offer staff training (20(2)), and the temporary ban from managerial functions is Article 32(5)(b), at essential
+  entities when other enforcement fails. The GRC Step "NIS2, DORA and the AI Act" and the Management Body entry had
+  said entities must offer the training and had put the ban under Article 20; both now say what the Directive says,
+  and the entry cites it (e1e3b1c).
+  - The browser line became a lock this morning (SoundMind.Team's ~/.claude/tools/browser-lock.mjs, on August's ask
+    that the sessions get in sync): the gate ran as one ticket, the build, the deploy and the notes ran outside it,
+    and the live walks hold a later ticket (scratchpad live-walks-ticket.sh first checks that production serves
+    d0e12f3b85ae). Until they run, production was checked at once: the security headers by HTTP, and in the browser
+    pane the Glossary tab at 808, Tuning Debt, the corrected Management Body entry with its EUR-Lex source, the
+    corrected sentence in the shipped GRC chunk (the old one nowhere in dist), and no console errors.
+  - Before an entry repeats a Step's legal or numbered claim, read the claim at its source; a Step can be wrong too.
+  - The finding started a reading of every article the Steps cite, on EUR-Lex in the browser pane. These hold: GDPR
+    6(1), 34, 35 (simplified: the monitoring case is a public area at large scale) and 36; NIS2 21 and 23; AI Act
+    51(2) and 55(1). Three are imprecise and are corrected in the next round: GDPR 28 gives authorisation and notice
+    with a right to object, not "a right to a subprocessor list"; GDPR 33's seventy-two hours apply "where feasible"
+    and not to a breach unlikely to result in a risk; DORA's management body bears "the ultimate responsibility"
+    (Article 5(2)(a)) and the entity stays "fully responsible" when ICT services are contracted out (Article
+    28(1)(a)), where the Step and the Management Body entry said it "cannot be delegated away".
+  - Still to read: the AI RMF Step lists "data provenance" among NIST AI 600-1's twelve risk categories. The PDF is a
+    download, so it waits for a way to read it or his OK.
 
 ## The move
 
