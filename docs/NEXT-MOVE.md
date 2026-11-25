@@ -1185,20 +1185,45 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   - A pane lesson: after the rebuild, the pane still held the page it loaded before, so the first test of the fix ran
     the old code and looked like a failure. Before measuring a fix in the pane, reload and check which index-*.js the
     page loaded.
-- Start here (next session, written 2026-11-25 after the sixth batch shipped). Everything above is live, and main
-  holds it. Next, strongest first:
-  1. The gate for bef9c4d8a492, and probe-touch on production again. If the session that queued them ended first,
-     serve main's dist (`node scripts/serve-dist.mjs <port>`) and run, each through the browser lock, `bash
-     scripts/gate/gate.sh <log> http://localhost:<port>`, then `bash scripts/gate/quiet-walk.sh probe-touch.mjs <out>
-     https://unitium-safe.vercel.app`. On green, while production still serves bef9c4d8a492: `bash scripts/mirror.sh
-     --release --gate <log>`.
-  2. NIST AI 600-1: the AI RMF Step lists "data provenance" among its twelve risks. The list is only in the PDF, and
-     downloading it waits for his OK.
-  3. The legal readings still open: GDPR 12, DORA 19 and AI Act 9 (docs/LEGAL-READINGS.md).
-  4. Batch seven: the 527 names probe-terms still finds with no entry, the most used first, with the same tools and
-     the same nearest-sentence check before anything is frozen.
-  5. Still open from the 2026-11-21 list: picomatch (no fix published), Vite 8 held, Models on his phone, and the next
-     visual round from a fresh survey.
+- 2026-11-25, 10:00 to 10:30 CST, on his word to keep moving: the law as written, finished for the four EU laws, on
+  branch law-readings-3 (worktree C:\Users\Initi\stepsafe-law3, build fa186081229d). Not live yet; its gate holds a
+  browser-lock ticket against localhost:5208.
+  - Read on EUR-Lex: GDPR 5, 9, 12, 17, 25 and 32; DORA 19 and 20 with Delegated Regulation (EU) 2025/301 and
+    Implementing Regulation (EU) 2025/302; AI Act 14. Four corrections (9ed4d28): the deletion-latency check said
+    thirty days where GDPR 12(3) says one month, extendable by two for complex or numerous requests; the DORA clock
+    row credited the templates to 2025/301, which sets the deadlines (the templates are in 2025/302), and said
+    classification is itself time-bound, which Article 5 does not; a practice scenario let GDPR 17(3) yield to a US
+    rule, where 17(3)(b) covers only Union or Member State law; an award said Article 14's warning on automation bias
+    "applies at full strength" to a security pipeline, where Article 14 binds high-risk systems. The rest hold.
+  - The first list of cited articles was drawn by eye. A count of every citation found five it missed (GDPR 5, 9, 17,
+    25, 32), and one of the five carried an error. It also named AI Act Article 9, which nothing cites.
+  - probe-law.mts (5fd39f0) keeps the count: every citation of the four laws by article number must name an article
+    on the "Read:" line of docs/LEGAL-READINGS.md, which grows only after a reading. 125 citations of 27 articles,
+    all read. A planted line citing seven unread articles failed on all seven and passed over "Article 33, 72 hours".
+  - probe-dashes.mts (8e76522): the course still carries 4,315 dashes from its first authoring (chapters 1,507,
+    practice 876, guides 617, glossary 491, other 458, awards 363, Modux 3). docs/VOICE-RATCHET.json holds each
+    part's count; it may fall and never rise, so new text cannot add one while the old are rewritten.
+  - NIST AI 600-1 stays open: the twelve risks are only in the PDF, 1.2 MB at tsapps.nist.gov (publication 958388).
+- Start here (next session, rewritten 2026-11-25 after the legal round). Everything above is live, and main holds it,
+  except branch law-readings-3. Next, strongest first:
+  1. The release of the sixth batch, if it has not happened: the gate for bef9c4d8a492 and probe-touch on production
+     again, then `bash scripts/mirror.sh --release --gate <log>` while production still serves bef9c4d8a492. If the
+     session that queued them ended first, serve main's dist (`node scripts/serve-dist.mjs <port>`) and run `bash
+     scripts/gate/gate.sh <log> http://localhost:<port>` and `bash scripts/gate/quiet-walk.sh probe-touch.mjs <out>
+     https://unitium-safe.vercel.app`, each through the browser lock.
+  2. Ship law-readings-3 after its gate: rebase it onto main (the release adds a commit), fast-forward main, build,
+     match the md5 (fa186081229d) and the digest, `bash scripts/ship.sh`, same-as-dist, then the release with that
+     gate's log.
+  3. NIST AI 600-1, the one source still open; the download waits for his OK.
+  4. Batch seven, in the order the counts give: the 20 words already explained inside an entry (other names, or
+     short entries), the 136 named only in their own Step (entries written from that Step), the 34 near other names
+     (another name or an entry), then the 337 found nowhere (each one an entry from a source read for it, or the
+     word leaves its Step's list). Then the 69 entries nothing reaches, and the 143 related links to no entry.
+  5. The voice debt: rewrite the dashes part by part, smallest part first, each sentence read and never a blind
+     replace; probe-dashes tightens as they go.
+  6. Still open from earlier lists: picomatch (no fix published), Vite 8 held, Models on his phone, a fresh visual
+     survey (scripts/look/survey.mjs), and his choices (the first Dash project, the names, Recover, an SSLMate
+     account, "Safe multisig" and "Summiting the Pyramid").
 - Reflections from 2026-11-25:
   - Reading the law at its source found an error in a Step itself (NIS2 Article 20), where an entry had copied it.
     Before an entry repeats a Step's legal or numbered claim, read the claim at its source.
@@ -1210,6 +1235,8 @@ it builds on, with its progress, is `docs/moves/2026-11-04-launch-review.md`.
   - A word that gains an entry changes form on every Step that names it: it leaves the padded list of bare words and
     becomes a button inside a sentence. The touch probe had never met that form on the Step it walks. When a batch
     gives an entry to a word a walked Step names, measure that Step in the pane at phone size before the walks run.
+  - A list made by eye missed five of the articles the course cites, and one of the five was wrong. When the job is
+    "every X", count every X with a search first, then read; and leave a probe behind so the count stays true.
 
 ## The move
 
